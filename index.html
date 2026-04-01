@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kangaroo2 组件文档 - Grasshopper 物理引擎</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -17,27 +17,27 @@
             <button id="langBtn" class="lang-switch">EN</button>
         </header>
 
-        <!-- 主体：三栏布局 (侧栏分组 + 中间图标区 + 右侧详情) -->
+        <!-- 主体：三栏布局 -->
         <div class="main-layout">
-            <!-- 左侧：分组导航栏 (类似原文档左侧树) -->
+            <!-- 左侧分组导航 -->
             <aside class="sidebar">
                 <div class="sidebar-header">
-                    <span>组件分类</span>
+                    <span>📂 组件分类</span>
                 </div>
                 <ul id="groupNavList" class="group-nav">
-                    <!-- 动态渲染分组列表 -->
+                    <!-- 动态渲染 -->
                 </ul>
             </aside>
 
-            <!-- 中间：当前分组的图标网格 -->
+            <!-- 中间图标网格 -->
             <main class="icon-grid-area">
                 <div id="currentGroupTitle" class="group-title-header"></div>
                 <div id="iconsContainer" class="icons-grid">
-                    <!-- 动态渲染图标卡片 -->
+                    <!-- 动态渲染图标 -->
                 </div>
             </main>
 
-            <!-- 右侧：详情面板 (显示组件信息 + 截图) -->
+            <!-- 右侧详情面板 -->
             <aside class="detail-panel">
                 <div class="detail-header">
                     <span>📖 组件详情</span>
