@@ -1,45 +1,52 @@
 body{
-font-family: Arial;
-background:#f5f5f5;
-margin:0;
-}
+.main-nav button{
 
-header{
-background:#3f4652;
-color:white;
-padding:15px;
-display:flex;
-justify-content:space-between;
-}
-
-.menu{
-background:#2f2f2f;
-padding:10px;
-}
-
-.menu button{
-margin-right:10px;
-padding:8px 15px;
-background:#444;
+background:#3a3a3a;
 color:white;
 border:none;
-cursor:pointer;
+padding:8px 18px;
+margin-right:5px;
+
 }
 
-.icon-panel{
+
+.sub-nav{
+
+background:white;
+padding:15px;
+display:flex;
+flex-wrap:wrap;
+border-bottom:1px solid #ddd;
+
+}
+
+.sub-nav button{
+
+background:#efefef;
+border:none;
+padding:8px 12px;
+margin-right:10px;
+margin-bottom:8px;
+cursor:pointer;
+
+}
+
+
+.icon-area{
 
 background:white;
 padding:20px;
 display:flex;
 flex-wrap:wrap;
-gap:15px;
+gap:12px;
 
 }
 
+
 .icon{
 
-width:60px;
-height:60px;
+width:70px;
+height:70px;
 background:#eee;
 display:flex;
 align-items:center;
@@ -48,10 +55,11 @@ cursor:pointer;
 
 }
 
+
 .content{
 
+margin:20px;
 padding:30px;
 background:white;
-margin:20px;
 
 }
