@@ -1,84 +1,80 @@
 
-const data = {
-
-kangaroo:[
-{
-name:"Anchor",
-desc:"固定点约束",
-img:"img/icons/anchor.png",
-content:"用于固定点"
-},
-
-{
-name:"Length",
-desc:"长度约束",
-img:"img/icons/length.png",
-content:"控制线段长度"
-}
-
-],
-
-
-battery:[
-
-{
-name:"Battery Solver",
-desc:"电池求解器",
-img:"img/icons/battery.png",
-content:"电池仿真求解器"
-},
-
-{
-name:"Voltage",
-desc:"电压计算",
-img:"img/icons/voltage.png",
-content:"计算电压"
-}
+"Goals-Angle",
+"Goals-Co",
+"Goals-Col",
+"Goals-Lin",
+"Goals-Mesh",
+"Goals-On",
+"Goals-Pt",
+"Main",
+"Mesh",
+"Utility"
 
 ]
 
-}
 
 
+function showTab(tab){
 
-function showCategory(cat){
+if(tab=="kangaroo"){
 
 let html="";
 
-data[cat].forEach((item,i)=>{
+kangarooGroups.forEach(g=>{
 
-html+=`
-<div class="icon" onclick="showContent('${cat}',${i})">
-
-${item.name}
-
-</div>
-
-`;
+html+=`<button onclick="showGroup('${g}')">${g}</button>`
 
 })
 
-document.getElementById("icon-panel").innerHTML=html;
+
+document.getElementById("sub-nav").innerHTML=html
+
+}
 
 }
 
 
 
-function showContent(cat,i){
+function showGroup(name){
 
-let item=data[cat][i];
+let html="";
+
+for(let i=0;i<12;i++){
+
+html+=`
+
+<div class="icon" onclick="showContent('${name}',${i})">
+${name}-${i}
+</div>
+
+`
+
+}
+
+
+document.getElementById("icon-area").innerHTML=html
+
+}
+
+
+
+function showContent(group,index){
+
 
 document.getElementById("content").innerHTML=
 
 `
-<h2>${item.name}</h2>
 
-<p>${item.desc}</p>
+<h2>${group}</h2>
 
-<hr>
+<p>组件编号: ${index}</p>
 
-<p>${item.content}</p>
+<p>这里是教学内容区域</p>
 
-`;
+`
 
 }
+
+
+
+showTab('kangaroo')
