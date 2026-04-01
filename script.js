@@ -35,12 +35,14 @@ const groupDisplayNames = {
     'Utility': '实用工具'
 };
 
-// 预定义颜色池（用于生成彩色图标）
-const colorPalette = [
-    '#1e4a76', '#2c6e9e', '#3b82f6', '#10b981', '#f59e0b', '#ef4444',
-    '#8b5cf6', '#ec489a', '#06b6d4', '#84cc16', '#f97316', '#d946ef',
-    '#14b8a6', '#f43f5e', '#6366f1', '#a855f7', '#22c55e', '#eab308'
-];
+// 雪碧图配置
+const SPRITE_CONFIG = {
+    cols: 10,           // 每行10个图标
+    rows: 11,           // 共11行
+    iconSize: 24,       // 每个图标24x24px
+    totalWidth: 240,    // 雪碧图总宽度
+    totalHeight: 264    // 雪碧图总高度
+};
 
 // ===== 可拖动面板功能 =====
 let isResizingSidebar = false;
@@ -50,31 +52,26 @@ let startSidebarWidth = 0;
 let startDetailWidth = 0;
 
 function initResizers() {
-    // 左侧分隔条拖动
     sidebarResizer.addEventListener('mousedown', (e) => {
         isResizingSidebar = true;
         startX = e.clientX;
         startSidebarWidth = sidebar.offsetWidth;
-        
         document.body.style.cursor = 'col-resize';
         document.body.style.userSelect = 'none';
         sidebarResizer.classList.add('active');
         e.preventDefault();
     });
     
-    // 右侧分隔条拖动
     detailResizer.addEventListener('mousedown', (e) => {
         isResizingDetail = true;
         startX = e.clientX;
         startDetailWidth = detailPanel.offsetWidth;
-        
         document.body.style.cursor = 'col-resize';
         document.body.style.userSelect = 'none';
         detailResizer.classList.add('active');
         e.preventDefault();
     });
     
-    // 鼠标移动
     document.addEventListener('mousemove', (e) => {
         if (isResizingSidebar) {
             const deltaX = e.clientX - startX;
@@ -82,7 +79,6 @@ function initResizers() {
             newWidth = Math.min(Math.max(newWidth, 180), 450);
             sidebar.style.width = newWidth + 'px';
         }
-        
         if (isResizingDetail) {
             const deltaX = startX - e.clientX;
             let newWidth = startDetailWidth + deltaX;
@@ -91,7 +87,6 @@ function initResizers() {
         }
     });
     
-    // 鼠标松开
     document.addEventListener('mouseup', () => {
         if (isResizingSidebar) {
             isResizingSidebar = false;
@@ -108,49 +103,37 @@ function initResizers() {
     });
 }
 
-// ===== 根据名称生成颜色 =====
-function getColorFromName(name) {
-    let hash = 0;
-    for (let i = 0; i < name.length; i++) {
-        hash = ((hash << 5) - hash) + name.charCodeAt(i);
-        hash = hash & hash;
-    }
-    return colorPalette[Math.abs(hash) % colorPalette.length];
+// ===== 根据索引计算雪碧图坐标 =====
+function getSpritePosition(index) {
+    const col = index % SPRITE_CONFIG.cols;
+    const row = Math.floor(index / SPRITE_CONFIG.cols);
+    return {
+        x: col * SPRITE_CONFIG.iconSize,
+        y: row * SPRITE_CONFIG.iconSize
+    };
 }
 
-// ===== 生成图标HTML（不使用雪碧图，使用彩色背景+文字）=====
-function createIconElement(item, index) {
-    const card = document.createElement('div');
-    card.className = 'icon-card';
+// ===== 为所有组件分配坐标 =====
+function assignSpriteCoordinates(data) {
+    let globalIndex = 0;
+    const orderedGroups = GROUP_ORDER.filter(g => data[g]);
     
-    // 获取显示名称
-    const displayName = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
-    // 获取首字母或中文首字
-    let initial = '';
-    if (lang === 'cn') {
-        initial = displayName.charAt(0);
-    } else {
-        initial = displayName.charAt(0).toUpperCase();
+    for (const group of orderedGroups) {
+        const items = data[group];
+        for (const item of items) {
+            // 如果 JSON 中没有提供坐标，则自动分配
+            if (item.spriteX === undefined || item.spriteY === undefined) {
+                const pos = getSpritePosition(globalIndex);
+                item.spriteX = pos.x;
+                item.spriteY = pos.y;
+                console.log(`分配坐标: ${item.name} -> (${pos.x}, ${pos.y})`);
+            }
+            globalIndex++;
+        }
     }
     
-    // 根据组件名称生成固定颜色
-    const bgColor = getColorFromName(item.name);
-    
-    // 创建彩色图标（替代雪碧图）
-    const iconDiv = document.createElement('div');
-    iconDiv.className = 'icon-placeholder';
-    iconDiv.style.backgroundColor = bgColor;
-    iconDiv.textContent = initial;
-    
-    const nameSpan = document.createElement('div');
-    nameSpan.className = 'icon-name';
-    nameSpan.textContent = displayName;
-    
-    card.appendChild(iconDiv);
-    card.appendChild(nameSpan);
-    card.addEventListener('click', () => showComponentDetail(item));
-    
-    return card;
+    console.log(`✅ 已为 ${globalIndex} 个组件分配坐标`);
+    return data;
 }
 
 // ===== 数据加载 =====
@@ -163,7 +146,9 @@ fetch('data/kangaroo.json')
     })
     .then(data => {
         console.log('✅ 数据加载成功，共', Object.keys(data).length, '个分组');
-        componentsData = data;
+        
+        // 为所有组件分配雪碧图坐标
+        componentsData = assignSpriteCoordinates(data);
         
         // 构建分组列表
         groupsList = GROUP_ORDER.filter(group => 
@@ -237,9 +222,6 @@ function setActiveGroup(groupKey) {
     // 更新标题
     const titleZh = groupDisplayNames[groupKey] || groupKey;
     currentGroupTitle.textContent = lang === 'cn' ? titleZh : groupKey;
-    currentGroupTitle.style.background = 'none';
-    currentGroupTitle.style.webkitTextFillColor = '#0f2b3d';
-    currentGroupTitle.style.color = '#0f2b3d';
     
     // 渲染图标
     renderIcons(groupKey);
@@ -253,7 +235,7 @@ function setActiveGroup(groupKey) {
     `;
 }
 
-// ===== 渲染图标网格 =====
+// ===== 渲染图标网格（使用雪碧图）=====
 function renderIcons(groupKey) {
     const items = componentsData[groupKey];
     
@@ -266,9 +248,26 @@ function renderIcons(groupKey) {
     
     iconsContainer.innerHTML = '';
     
-    items.forEach((item, index) => {
-        const iconElement = createIconElement(item, index);
-        iconsContainer.appendChild(iconElement);
+    items.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'icon-card';
+        
+        // 创建雪碧图图标
+        const spriteDiv = document.createElement('div');
+        spriteDiv.className = 'icon-sprite';
+        spriteDiv.style.backgroundPosition = `-${item.spriteX}px -${item.spriteY}px`;
+        
+        // 显示名称
+        const nameSpan = document.createElement('div');
+        nameSpan.className = 'icon-name';
+        const displayName = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
+        nameSpan.textContent = displayName;
+        
+        card.appendChild(spriteDiv);
+        card.appendChild(nameSpan);
+        card.addEventListener('click', () => showComponentDetail(item));
+        
+        iconsContainer.appendChild(card);
     });
     
     console.log(`✅ 已渲染 ${iconsContainer.children.length} 个图标`);
@@ -301,12 +300,12 @@ function showComponentDetail(item) {
                 ${escapeHtml(descText)}
             </div>
             <div class="meta">
-                <strong>🔧 组件名称：</strong> ${item.name}
+                <strong>🔧 组件名称：</strong> ${item.name}<br>
+                <strong>📍 雪碧图位置：</strong> (${item.spriteX}, ${item.spriteY})
             </div>
         </div>
     `;
     
-    // 存储当前项用于语言切换
     window.currentDetailItem = item;
 }
 
@@ -332,18 +331,10 @@ langBtn.addEventListener('click', () => {
         currentGroupTitle.textContent = lang === 'cn' ? titleZh : currentGroup;
         
         const items = componentsData[currentGroup];
-        const iconCards = iconsContainer.querySelectorAll('.icon-card');
+        const nameSpans = iconsContainer.querySelectorAll('.icon-name');
         items.forEach((item, idx) => {
-            if (iconCards[idx]) {
-                const nameSpan = iconCards[idx].querySelector('.icon-name');
-                const iconPlaceholder = iconCards[idx].querySelector('.icon-placeholder');
-                if (nameSpan) {
-                    nameSpan.textContent = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
-                }
-                if (iconPlaceholder) {
-                    const newName = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
-                    iconPlaceholder.textContent = newName.charAt(0);
-                }
+            if (nameSpans[idx]) {
+                nameSpans[idx].textContent = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
             }
         });
     }
@@ -357,4 +348,6 @@ langBtn.addEventListener('click', () => {
 // ===== 页面加载完成 =====
 window.addEventListener('load', () => {
     console.log('📄 页面加载完成');
+    console.log('雪碧图配置:', SPRITE_CONFIG);
+    console.log('总图标容量:', SPRITE_CONFIG.cols * SPRITE_CONFIG.rows);
 });
