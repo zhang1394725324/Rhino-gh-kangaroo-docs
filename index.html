@@ -20,7 +20,7 @@
         <!-- 主体：三栏布局 -->
         <div class="main-layout">
             <!-- 左侧分组导航 -->
-            <aside class="sidebar">
+            <aside class="sidebar" id="sidebar">
                 <div class="sidebar-header">
                     <span>📂 组件分类</span>
                 </div>
@@ -29,22 +29,28 @@
                 </ul>
             </aside>
 
+            <!-- 可拖动分隔条 -->
+            <div class="resizer" id="sidebarResizer"></div>
+
             <!-- 中间图标网格 -->
-            <main class="icon-grid-area">
+            <main class="icon-grid-area" id="iconGridArea">
                 <div id="currentGroupTitle" class="group-title-header"></div>
                 <div id="iconsContainer" class="icons-grid">
                     <!-- 动态渲染图标 -->
                 </div>
             </main>
 
+            <!-- 可拖动分隔条 -->
+            <div class="resizer" id="detailResizer"></div>
+
             <!-- 右侧详情面板 -->
-            <aside class="detail-panel">
+            <aside class="detail-panel" id="detailPanel">
                 <div class="detail-header">
                     <span>📖 组件详情</span>
                 </div>
                 <div id="detailContent" class="detail-content">
                     <div class="placeholder">
-                        <span>✨ 点击左侧任意组件</span>
+                        <span>✨ 点击任意组件</span>
                         <span>查看详细说明与示意图</span>
                     </div>
                 </div>
