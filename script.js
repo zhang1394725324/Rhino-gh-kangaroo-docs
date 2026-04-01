@@ -14,6 +14,7 @@ const sidebar = document.getElementById('sidebar');
 const detailPanel = document.getElementById('detailPanel');
 const sidebarResizer = document.getElementById('sidebarResizer');
 const detailResizer = document.getElementById('detailResizer');
+const mainLayout = document.getElementById('mainLayout');
 
 // 分组配置
 const GROUP_ORDER = [
@@ -35,39 +36,52 @@ const groupDisplayNames = {
     'Utility': '实用工具'
 };
 
-// ===== 可拖动面板功能 =====
+// ===== 可拖动面板功能（修复版）=====
 let isResizingSidebar = false;
 let isResizingDetail = false;
+let startX = 0;
+let startSidebarWidth = 0;
+let startDetailWidth = 0;
 
 function initResizers() {
     // 左侧分隔条拖动
     sidebarResizer.addEventListener('mousedown', (e) => {
         isResizingSidebar = true;
+        startX = e.clientX;
+        startSidebarWidth = sidebar.offsetWidth;
+        
         document.body.style.cursor = 'col-resize';
-        sidebarResizer.classList.add('resizing');
+        document.body.style.userSelect = 'none';
+        sidebarResizer.classList.add('active');
         e.preventDefault();
     });
     
     // 右侧分隔条拖动
     detailResizer.addEventListener('mousedown', (e) => {
         isResizingDetail = true;
+        startX = e.clientX;
+        startDetailWidth = detailPanel.offsetWidth;
+        
         document.body.style.cursor = 'col-resize';
-        detailResizer.classList.add('resizing');
+        document.body.style.userSelect = 'none';
+        detailResizer.classList.add('active');
         e.preventDefault();
     });
     
     // 鼠标移动
     document.addEventListener('mousemove', (e) => {
         if (isResizingSidebar) {
-            const containerRect = document.querySelector('.main-layout').getBoundingClientRect();
-            let newWidth = e.clientX - containerRect.left;
-            newWidth = Math.min(Math.max(newWidth, 200), 450);
+            const deltaX = e.clientX - startX;
+            let newWidth = startSidebarWidth + deltaX;
+            // 限制宽度范围
+            newWidth = Math.min(Math.max(newWidth, 180), 450);
             sidebar.style.width = newWidth + 'px';
         }
         
         if (isResizingDetail) {
-            const containerRect = document.querySelector('.main-layout').getBoundingClientRect();
-            let newWidth = containerRect.right - e.clientX;
+            const deltaX = startX - e.clientX;
+            let newWidth = startDetailWidth + deltaX;
+            // 限制宽度范围
             newWidth = Math.min(Math.max(newWidth, 260), 600);
             detailPanel.style.width = newWidth + 'px';
         }
@@ -78,12 +92,14 @@ function initResizers() {
         if (isResizingSidebar) {
             isResizingSidebar = false;
             document.body.style.cursor = '';
-            sidebarResizer.classList.remove('resizing');
+            document.body.style.userSelect = '';
+            sidebarResizer.classList.remove('active');
         }
         if (isResizingDetail) {
             isResizingDetail = false;
             document.body.style.cursor = '';
-            detailResizer.classList.remove('resizing');
+            document.body.style.userSelect = '';
+            detailResizer.classList.remove('active');
         }
     });
 }
@@ -100,16 +116,15 @@ fetch('data/kangaroo.json')
         console.log('✅ 数据加载成功，共', Object.keys(data).length, '个分组');
         componentsData = data;
         
-        // 构建分组列表
+        // 构建分组列表（按指定顺序）
         groupsList = GROUP_ORDER.filter(group => 
             componentsData[group] && componentsData[group].length > 0
         );
         
-        if (groupsList.length === 0) {
-            groupsList = Object.keys(componentsData);
-        }
-        
         console.log('📂 可用分组:', groupsList);
+        groupsList.forEach(g => {
+            console.log(`  - ${g}: ${componentsData[g].length} 个组件`);
+        });
         
         // 渲染界面
         renderSidebar();
@@ -186,7 +201,7 @@ function setActiveGroup(groupKey) {
     `;
 }
 
-// ===== 渲染图标网格 =====
+// ===== 渲染图标网格（24x24 图标）=====
 function renderIcons(groupKey) {
     const items = componentsData[groupKey];
     
@@ -212,7 +227,6 @@ function renderIcons(groupKey) {
             const col = index % cols;
             spriteX = col * iconSize;
             spriteY = row * iconSize;
-            console.warn(`${item.name} 使用自动坐标: (${spriteX}, ${spriteY})`);
         }
         
         const card = document.createElement('div');
