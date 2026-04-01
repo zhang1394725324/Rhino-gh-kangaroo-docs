@@ -196,3 +196,33 @@
 ]
 
 }
+
+{
+  "Goals-6dof": [
+    {"group":"Goals-6dof","name":"RigidBody","cn":"刚体","en":"RigidBody","desc_cn":"六自由度刚体约束","desc_en":"Rigid body constraint","spriteX":0,"spriteY":0,"img":"rigidbody.png"},
+    {"group":"Goals-6dof","name":"RigidPlane","cn":"刚体平面","en":"RigidPlane","desc_cn":"刚体平面约束","desc_en":"Rigid plane constraint","spriteX":24,"spriteY":0,"img":"rigidplane.png"},
+    {"group":"Goals-6dof","name":"Hinge","cn":"铰链","en":"Hinge","desc_cn":"铰链旋转约束","desc_en":"Hinge rotation constraint","spriteX":48,"spriteY":0,"img":"hinge.png"},
+    {"group":"Goals-6dof","name":"Motor","cn":"马达","en":"Motor","desc_cn":"施加旋转力","desc_en":"Apply motor torque","spriteX":72,"spriteY":0,"img":"motor.png"},
+    {"group":"Goals-6dof","name":"UnaryForce","cn":"单力","en":"UnaryForce","desc_cn":"施加单向力","desc_en":"Apply a single force","spriteX":96,"spriteY":0,"img":"unaryforce.png"},
+    {"group":"Goals-6dof","name":"Torque","cn":"扭矩","en":"Torque","desc_cn":"施加扭矩","desc_en":"Apply torque","spriteX":120,"spriteY":0,"img":"torque.png"}
+  ],
+  "Goals-Angle": [
+    {"group":"Goals-Angle","name":"Angle","cn":"角度约束","en":"Angle Constraint","desc_cn":"控制两点之间的角度","desc_en":"Control angle between points","spriteX":0,"spriteY":24,"img":"angle.png"},
+    {"group":"Goals-Angle","name":"EqualAngle","cn":"等角","en":"EqualAngle","desc_cn":"角度相等约束","desc_en":"Equal angle constraint","spriteX":24,"spriteY":24,"img":"equalangle.png"},
+    {"group":"Goals-Angle","name":"Planarize","cn":"平面化","en":"Planarize","desc_cn":"平面化约束","desc_en":"Planarize constraint","spriteX":48,"spriteY":24,"img":"planarize.png"},
+    {"group":"Goals-Angle","name":"DihedralAngle","cn":"二面角","en":"DihedralAngle","desc_cn":"二面角约束","desc_en":"Dihedral angle constraint","spriteX":72,"spriteY":24,"img":"dihedralangle.png"}
+  ],
+  "Goals-Pt": [
+    {"group":"Goals-Pt","name":"Anchor","cn":"锚点","en":"Anchor","desc_cn":"固定点约束","desc_en":"Anchor constraint","spriteX":0,"spriteY":168,"img":"anchor.png"},
+    {"group":"Goals-Pt","name":"Load","cn":"载荷","en":"Load","desc_cn":"施加载荷","desc_en":"Apply load","spriteX":24,"spriteY":168,"img":"load.png"},
+    {"group":"Goals-Pt","name":"Gravity","cn":"重力","en":"Gravity","desc_cn":"施加重力","desc_en":"Gravity force","spriteX":48,"spriteY":168,"img":"gravity.png"},
+    {"group":"Goals-Pt","name":"UnaryForce","cn":"单力","en":"UnaryForce","desc_cn":"施加单力","desc_en":"Unary force","spriteX":72,"spriteY":168,"img":"unaryforce.png"}
+  ],
+  "Main": [
+    {"group":"Main","name":"KangarooSolver","cn":"求解器","en":"Solver","desc_cn":"Kangaroo求解器","desc_en":"Kangaroo solver","spriteX":0,"spriteY":192,"img":"solver.png"},
+    {"group":"Main","name":"Reset","cn":"重置","en":"Reset","desc_cn":"重置求解器","desc_en":"Reset solver","spriteX":24,"spriteY":192,"img":"reset.png"},
+    {"group":"Main","name":"Step","cn":"步进","en":"Step","desc_cn":"单步求解","desc_en":"Step solver","spriteX":48,"spriteY":192,"img":"step.png"},
+    {"group":"Main","name":"Toggle","cn":"开关","en":"Toggle","desc_cn":"开关求解器","desc_en":"Toggle solver","spriteX":72,"spriteY":192,"img":"toggle.png"}
+  ]
+  // ... 其他分组同样需要补全所有字段
+}
