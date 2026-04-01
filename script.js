@@ -10,6 +10,10 @@ const iconsContainer = document.getElementById('iconsContainer');
 const currentGroupTitle = document.getElementById('currentGroupTitle');
 const detailContent = document.getElementById('detailContent');
 const langBtn = document.getElementById('langBtn');
+const sidebar = document.getElementById('sidebar');
+const detailPanel = document.getElementById('detailPanel');
+const sidebarResizer = document.getElementById('sidebarResizer');
+const detailResizer = document.getElementById('detailResizer');
 
 // 分组配置
 const GROUP_ORDER = [
@@ -30,6 +34,59 @@ const groupDisplayNames = {
     'Mesh': '网格工具',
     'Utility': '实用工具'
 };
+
+// ===== 可拖动面板功能 =====
+let isResizingSidebar = false;
+let isResizingDetail = false;
+
+function initResizers() {
+    // 左侧分隔条拖动
+    sidebarResizer.addEventListener('mousedown', (e) => {
+        isResizingSidebar = true;
+        document.body.style.cursor = 'col-resize';
+        sidebarResizer.classList.add('resizing');
+        e.preventDefault();
+    });
+    
+    // 右侧分隔条拖动
+    detailResizer.addEventListener('mousedown', (e) => {
+        isResizingDetail = true;
+        document.body.style.cursor = 'col-resize';
+        detailResizer.classList.add('resizing');
+        e.preventDefault();
+    });
+    
+    // 鼠标移动
+    document.addEventListener('mousemove', (e) => {
+        if (isResizingSidebar) {
+            const containerRect = document.querySelector('.main-layout').getBoundingClientRect();
+            let newWidth = e.clientX - containerRect.left;
+            newWidth = Math.min(Math.max(newWidth, 200), 450);
+            sidebar.style.width = newWidth + 'px';
+        }
+        
+        if (isResizingDetail) {
+            const containerRect = document.querySelector('.main-layout').getBoundingClientRect();
+            let newWidth = containerRect.right - e.clientX;
+            newWidth = Math.min(Math.max(newWidth, 260), 600);
+            detailPanel.style.width = newWidth + 'px';
+        }
+    });
+    
+    // 鼠标松开
+    document.addEventListener('mouseup', () => {
+        if (isResizingSidebar) {
+            isResizingSidebar = false;
+            document.body.style.cursor = '';
+            sidebarResizer.classList.remove('resizing');
+        }
+        if (isResizingDetail) {
+            isResizingDetail = false;
+            document.body.style.cursor = '';
+            detailResizer.classList.remove('resizing');
+        }
+    });
+}
 
 // ===== 数据加载 =====
 fetch('data/kangaroo.json')
@@ -59,6 +116,9 @@ fetch('data/kangaroo.json')
         if (groupsList.length) {
             setActiveGroup(groupsList[0]);
         }
+        
+        // 初始化拖动功能
+        initResizers();
     })
     .catch(err => {
         console.error('❌ 数据加载失败:', err);
@@ -140,7 +200,7 @@ function renderIcons(groupKey) {
     iconsContainer.innerHTML = '';
     
     items.forEach((item, index) => {
-        // 获取雪碧图坐标
+        // 获取雪碧图坐标（24x24 图标）
         let spriteX = item.spriteX;
         let spriteY = item.spriteY;
         
@@ -203,7 +263,7 @@ function showComponentDetail(item) {
                 <strong>📌 说明：</strong><br>
                 ${escapeHtml(descText)}
             </div>
-            <div style="margin-top: 16px; padding: 12px; background: #f8fafc; border-radius: 12px; font-size: 0.8rem; color: #64748b;">
+            <div class="meta">
                 <strong>🔧 组件名称：</strong> ${item.name}
             </div>
         </div>
