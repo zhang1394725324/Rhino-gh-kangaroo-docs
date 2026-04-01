@@ -1,52 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Kangaroo2 Docs</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
 
 <header class="topbar">
-
-<div class="logo">
-GH工具详解课程 - 查询页面
-</div>
-
-<div class="toolbar">
-
-<input id="search" placeholder="搜索组件">
-
-<button onclick="toggleLang()">中 / EN</button>
-
-</div>
-
+  <div class="logo">Kangaroo2 使用说明</div>
+  <div class="toolbar">
+    <input id="search" placeholder="搜索组件">
+    <button onclick="toggleLang()">中 / EN</button>
+  </div>
 </header>
 
-
 <nav class="main-nav">
-
-<button onclick="loadKangaroo()">Kangaroo2</button>
-
+  <button onclick="loadGroups()">Kangaroo2</button>
 </nav>
 
-
 <div id="groups" class="groups"></div>
-
 <div id="icons" class="icons"></div>
-
-<div id="content" class="content">
-请选择组件
-</div>
+<div id="content" class="content">请选择组件</div>
 
 <script src="script.js"></script>
-
 </body>
-
 </html>
