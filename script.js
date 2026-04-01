@@ -14,7 +14,6 @@ const sidebar = document.getElementById('sidebar');
 const detailPanel = document.getElementById('detailPanel');
 const sidebarResizer = document.getElementById('sidebarResizer');
 const detailResizer = document.getElementById('detailResizer');
-const mainLayout = document.getElementById('mainLayout');
 
 // 分组配置
 const GROUP_ORDER = [
@@ -36,7 +35,14 @@ const groupDisplayNames = {
     'Utility': '实用工具'
 };
 
-// ===== 可拖动面板功能（修复版）=====
+// 预定义颜色池（用于生成彩色图标）
+const colorPalette = [
+    '#1e4a76', '#2c6e9e', '#3b82f6', '#10b981', '#f59e0b', '#ef4444',
+    '#8b5cf6', '#ec489a', '#06b6d4', '#84cc16', '#f97316', '#d946ef',
+    '#14b8a6', '#f43f5e', '#6366f1', '#a855f7', '#22c55e', '#eab308'
+];
+
+// ===== 可拖动面板功能 =====
 let isResizingSidebar = false;
 let isResizingDetail = false;
 let startX = 0;
@@ -73,7 +79,6 @@ function initResizers() {
         if (isResizingSidebar) {
             const deltaX = e.clientX - startX;
             let newWidth = startSidebarWidth + deltaX;
-            // 限制宽度范围
             newWidth = Math.min(Math.max(newWidth, 180), 450);
             sidebar.style.width = newWidth + 'px';
         }
@@ -81,7 +86,6 @@ function initResizers() {
         if (isResizingDetail) {
             const deltaX = startX - e.clientX;
             let newWidth = startDetailWidth + deltaX;
-            // 限制宽度范围
             newWidth = Math.min(Math.max(newWidth, 260), 600);
             detailPanel.style.width = newWidth + 'px';
         }
@@ -104,6 +108,51 @@ function initResizers() {
     });
 }
 
+// ===== 根据名称生成颜色 =====
+function getColorFromName(name) {
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+        hash = ((hash << 5) - hash) + name.charCodeAt(i);
+        hash = hash & hash;
+    }
+    return colorPalette[Math.abs(hash) % colorPalette.length];
+}
+
+// ===== 生成图标HTML（不使用雪碧图，使用彩色背景+文字）=====
+function createIconElement(item, index) {
+    const card = document.createElement('div');
+    card.className = 'icon-card';
+    
+    // 获取显示名称
+    const displayName = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
+    // 获取首字母或中文首字
+    let initial = '';
+    if (lang === 'cn') {
+        initial = displayName.charAt(0);
+    } else {
+        initial = displayName.charAt(0).toUpperCase();
+    }
+    
+    // 根据组件名称生成固定颜色
+    const bgColor = getColorFromName(item.name);
+    
+    // 创建彩色图标（替代雪碧图）
+    const iconDiv = document.createElement('div');
+    iconDiv.className = 'icon-placeholder';
+    iconDiv.style.backgroundColor = bgColor;
+    iconDiv.textContent = initial;
+    
+    const nameSpan = document.createElement('div');
+    nameSpan.className = 'icon-name';
+    nameSpan.textContent = displayName;
+    
+    card.appendChild(iconDiv);
+    card.appendChild(nameSpan);
+    card.addEventListener('click', () => showComponentDetail(item));
+    
+    return card;
+}
+
 // ===== 数据加载 =====
 fetch('data/kangaroo.json')
     .then(res => {
@@ -116,7 +165,7 @@ fetch('data/kangaroo.json')
         console.log('✅ 数据加载成功，共', Object.keys(data).length, '个分组');
         componentsData = data;
         
-        // 构建分组列表（按指定顺序）
+        // 构建分组列表
         groupsList = GROUP_ORDER.filter(group => 
             componentsData[group] && componentsData[group].length > 0
         );
@@ -188,6 +237,9 @@ function setActiveGroup(groupKey) {
     // 更新标题
     const titleZh = groupDisplayNames[groupKey] || groupKey;
     currentGroupTitle.textContent = lang === 'cn' ? titleZh : groupKey;
+    currentGroupTitle.style.background = 'none';
+    currentGroupTitle.style.webkitTextFillColor = '#0f2b3d';
+    currentGroupTitle.style.color = '#0f2b3d';
     
     // 渲染图标
     renderIcons(groupKey);
@@ -201,7 +253,7 @@ function setActiveGroup(groupKey) {
     `;
 }
 
-// ===== 渲染图标网格（24x24 图标）=====
+// ===== 渲染图标网格 =====
 function renderIcons(groupKey) {
     const items = componentsData[groupKey];
     
@@ -215,37 +267,8 @@ function renderIcons(groupKey) {
     iconsContainer.innerHTML = '';
     
     items.forEach((item, index) => {
-        // 获取雪碧图坐标（24x24 图标）
-        let spriteX = item.spriteX;
-        let spriteY = item.spriteY;
-        
-        // 如果缺少坐标，自动计算（每行10个图标，每个24px）
-        if (spriteX === undefined || spriteY === undefined) {
-            const cols = 10;
-            const iconSize = 24;
-            const row = Math.floor(index / cols);
-            const col = index % cols;
-            spriteX = col * iconSize;
-            spriteY = row * iconSize;
-        }
-        
-        const card = document.createElement('div');
-        card.className = 'icon-card';
-        
-        const spriteDiv = document.createElement('div');
-        spriteDiv.className = 'icon-sprite';
-        spriteDiv.style.backgroundPosition = `-${spriteX}px -${spriteY}px`;
-        
-        const nameSpan = document.createElement('div');
-        nameSpan.className = 'icon-name';
-        const displayName = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
-        nameSpan.textContent = displayName;
-        
-        card.appendChild(spriteDiv);
-        card.appendChild(nameSpan);
-        card.addEventListener('click', () => showComponentDetail(item));
-        
-        iconsContainer.appendChild(card);
+        const iconElement = createIconElement(item, index);
+        iconsContainer.appendChild(iconElement);
     });
     
     console.log(`✅ 已渲染 ${iconsContainer.children.length} 个图标`);
@@ -309,10 +332,18 @@ langBtn.addEventListener('click', () => {
         currentGroupTitle.textContent = lang === 'cn' ? titleZh : currentGroup;
         
         const items = componentsData[currentGroup];
-        const nameSpans = iconsContainer.querySelectorAll('.icon-name');
+        const iconCards = iconsContainer.querySelectorAll('.icon-card');
         items.forEach((item, idx) => {
-            if (nameSpans[idx]) {
-                nameSpans[idx].textContent = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
+            if (iconCards[idx]) {
+                const nameSpan = iconCards[idx].querySelector('.icon-name');
+                const iconPlaceholder = iconCards[idx].querySelector('.icon-placeholder');
+                if (nameSpan) {
+                    nameSpan.textContent = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
+                }
+                if (iconPlaceholder) {
+                    const newName = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
+                    iconPlaceholder.textContent = newName.charAt(0);
+                }
             }
         });
     }
@@ -323,13 +354,7 @@ langBtn.addEventListener('click', () => {
     }
 });
 
-// ===== 页面加载完成检查 =====
+// ===== 页面加载完成 =====
 window.addEventListener('load', () => {
     console.log('📄 页面加载完成');
-    
-    // 测试雪碧图
-    const testImg = new Image();
-    testImg.onload = () => console.log('✅ 雪碧图加载成功');
-    testImg.onerror = () => console.error('❌ 雪碧图加载失败，请检查路径: img/sprites/kangaroo_icons.png');
-    testImg.src = 'img/sprites/kangaroo_icons.png';
 });
