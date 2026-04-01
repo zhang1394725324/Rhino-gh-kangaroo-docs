@@ -1,18 +1,56 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>Kangaroo2 组件文档</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Kangaroo2 组件文档 - Grasshopper 物理引擎</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-    <h1>Kangaroo2 组件文档</h1>
-    <button id="langBtn">EN</button>
-</header>
-<main id="main-content">
-    <!-- 分组容器由 JS 渲染 -->
-</main>
-<script src="script.js"></script>
+    <div class="app-container">
+        <!-- 顶部导航栏 -->
+        <header class="top-bar">
+            <div class="logo-area">
+                <h1>🐨 Kangaroo2</h1>
+                <span class="subtitle">组件参考手册</span>
+            </div>
+            <button id="langBtn" class="lang-switch">EN</button>
+        </header>
+
+        <!-- 主体：三栏布局 (侧栏分组 + 中间图标区 + 右侧详情) -->
+        <div class="main-layout">
+            <!-- 左侧：分组导航栏 (类似原文档左侧树) -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <span>组件分类</span>
+                </div>
+                <ul id="groupNavList" class="group-nav">
+                    <!-- 动态渲染分组列表 -->
+                </ul>
+            </aside>
+
+            <!-- 中间：当前分组的图标网格 -->
+            <main class="icon-grid-area">
+                <div id="currentGroupTitle" class="group-title-header"></div>
+                <div id="iconsContainer" class="icons-grid">
+                    <!-- 动态渲染图标卡片 -->
+                </div>
+            </main>
+
+            <!-- 右侧：详情面板 (显示组件信息 + 截图) -->
+            <aside class="detail-panel">
+                <div class="detail-header">
+                    <span>📖 组件详情</span>
+                </div>
+                <div id="detailContent" class="detail-content">
+                    <div class="placeholder">
+                        <span>✨ 点击左侧任意组件</span>
+                        <span>查看详细说明与示意图</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
