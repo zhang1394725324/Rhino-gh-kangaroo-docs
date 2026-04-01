@@ -226,25 +226,19 @@ body {
     background: #ffffff;
 }
 
-/* 彩色占位图标 */
-.icon-placeholder {
-    width: 40px;
-    height: 40px;
+/* 雪碧图图标 - 24x24 原始尺寸 */
+.icon-sprite {
+    width: 24px;
+    height: 24px;
     margin: 0 auto 8px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-weight: 600;
-    color: white;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+    background-image: url('img/sprites/kangaroo_icons.png');
+    background-repeat: no-repeat;
+    background-size: 240px 264px;
+    transition: transform 0.2s;
 }
 
-.icon-card:hover .icon-placeholder {
-    transform: scale(1.08);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+.icon-card:hover .icon-sprite {
+    transform: scale(1.1);
 }
 
 .icon-name {
