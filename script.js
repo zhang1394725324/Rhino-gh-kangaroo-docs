@@ -1,4 +1,4 @@
-// 全局变量
+// ===== 全局变量 =====
 let lang = 'cn';
 let currentGroup = null;
 let componentsData = {};
@@ -11,13 +11,12 @@ const currentGroupTitle = document.getElementById('currentGroupTitle');
 const detailContent = document.getElementById('detailContent');
 const langBtn = document.getElementById('langBtn');
 
-// 分组显示顺序
+// 分组配置
 const GROUP_ORDER = [
     'Goals-6dof', 'Goals-Angle', 'Goals-Co', 'Goals-Col', 'Goals-Lin',
     'Goals-Mesh', 'Goals-On', 'Goals-Pt', 'Main', 'Mesh', 'Utility'
 ];
 
-// 分组友好名称
 const groupDisplayNames = {
     'Goals-6dof': '六自由度约束',
     'Goals-Angle': '角度约束',
@@ -32,35 +31,30 @@ const groupDisplayNames = {
     'Utility': '实用工具'
 };
 
-// 加载 JSON 数据
+// ===== 数据加载 =====
 fetch('data/kangaroo.json')
     .then(res => {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
+        if (!res.ok) {
+            throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+        }
         return res.json();
     })
     .then(data => {
-        console.log('✅ 数据加载成功:', data);
+        console.log('✅ 数据加载成功，共', Object.keys(data).length, '个分组');
         componentsData = data;
         
-        // 验证数据完整性
-        let missingFields = [];
-        for (let group in componentsData) {
-            componentsData[group].forEach((item, idx) => {
-                if (item.spriteX === undefined) missingFields.push(`${group}/${item.name}: spriteX`);
-                if (item.spriteY === undefined) missingFields.push(`${group}/${item.name}: spriteY`);
-                if (!item.img) missingFields.push(`${group}/${item.name}: img`);
-            });
-        }
-        if (missingFields.length > 0) {
-            console.warn('⚠️ 缺失字段:', missingFields.slice(0, 10));
-        }
+        // 构建分组列表
+        groupsList = GROUP_ORDER.filter(group => 
+            componentsData[group] && componentsData[group].length > 0
+        );
         
-        // 提取存在的分组
-        groupsList = GROUP_ORDER.filter(group => componentsData[group] && componentsData[group].length > 0);
         if (groupsList.length === 0) {
             groupsList = Object.keys(componentsData);
         }
         
+        console.log('📂 可用分组:', groupsList);
+        
+        // 渲染界面
         renderSidebar();
         if (groupsList.length) {
             setActiveGroup(groupsList[0]);
@@ -68,16 +62,24 @@ fetch('data/kangaroo.json')
     })
     .catch(err => {
         console.error('❌ 数据加载失败:', err);
-        iconsContainer.innerHTML = `
-            <div style="padding: 40px; text-align: center; color: #dc2626;">
-                <strong>⚠️ 无法加载组件数据</strong><br>
-                请确保 data/kangaroo.json 文件存在且格式正确<br>
-                <small style="color: #666;">错误详情: ${err.message}</small>
-            </div>
-        `;
+        showError('无法加载组件数据', err.message);
     });
 
-// 渲染左侧分组
+// ===== 错误提示 =====
+function showError(title, message) {
+    iconsContainer.innerHTML = `
+        <div style="padding: 60px 20px; text-align: center;">
+            <div style="font-size: 48px; margin-bottom: 20px;">⚠️</div>
+            <h3 style="color: #dc2626; margin-bottom: 12px;">${title}</h3>
+            <p style="color: #6b7280;">${message}</p>
+            <p style="color: #9ca3af; margin-top: 20px; font-size: 0.85rem;">
+                请确保 data/kangaroo.json 文件存在且格式正确
+            </p>
+        </div>
+    `;
+}
+
+// ===== 渲染左侧导航 =====
 function renderSidebar() {
     groupNavList.innerHTML = '';
     groupsList.forEach(groupKey => {
@@ -90,7 +92,7 @@ function renderSidebar() {
     });
 }
 
-// 激活分组
+// ===== 激活分组 =====
 function setActiveGroup(groupKey) {
     if (!componentsData[groupKey]) {
         console.warn('分组不存在:', groupKey);
@@ -119,12 +121,12 @@ function setActiveGroup(groupKey) {
     detailContent.innerHTML = `
         <div class="placeholder">
             <span>🔍 点击任意组件</span>
-            <span>查看详细参数与示意图</span>
+            <span>查看详细说明与示意图</span>
         </div>
     `;
 }
 
-// 渲染图标网格（关键修复）
+// ===== 渲染图标网格 =====
 function renderIcons(groupKey) {
     const items = componentsData[groupKey];
     
@@ -133,36 +135,32 @@ function renderIcons(groupKey) {
         return;
     }
     
-    console.log(`渲染分组 ${groupKey}，共 ${items.length} 个组件`, items);
+    console.log(`🎨 渲染分组 ${groupKey}，组件数量: ${items.length}`);
     
     iconsContainer.innerHTML = '';
     
     items.forEach((item, index) => {
-        // 获取雪碧图坐标（如果没有则使用索引位置估算）
+        // 获取雪碧图坐标
         let spriteX = item.spriteX;
         let spriteY = item.spriteY;
         
-        // 如果缺少坐标，尝试根据索引自动计算（每行10个图标，每个24px）
+        // 如果缺少坐标，自动计算（每行10个图标，每个24px）
         if (spriteX === undefined || spriteY === undefined) {
-            const cols = 10; // 每行10个图标
+            const cols = 10;
             const iconSize = 24;
             const row = Math.floor(index / cols);
             const col = index % cols;
             spriteX = col * iconSize;
             spriteY = row * iconSize;
-            console.warn(`${item.name} 缺少坐标，使用估算位置: (${spriteX}, ${spriteY})`);
+            console.warn(`${item.name} 使用自动坐标: (${spriteX}, ${spriteY})`);
         }
         
         const card = document.createElement('div');
         card.className = 'icon-card';
-        card.setAttribute('data-component', item.name);
         
         const spriteDiv = document.createElement('div');
         spriteDiv.className = 'icon-sprite';
         spriteDiv.style.backgroundPosition = `-${spriteX}px -${spriteY}px`;
-        
-        // 调试：显示背景位置
-        spriteDiv.setAttribute('title', `坐标: (${spriteX}, ${spriteY})`);
         
         const nameSpan = document.createElement('div');
         nameSpan.className = 'icon-name';
@@ -176,11 +174,10 @@ function renderIcons(groupKey) {
         iconsContainer.appendChild(card);
     });
     
-    // 检查是否有图标渲染
     console.log(`✅ 已渲染 ${iconsContainer.children.length} 个图标`);
 }
 
-// 显示组件详情
+// ===== 显示组件详情 =====
 function showComponentDetail(item) {
     const titleText = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
     const descText = lang === 'cn' ? (item.desc_cn || item.desc || '暂无描述') : (item.desc_en || item.desc || 'No description');
@@ -191,11 +188,11 @@ function showComponentDetail(item) {
         imgHtml = `
             <div class="screenshot">
                 <img src="${imgSrc}" alt="${titleText}" 
-                     onerror="this.onerror=null; this.parentElement.innerHTML='<span style=\'color:#999\'>📷 截图文件不存在: ${item.img}</span>'">
+                     onerror="this.onerror=null; this.parentElement.innerHTML='<span style=\'color:#999\'>📷 截图文件不存在</span>'">
             </div>
         `;
     } else {
-        imgHtml = `<div class="screenshot"><span style="color:#aaa">📷 暂无示意图</span></div>`;
+        imgHtml = `<div class="screenshot"><span style="color:#999">📷 暂无示意图</span></div>`;
     }
     
     detailContent.innerHTML = `
@@ -206,34 +203,37 @@ function showComponentDetail(item) {
                 <strong>📌 说明：</strong><br>
                 ${escapeHtml(descText)}
             </div>
-            ${item.name ? `<div class="desc" style="margin-top: 12px; font-size: 0.8rem; color: #666;">
+            <div style="margin-top: 16px; padding: 12px; background: #f8fafc; border-radius: 12px; font-size: 0.8rem; color: #64748b;">
                 <strong>🔧 组件名称：</strong> ${item.name}
-            </div>` : ''}
+            </div>
         </div>
     `;
+    
+    // 存储当前项用于语言切换
+    window.currentDetailItem = item;
 }
 
-// 防XSS
+// ===== 防XSS =====
 function escapeHtml(str) {
     if (!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
-        if (m === '&') return '&amp;';
-        if (m === '<') return '&lt;';
-        if (m === '>') return '&gt;';
-        return m;
-    });
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
 }
 
-// 中英文切换
+// ===== 中英文切换 =====
 langBtn.addEventListener('click', () => {
     lang = lang === 'cn' ? 'en' : 'cn';
     langBtn.textContent = lang === 'cn' ? 'EN' : '中';
     
-    // 刷新左侧分组文字
+    // 刷新左侧分组
     renderSidebar();
     
-    // 刷新当前分组的图标文字
+    // 刷新当前分组标题和图标文字
     if (currentGroup && componentsData[currentGroup]) {
+        const titleZh = groupDisplayNames[currentGroup] || currentGroup;
+        currentGroupTitle.textContent = lang === 'cn' ? titleZh : currentGroup;
+        
         const items = componentsData[currentGroup];
         const nameSpans = iconsContainer.querySelectorAll('.icon-name');
         items.forEach((item, idx) => {
@@ -241,34 +241,21 @@ langBtn.addEventListener('click', () => {
                 nameSpans[idx].textContent = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
             }
         });
-        
-        // 刷新标题
-        const titleZh = groupDisplayNames[currentGroup] || currentGroup;
-        currentGroupTitle.textContent = lang === 'cn' ? titleZh : currentGroup;
     }
     
-    // 如果右侧有详情，刷新当前详情
-    const currentTitle = detailContent.querySelector('.component-detail h3');
-    if (currentTitle && window.currentDetailItem) {
+    // 刷新当前详情
+    if (window.currentDetailItem) {
         showComponentDetail(window.currentDetailItem);
     }
 });
 
-// 存储当前详情项用于切换语言时刷新
-const originalShowDetail = showComponentDetail;
-window.showComponentDetail = function(item) {
-    window.currentDetailItem = item;
-    originalShowDetail(item);
-};
-showComponentDetail = window.showComponentDetail;
-
-// 页面加载完成后检查雪碧图
+// ===== 页面加载完成检查 =====
 window.addEventListener('load', () => {
-    console.log('页面加载完成');
+    console.log('📄 页面加载完成');
     
-    // 测试雪碧图是否可访问
+    // 测试雪碧图
     const testImg = new Image();
-    testImg.onload = () => console.log('✅ 雪碧图加载成功: img/sprites/kangaroo_icons.png');
+    testImg.onload = () => console.log('✅ 雪碧图加载成功');
     testImg.onerror = () => console.error('❌ 雪碧图加载失败，请检查路径: img/sprites/kangaroo_icons.png');
     testImg.src = 'img/sprites/kangaroo_icons.png';
 });
