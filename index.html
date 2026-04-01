@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Kangaroo2 电池组件文档</title>
+<title>Kangaroo2 Docs</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -13,48 +11,50 @@
 
 <body>
 
-<header>
+<header class="topbar">
 
 <div class="logo">
 GH工具详解课程 - 查询页面
 </div>
 
-<input class="search" placeholder="请输入组件名称搜索">
+<input class="search" placeholder="请输入运算器名称搜索">
 
 </header>
 
 
-<!-- 分类菜单 -->
+<!-- 主导航 -->
 
-<nav class="menu">
+<div class="main-nav">
 
-<button onclick="showCategory('kangaroo')">Kangaroo2</button>
-<button onclick="showCategory('battery')">Battery</button>
-<button onclick="showCategory('mesh')">Mesh</button>
+<button onclick="showTab('kangaroo')">Kangaroo2</button>
 
-</nav>
+</div>
 
+
+<!-- 二级大栏 -->
+
+<div id="sub-nav" class="sub-nav">
+
+</div>
 
 
 <!-- 图标区域 -->
 
-<div id="icon-panel" class="icon-panel">
-</div>
+<div id="icon-area" class="icon-area">
 
+</div>
 
 
 <!-- 内容区域 -->
 
 <div id="content" class="content">
 
-请选择一个组件
+请选择组件
 
 </div>
-
 
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
