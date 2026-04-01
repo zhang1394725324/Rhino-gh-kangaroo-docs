@@ -1,80 +1,86 @@
-
-"Goals-Angle",
-"Goals-Co",
-"Goals-Col",
-"Goals-Lin",
-"Goals-Mesh",
-"Goals-On",
-"Goals-Pt",
-"Main",
-"Mesh",
-"Utility"
-
-]
-
-
-
-function showTab(tab){
-
-if(tab=="kangaroo"){
-
-let html="";
-
-kangarooGroups.forEach(g=>{
-
-html+=`<button onclick="showGroup('${g}')">${g}</button>`
-
+let lang="cn"
 })
 
 
-document.getElementById("sub-nav").innerHTML=html
+document.getElementById("icons").innerHTML=html
+
+
+})
 
 }
 
+
+function showContent(group,name){
+
+fetch("data/kangaroo.json")
+.then(res=>res.json())
+.then(data=>{
+
+let item=data[group].find(i=>i.name==name)
+
+
+document.getElementById("content").innerHTML=
+
+`
+<h2>${lang=="cn"?item.cn:item.en}</h2>
+
+<p>${lang=="cn"?item.desc_cn:item.desc_en}</p>
+
+<img class="screenshot" src="img/screenshots/${item.img}">
+
+`
+
+})
+
+}
+
+
+function toggleLang(){
+
+lang= lang=="cn"?"en":"cn"
+
 }
 
 
 
-function showGroup(name){
+// 搜索
 
-let html="";
 
-for(let i=0;i<12;i++){
+document.getElementById("search").addEventListener("input",function(){
+
+let keyword=this.value.toLowerCase()
+
+fetch("data/kangaroo.json")
+.then(res=>res.json())
+.then(data=>{
+
+let html=""
+
+Object.values(data).flat().forEach(item=>{
+
+if(item.name.toLowerCase().includes(keyword)){
 
 html+=`
 
-<div class="icon" onclick="showContent('${name}',${i})">
-${name}-${i}
+<div class="icon" onclick="showContent('${item.group}','${item.name}')">
+
+${item.name}
+
 </div>
 
 `
 
 }
 
-
-document.getElementById("icon-area").innerHTML=html
-
-}
+})
 
 
+document.getElementById("icons").innerHTML=html
 
-function showContent(group,index){
-
-
-document.getElementById("content").innerHTML=
-
-`
-
-<h2>${group}</h2>
-
-<p>组件编号: ${index}</p>
-
-<p>这里是教学内容区域</p>
-
-`
-
-}
+})
 
 
+})
 
-showTab('kangaroo')
+
+loadKangaroo()
