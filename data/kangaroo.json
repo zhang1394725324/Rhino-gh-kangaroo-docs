@@ -1,26 +1,71 @@
 {
   "Goals-6dof": [
-    {"group":"Goals-6dof","name":"RigidBody","cn":"刚体","en":"RigidBody","desc_cn":"六自由度刚体约束，模拟刚体物理行为","desc_en":"Rigid body constraint with 6 degrees of freedom","spriteX":0,"spriteY":0,"img":"rigidbody.png"},
-    {"group":"Goals-6dof","name":"RigidPlane","cn":"刚体平面","en":"RigidPlane","desc_cn":"刚体平面约束，限制物体在平面上运动","desc_en":"Rigid plane constraint","spriteX":24,"spriteY":0,"img":"rigidplane.png"},
-    {"group":"Goals-6dof","name":"Hinge","cn":"铰链","en":"Hinge","desc_cn":"铰链旋转约束，模拟门轴效果","desc_en":"Hinge rotation constraint","spriteX":48,"spriteY":0,"img":"hinge.png"},
-    {"group":"Goals-6dof","name":"Motor","cn":"马达","en":"Motor","desc_cn":"施加旋转力，驱动物体旋转","desc_en":"Apply motor torque","spriteX":72,"spriteY":0,"img":"motor.png"},
-    {"group":"Goals-6dof","name":"UnaryForce","cn":"单力","en":"UnaryForce","desc_cn":"施加单向力，推动物体","desc_en":"Apply a single force","spriteX":96,"spriteY":0,"img":"unaryforce.png"},
-    {"group":"Goals-6dof","name":"Torque","cn":"扭矩","en":"Torque","desc_cn":"施加扭矩，产生旋转效果","desc_en":"Apply torque","spriteX":120,"spriteY":0,"img":"torque.png"}
+    {"group":"Goals-6dof","name":"RigidBody","cn":"刚体","en":"RigidBody","desc_cn":"六自由度刚体约束，模拟刚体物理行为，包含位置和旋转约束","desc_en":"Rigid body constraint with 6 degrees of freedom, controls position and rotation","spriteX":0,"spriteY":0,"img":"rigidbody.png"},
+    {"group":"Goals-6dof","name":"RigidPlane","cn":"刚体平面","en":"RigidPlane","desc_cn":"刚体平面约束，限制物体在平面上运动","desc_en":"Rigid plane constraint, limits movement to a plane","spriteX":24,"spriteY":0,"img":"rigidplane.png"},
+    {"group":"Goals-6dof","name":"Hinge","cn":"铰链","en":"Hinge","desc_cn":"铰链旋转约束，模拟门轴效果，绕单轴旋转","desc_en":"Hinge rotation constraint, rotates around a single axis","spriteX":48,"spriteY":0,"img":"hinge.png"},
+    {"group":"Goals-6dof","name":"Motor","cn":"马达","en":"Motor","desc_cn":"施加旋转力，驱动物体旋转，可控制速度和扭矩","desc_en":"Apply motor torque, controls rotation speed and torque","spriteX":72,"spriteY":0,"img":"motor.png"},
+    {"group":"Goals-6dof","name":"UnaryForce","cn":"单力","en":"UnaryForce","desc_cn":"施加单向力，推动物体沿指定方向运动","desc_en":"Apply a single force, pushes object in specified direction","spriteX":96,"spriteY":0,"img":"unaryforce.png"},
+    {"group":"Goals-6dof","name":"Torque","cn":"扭矩","en":"Torque","desc_cn":"施加扭矩，产生旋转效果","desc_en":"Apply torque, creates rotational effect","spriteX":120,"spriteY":0,"img":"torque.png"}
   ],
   "Goals-Angle": [
-    {"group":"Goals-Angle","name":"Angle","cn":"角度约束","en":"Angle Constraint","desc_cn":"控制两点之间的角度","desc_en":"Control angle between points","spriteX":0,"spriteY":24,"img":"angle.png"},
-    {"group":"Goals-Angle","name":"EqualAngle","cn":"等角","en":"EqualAngle","desc_cn":"角度相等约束","desc_en":"Equal angle constraint","spriteX":24,"spriteY":24,"img":"equalangle.png"},
-    {"group":"Goals-Angle","name":"Planarize","cn":"平面化","en":"Planarize","desc_cn":"平面化约束，将点约束到同一平面","desc_en":"Planarize constraint","spriteX":48,"spriteY":24,"img":"planarize.png"},
-    {"group":"Goals-Angle","name":"DihedralAngle","cn":"二面角","en":"DihedralAngle","desc_cn":"二面角约束，控制两个面的夹角","desc_en":"Dihedral angle constraint","spriteX":72,"spriteY":24,"img":"dihedralangle.png"}
+    {"group":"Goals-Angle","name":"Angle","cn":"角度约束","en":"Angle Constraint","desc_cn":"控制两点之间的角度，保持指定夹角","desc_en":"Control angle between points, maintain specified angle","spriteX":0,"spriteY":24,"img":"angle.png"},
+    {"group":"Goals-Angle","name":"EqualAngle","cn":"等角","en":"EqualAngle","desc_cn":"角度相等约束，使多个角度保持相等","desc_en":"Equal angle constraint, keeps multiple angles equal","spriteX":24,"spriteY":24,"img":"equalangle.png"},
+    {"group":"Goals-Angle","name":"Planarize","cn":"平面化","en":"Planarize","desc_cn":"平面化约束，将点约束到同一平面","desc_en":"Planarize constraint, forces points onto same plane","spriteX":48,"spriteY":24,"img":"planarize.png"},
+    {"group":"Goals-Angle","name":"DihedralAngle","cn":"二面角","en":"DihedralAngle","desc_cn":"二面角约束，控制两个面的夹角","desc_en":"Dihedral angle constraint, controls angle between two faces","spriteX":72,"spriteY":24,"img":"dihedralangle.png"}
+  ],
+  "Goals-Co": [
+    {"group":"Goals-Co","name":"Coincident","cn":"重合","en":"Coincident","desc_cn":"点重合约束，使多个点重合在一起","desc_en":"Coincident constraint, makes multiple points coincide","spriteX":0,"spriteY":48,"img":"coincident.png"},
+    {"group":"Goals-Co","name":"CoLinear","cn":"共线","en":"CoLinear","desc_cn":"共线约束，使点保持在同一直线上","desc_en":"Colinear constraint, keeps points on same line","spriteX":24,"spriteY":48,"img":"colinear.png"},
+    {"group":"Goals-Co","name":"CoPlanar","cn":"共面","en":"CoPlanar","desc_cn":"共面约束，使点保持在同一平面上","desc_en":"Coplanar constraint, keeps points on same plane","spriteX":48,"spriteY":48,"img":"coplanar.png"},
+    {"group":"Goals-Co","name":"EqualLength","cn":"等长","en":"EqualLength","desc_cn":"线段等长约束，使多条线段长度相等","desc_en":"Equal length constraint, makes multiple segments equal length","spriteX":72,"spriteY":48,"img":"equallength.png"}
+  ],
+  "Goals-Col": [
+    {"group":"Goals-Col","name":"Collider","cn":"碰撞体","en":"Collider","desc_cn":"通用碰撞检测，防止物体穿透","desc_en":"General collision detection, prevents object penetration","spriteX":0,"spriteY":72,"img":"collider.png"},
+    {"group":"Goals-Col","name":"SphereCollide","cn":"球碰撞","en":"SphereCollide","desc_cn":"球体碰撞检测，保持球体间不重叠","desc_en":"Sphere collision detection, keeps spheres non-overlapping","spriteX":24,"spriteY":72,"img":"spherecollide.png"},
+    {"group":"Goals-Col","name":"MeshCollider","cn":"网格碰撞","en":"MeshCollider","desc_cn":"网格碰撞检测，与网格表面碰撞","desc_en":"Mesh collision detection, collides with mesh surface","spriteX":48,"spriteY":72,"img":"meshcollider.png"},
+    {"group":"Goals-Col","name":"LineCollider","cn":"线碰撞","en":"LineCollider","desc_cn":"线碰撞检测，防止线条穿透","desc_en":"Line collision detection, prevents line penetration","spriteX":72,"spriteY":72,"img":"linecollider.png"}
+  ],
+  "Goals-Lin": [
+    {"group":"Goals-Lin","name":"Length","cn":"长度","en":"Length","desc_cn":"长度约束，保持两点间固定距离","desc_en":"Length constraint, maintains fixed distance between points","spriteX":0,"spriteY":96,"img":"length.png"},
+    {"group":"Goals-Lin","name":"ClampLength","cn":"限制长度","en":"ClampLength","desc_cn":"限制长度约束，距离不超过最大值","desc_en":"Clamp length constraint, distance not exceeding maximum","spriteX":24,"spriteY":96,"img":"clamplength.png"},
+    {"group":"Goals-Lin","name":"Spring","cn":"弹簧","en":"Spring","desc_cn":"弹簧约束，弹性力连接两点","desc_en":"Spring constraint, elastic force between points","spriteX":48,"spriteY":96,"img":"spring.png"},
+    {"group":"Goals-Lin","name":"Rod","cn":"杆","en":"Rod","desc_cn":"刚性杆约束，保持固定距离且不可压缩","desc_en":"Rigid rod constraint, fixed distance, incompressible","spriteX":72,"spriteY":96,"img":"rod.png"}
+  ],
+  "Goals-Mesh": [
+    {"group":"Goals-Mesh","name":"SoapFilm","cn":"肥皂膜","en":"SoapFilm","desc_cn":"最小曲面约束，模拟肥皂膜效果","desc_en":"Minimal surface constraint, simulates soap film","spriteX":0,"spriteY":120,"img":"soapfilm.png"},
+    {"group":"Goals-Mesh","name":"Pressure","cn":"压力","en":"Pressure","desc_cn":"施加压力，模拟内部压力","desc_en":"Pressure constraint, simulates internal pressure","spriteX":24,"spriteY":120,"img":"pressure.png"},
+    {"group":"Goals-Mesh","name":"Bending","cn":"弯曲","en":"Bending","desc_cn":"弯曲约束，控制网格弯曲刚度","desc_en":"Bending constraint, controls mesh bending stiffness","spriteX":48,"spriteY":120,"img":"bending.png"},
+    {"group":"Goals-Mesh","name":"Smooth","cn":"平滑","en":"Smooth","desc_cn":"平滑约束，使网格表面光滑","desc_en":"Smooth constraint, makes mesh surface smooth","spriteX":72,"spriteY":120,"img":"smooth.png"},
+    {"group":"Goals-Mesh","name":"Laplace","cn":"拉普拉斯","en":"Laplace","desc_cn":"拉普拉斯平滑约束，保持网格曲率","desc_en":"Laplace smoothing constraint, maintains mesh curvature","spriteX":96,"spriteY":120,"img":"laplace.png"}
+  ],
+  "Goals-On": [
+    {"group":"Goals-On","name":"OnCurve","cn":"在线","en":"OnCurve","desc_cn":"点在线上约束，将点限制在曲线上","desc_en":"Point on curve constraint, restricts point to curve","spriteX":0,"spriteY":144,"img":"oncurve.png"},
+    {"group":"Goals-On","name":"OnSurface","cn":"面上","en":"OnSurface","desc_cn":"点在面上约束，将点限制在曲面上","desc_en":"Point on surface constraint, restricts point to surface","spriteX":24,"spriteY":144,"img":"onsurface.png"},
+    {"group":"Goals-On","name":"OnMesh","cn":"网格上","en":"OnMesh","desc_cn":"点在网格上约束，将点限制在网格表面","desc_en":"Point on mesh constraint, restricts point to mesh surface","spriteX":48,"spriteY":144,"img":"onmesh.png"},
+    {"group":"Goals-On","name":"OnPlane","cn":"平面上","en":"OnPlane","desc_cn":"点在平面上约束，将点限制在平面","desc_en":"Point on plane constraint, restricts point to plane","spriteX":72,"spriteY":144,"img":"onplane.png"}
   ],
   "Goals-Pt": [
-    {"group":"Goals-Pt","name":"Anchor","cn":"锚点","en":"Anchor","desc_cn":"固定点约束，将点固定在指定位置","desc_en":"Anchor point constraint","spriteX":0,"spriteY":168,"img":"anchor.png"},
-    {"group":"Goals-Pt","name":"Load","cn":"载荷","en":"Load","desc_cn":"施加载荷力","desc_en":"Apply load force","spriteX":24,"spriteY":168,"img":"load.png"},
-    {"group":"Goals-Pt","name":"Gravity","cn":"重力","en":"Gravity","desc_cn":"施加重力影响","desc_en":"Gravity force","spriteX":48,"spriteY":168,"img":"gravity.png"}
+    {"group":"Goals-Pt","name":"Anchor","cn":"锚点","en":"Anchor","desc_cn":"固定点约束，将点固定在指定位置","desc_en":"Anchor point constraint, fixes point at specified position","spriteX":0,"spriteY":168,"img":"anchor.png"},
+    {"group":"Goals-Pt","name":"Load","cn":"载荷","en":"Load","desc_cn":"施加载荷力，推动点运动","desc_en":"Apply load force, pushes point","spriteX":24,"spriteY":168,"img":"load.png"},
+    {"group":"Goals-Pt","name":"Gravity","cn":"重力","en":"Gravity","desc_cn":"施加重力影响，模拟重力场","desc_en":"Gravity force, simulates gravitational field","spriteX":48,"spriteY":168,"img":"gravity.png"},
+    {"group":"Goals-Pt","name":"UnaryForce","cn":"单力","en":"UnaryForce","desc_cn":"施加单点力，作用于单个点","desc_en":"Unary force, applies force to single point","spriteX":72,"spriteY":168,"img":"unaryforce.png"}
   ],
   "Main": [
-    {"group":"Main","name":"KangarooSolver","cn":"求解器","en":"Solver","desc_cn":"Kangaroo物理求解器主组件","desc_en":"Kangaroo physics solver","spriteX":0,"spriteY":192,"img":"solver.png"},
-    {"group":"Main","name":"Reset","cn":"重置","en":"Reset","desc_cn":"重置求解器状态","desc_en":"Reset solver state","spriteX":24,"spriteY":192,"img":"reset.png"},
-    {"group":"Main","name":"Step","cn":"步进","en":"Step","desc_cn":"单步执行求解","desc_en":"Step solver once","spriteX":48,"spriteY":192,"img":"step.png"}
+    {"group":"Main","name":"KangarooSolver","cn":"求解器","en":"Solver","desc_cn":"Kangaroo物理求解器主组件，控制模拟参数","desc_en":"Kangaroo physics solver, controls simulation parameters","spriteX":0,"spriteY":192,"img":"solver.png"},
+    {"group":"Main","name":"Reset","cn":"重置","en":"Reset","desc_cn":"重置求解器状态，清除所有约束","desc_en":"Reset solver state, clears all constraints","spriteX":24,"spriteY":192,"img":"reset.png"},
+    {"group":"Main","name":"Step","cn":"步进","en":"Step","desc_cn":"单步执行求解，逐步模拟","desc_en":"Step solver, single simulation step","spriteX":48,"spriteY":192,"img":"step.png"},
+    {"group":"Main","name":"Toggle","cn":"开关","en":"Toggle","desc_cn":"开关求解器，控制模拟运行/停止","desc_en":"Toggle solver, start/stop simulation","spriteX":72,"spriteY":192,"img":"toggle.png"}
+  ],
+  "Mesh": [
+    {"group":"Mesh","name":"MeshEdges","cn":"网格边","en":"MeshEdges","desc_cn":"网格边分析，提取网格边界","desc_en":"Mesh edges analysis, extracts mesh boundaries","spriteX":0,"spriteY":216,"img":"meshedges.png"},
+    {"group":"Mesh","name":"MeshVertices","cn":"网格顶点","en":"MeshVertices","desc_cn":"网格顶点分析，提取顶点位置","desc_en":"Mesh vertices analysis, extracts vertex positions","spriteX":24,"spriteY":216,"img":"meshvertices.png"},
+    {"group":"Mesh","name":"MeshTopology","cn":"网格拓扑","en":"MeshTopology","desc_cn":"网格拓扑分析，分析网格连接关系","desc_en":"Mesh topology analysis, analyzes mesh connectivity","spriteX":48,"spriteY":216,"img":"meshtopology.png"},
+    {"group":"Mesh","name":"MeshNormals","cn":"网格法线","en":"MeshNormals","desc_cn":"网格法线分析，计算法线方向","desc_en":"Mesh normals analysis, calculates normal directions","spriteX":72,"spriteY":216,"img":"meshnormals.png"}
+  ],
+  "Utility": [
+    {"group":"Utility","name":"Show","cn":"显示","en":"Show","desc_cn":"显示辅助组件，可视化物理效果","desc_en":"Display helper, visualizes physics effects","spriteX":0,"spriteY":240,"img":"show.png"},
+    {"group":"Utility","name":"Timer","cn":"计时器","en":"Timer","desc_cn":"计时器组件，控制模拟时间","desc_en":"Timer component, controls simulation time","spriteX":24,"spriteY":240,"img":"timer.png"},
+    {"group":"Utility","name":"Recorder","cn":"记录器","en":"Recorder","desc_cn":"记录数据，保存模拟结果","desc_en":"Recorder component, saves simulation results","spriteX":48,"spriteY":240,"img":"recorder.png"},
+    {"group":"Utility","name":"Profiler","cn":"分析器","en":"Profiler","desc_cn":"性能分析，监测模拟效率","desc_en":"Profiler component, monitors simulation performance","spriteX":72,"spriteY":240,"img":"profiler.png"}
   ]
 }
