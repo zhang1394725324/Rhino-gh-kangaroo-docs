@@ -1,228 +1,26 @@
 {
-  "Goals-6dof":[
-    {"group":"Goals-6dof","name":"RigidBody","cn":"刚体","en":"RigidBody","desc_cn":"六自由度刚体约束","desc_en":"Rigid body constraint","spriteX":0,"spriteY":0,"img":"rigidbody.png"},
-    {"group":"Goals-6dof","name":"RigidPlane","cn":"刚体平面","en":"RigidPlane","desc_cn":"刚体平面约束","desc_en":"Rigid plane constraint","spriteX":24,"spriteY":0,"img":"rigidplane.png"},
-    {"group":"Goals-6dof","name":"Hinge","cn":"铰链","en":"Hinge","desc_cn":"铰链旋转约束","desc_en":"Hinge rotation constraint","spriteX":48,"spriteY":0,"img":"hinge.png"},
-    {"group":"Goals-6dof","name":"Motor","cn":"马达","en":"Motor","desc_cn":"施加旋转力","desc_en":"Apply motor torque","spriteX":72,"spriteY":0,"img":"motor.png"},
-    {"group":"Goals-6dof","name":"UnaryForce","cn":"单力","en":"UnaryForce","desc_cn":"施加单向力","desc_en":"Apply a single force","spriteX":96,"spriteY":0,"img":"unaryforce.png"},
-    {"group":"Goals-6dof","name":"Torque","cn":"扭矩","en":"Torque","desc_cn":"施加扭矩","desc_en":"Apply torque","spriteX":120,"spriteY":0,"img":"torque.png"}
-  ],
-  
-  "Goals-Angle":[
-    {"group":"Goals-Angle","name":"Angle","cn":"角度","en":"Angle","desc_cn":"角度约束","desc_en":"Angle constraint","spriteX":0,"spriteY":24,"img":"angle.png"},
-    {"group":"Goals-Angle","name":"EqualAngle","cn":"等角","en":"EqualAngle","desc_cn":"角度相等约束","desc_en":"Equal angle constraint","spriteX":24,"spriteY":24,"img":"equalangle.png"},
-    {"group":"Goals-Angle","name":"Planarize","cn":"平面化","en":"Planarize","desc_cn":"平面化约束","desc_en":"Planarize constraint","spriteX":48,"spriteY":24,"img":"planarize.png"},
-    {"group":"Goals-Angle","name":"DihedralAngle","cn":"二面角","en":"DihedralAngle","desc_cn":"二面角约束","desc_en":"Dihedral angle constraint","spriteX":72,"spriteY":24,"img":"dihedralangle.png"}
-  ],
-
-  "Goals-Co":[
-    {"group":"Goals-Co","name":"Coincident","cn":"重合","en":"Coincident","desc_cn":"点重合约束","desc_en":"Coincident constraint","spriteX":0,"spriteY":48,"img":"coincident.png"},
-    {"group":"Goals-Co","name":"CoLinear","cn":"共线","en":"CoLinear","desc_cn":"共线约束","desc_en":"Colinear constraint","spriteX":24,"spriteY":48,"img":"colinear.png"},
-    {"group":"Goals-Co","name":"CoPlanar","cn":"共面","en":"CoPlanar","desc_cn":"共面约束","desc_en":"Coplanar constraint","spriteX":48,"spriteY":48,"img":"coplanar.png"},
-    {"group":"Goals-Co","name":"EqualLength","cn":"等长","en":"EqualLength","desc_cn":"线段等长约束","desc_en":"Equal length constraint","spriteX":72,"spriteY":48,"img":"equallength.png"}
-  ],
-
-  "Goals-Col":[
-    {"group":"Goals-Col","name":"Collider","cn":"碰撞体","en":"Collider","desc_cn":"碰撞检测","desc_en":"Collision detection","spriteX":0,"spriteY":72,"img":"collider.png"},
-    {"group":"Goals-Col","name":"SphereCollide","cn":"球碰撞","en":"SphereCollide","desc_cn":"球体碰撞检测","desc_en":"Sphere collision","spriteX":24,"spriteY":72,"img":"spherecollide.png"},
-    {"group":"Goals-Col","name":"MeshCollider","cn":"网格碰撞","en":"MeshCollider","desc_cn":"网格碰撞检测","desc_en":"Mesh collision","spriteX":48,"spriteY":72,"img":"meshcollider.png"},
-    {"group":"Goals-Col","name":"LineCollider","cn":"线碰撞","en":"LineCollider","desc_cn":"线碰撞检测","desc_en":"Line collision","spriteX":72,"spriteY":72,"img":"linecollider.png"}
-  ],
-
-  "Goals-Lin":[
-    {"group":"Goals-Lin","name":"Length","cn":"长度","en":"Length","desc_cn":"长度约束","desc_en":"Length constraint","spriteX":0,"spriteY":96,"img":"length.png"},
-    {"group":"Goals-Lin","name":"ClampLength","cn":"限制长度","en":"ClampLength","desc_cn":"限制长度约束","desc_en":"Clamp length constraint","spriteX":24,"spriteY":96,"img":"clamplength.png"},
-    {"group":"Goals-Lin","name":"Spring","cn":"弹簧","en":"Spring","desc_cn":"弹簧约束","desc_en":"Spring constraint","spriteX":48,"spriteY":96,"img":"spring.png"},
-    {"group":"Goals-Lin","name":"Rod","cn":"杆","en":"Rod","desc_cn":"杆约束","desc_en":"Rod constraint","spriteX":72,"spriteY":96,"img":"rod.png"},
-    {"group":"Goals-Lin","name":"EqualLength","cn":"等长","en":"EqualLength","desc_cn":"等长约束","desc_en":"Equal length constraint","spriteX":96,"spriteY":96,"img":"equallength.png"}
-  ],
-
-  "Goals-Mesh":[
-    {"group":"Goals-Mesh","name":"SoapFilm","cn":"肥皂膜","en":"SoapFilm","desc_cn":"最小曲面约束","desc_en":"Minimal surface constraint","spriteX":0,"spriteY":120,"img":"soapfilm.png"},
-    {"group":"Goals-Mesh","name":"Pressure","cn":"压力","en":"Pressure","desc_cn":"施加压力","desc_en":"Pressure constraint","spriteX":24,"spriteY":120,"img":"pressure.png"},
-    {"group":"Goals-Mesh","name":"Bending","cn":"弯曲","en":"Bending","desc_cn":"弯曲约束","desc_en":"Bending constraint","spriteX":48,"spriteY":120,"img":"bending.png"},
-    {"group":"Goals-Mesh","name":"Smooth","cn":"平滑","en":"Smooth","desc_cn":"平滑约束","desc_en":"Smooth constraint","spriteX":72,"spriteY":120,"img":"smooth.png"},
-    {"group":"Goals-Mesh","name":"Laplace","cn":"拉普拉斯","en":"Laplace","desc_cn":"拉普拉斯平滑约束","desc_en":"Laplace smoothing constraint","spriteX":96,"spriteY":120,"img":"laplace.png"}
-  ],
-
-  "Goals-On":[
-    {"group":"Goals-On","name":"OnCurve","cn":"在线","en":"OnCurve","desc_cn":"点在线上","desc_en":"Point on curve constraint","spriteX":0,"spriteY":144,"img":"oncurve.png"},
-    {"group":"Goals-On","name":"OnSurface","cn":"面上","en":"OnSurface","desc_cn":"点在面上","desc_en":"Point on surface constraint","spriteX":24,"spriteY":144,"img":"onsurface.png"},
-    {"group":"Goals-On","name":"OnMesh","cn":"网格上","en":"OnMesh","desc_cn":"点在网格上","desc_en":"Point on mesh constraint","spriteX":48,"spriteY":144,"img":"onmesh.png"},
-    {"group":"Goals-On","name":"OnPlane","cn":"平面上","en":"OnPlane","desc_cn":"点在平面上","desc_en":"Point on plane constraint","spriteX":72,"spriteY":144,"img":"onplane.png"}
-  ],
-
-  "Goals-Pt":[
-    {"group":"Goals-Pt","name":"Anchor","cn":"锚点","en":"Anchor","desc_cn":"固定点","desc_en":"Anchor point","spriteX":0,"spriteY":168,"img":"anchor.png"},
-    {"group":"Goals-Pt","name":"Load","cn":"载荷","en":"Load","desc_cn":"施加载荷","desc_en":"Apply load","spriteX":24,"spriteY":168,"img":"load.png"},
-    {"group":"Goals-Pt","name":"Gravity","cn":"重力","en":"Gravity","desc_cn":"施加重力","desc_en":"Gravity force","spriteX":48,"spriteY":168,"img":"gravity.png"},
-    {"group":"Goals-Pt","name":"UnaryForce","cn":"单力","en":"UnaryForce","desc_cn":"施加单力","desc_en":"Unary force","spriteX":72,"spriteY":168,"img":"unaryforce.png"}
-  ],
-
-  "Main":[
-    {"group":"Main","name":"KangarooSolver","cn":"求解器","en":"Solver","desc_cn":"Kangaroo求解器","desc_en":"Kangaroo solver","spriteX":0,"spriteY":192,"img":"solver.png"},
-    {"group":"Main","name":"Reset","cn":"重置","en":"Reset","desc_cn":"重置求解器","desc_en":"Reset solver","spriteX":24,"spriteY":192,"img":"reset.png"},
-    {"group":"Main","name":"Step","cn":"步进","en":"Step","desc_cn":"单步求解","desc_en":"Step solver","spriteX":48,"spriteY":192,"img":"step.png"},
-    {"group":"Main","name":"Toggle","cn":"开关","en":"Toggle","desc_cn":"开关求解器","desc_en":"Toggle solver","spriteX":72,"spriteY":192,"img":"toggle.png"}
-  ],
-
-  "Mesh":[
-    {"group":"Mesh","name":"MeshEdges","cn":"网格边","en":"MeshEdges","desc_cn":"网格边分析","desc_en":"Mesh edges analysis","spriteX":0,"spriteY":216,"img":"meshedges.png"},
-    {"group":"Mesh","name":"MeshVertices","cn":"网格顶点","en":"MeshVertices","desc_cn":"网格顶点分析","desc_en":"Mesh vertices analysis","spriteX":24,"spriteY":216,"img":"meshvertices.png"},
-    {"group":"Mesh","name":"MeshTopology","cn":"网格拓扑","en":"MeshTopology","desc_cn":"网格拓扑分析","desc_en":"Mesh topology analysis","spriteX":48,"spriteY":216,"img":"meshtopology.png"},
-    {"group":"Mesh","name":"MeshNormals","cn":"网格法线","en":"MeshNormals","desc_cn":"网格法线分析","desc_en":"Mesh normals analysis","spriteX":72,"spriteY":216,"img":"meshnormals.png"}
-  ],
-
-  "Utility":[
-    {"group":"Utility","name":"Show","cn":"显示","en":"Show","desc_cn":"显示组件","desc_en":"Display helper","spriteX":0,"spriteY":240,"img":"show.png"},
-    {"group":"Utility","name":"Timer","cn":"计时器","en":"Timer","desc_cn":"计时器组件","desc_en":"Timer component","spriteX":24,"spriteY":240,"img":"timer.png"},
-    {"group":"Utility","name":"Recorder","cn":"记录器","en":"Recorder","desc_cn":"记录数据","desc_en":"Recorder component","spriteX":48,"spriteY":240,"img":"recorder.png"},
-    {"group":"Utility","name":"Profiler","cn":"分析器","en":"Profiler","desc_cn":"分析性能","desc_en":"Profiler component","spriteX":72,"spriteY":240,"img":"profiler.png"}
-  ]
-}
-
-{
-
-"Goals-Angle":[
-
-{
-"group":"Goals-Angle",
-"name":"Angle",
-"cn":"角度约束",
-"en":"Angle Constraint",
-"desc_cn":"控制角度",
-"desc_en":"Control Angle",
-"icon":"angle.png",
-"img":"angle.png"
-
-}
-
-]
-
-}
-{
-"Goals-Pt":[
-
-{
-"group":"Goals-Pt",
-"name":"Anchor",
-"cn":"锚点",
-"en":"Anchor",
-"desc_cn":"固定点",
-"desc_en":"Anchor point",
-"icon":"anchor.png",
-"img":"anchor.png"
-
-}
-
-],
-
-
-"Main":[
-
-{
-"group":"Main",
-"name":"KangarooSolver",
-"cn":"求解器",
-"en":"Solver",
-"desc_cn":"Kangaroo求解器",
-"desc_en":"Kangaroo solver",
-"icon":"solver.png",
-"img":"solver.png"
-
-}
-
-],
-
-
-"Mesh":[
-
-{
-"group":"Mesh",
-"name":"MeshEdges",
-"cn":"网格边",
-"en":"MeshEdges",
-"desc_cn":"网格边分析",
-"desc_en":"Mesh edges",
-"icon":"meshedges.png",
-"img":"meshedges.png"
-
-}
-
-],
-
-
-"Utility":[
-
-{
-"group":"Utility",
-"name":"Show",
-"cn":"显示",
-"en":"Show",
-"desc_cn":"显示组件",
-"desc_en":"Display helper",
-"icon":"show.png",
-"img":"show.png"
-
-}
-
-]
-
-}
-
-{
-"Goals-Pt":[
-
-{
-"name":"Anchor",
-"cn":"锚点",
-"en":"Anchor",
-"desc_cn":"固定点约束",
-"desc_en":"Anchor constraint",
-"icon":"anchor.png",
-"img":"anchor.png"
-},
-
-{
-"name":"Load",
-"cn":"载荷",
-"en":"Load",
-"desc_cn":"施加载荷",
-"desc_en":"Apply load",
-"icon":"load.png",
-"img":"load.png"
-}
-
-]
-
-}
-
-{
   "Goals-6dof": [
-    {"group":"Goals-6dof","name":"RigidBody","cn":"刚体","en":"RigidBody","desc_cn":"六自由度刚体约束","desc_en":"Rigid body constraint","spriteX":0,"spriteY":0,"img":"rigidbody.png"},
-    {"group":"Goals-6dof","name":"RigidPlane","cn":"刚体平面","en":"RigidPlane","desc_cn":"刚体平面约束","desc_en":"Rigid plane constraint","spriteX":24,"spriteY":0,"img":"rigidplane.png"},
-    {"group":"Goals-6dof","name":"Hinge","cn":"铰链","en":"Hinge","desc_cn":"铰链旋转约束","desc_en":"Hinge rotation constraint","spriteX":48,"spriteY":0,"img":"hinge.png"},
-    {"group":"Goals-6dof","name":"Motor","cn":"马达","en":"Motor","desc_cn":"施加旋转力","desc_en":"Apply motor torque","spriteX":72,"spriteY":0,"img":"motor.png"},
-    {"group":"Goals-6dof","name":"UnaryForce","cn":"单力","en":"UnaryForce","desc_cn":"施加单向力","desc_en":"Apply a single force","spriteX":96,"spriteY":0,"img":"unaryforce.png"},
-    {"group":"Goals-6dof","name":"Torque","cn":"扭矩","en":"Torque","desc_cn":"施加扭矩","desc_en":"Apply torque","spriteX":120,"spriteY":0,"img":"torque.png"}
+    {"group":"Goals-6dof","name":"RigidBody","cn":"刚体","en":"RigidBody","desc_cn":"六自由度刚体约束，模拟刚体物理行为","desc_en":"Rigid body constraint with 6 degrees of freedom","spriteX":0,"spriteY":0,"img":"rigidbody.png"},
+    {"group":"Goals-6dof","name":"RigidPlane","cn":"刚体平面","en":"RigidPlane","desc_cn":"刚体平面约束，限制物体在平面上运动","desc_en":"Rigid plane constraint","spriteX":24,"spriteY":0,"img":"rigidplane.png"},
+    {"group":"Goals-6dof","name":"Hinge","cn":"铰链","en":"Hinge","desc_cn":"铰链旋转约束，模拟门轴效果","desc_en":"Hinge rotation constraint","spriteX":48,"spriteY":0,"img":"hinge.png"},
+    {"group":"Goals-6dof","name":"Motor","cn":"马达","en":"Motor","desc_cn":"施加旋转力，驱动物体旋转","desc_en":"Apply motor torque","spriteX":72,"spriteY":0,"img":"motor.png"},
+    {"group":"Goals-6dof","name":"UnaryForce","cn":"单力","en":"UnaryForce","desc_cn":"施加单向力，推动物体","desc_en":"Apply a single force","spriteX":96,"spriteY":0,"img":"unaryforce.png"},
+    {"group":"Goals-6dof","name":"Torque","cn":"扭矩","en":"Torque","desc_cn":"施加扭矩，产生旋转效果","desc_en":"Apply torque","spriteX":120,"spriteY":0,"img":"torque.png"}
   ],
   "Goals-Angle": [
     {"group":"Goals-Angle","name":"Angle","cn":"角度约束","en":"Angle Constraint","desc_cn":"控制两点之间的角度","desc_en":"Control angle between points","spriteX":0,"spriteY":24,"img":"angle.png"},
     {"group":"Goals-Angle","name":"EqualAngle","cn":"等角","en":"EqualAngle","desc_cn":"角度相等约束","desc_en":"Equal angle constraint","spriteX":24,"spriteY":24,"img":"equalangle.png"},
-    {"group":"Goals-Angle","name":"Planarize","cn":"平面化","en":"Planarize","desc_cn":"平面化约束","desc_en":"Planarize constraint","spriteX":48,"spriteY":24,"img":"planarize.png"},
-    {"group":"Goals-Angle","name":"DihedralAngle","cn":"二面角","en":"DihedralAngle","desc_cn":"二面角约束","desc_en":"Dihedral angle constraint","spriteX":72,"spriteY":24,"img":"dihedralangle.png"}
+    {"group":"Goals-Angle","name":"Planarize","cn":"平面化","en":"Planarize","desc_cn":"平面化约束，将点约束到同一平面","desc_en":"Planarize constraint","spriteX":48,"spriteY":24,"img":"planarize.png"},
+    {"group":"Goals-Angle","name":"DihedralAngle","cn":"二面角","en":"DihedralAngle","desc_cn":"二面角约束，控制两个面的夹角","desc_en":"Dihedral angle constraint","spriteX":72,"spriteY":24,"img":"dihedralangle.png"}
   ],
   "Goals-Pt": [
-    {"group":"Goals-Pt","name":"Anchor","cn":"锚点","en":"Anchor","desc_cn":"固定点约束","desc_en":"Anchor constraint","spriteX":0,"spriteY":168,"img":"anchor.png"},
-    {"group":"Goals-Pt","name":"Load","cn":"载荷","en":"Load","desc_cn":"施加载荷","desc_en":"Apply load","spriteX":24,"spriteY":168,"img":"load.png"},
-    {"group":"Goals-Pt","name":"Gravity","cn":"重力","en":"Gravity","desc_cn":"施加重力","desc_en":"Gravity force","spriteX":48,"spriteY":168,"img":"gravity.png"},
-    {"group":"Goals-Pt","name":"UnaryForce","cn":"单力","en":"UnaryForce","desc_cn":"施加单力","desc_en":"Unary force","spriteX":72,"spriteY":168,"img":"unaryforce.png"}
+    {"group":"Goals-Pt","name":"Anchor","cn":"锚点","en":"Anchor","desc_cn":"固定点约束，将点固定在指定位置","desc_en":"Anchor point constraint","spriteX":0,"spriteY":168,"img":"anchor.png"},
+    {"group":"Goals-Pt","name":"Load","cn":"载荷","en":"Load","desc_cn":"施加载荷力","desc_en":"Apply load force","spriteX":24,"spriteY":168,"img":"load.png"},
+    {"group":"Goals-Pt","name":"Gravity","cn":"重力","en":"Gravity","desc_cn":"施加重力影响","desc_en":"Gravity force","spriteX":48,"spriteY":168,"img":"gravity.png"}
   ],
   "Main": [
-    {"group":"Main","name":"KangarooSolver","cn":"求解器","en":"Solver","desc_cn":"Kangaroo求解器","desc_en":"Kangaroo solver","spriteX":0,"spriteY":192,"img":"solver.png"},
-    {"group":"Main","name":"Reset","cn":"重置","en":"Reset","desc_cn":"重置求解器","desc_en":"Reset solver","spriteX":24,"spriteY":192,"img":"reset.png"},
-    {"group":"Main","name":"Step","cn":"步进","en":"Step","desc_cn":"单步求解","desc_en":"Step solver","spriteX":48,"spriteY":192,"img":"step.png"},
-    {"group":"Main","name":"Toggle","cn":"开关","en":"Toggle","desc_cn":"开关求解器","desc_en":"Toggle solver","spriteX":72,"spriteY":192,"img":"toggle.png"}
+    {"group":"Main","name":"KangarooSolver","cn":"求解器","en":"Solver","desc_cn":"Kangaroo物理求解器主组件","desc_en":"Kangaroo physics solver","spriteX":0,"spriteY":192,"img":"solver.png"},
+    {"group":"Main","name":"Reset","cn":"重置","en":"Reset","desc_cn":"重置求解器状态","desc_en":"Reset solver state","spriteX":24,"spriteY":192,"img":"reset.png"},
+    {"group":"Main","name":"Step","cn":"步进","en":"Step","desc_cn":"单步执行求解","desc_en":"Step solver once","spriteX":48,"spriteY":192,"img":"step.png"}
   ]
-  // ... 其他分组同样需要补全所有字段
 }
