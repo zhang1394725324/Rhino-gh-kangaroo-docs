@@ -1,77 +1,64 @@
 body {
+    font-family: Arial, sans-serif;
     margin:0;
-    font-family:Segoe UI, sans-serif;
-    background:#f5f5f5;
+    padding:0;
+    background:#f8f8f8;
 }
-.topbar {
-    background:#434a56;
+
+header {
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    background:#0078d4;
     color:white;
-    padding:12px;
+    padding:10px 20px;
+}
+
+header h1 { margin:0; font-size:20px; }
+header button { padding:5px 10px; cursor:pointer; }
+
+main {
     display:flex;
-    justify-content:space-between;
-}
-.toolbar {
-    display:flex;
-    gap:10px;
-}
-.main-nav {
-    background:#2f2f2f;
-    padding:10px;
-}
-.main-nav button {
-    background:#444;
-    color:white;
-    border:none;
-    padding:8px 18px;
-}
-.groups {
-    background:white;
-    padding:15px;
-    display:flex;
-    flex-wrap:wrap;
-    border-bottom:1px solid #ddd;
-}
-.group-btn {
-    background:#efefef;
-    padding:8px 14px;
-    margin:5px;
-    border-radius:4px;
-    cursor:pointer;
-}
-.group-btn:hover {
-    background:#dcdcdc;
-}
-.icons {
-    background:white;
     padding:20px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:15px;
 }
+
+.icons {
+    width: 300px;
+    display:flex;
+    flex-wrap: wrap;
+}
+
 .icon {
-    width:64px;
-    height:64px;
+    width:24px;
+    height:24px;
     background-image: url('img/sprites/kangaroo_icons.png');
     background-repeat: no-repeat;
+    background-size: 240px 264px; /* 10列*24px, 11行*24px */
+    margin:5px;
     cursor:pointer;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-end;
-    padding-bottom:4px;
-    color:#333;
-    font-size:12px;
-    transition: filter 0.2s;
+    display:inline-block;
+    position:relative;
 }
+
+.icon div {
+    position:absolute;
+    top:26px;
+    width: max-content;
+    font-size:10px;
+    white-space: nowrap;
+}
+
 .icon:hover {
     filter: brightness(1.2);
 }
-.content {
-    background:white;
-    padding:30px;
-    margin:20px;
+
+.component-info {
+    margin-left:20px;
+    flex:1;
 }
-.screenshot {
-    max-width:600px;
-    margin-top:20px;
+
+.component-info img {
+    max-width:400px;
+    display:block;
+    margin-bottom:10px;
 }
