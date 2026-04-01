@@ -18,12 +18,25 @@ header h1 { margin:0; font-size:20px; }
 header button { padding:5px 10px; cursor:pointer; }
 
 main {
-    display:flex;
     padding:20px;
 }
 
-.icons {
-    width: 300px;
+.group {
+    margin-bottom:30px;
+    background:#fff;
+    border:1px solid #ccc;
+    border-radius:5px;
+    padding:10px;
+}
+
+.group h3 {
+    margin:0 0 10px 0;
+    font-size:16px;
+    border-bottom:1px solid #eee;
+    padding-bottom:5px;
+}
+
+.icon-container {
     display:flex;
     flex-wrap: wrap;
 }
@@ -31,21 +44,20 @@ main {
 .icon {
     width:24px;
     height:24px;
+    margin:4px;
     background-image: url('img/sprites/kangaroo_icons.png');
     background-repeat: no-repeat;
     background-size: 240px 264px; /* 10列*24px, 11行*24px */
-    margin:5px;
     cursor:pointer;
-    display:inline-block;
     position:relative;
 }
 
 .icon div {
     position:absolute;
     top:26px;
-    width: max-content;
+    width:max-content;
     font-size:10px;
-    white-space: nowrap;
+    white-space:nowrap;
 }
 
 .icon:hover {
@@ -53,8 +65,7 @@ main {
 }
 
 .component-info {
-    margin-left:20px;
-    flex:1;
+    margin-top:20px;
 }
 
 .component-info img {
