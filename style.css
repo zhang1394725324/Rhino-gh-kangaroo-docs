@@ -24,7 +24,7 @@ body {
     background: linear-gradient(135deg, #1a472a 0%, #0f2b1a 100%);
     color: white;
     padding: 0 20px;
-    height: 50px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -74,24 +74,24 @@ body {
     background: rgba(255,255,255,0.3);
 }
 
-/* ===== 分类卡片容器（网格布局，自动换行）===== */
+/* ===== 分类卡片容器（不滚动，自动换行）===== */
 .categories-container {
     flex-shrink: 0;
     padding: 12px 16px;
     background: #f1f5f9;
     border-bottom: 1px solid #e2e8f0;
-    max-height: 280px;
-    overflow-y: auto;
+    overflow-y: visible;
 }
 
 .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 220px));
+    display: flex;
+    flex-wrap: wrap;
     gap: 12px;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
-/* 分类卡片（矩形A）- 缩小尺寸，高度一致 */
+/* 分类卡片 - 宽度自适应，高度固定 */
 .category-card {
     background: #ffffff;
     border: 1.5px solid #cbd5e1;
@@ -99,10 +99,12 @@ body {
     overflow: hidden;
     transition: all 0.2s ease;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
-    height: 100%;
-    min-height: 160px;
+    height: 200px;
+    width: auto;
+    min-width: 140px;
+    max-width: 200px;
 }
 
 .category-card:hover {
@@ -113,23 +115,33 @@ body {
 /* 卡片内图标网格区域 */
 .card-icons-area {
     flex: 1;
-    padding: 10px 8px 8px 8px;
+    padding: 8px 6px;
     overflow-y: auto;
 }
 
+/* 图标网格 - 紧凑布局 */
 .card-icons-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+    gap: 4px;
+    align-items: center;
+    justify-items: center;
 }
 
-/* 卡片内的小图标 */
+/* 根据图标数量自动设置列数 */
+.card-icons-grid[data-columns="2"] { grid-template-columns: repeat(2, 1fr); }
+.card-icons-grid[data-columns="3"] { grid-template-columns: repeat(3, 1fr); }
+.card-icons-grid[data-columns="4"] { grid-template-columns: repeat(4, 1fr); }
+.card-icons-grid[data-columns="5"] { grid-template-columns: repeat(5, 1fr); }
+.card-icons-grid[data-columns="6"] { grid-template-columns: repeat(6, 1fr); }
+
+/* 卡片内的小图标 - 紧凑 */
 .card-icon-item {
     text-align: center;
     cursor: pointer;
-    padding: 4px 2px;
+    padding: 3px 2px;
     border-radius: 6px;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
+    width: 100%;
 }
 
 .card-icon-item:hover {
@@ -138,33 +150,47 @@ body {
 }
 
 .card-icon-sprite {
-    width: 24px;
-    height: 24px;
-    margin: 0 auto 3px;
+    width: 22px;
+    height: 22px;
+    margin: 0 auto 2px;
     background-image: url('img/sprites/kangaroo_icons.png');
     background-repeat: no-repeat;
     background-size: 240px 264px;
 }
 
 .card-icon-name {
-    font-size: 0.55rem;
+    font-size: 0.5rem;
     font-weight: 500;
     color: #475569;
     word-break: break-word;
-    line-height: 1.2;
+    line-height: 1.15;
+    max-width: 55px;
+    margin: 0 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-icon-name:hover {
+    white-space: normal;
+    word-break: break-word;
+    background: #f8fafc;
+    position: relative;
+    z-index: 1;
 }
 
 /* 分类标题标签（矩形B - 黑色背景）*/
 .category-title {
     background: #1e293b;
-    padding: 6px 10px;
+    padding: 5px 8px;
     text-align: center;
     border-top: 1px solid #334155;
+    flex-shrink: 0;
 }
 
 .category-title span {
     color: white;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 600;
     letter-spacing: 0.3px;
 }
@@ -273,18 +299,18 @@ body {
 }
 
 .component-detail h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     color: #0f2b3d;
     border-left: 3px solid #1e4a76;
     padding-left: 10px;
 }
 
 .detail-section {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     border-bottom: 1px solid #eef2ff;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
 }
 
 .detail-section:last-child {
@@ -293,30 +319,30 @@ body {
 }
 
 .detail-section-title {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
     color: #1e4a76;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
 .component-detail .desc {
-    font-size: 0.8rem;
-    line-height: 1.5;
+    font-size: 0.75rem;
+    line-height: 1.45;
     color: #334155;
     background: #ffffff;
-    padding: 10px;
-    border-radius: 8px;
+    padding: 8px;
+    border-radius: 6px;
     border-left: 3px solid #1e4a76;
 }
 
 .image-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 90px));
-    gap: 8px;
-    margin-top: 6px;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 80px));
+    gap: 6px;
+    margin-top: 4px;
 }
 
 .gallery-item {
@@ -337,20 +363,20 @@ body {
 .gallery-item img,
 .gallery-item video {
     width: 100%;
-    height: 60px;
+    height: 55px;
     object-fit: cover;
     display: block;
 }
 
 .params-table {
     width: 100%;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     border-collapse: collapse;
 }
 
 .params-table th,
 .params-table td {
-    padding: 5px 4px;
+    padding: 4px 4px;
     text-align: left;
     border-bottom: 1px solid #eef2ff;
 }
@@ -364,23 +390,23 @@ body {
 .tag-cloud {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 4px;
 }
 
 .tag {
     background: #eef2ff;
     color: #1e4a76;
-    padding: 2px 8px;
+    padding: 2px 6px;
     border-radius: 20px;
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     font-weight: 500;
 }
 
 .meta {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: #64748b;
     background: #ffffff;
-    padding: 8px;
+    padding: 6px;
     border-radius: 6px;
 }
 
@@ -446,35 +472,40 @@ body {
 
 /* 平板 */
 @media (max-width: 900px) {
+    .categories-container {
+        padding: 10px 12px;
+    }
+    
     .categories-grid {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 200px));
         gap: 10px;
     }
     
-    .card-icons-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 4px;
+    .category-card {
+        height: 180px;
+        min-width: 120px;
+        max-width: 170px;
     }
     
     .card-icon-sprite {
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
     }
     
     .card-icon-name {
-        font-size: 0.5rem;
+        font-size: 0.45rem;
+        max-width: 45px;
     }
     
     .category-title span {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
     }
 }
 
-/* 手机横屏/小平板 */
+/* 手机 */
 @media (max-width: 768px) {
     .top-bar {
         padding: 0 12px;
-        height: 45px;
+        height: 44px;
     }
     
     .logo-area h1 {
@@ -491,39 +522,43 @@ body {
     }
     
     .categories-container {
-        padding: 10px 12px;
-        max-height: 240px;
+        padding: 8px 10px;
     }
     
     .categories-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 180px));
         gap: 8px;
     }
     
+    .category-card {
+        height: 160px;
+        min-width: 100px;
+        max-width: 150px;
+    }
+    
     .card-icons-area {
-        padding: 8px 6px 6px 6px;
+        padding: 6px 4px;
     }
     
     .card-icons-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
+        gap: 3px;
     }
     
     .card-icon-sprite {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
     }
     
     .card-icon-name {
-        font-size: 0.5rem;
+        font-size: 0.4rem;
+        max-width: 40px;
     }
     
     .category-title {
-        padding: 5px 8px;
+        padding: 4px 6px;
     }
     
     .category-title span {
-        font-size: 0.6rem;
+        font-size: 0.55rem;
     }
     
     .detail-header {
@@ -545,64 +580,25 @@ body {
     }
 }
 
-/* 手机竖屏 */
+/* 超小手机 */
 @media (max-width: 550px) {
-    .categories-container {
-        max-height: 200px;
-    }
-    
-    .categories-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 150px));
-        gap: 8px;
-    }
-    
-    .card-icons-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 4px;
+    .category-card {
+        height: 150px;
+        min-width: 90px;
+        max-width: 130px;
     }
     
     .card-icon-sprite {
-        width: 18px;
-        height: 18px;
+        width: 16px;
+        height: 16px;
     }
     
     .card-icon-name {
-        font-size: 0.45rem;
+        font-size: 0.35rem;
+        max-width: 35px;
     }
     
     .category-title span {
-        font-size: 0.55rem;
-    }
-    
-    .image-gallery {
-        grid-template-columns: repeat(auto-fill, minmax(70px, 75px));
-    }
-    
-    .gallery-item img,
-    .gallery-item video {
-        height: 50px;
-    }
-}
-
-/* 超小手机 */
-@media (max-width: 380px) {
-    .categories-grid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 140px));
-    }
-    
-    .card-icons-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .card-icon-name {
-        font-size: 0.4rem;
-    }
-    
-    .component-detail h3 {
-        font-size: 0.95rem;
-    }
-    
-    .component-detail .desc {
-        font-size: 0.7rem;
+        font-size: 0.5rem;
     }
 }
