@@ -1,0 +1,35 @@
+{
+  "description_cn": "刚体物理模拟，将一组点视为刚体，保持其相对位置和方向不变。",
+  "description_en": "Rigid body physics simulation, treats a set of points as a rigid body, maintaining their relative positions and orientations.",
+  "images": [
+    "rigidbody_demo.png",
+    "rigidbody_collision.gif"
+  ],
+  "video": "rigidbody_tutorial.mp4",
+  "tags": ["刚体", "物理", "模拟", "动力学"],
+  "parameters": [
+    {
+      "name": "Mass",
+      "cn": "质量",
+      "en": "Mass",
+      "default": 1.0,
+      "desc_cn": "刚体的质量",
+      "desc_en": "Mass of the rigid body"
+    },
+    {
+      "name": "Inertia",
+      "cn": "惯性矩",
+      "en": "Inertia",
+      "default": 1.0,
+      "desc_cn": "转动惯量",
+      "desc_en": "Moment of inertia"
+    }
+  ],
+  "examples": [
+    "rigidbody_pendulum.gh",
+    "rigidbody_collision.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.2",
+  "lastUpdated": "2026-01-20"
+}
