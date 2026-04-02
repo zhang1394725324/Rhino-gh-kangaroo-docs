@@ -1,0 +1,33 @@
+{
+  "description_cn": "塑性长度约束，允许线段长度发生塑性变形（永久伸长）。",
+  "description_en": "Plastic length constraint, allows plastic deformation (permanent elongation) of line length.",
+  "images": [
+    "plasticlength_demo.gif"
+  ],
+  "video": "",
+  "tags": ["塑性", "长度", "变形", "永久"],
+  "parameters": [
+    {
+      "name": "YieldLength",
+      "cn": "屈服长度",
+      "en": "Yield Length",
+      "default": 10.0,
+      "desc_cn": "开始塑性变形的长度阈值",
+      "desc_en": "Length threshold for plastic deformation"
+    },
+    {
+      "name": "Plasticity",
+      "cn": "塑性系数",
+      "en": "Plasticity",
+      "default": 0.5,
+      "desc_cn": "塑性变形系数",
+      "desc_en": "Plastic deformation coefficient"
+    }
+  ],
+  "examples": [
+    "plasticlength_stretch.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.0",
+  "lastUpdated": "2024-01-11"
+}
