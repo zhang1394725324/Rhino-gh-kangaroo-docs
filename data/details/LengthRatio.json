@@ -1,0 +1,25 @@
+{
+  "description_cn": "长度比例约束，保持多条线段之间的长度比例。",
+  "description_en": "Length ratio constraint, maintains length ratios between multiple line segments.",
+  "images": [
+    "lengthratio_demo.png"
+  ],
+  "video": "",
+  "tags": ["比例", "长度", "线段", "约束"],
+  "parameters": [
+    {
+      "name": "Ratios",
+      "cn": "比例值",
+      "en": "Ratios",
+      "default": "[1,1,1]",
+      "desc_cn": "线段长度比例列表",
+      "desc_en": "List of line length ratios"
+    }
+  ],
+  "examples": [
+    "lengthratio_proportional.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "1.9",
+  "lastUpdated": "2024-01-09"
+}
