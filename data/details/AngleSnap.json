@@ -1,0 +1,33 @@
+{
+  "description_cn": "角度吸附约束，将角度吸附到指定的离散值。适用于步进式旋转。",
+  "description_en": "Angle snap constraint, snaps angles to specified discrete values. Suitable for stepped rotation.",
+  "images": [
+    "anglesnap_demo.gif"
+  ],
+  "video": "",
+  "tags": ["角度", "吸附", "步进", "旋转"],
+  "parameters": [
+    {
+      "name": "SnapValues",
+      "cn": "吸附值",
+      "en": "Snap Values",
+      "default": "[0, 45, 90, 135, 180]",
+      "desc_cn": "角度吸附的目标值列表（度）",
+      "desc_en": "List of target angle values for snapping (degrees)"
+    },
+    {
+      "name": "Tolerance",
+      "cn": "容差",
+      "en": "Tolerance",
+      "default": 5.0,
+      "desc_cn": "吸附触发容差",
+      "desc_en": "Snap trigger tolerance"
+    }
+  ],
+  "examples": [
+    "anglesnap_rotator.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "1.8",
+  "lastUpdated": "2024-01-05"
+}
