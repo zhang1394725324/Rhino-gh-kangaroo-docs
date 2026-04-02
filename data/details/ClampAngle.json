@@ -1,0 +1,33 @@
+{
+  "description_cn": "限制角度范围，将角度约束在最小值和最大值之间。",
+  "description_en": "Clamps angle range, constrains angle between minimum and maximum values.",
+  "images": [
+    "clampangle_demo.png"
+  ],
+  "video": "",
+  "tags": ["角度", "限制", "范围", "约束"],
+  "parameters": [
+    {
+      "name": "MinAngle",
+      "cn": "最小角度",
+      "en": "Min Angle",
+      "default": 0.0,
+      "desc_cn": "允许的最小角度",
+      "desc_en": "Minimum allowed angle"
+    },
+    {
+      "name": "MaxAngle",
+      "cn": "最大角度",
+      "en": "Max Angle",
+      "default": 180.0,
+      "desc_cn": "允许的最大角度",
+      "desc_en": "Maximum allowed angle"
+    }
+  ],
+  "examples": [
+    "clampangle_joint.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.0",
+  "lastUpdated": "2024-01-09"
+}
