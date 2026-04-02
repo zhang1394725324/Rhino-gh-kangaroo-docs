@@ -1,0 +1,25 @@
+{
+  "description_cn": "实体与点之间的碰撞检测，防止点穿透实体表面。",
+  "description_en": "Solid-point collision detection, prevents points from penetrating solid surfaces.",
+  "images": [
+    "solidpointcollide_demo.png"
+  ],
+  "video": "",
+  "tags": ["实体", "点", "碰撞", "表面"],
+  "parameters": [
+    {
+      "name": "Restitution",
+      "cn": "弹性系数",
+      "en": "Restitution",
+      "default": 0.5,
+      "desc_cn": "碰撞弹性",
+      "desc_en": "Collision restitution"
+    }
+  ],
+  "examples": [
+    "solidpointcollide_surface.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "1.9",
+  "lastUpdated": "2024-01-10"
+}
