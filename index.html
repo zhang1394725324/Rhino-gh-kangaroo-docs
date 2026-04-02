@@ -8,45 +8,38 @@
 </head>
 <body>
     <div class="app-container">
-        <!-- 顶部导航栏 -->
         <header class="top-bar">
             <div class="logo-area">
-                <h1>🦘 Kangaroo2</h1>
+                <h1>🐨 Kangaroo2</h1>
                 <span class="subtitle">组件参考手册</span>
             </div>
-            <button id="langBtn" class="lang-switch">EN</button>
+            <div class="header-actions">
+                <button id="langBtn" class="lang-switch">EN</button>
+                <button id="refreshBtn" class="refresh-btn" title="刷新数据">🔄</button>
+            </div>
         </header>
 
-        <!-- 主体：三栏布局 -->
         <div class="main-layout" id="mainLayout">
-            <!-- 左侧分组导航 -->
             <aside class="sidebar" id="sidebar">
                 <div class="sidebar-header">
                     <span>📂 组件分类</span>
                 </div>
-                <ul id="groupNavList" class="group-nav">
-                    <!-- 动态渲染 -->
-                </ul>
+                <ul id="groupNavList" class="group-nav"></ul>
             </aside>
 
-            <!-- 可拖动分隔条 -->
             <div class="resizer" id="sidebarResizer"></div>
 
-            <!-- 中间图标网格 -->
             <main class="icon-grid-area" id="iconGridArea">
                 <div id="currentGroupTitle" class="group-title-header"></div>
-                <div id="iconsContainer" class="icons-grid">
-                    <!-- 动态渲染图标 -->
-                </div>
+                <div id="iconsContainer" class="icons-grid"></div>
             </main>
 
-            <!-- 可拖动分隔条 -->
             <div class="resizer" id="detailResizer"></div>
 
-            <!-- 右侧详情面板 -->
             <aside class="detail-panel" id="detailPanel">
                 <div class="detail-header">
                     <span>📖 组件详情</span>
+                    <button id="expandDetailBtn" class="expand-btn" title="展开/收起">⛶</button>
                 </div>
                 <div id="detailContent" class="detail-content">
                     <div class="placeholder">
