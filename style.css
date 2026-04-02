@@ -99,7 +99,7 @@ body {
     overflow: hidden;
     transition: all 0.2s ease;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     height: 210px;
     width: auto;
@@ -115,18 +115,15 @@ body {
 .card-icons-area {
     flex: 1;
     padding: 10px 8px;
-    overflow: visible;
-    display: flex;
-    flex-direction: column;
+    overflow-y: auto;
 }
 
-/* 图标网格 - 自动列数，容纳4行 */
+/* 图标网格 - 自动列数 */
 .card-icons-grid {
     display: grid;
     gap: 6px;
     align-items: start;
     justify-items: center;
-    grid-auto-rows: minmax(40px, auto);
 }
 
 /* 根据图标数量自动设置列数 */
@@ -182,27 +179,25 @@ body {
     margin: 0 auto;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    white-space: nowrap;
 }
 
-/* 分类标题标签（黑色背景）- 确保显示 */
+/* 分类标题标签（黑色背景）- 强制显示 */
 .category-title {
-    background: #1e293b !important;
-    padding: 6px 8px !important;
-    text-align: center !important;
-    border-top: 1px solid #334155 !important;
-    flex-shrink: 0 !important;
-    display: block !important;
+    background: #1e293b;
+    padding: 8px 8px;
+    text-align: center;
+    border-top: 1px solid #334155;
+    flex-shrink: 0;
+    min-height: 36px;
 }
 
 .category-title span {
-    color: white !important;
-    font-size: 0.7rem !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.3px !important;
-    display: inline !important;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    display: inline-block;
 }
 
 /* ===== 组件详情区域 ===== */
@@ -546,7 +541,7 @@ body {
         max-width: 45px;
     }
     .category-title {
-        padding: 5px 6px;
+        padding: 6px 6px;
     }
     .category-title span {
         font-size: 0.6rem;
