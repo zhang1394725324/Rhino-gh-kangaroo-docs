@@ -207,8 +207,8 @@ body {
 
 /* 雪碧图图标 - 24x24 */
 .icon-sprite {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     margin: 0 auto 6px;
     background-image: url('img/sprites/kangaroo_icons.png');
     background-repeat: no-repeat;
