@@ -1,0 +1,25 @@
+{
+  "description_cn": "一维动态权重约束，根据距离动态调整约束强度。",
+  "description_en": "1D dynamic weight constraint, adjusts constraint strength dynamically based on distance.",
+  "images": [
+    "dynamicweight1d_demo.png"
+  ],
+  "video": "",
+  "tags": ["权重", "动态", "一维", "距离"],
+  "parameters": [
+    {
+      "name": "Falloff",
+      "cn": "衰减率",
+      "en": "Falloff",
+      "default": 1.0,
+      "desc_cn": "权重衰减率",
+      "desc_en": "Weight falloff rate"
+    }
+  ],
+  "examples": [
+    "dynamicweight1d_adaptive.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "1.9",
+  "lastUpdated": "2024-01-07"
+}
