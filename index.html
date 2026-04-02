@@ -8,10 +8,9 @@
 </head>
 <body>
     <div class="app-container">
-        <!-- 顶部栏（上） -->
+        <!-- 第一行：顶部栏 -->
         <header class="top-bar">
             <div class="logo-area">
-                <button class="menu-toggle" id="menuToggle">☰</button>
                 <h1>🐨 Kangaroo2</h1>
                 <span class="subtitle">组件参考手册</span>
             </div>
@@ -22,39 +21,32 @@
             </div>
         </header>
 
-        <!-- 主体区域（中）- 三栏并排 -->
-        <div class="main-layout" id="mainLayout">
-            <aside class="sidebar" id="sidebar">
-                <div class="sidebar-header">
-                    <span>📂 组件分类</span>
-                </div>
-                <ul id="groupNavList" class="group-nav"></ul>
-            </aside>
-
-            <div class="resizer" id="sidebarResizer"></div>
-
-            <main class="icon-grid-area" id="iconGridArea">
-                <div id="currentGroupTitle" class="group-title-header"></div>
-                <div id="iconsContainer" class="icons-grid"></div>
-            </main>
-
-            <div class="resizer" id="detailResizer"></div>
-
-            <aside class="detail-panel" id="detailPanel">
-                <div class="detail-header">
-                    <span>📖 组件详情</span>
-                    <button id="expandDetailBtn" class="expand-btn" title="展开/收起">⛶</button>
-                </div>
-                <div id="detailContent" class="detail-content">
-                    <div class="placeholder">
-                        <span>✨ 点击任意组件</span>
-                        <span>查看详细说明与示意图</span>
-                    </div>
-                </div>
-            </aside>
+        <!-- 第二行：组件分类导航（横向滚动）-->
+        <div class="category-nav">
+            <ul id="groupNavList" class="group-nav-horizontal"></ul>
         </div>
 
-        <!-- 底部栏（下） -->
+        <!-- 第三行：图标网格区域 -->
+        <div class="icon-grid-area">
+            <div id="currentGroupTitle" class="group-title-header"></div>
+            <div id="iconsContainer" class="icons-grid"></div>
+        </div>
+
+        <!-- 第四行：组件详情区域（占比最大）-->
+        <div class="detail-panel">
+            <div class="detail-header">
+                <span>📖 组件详情</span>
+                <button id="expandDetailBtn" class="expand-btn" title="展开/收起">⛶</button>
+            </div>
+            <div id="detailContent" class="detail-content">
+                <div class="placeholder">
+                    <span>✨ 点击任意组件</span>
+                    <span>查看详细说明与示意图</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第五行：底部栏 -->
         <footer class="footer">
             <span>🐨 Kangaroo2 组件文档 | 版本 2.0</span>
             <div class="footer-links">
