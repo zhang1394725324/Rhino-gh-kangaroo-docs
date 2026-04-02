@@ -5,12 +5,12 @@ let groupsList = [];
 let detailCache = new Map();
 
 // DOM 元素
-const categoriesContainer = document.getElementById('categoriesContainer');
+const categoriesGrid = document.getElementById('categoriesGrid');
 const detailContent = document.getElementById('detailContent');
 const langBtn = document.getElementById('langBtn');
 const expandDetailBtn = document.getElementById('expandDetailBtn');
 
-// 分组配置
+// 分组配置（11个分组）
 const GROUP_ORDER = [
     'Goals-6dof', 'Goals-Angle', 'Goals-Co', 'Goals-Col', 'Goals-Lin',
     'Goals-Mesh', 'Goals-On', 'Goals-Pt', 'Main', 'Mesh', 'Utility'
@@ -215,7 +215,7 @@ function loadData() {
         })
         .catch(err => {
             console.error('数据加载失败:', err);
-            categoriesContainer.innerHTML = `<div style="padding:40px;text-align:center;color:#dc2626;">数据加载失败: ${err.message}</div>`;
+            categoriesGrid.innerHTML = `<div style="padding:40px;text-align:center;color:#dc2626;">数据加载失败: ${err.message}</div>`;
         });
 }
 
@@ -236,9 +236,9 @@ function assignSpriteCoordinates() {
     }
 }
 
-// ===== 渲染11个分类卡片 =====
+// ===== 渲染11个分类卡片（网格布局）=====
 function renderCategories() {
-    categoriesContainer.innerHTML = '';
+    categoriesGrid.innerHTML = '';
     
     groupsList.forEach(groupKey => {
         const items = componentsData[groupKey];
@@ -255,8 +255,8 @@ function renderCategories() {
         const iconsGrid = document.createElement('div');
         iconsGrid.className = 'card-icons-grid';
         
-        // 显示前12个图标（网格限制）
-        const displayItems = items.slice(0, 12);
+        // 显示前8个图标（卡片缩小后显示更少）
+        const displayItems = items.slice(0, 8);
         displayItems.forEach(item => {
             const iconItem = document.createElement('div');
             iconItem.className = 'card-icon-item';
@@ -280,12 +280,16 @@ function renderCategories() {
             iconsGrid.appendChild(iconItem);
         });
         
-        // 如果组件数量超过12个，显示更多提示
-        if (items.length > 12) {
+        // 如果组件数量超过8个，显示更多提示
+        if (items.length > 8) {
             const moreHint = document.createElement('div');
             moreHint.className = 'card-icon-item';
             moreHint.style.opacity = '0.6';
-            moreHint.innerHTML = `<div style="font-size:0.6rem; padding:8px 0;">+${items.length - 12} 更多</div>`;
+            moreHint.style.display = 'flex';
+            moreHint.style.flexDirection = 'column';
+            moreHint.style.justifyContent = 'center';
+            moreHint.style.alignItems = 'center';
+            moreHint.innerHTML = `<div style="font-size:0.5rem; padding:4px 0;">+${items.length - 8}</div><div style="font-size:0.45rem;">更多</div>`;
             iconsGrid.appendChild(moreHint);
         }
         
@@ -302,7 +306,7 @@ function renderCategories() {
         card.appendChild(iconsArea);
         card.appendChild(titleArea);
         
-        categoriesContainer.appendChild(card);
+        categoriesGrid.appendChild(card);
     });
 }
 
@@ -321,10 +325,10 @@ expandDetailBtn.addEventListener('click', () => {
     const panel = document.querySelector('.detail-panel');
     isDetailExpanded = !isDetailExpanded;
     if (isDetailExpanded) {
-        panel.style.maxHeight = '60%';
+        panel.style.flex = '2';
         expandDetailBtn.textContent = '✕';
     } else {
-        panel.style.maxHeight = '35%';
+        panel.style.flex = '1';
         expandDetailBtn.textContent = '⛶';
     }
 });
