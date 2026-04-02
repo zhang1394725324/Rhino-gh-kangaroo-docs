@@ -1,0 +1,33 @@
+{
+  "description_cn": "实体与平面之间的碰撞检测，防止实体穿透平面。常用于地面碰撞。",
+  "description_en": "Collision detection between solid and plane, prevents solid from penetrating the plane. Commonly used for ground collision.",
+  "images": [
+    "solidplane_collide_demo.gif"
+  ],
+  "video": "",
+  "tags": ["碰撞", "平面", "实体", "地面"],
+  "parameters": [
+    {
+      "name": "Restitution",
+      "cn": "弹性系数",
+      "en": "Restitution",
+      "default": 0.5,
+      "desc_cn": "与平面碰撞的弹性",
+      "desc_en": "Restitution when colliding with plane"
+    },
+    {
+      "name": "Friction",
+      "cn": "摩擦系数",
+      "en": "Friction",
+      "default": 0.5,
+      "desc_cn": "与平面的摩擦力",
+      "desc_en": "Friction with plane"
+    }
+  ],
+  "examples": [
+    "solidplane_collision.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.0",
+  "lastUpdated": "2024-01-12"
+}
