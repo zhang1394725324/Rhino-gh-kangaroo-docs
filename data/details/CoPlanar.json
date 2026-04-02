@@ -1,0 +1,26 @@
+{
+  "description_cn": "共面约束，使多个点保持在同一个平面上。",
+  "description_en": "Coplanar constraint, keeps multiple points on the same plane.",
+  "images": [
+    "coplanar_demo.png",
+    "coplanar_animation.gif"
+  ],
+  "video": "",
+  "tags": ["共面", "平面", "点", "约束"],
+  "parameters": [
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1.0,
+      "desc_cn": "共面约束强度",
+      "desc_en": "Coplanar constraint strength"
+    }
+  ],
+  "examples": [
+    "coplanar_surface.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.0",
+  "lastUpdated": "2024-01-10"
+}
