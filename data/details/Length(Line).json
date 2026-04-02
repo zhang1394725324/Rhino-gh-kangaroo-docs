@@ -1,0 +1,33 @@
+{
+  "description_cn": "线段长度约束，保持两点之间的指定距离。",
+  "description_en": "Line length constraint, maintains specified distance between two points.",
+  "images": [
+    "lengthline_demo.png"
+  ],
+  "video": "",
+  "tags": ["长度", "距离", "线段", "约束"],
+  "parameters": [
+    {
+      "name": "TargetLength",
+      "cn": "目标长度",
+      "en": "Target Length",
+      "default": "Auto",
+      "desc_cn": "期望的线段长度",
+      "desc_en": "Desired line length"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1.0,
+      "desc_cn": "长度约束强度",
+      "desc_en": "Length constraint strength"
+    }
+  ],
+  "examples": [
+    "lengthline_basic.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2024-01-12"
+}
