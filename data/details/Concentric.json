@@ -1,0 +1,25 @@
+{
+  "description_cn": "保持两个或多个圆/圆弧同心。常用于机械装配和圆形对齐。",
+  "description_en": "Keep two or more circles/arcs concentric. Commonly used in mechanical assembly and circular alignment.",
+  "images": [
+    "concentric_demo.png"
+  ],
+  "video": "",
+  "tags": ["同心", "圆", "对齐", "装配"],
+  "parameters": [
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1.0,
+      "desc_cn": "同心约束强度",
+      "desc_en": "Concentric constraint strength"
+    }
+  ],
+  "examples": [
+    "concentric_gears.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "1.9",
+  "lastUpdated": "2026-01-05"
+}
