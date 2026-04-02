@@ -236,7 +236,7 @@ function assignSpriteCoordinates() {
     }
 }
 
-// ===== 渲染11个分类卡片（网格布局）=====
+// ===== 渲染11个分类卡片（全部图标显示，无"更多"）=====
 function renderCategories() {
     categoriesGrid.innerHTML = '';
     
@@ -244,7 +244,19 @@ function renderCategories() {
         const items = componentsData[groupKey];
         if (!items || items.length === 0) return;
         
-        // 创建卡片（矩形A）
+        // 计算列数：根据图标数量决定，最多6列
+        const itemCount = items.length;
+        let columns = 2;
+        if (itemCount <= 4) columns = 2;
+        else if (itemCount <= 9) columns = 3;
+        else if (itemCount <= 16) columns = 4;
+        else if (itemCount <= 25) columns = 5;
+        else columns = 6;
+        
+        // 计算需要多少行（固定4行，超出部分滚动）
+        const rows = Math.ceil(itemCount / columns);
+        
+        // 创建卡片
         const card = document.createElement('div');
         card.className = 'category-card';
         
@@ -254,10 +266,10 @@ function renderCategories() {
         
         const iconsGrid = document.createElement('div');
         iconsGrid.className = 'card-icons-grid';
+        iconsGrid.setAttribute('data-columns', columns);
         
-        // 显示前8个图标（卡片缩小后显示更少）
-        const displayItems = items.slice(0, 8);
-        displayItems.forEach(item => {
+        // 显示所有图标（不显示"更多"）
+        items.forEach(item => {
             const iconItem = document.createElement('div');
             iconItem.className = 'card-icon-item';
             iconItem.title = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
@@ -268,7 +280,13 @@ function renderCategories() {
             
             const nameSpan = document.createElement('div');
             nameSpan.className = 'card-icon-name';
-            nameSpan.textContent = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
+            let displayName = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
+            // 名称过长时截断
+            if (displayName.length > 8) {
+                displayName = displayName.substring(0, 6) + '...';
+            }
+            nameSpan.textContent = displayName;
+            nameSpan.title = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
             
             iconItem.appendChild(sprite);
             iconItem.appendChild(nameSpan);
@@ -280,22 +298,9 @@ function renderCategories() {
             iconsGrid.appendChild(iconItem);
         });
         
-        // 如果组件数量超过8个，显示更多提示
-        if (items.length > 8) {
-            const moreHint = document.createElement('div');
-            moreHint.className = 'card-icon-item';
-            moreHint.style.opacity = '0.6';
-            moreHint.style.display = 'flex';
-            moreHint.style.flexDirection = 'column';
-            moreHint.style.justifyContent = 'center';
-            moreHint.style.alignItems = 'center';
-            moreHint.innerHTML = `<div style="font-size:0.5rem; padding:4px 0;">+${items.length - 8}</div><div style="font-size:0.45rem;">更多</div>`;
-            iconsGrid.appendChild(moreHint);
-        }
-        
         iconsArea.appendChild(iconsGrid);
         
-        // 下半部分：黑色标题标签（矩形B）
+        // 下半部分：黑色标题标签
         const titleArea = document.createElement('div');
         titleArea.className = 'category-title';
         const titleSpan = document.createElement('span');
