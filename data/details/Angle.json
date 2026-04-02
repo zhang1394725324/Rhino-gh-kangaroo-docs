@@ -1,0 +1,34 @@
+{
+  "description_cn": "角度约束，控制两条线段之间的夹角。可用于保持特定角度关系。",
+  "description_en": "Angle constraint, controls the angle between two line segments. Can be used to maintain specific angular relationships.",
+  "images": [
+    "angle_demo.png",
+    "angle_animation.gif"
+  ],
+  "video": "",
+  "tags": ["角度", "约束", "线段", "几何"],
+  "parameters": [
+    {
+      "name": "TargetAngle",
+      "cn": "目标角度",
+      "en": "Target Angle",
+      "default": 90.0,
+      "desc_cn": "期望的角度值（度）",
+      "desc_en": "Desired angle value (degrees)"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1.0,
+      "desc_cn": "角度约束强度",
+      "desc_en": "Angle constraint strength"
+    }
+  ],
+  "examples": [
+    "angle_constraint.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.0",
+  "lastUpdated": "2024-01-10"
+}
