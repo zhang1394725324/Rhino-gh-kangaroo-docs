@@ -1,0 +1,25 @@
+{
+  "description_cn": "曲线与曲线之间的碰撞检测，防止曲线相互穿透。",
+  "description_en": "Curve-curve collision detection, prevents curves from intersecting.",
+  "images": [
+    "curvecollide_demo.png"
+  ],
+  "video": "",
+  "tags": ["曲线", "碰撞", "检测", "约束"],
+  "parameters": [
+    {
+      "name": "Tolerance",
+      "cn": "容差",
+      "en": "Tolerance",
+      "default": 0.01,
+      "desc_cn": "碰撞检测容差",
+      "desc_en": "Collision detection tolerance"
+    }
+  ],
+  "examples": [
+    "curvecollide_avoid.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "1.8",
+  "lastUpdated": "2024-01-05"
+}
