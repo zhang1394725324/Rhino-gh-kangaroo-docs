@@ -415,7 +415,7 @@ function assignSpriteCoordinates() {
     console.log(`✅ 已为 ${globalIndex} 个组件分配雪碧图坐标`);
 }
 
-// ===== 渲染左侧导航 =====
+// ===== 渲染左侧导航（改为横向）=====
 function renderSidebar() {
     groupNavList.innerHTML = '';
     groupsList.forEach(groupKey => {
