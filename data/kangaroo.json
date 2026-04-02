@@ -1,731 +1,731 @@
 {
-    "Goals-6dof": [
-        {
-            "name": "AlignFaces",
-            "cn": "对齐面",
-            "en": "AlignFaces",
-            "spriteX": 0,
-            "spriteY": 0
-        },
-        {
-            "name": "Beam",
-            "cn": "梁",
-            "en": "Beam",
-            "spriteX": 24,
-            "spriteY": 0
-        },
-        {
-            "name": "Concentric",
-            "cn": "同心",
-            "en": "Concentric",
-            "spriteX": 48,
-            "spriteY": 0
-        },
-        {
-            "name": "Rigid Body",
-            "cn": "刚体",
-            "en": "Rigid Body",
-            "spriteX": 72,
-            "spriteY": 0
-        },
-        {
-            "name": "Rigid Body Collide",
-            "cn": "刚体碰撞",
-            "en": "Rigid Body Collide",
-            "spriteX": 96,
-            "spriteY": 0
-        },
-        {
-            "name": "Rigid Point Set",
-            "cn": "刚体点集",
-            "en": "Rigid Point Set",
-            "spriteX": 120,
-            "spriteY": 0
-        },
-        {
-            "name": "Solid Plane Collide",
-            "cn": "实体平面碰撞",
-            "en": "Solid Plane Collide",
-            "spriteX": 144,
-            "spriteY": 0
-        },
-        {
-            "name": "Support",
-            "cn": "支撑",
-            "en": "Support",
-            "spriteX": 168,
-            "spriteY": 0
-        }
-    ],
-    "Goals-Angle": [
-        {
-            "name": "Angle",
-            "cn": "角度",
-            "en": "Angle",
-            "spriteX": 0,
-            "spriteY": 24
-        },
-        {
-            "name": "AngleSnap",
-            "cn": "角度吸附",
-            "en": "AngleSnap",
-            "spriteX": 24,
-            "spriteY": 24
-        },
-        {
-            "name": "ClampAngle",
-            "cn": "限制角度",
-            "en": "ClampAngle",
-            "spriteX": 48,
-            "spriteY": 24
-        },
-        {
-            "name": "EqualAngle",
-            "cn": "等角",
-            "en": "EqualAngle",
-            "spriteX": 72,
-            "spriteY": 24
-        },
-        {
-            "name": "G2",
-            "cn": "G2连续",
-            "en": "G2",
-            "spriteX": 96,
-            "spriteY": 24
-        },
-        {
-            "name": "Rod",
-            "cn": "杆",
-            "en": "Rod",
-            "spriteX": 120,
-            "spriteY": 24
-        }
-    ],
-    "Goals-Co": [
-        {
-            "name": "CoCircular",
-            "cn": "共圆",
-            "en": "CoCircular",
-            "spriteX": 0,
-            "spriteY": 48
-        },
-        {
-            "name": "CoLinear",
-            "cn": "共线",
-            "en": "CoLinear",
-            "spriteX": 24,
-            "spriteY": 48
-        },
-        {
-            "name": "CoPlanar",
-            "cn": "共面",
-            "en": "CoPlanar",
-            "spriteX": 48,
-            "spriteY": 48
-        },
-        {
-            "name": "CoSpherical",
-            "cn": "共球",
-            "en": "CoSpherical",
-            "spriteX": 72,
-            "spriteY": 48
-        }
-    ],
-    "Goals-Col": [
-        {
-            "name": "Collider",
-            "cn": "碰撞体",
-            "en": "Collider",
-            "spriteX": 0,
-            "spriteY": 72
-        },
-        {
-            "name": "CurveCollide",
-            "cn": "曲线碰撞",
-            "en": "CurveCollide",
-            "spriteX": 24,
-            "spriteY": 72
-        },
-        {
-            "name": "CurvePointCollide",
-            "cn": "曲线点碰撞",
-            "en": "CurvePointCollide",
-            "spriteX": 48,
-            "spriteY": 72
-        },
-        {
-            "name": "ImageCircles",
-            "cn": "图像圆",
-            "en": "ImageCircles",
-            "spriteX": 72,
-            "spriteY": 72
-        },
-        {
-            "name": "SoftBodyCollide",
-            "cn": "软体碰撞",
-            "en": "SoftBodyCollide",
-            "spriteX": 96,
-            "spriteY": 72
-        },
-        {
-            "name": "SolidPointCollide",
-            "cn": "实体点碰撞",
-            "en": "SolidPointCollide",
-            "spriteX": 120,
-            "spriteY": 72
-        },
-        {
-            "name": "SphereCollide",
-            "cn": "球碰撞",
-            "en": "SphereCollide",
-            "spriteX": 144,
-            "spriteY": 72
-        }
-    ],
-    "Goals-Lin": [
-        {
-            "name": "ClampLength",
-            "cn": "限制长度",
-            "en": "ClampLength",
-            "spriteX": 0,
-            "spriteY": 96
-        },
-        {
-            "name": "ConstantTension",
-            "cn": "恒张力",
-            "en": "ConstantTension",
-            "spriteX": 24,
-            "spriteY": 96
-        },
-        {
-            "name": "Direction",
-            "cn": "方向",
-            "en": "Direction",
-            "spriteX": 48,
-            "spriteY": 96
-        },
-        {
-            "name": "DynamicWeight1d",
-            "cn": "动态权重",
-            "en": "DynamicWeight1d",
-            "spriteX": 72,
-            "spriteY": 96
-        },
-        {
-            "name": "EqualLength",
-            "cn": "等长",
-            "en": "EqualLength",
-            "spriteX": 96,
-            "spriteY": 96
-        },
-        {
-            "name": "Length(Line)",
-            "cn": "长度(线)",
-            "en": "Length(Line)",
-            "spriteX": 120,
-            "spriteY": 96
-        },
-        {
-            "name": "LengthRatio",
-            "cn": "长度比例",
-            "en": "LengthRatio",
-            "spriteX": 144,
-            "spriteY": 96
-        },
-        {
-            "name": "LengthSnap",
-            "cn": "长度吸附",
-            "en": "LengthSnap",
-            "spriteX": 168,
-            "spriteY": 96
-        },
-        {
-            "name": "PlasticLength",
-            "cn": "塑性长度",
-            "en": "PlasticLength",
-            "spriteX": 192,
-            "spriteY": 96
-        }
-    ],
-    "Goals-Mesh": [
-        {
-            "name": "Conicalize",
-            "cn": "圆锥化",
-            "en": "Conicalize",
-            "spriteX": 0,
-            "spriteY": 120
-        },
-        {
-            "name": "Developablize",
-            "cn": "可展化",
-            "en": "Developablize",
-            "spriteX": 24,
-            "spriteY": 120
-        },
-        {
-            "name": "Hinge",
-            "cn": "铰链",
-            "en": "Hinge",
-            "spriteX": 48,
-            "spriteY": 120
-        },
-        {
-            "name": "LiveSoap",
-            "cn": "实时肥皂膜",
-            "en": "LiveSoap",
-            "spriteX": 72,
-            "spriteY": 120
-        },
-        {
-            "name": "Planarize",
-            "cn": "平面化",
-            "en": "Planarize",
-            "spriteX": 96,
-            "spriteY": 120
-        },
-        {
-            "name": "PolygonArea",
-            "cn": "多边形面积",
-            "en": "PolygonArea",
-            "spriteX": 120,
-            "spriteY": 120
-        },
-        {
-            "name": "Smooth",
-            "cn": "平滑",
-            "en": "Smooth",
-            "spriteX": 144,
-            "spriteY": 120
-        },
-        {
-            "name": "TangentialSmooth",
-            "cn": "切向平滑",
-            "en": "TangentialSmooth",
-            "spriteX": 168,
-            "spriteY": 120
-        },
-        {
-            "name": "VertexLoads",
-            "cn": "顶点载荷",
-            "en": "VertexLoads",
-            "spriteX": 192,
-            "spriteY": 120
-        },
-        {
-            "name": "Wind",
-            "cn": "风力",
-            "en": "Wind",
-            "spriteX": 216,
-            "spriteY": 120
-        },
-        {
-            "name": "CyclicQuad",
-            "cn": "循环四边形",
-            "en": "CyclicQuad",
-            "spriteX": 0,
-            "spriteY": 144
-        },
-        {
-            "name": "EdgeLengths",
-            "cn": "边长",
-            "en": "EdgeLengths",
-            "spriteX": 24,
-            "spriteY": 144
-        },
-        {
-            "name": "Isothermic",
-            "cn": "等温",
-            "en": "Isothermic",
-            "spriteX": 48,
-            "spriteY": 144
-        },
-        {
-            "name": "NoFoldThrough",
-            "cn": "防穿透折叠",
-            "en": "NoFoldThrough",
-            "spriteX": 72,
-            "spriteY": 144
-        },
-        {
-            "name": "PlasticHinge",
-            "cn": "塑性铰链",
-            "en": "PlasticHinge",
-            "spriteX": 96,
-            "spriteY": 144
-        },
-        {
-            "name": "Pressure",
-            "cn": "压力",
-            "en": "Pressure",
-            "spriteX": 120,
-            "spriteY": 144
-        },
-        {
-            "name": "SoapFilm",
-            "cn": "肥皂膜",
-            "en": "SoapFilm",
-            "spriteX": 144,
-            "spriteY": 144
-        },
-        {
-            "name": "TangentIncircles",
-            "cn": "切向内切圆",
-            "en": "TangentIncircles",
-            "spriteX": 168,
-            "spriteY": 144
-        },
-        {
-            "name": "Volume",
-            "cn": "体积",
-            "en": "Volume",
-            "spriteX": 192,
-            "spriteY": 144
-        }
-    ],
-    "Goals-On": [
-        {
-            "name": "OnCurve",
-            "cn": "在曲线上",
-            "en": "OnCurve",
-            "spriteX": 0,
-            "spriteY": 168
-        },
-        {
-            "name": "OnMesh",
-            "cn": "在网格上",
-            "en": "OnMesh",
-            "spriteX": 24,
-            "spriteY": 168
-        },
-        {
-            "name": "OnPlane",
-            "cn": "在平面上",
-            "en": "OnPlane",
-            "spriteX": 48,
-            "spriteY": 168
-        }
-    ],
-    "Goals-Pt": [
-        {
-            "name": "Anchor",
-            "cn": "锚点",
-            "en": "Anchor",
-            "spriteX": 0,
-            "spriteY": 192
-        },
-        {
-            "name": "AnchorXYZ",
-            "cn": "锚点XYZ",
-            "en": "AnchorXYZ",
-            "spriteX": 24,
-            "spriteY": 192
-        },
-        {
-            "name": "Bomb",
-            "cn": "爆炸",
-            "en": "Bomb",
-            "spriteX": 48,
-            "spriteY": 192
-        },
-        {
-            "name": "Coincident",
-            "cn": "重合",
-            "en": "Coincident",
-            "spriteX": 72,
-            "spriteY": 192
-        },
-        {
-            "name": "Floor",
-            "cn": "地面",
-            "en": "Floor",
-            "spriteX": 96,
-            "spriteY": 192
-        },
-        {
-            "name": "FloorFriction",
-            "cn": "地面摩擦",
-            "en": "FloorFriction",
-            "spriteX": 120,
-            "spriteY": 192
-        },
-        {
-            "name": "Load",
-            "cn": "载荷",
-            "en": "Load",
-            "spriteX": 144,
-            "spriteY": 192
-        },
-        {
-            "name": "MagnetSnap",
-            "cn": "磁铁吸附",
-            "en": "MagnetSnap",
-            "spriteX": 168,
-            "spriteY": 192
-        },
-        {
-            "name": "PlasticAnchor",
-            "cn": "塑性锚点",
-            "en": "PlasticAnchor",
-            "spriteX": 192,
-            "spriteY": 192
-        },
-        {
-            "name": "Transform",
-            "cn": "变换",
-            "en": "Transform",
-            "spriteX": 216,
-            "spriteY": 192
-        }
-    ],
-    "Main": [
-        {
-            "name": "BouncySolver",
-            "cn": "弹性求解器",
-            "en": "BouncySolver",
-            "spriteX": 0,
-            "spriteY": 216
-        },
-        {
-            "name": "Grab",
-            "cn": "抓取",
-            "en": "Grab",
-            "spriteX": 24,
-            "spriteY": 216
-        },
-        {
-            "name": "Show",
-            "cn": "显示",
-            "en": "Show",
-            "spriteX": 48,
-            "spriteY": 216
-        },
-        {
-            "name": "Soft & Hard Solver",
-            "cn": "软硬求解器",
-            "en": "Soft & Hard Solver",
-            "spriteX": 72,
-            "spriteY": 216
-        },
-        {
-            "name": "Solver",
-            "cn": "求解器",
-            "en": "Solver",
-            "spriteX": 96,
-            "spriteY": 216
-        },
-        {
-            "name": "StepSolver",
-            "cn": "步进求解器",
-            "en": "StepSolver",
-            "spriteX": 120,
-            "spriteY": 216
-        },
-        {
-            "name": "ZombieSolver",
-            "cn": "僵尸求解器",
-            "en": "ZombieSolver",
-            "spriteX": 144,
-            "spriteY": 216
-        }
-    ],
-    "Mesh": [
-        {
-            "name": "Bipartite",
-            "cn": "二分图",
-            "en": "Bipartite",
-            "spriteX": 0,
-            "spriteY": 240
-        },
-        {
-            "name": "Checkerboard",
-            "cn": "棋盘格",
-            "en": "Checkerboard",
-            "spriteX": 24,
-            "spriteY": 240
-        },
-        {
-            "name": "Diagonalize",
-            "cn": "对角化",
-            "en": "Diagonalize",
-            "spriteX": 48,
-            "spriteY": 240
-        },
-        {
-            "name": "FoldAngle",
-            "cn": "折叠角",
-            "en": "FoldAngle",
-            "spriteX": 72,
-            "spriteY": 240
-        },
-        {
-            "name": "MeshCorners",
-            "cn": "网格角点",
-            "en": "MeshCorners",
-            "spriteX": 96,
-            "spriteY": 240
-        },
-        {
-            "name": "MeshMap",
-            "cn": "网格映射",
-            "en": "MeshMap",
-            "spriteX": 120,
-            "spriteY": 240
-        },
-        {
-            "name": "NakedVertices",
-            "cn": "裸露顶点",
-            "en": "NakedVertices",
-            "spriteX": 144,
-            "spriteY": 240
-        },
-        {
-            "name": "Refine",
-            "cn": "细化",
-            "en": "Refine",
-            "spriteX": 168,
-            "spriteY": 240
-        },
-        {
-            "name": "RemeshByColour",
-            "cn": "按颜色重网格",
-            "en": "RemeshByColour",
-            "spriteX": 192,
-            "spriteY": 240
-        },
-        {
-            "name": "TangentCircles",
-            "cn": "切圆",
-            "en": "TangentCircles",
-            "spriteX": 216,
-            "spriteY": 240
-        },
-        {
-            "name": "VertexNeighbours",
-            "cn": "顶点邻居",
-            "en": "VertexNeighbours",
-            "spriteX": 0,
-            "spriteY": 264
-        },
-        {
-            "name": "ByParent",
-            "cn": "按父级",
-            "en": "ByParent",
-            "spriteX": 24,
-            "spriteY": 264
-        },
-        {
-            "name": "Combine&Clean",
-            "cn": "合并清理",
-            "en": "Combine&Clean",
-            "spriteX": 48,
-            "spriteY": 264
-        },
-        {
-            "name": "FaceFaceOffset",
-            "cn": "面面偏移",
-            "en": "FaceFaceOffset",
-            "spriteX": 72,
-            "spriteY": 264
-        },
-        {
-            "name": "HingePoints",
-            "cn": "铰链点",
-            "en": "HingePoints",
-            "spriteX": 96,
-            "spriteY": 264
-        },
-        {
-            "name": "MeshDirection",
-            "cn": "网格方向",
-            "en": "MeshDirection",
-            "spriteX": 120,
-            "spriteY": 264
-        },
-        {
-            "name": "MeshTurn",
-            "cn": "网格转向",
-            "en": "MeshTurn",
-            "spriteX": 144,
-            "spriteY": 264
-        },
-        {
-            "name": "PlanarityAnalysis",
-            "cn": "平面性分析",
-            "en": "PlanarityAnalysis",
-            "spriteX": 168,
-            "spriteY": 264
-        },
-        {
-            "name": "RefineStrips",
-            "cn": "细化条带",
-            "en": "RefineStrips",
-            "spriteX": 192,
-            "spriteY": 264
-        },
-        {
-            "name": "Stripper",
-            "cn": "条带提取",
-            "en": "Stripper",
-            "spriteX": 216,
-            "spriteY": 264
-        },
-        {
-            "name": "Unroller",
-            "cn": "展开",
-            "en": "Unroller",
-            "spriteX": 0,
-            "spriteY": 288
-        },
-        {
-            "name": "WarpWeft",
-            "cn": "经纬线",
-            "en": "WarpWeft",
-            "spriteX": 24,
-            "spriteY": 288
-        }
-    ],
-    "Utility": [
-        {
-            "name": "DotDisplay",
-            "cn": "点显示",
-            "en": "DotDisplay",
-            "spriteX": 0,
-            "spriteY": 312
-        },
-        {
-            "name": "interconnectPoints",
-            "cn": "点连线",
-            "en": "interconnectPoints",
-            "spriteX": 24,
-            "spriteY": 312
-        },
-        {
-            "name": "mobius Transformation",
-            "cn": "莫比乌斯变换",
-            "en": "mobius Transformation",
-            "spriteX": 48,
-            "spriteY": 312
-        },
-        {
-            "name": "removeDuplicateLines",
-            "cn": "删除重复线",
-            "en": "removeDuplicateLines",
-            "spriteX": 72,
-            "spriteY": 312
-        },
-        {
-            "name": "removeDuplicatePts",
-            "cn": "删除重复点",
-            "en": "removeDuplicatePts",
-            "spriteX": 96,
-            "spriteY": 312
-        },
-        {
-            "name": "SplitAtCorners",
-            "cn": "角点分割",
-            "en": "SplitAtCorners",
-            "spriteX": 120,
-            "spriteY": 312
-        }
-    ]
+  "Goals-6dof": [
+    {
+      "name": "AlignFaces",
+      "cn": "对齐面",
+      "en": "AlignFaces",
+      "spriteX": 0,
+      "spriteY": 0
+    },
+    {
+      "name": "Beam",
+      "cn": "梁",
+      "en": "Beam",
+      "spriteX": 24,
+      "spriteY": 0
+    },
+    {
+      "name": "Concentric",
+      "cn": "同心",
+      "en": "Concentric",
+      "spriteX": 48,
+      "spriteY": 0
+    },
+    {
+      "name": "Rigid Body",
+      "cn": "刚体",
+      "en": "Rigid Body",
+      "spriteX": 72,
+      "spriteY": 0
+    },
+    {
+      "name": "Rigid Body Collide",
+      "cn": "刚体碰撞",
+      "en": "Rigid Body Collide",
+      "spriteX": 96,
+      "spriteY": 0
+    },
+    {
+      "name": "Rigid Point Set",
+      "cn": "刚体点集",
+      "en": "Rigid Point Set",
+      "spriteX": 120,
+      "spriteY": 0
+    },
+    {
+      "name": "Solid Plane Collide",
+      "cn": "实体平面碰撞",
+      "en": "Solid Plane Collide",
+      "spriteX": 144,
+      "spriteY": 0
+    },
+    {
+      "name": "Support",
+      "cn": "支撑",
+      "en": "Support",
+      "spriteX": 168,
+      "spriteY": 0
+    }
+  ],
+  "Goals-Angle": [
+    {
+      "name": "Angle",
+      "cn": "角度",
+      "en": "Angle",
+      "spriteX": 192,
+      "spriteY": 0
+    },
+    {
+      "name": "AngleSnap",
+      "cn": "角度吸附",
+      "en": "AngleSnap",
+      "spriteX": 216,
+      "spriteY": 0
+    },
+    {
+      "name": "ClampAngle",
+      "cn": "限制角度",
+      "en": "ClampAngle",
+      "spriteX": 0,
+      "spriteY": 24
+    },
+    {
+      "name": "EqualAngle",
+      "cn": "等角",
+      "en": "EqualAngle",
+      "spriteX": 24,
+      "spriteY": 24
+    },
+    {
+      "name": "G2",
+      "cn": "G2连续",
+      "en": "G2",
+      "spriteX": 48,
+      "spriteY": 24
+    },
+    {
+      "name": "Rod",
+      "cn": "杆",
+      "en": "Rod",
+      "spriteX": 72,
+      "spriteY": 24
+    }
+  ],
+  "Goals-Co": [
+    {
+      "name": "CoCircular",
+      "cn": "共圆",
+      "en": "CoCircular",
+      "spriteX": 96,
+      "spriteY": 24
+    },
+    {
+      "name": "CoLinear",
+      "cn": "共线",
+      "en": "CoLinear",
+      "spriteX": 120,
+      "spriteY": 24
+    },
+    {
+      "name": "CoPlanar",
+      "cn": "共面",
+      "en": "CoPlanar",
+      "spriteX": 144,
+      "spriteY": 24
+    },
+    {
+      "name": "CoSpherical",
+      "cn": "共球",
+      "en": "CoSpherical",
+      "spriteX": 168,
+      "spriteY": 24
+    }
+  ],
+  "Goals-Col": [
+    {
+      "name": "Collider",
+      "cn": "碰撞体",
+      "en": "Collider",
+      "spriteX": 192,
+      "spriteY": 24
+    },
+    {
+      "name": "CurveCollide",
+      "cn": "曲线碰撞",
+      "en": "CurveCollide",
+      "spriteX": 216,
+      "spriteY": 24
+    },
+    {
+      "name": "CurvePointCollide",
+      "cn": "曲线点碰撞",
+      "en": "CurvePointCollide",
+      "spriteX": 0,
+      "spriteY": 48
+    },
+    {
+      "name": "ImageCircles",
+      "cn": "图像圆",
+      "en": "ImageCircles",
+      "spriteX": 24,
+      "spriteY": 48
+    },
+    {
+      "name": "SoftBodyCollide",
+      "cn": "软体碰撞",
+      "en": "SoftBodyCollide",
+      "spriteX": 48,
+      "spriteY": 48
+    },
+    {
+      "name": "SolidPointCollide",
+      "cn": "实体点碰撞",
+      "en": "SolidPointCollide",
+      "spriteX": 72,
+      "spriteY": 48
+    },
+    {
+      "name": "SphereCollide",
+      "cn": "球碰撞",
+      "en": "SphereCollide",
+      "spriteX": 96,
+      "spriteY": 48
+    }
+  ],
+  "Goals-Lin": [
+    {
+      "name": "ClampLength",
+      "cn": "限制长度",
+      "en": "ClampLength",
+      "spriteX": 120,
+      "spriteY": 48
+    },
+    {
+      "name": "ConstantTension",
+      "cn": "恒张力",
+      "en": "ConstantTension",
+      "spriteX": 144,
+      "spriteY": 48
+    },
+    {
+      "name": "Direction",
+      "cn": "方向",
+      "en": "Direction",
+      "spriteX": 168,
+      "spriteY": 48
+    },
+    {
+      "name": "DynamicWeight1d",
+      "cn": "动态权重",
+      "en": "DynamicWeight1d",
+      "spriteX": 192,
+      "spriteY": 48
+    },
+    {
+      "name": "EqualLength",
+      "cn": "等长",
+      "en": "EqualLength",
+      "spriteX": 216,
+      "spriteY": 48
+    },
+    {
+      "name": "Length(Line)",
+      "cn": "长度(线)",
+      "en": "Length(Line)",
+      "spriteX": 0,
+      "spriteY": 72
+    },
+    {
+      "name": "LengthRatio",
+      "cn": "长度比例",
+      "en": "LengthRatio",
+      "spriteX": 24,
+      "spriteY": 72
+    },
+    {
+      "name": "LengthSnap",
+      "cn": "长度吸附",
+      "en": "LengthSnap",
+      "spriteX": 48,
+      "spriteY": 72
+    },
+    {
+      "name": "PlasticLength",
+      "cn": "塑性长度",
+      "en": "PlasticLength",
+      "spriteX": 72,
+      "spriteY": 72
+    }
+  ],
+  "Goals-Mesh": [
+    {
+      "name": "Conicalize",
+      "cn": "圆锥化",
+      "en": "Conicalize",
+      "spriteX": 96,
+      "spriteY": 72
+    },
+    {
+      "name": "Developablize",
+      "cn": "可展化",
+      "en": "Developablize",
+      "spriteX": 120,
+      "spriteY": 72
+    },
+    {
+      "name": "Hinge",
+      "cn": "铰链",
+      "en": "Hinge",
+      "spriteX": 144,
+      "spriteY": 72
+    },
+    {
+      "name": "LiveSoap",
+      "cn": "实时肥皂膜",
+      "en": "LiveSoap",
+      "spriteX": 168,
+      "spriteY": 72
+    },
+    {
+      "name": "Planarize",
+      "cn": "平面化",
+      "en": "Planarize",
+      "spriteX": 192,
+      "spriteY": 72
+    },
+    {
+      "name": "PolygonArea",
+      "cn": "多边形面积",
+      "en": "PolygonArea",
+      "spriteX": 216,
+      "spriteY": 72
+    },
+    {
+      "name": "Smooth",
+      "cn": "平滑",
+      "en": "Smooth",
+      "spriteX": 0,
+      "spriteY": 96
+    },
+    {
+      "name": "TangentialSmooth",
+      "cn": "切向平滑",
+      "en": "TangentialSmooth",
+      "spriteX": 24,
+      "spriteY": 96
+    },
+    {
+      "name": "VertexLoads",
+      "cn": "顶点载荷",
+      "en": "VertexLoads",
+      "spriteX": 48,
+      "spriteY": 96
+    },
+    {
+      "name": "Wind",
+      "cn": "风力",
+      "en": "Wind",
+      "spriteX": 72,
+      "spriteY": 96
+    },
+    {
+      "name": "CyclicQuad",
+      "cn": "循环四边形",
+      "en": "CyclicQuad",
+      "spriteX": 96,
+      "spriteY": 96
+    },
+    {
+      "name": "EdgeLengths",
+      "cn": "边长",
+      "en": "EdgeLengths",
+      "spriteX": 120,
+      "spriteY": 96
+    },
+    {
+      "name": "Isothermic",
+      "cn": "等温",
+      "en": "Isothermic",
+      "spriteX": 144,
+      "spriteY": 96
+    },
+    {
+      "name": "NoFoldThrough",
+      "cn": "防穿透折叠",
+      "en": "NoFoldThrough",
+      "spriteX": 168,
+      "spriteY": 96
+    },
+    {
+      "name": "PlasticHinge",
+      "cn": "塑性铰链",
+      "en": "PlasticHinge",
+      "spriteX": 192,
+      "spriteY": 96
+    },
+    {
+      "name": "Pressure",
+      "cn": "压力",
+      "en": "Pressure",
+      "spriteX": 216,
+      "spriteY": 96
+    },
+    {
+      "name": "SoapFilm",
+      "cn": "肥皂膜",
+      "en": "SoapFilm",
+      "spriteX": 0,
+      "spriteY": 120
+    },
+    {
+      "name": "TangentIncircles",
+      "cn": "切向内切圆",
+      "en": "TangentIncircles",
+      "spriteX": 24,
+      "spriteY": 120
+    },
+    {
+      "name": "Volume",
+      "cn": "体积",
+      "en": "Volume",
+      "spriteX": 48,
+      "spriteY": 120
+    }
+  ],
+  "Goals-On": [
+    {
+      "name": "OnCurve",
+      "cn": "在曲线上",
+      "en": "OnCurve",
+      "spriteX": 72,
+      "spriteY": 120
+    },
+    {
+      "name": "OnMesh",
+      "cn": "在网格上",
+      "en": "OnMesh",
+      "spriteX": 96,
+      "spriteY": 120
+    },
+    {
+      "name": "OnPlane",
+      "cn": "在平面上",
+      "en": "OnPlane",
+      "spriteX": 120,
+      "spriteY": 120
+    }
+  ],
+  "Goals-Pt": [
+    {
+      "name": "Anchor",
+      "cn": "锚点",
+      "en": "Anchor",
+      "spriteX": 144,
+      "spriteY": 120
+    },
+    {
+      "name": "AnchorXYZ",
+      "cn": "锚点XYZ",
+      "en": "AnchorXYZ",
+      "spriteX": 168,
+      "spriteY": 120
+    },
+    {
+      "name": "Bomb",
+      "cn": "爆炸",
+      "en": "Bomb",
+      "spriteX": 192,
+      "spriteY": 120
+    },
+    {
+      "name": "Coincident",
+      "cn": "重合",
+      "en": "Coincident",
+      "spriteX": 216,
+      "spriteY": 120
+    },
+    {
+      "name": "Floor",
+      "cn": "地面",
+      "en": "Floor",
+      "spriteX": 0,
+      "spriteY": 144
+    },
+    {
+      "name": "FloorFriction",
+      "cn": "地面摩擦",
+      "en": "FloorFriction",
+      "spriteX": 24,
+      "spriteY": 144
+    },
+    {
+      "name": "Load",
+      "cn": "载荷",
+      "en": "Load",
+      "spriteX": 48,
+      "spriteY": 144
+    },
+    {
+      "name": "MagnetSnap",
+      "cn": "磁铁吸附",
+      "en": "MagnetSnap",
+      "spriteX": 72,
+      "spriteY": 144
+    },
+    {
+      "name": "PlasticAnchor",
+      "cn": "塑性锚点",
+      "en": "PlasticAnchor",
+      "spriteX": 96,
+      "spriteY": 144
+    },
+    {
+      "name": "Transform",
+      "cn": "变换",
+      "en": "Transform",
+      "spriteX": 120,
+      "spriteY": 144
+    }
+  ],
+  "Main": [
+    {
+      "name": "BouncySolver",
+      "cn": "弹性求解器",
+      "en": "BouncySolver",
+      "spriteX": 144,
+      "spriteY": 144
+    },
+    {
+      "name": "Grab",
+      "cn": "抓取",
+      "en": "Grab",
+      "spriteX": 168,
+      "spriteY": 144
+    },
+    {
+      "name": "Show",
+      "cn": "显示",
+      "en": "Show",
+      "spriteX": 192,
+      "spriteY": 144
+    },
+    {
+      "name": "Soft & Hard Solver",
+      "cn": "软硬求解器",
+      "en": "Soft & Hard Solver",
+      "spriteX": 216,
+      "spriteY": 144
+    },
+    {
+      "name": "Solver",
+      "cn": "求解器",
+      "en": "Solver",
+      "spriteX": 0,
+      "spriteY": 168
+    },
+    {
+      "name": "StepSolver",
+      "cn": "步进求解器",
+      "en": "StepSolver",
+      "spriteX": 24,
+      "spriteY": 168
+    },
+    {
+      "name": "ZombieSolver",
+      "cn": "僵尸求解器",
+      "en": "ZombieSolver",
+      "spriteX": 48,
+      "spriteY": 168
+    }
+  ],
+  "Mesh": [
+    {
+      "name": "Bipartite",
+      "cn": "二分图",
+      "en": "Bipartite",
+      "spriteX": 72,
+      "spriteY": 168
+    },
+    {
+      "name": "Checkerboard",
+      "cn": "棋盘格",
+      "en": "Checkerboard",
+      "spriteX": 96,
+      "spriteY": 168
+    },
+    {
+      "name": "Diagonalize",
+      "cn": "对角化",
+      "en": "Diagonalize",
+      "spriteX": 120,
+      "spriteY": 168
+    },
+    {
+      "name": "FoldAngle",
+      "cn": "折叠角",
+      "en": "FoldAngle",
+      "spriteX": 144,
+      "spriteY": 168
+    },
+    {
+      "name": "MeshCorners",
+      "cn": "网格角点",
+      "en": "MeshCorners",
+      "spriteX": 168,
+      "spriteY": 168
+    },
+    {
+      "name": "MeshMap",
+      "cn": "网格映射",
+      "en": "MeshMap",
+      "spriteX": 192,
+      "spriteY": 168
+    },
+    {
+      "name": "NakedVertices",
+      "cn": "裸露顶点",
+      "en": "NakedVertices",
+      "spriteX": 216,
+      "spriteY": 168
+    },
+    {
+      "name": "Refine",
+      "cn": "细化",
+      "en": "Refine",
+      "spriteX": 0,
+      "spriteY": 192
+    },
+    {
+      "name": "RemeshByColour",
+      "cn": "按颜色重网格",
+      "en": "RemeshByColour",
+      "spriteX": 24,
+      "spriteY": 192
+    },
+    {
+      "name": "TangentCircles",
+      "cn": "切圆",
+      "en": "TangentCircles",
+      "spriteX": 48,
+      "spriteY": 192
+    },
+    {
+      "name": "VertexNeighbours",
+      "cn": "顶点邻居",
+      "en": "VertexNeighbours",
+      "spriteX": 72,
+      "spriteY": 192
+    },
+    {
+      "name": "ByParent",
+      "cn": "按父级",
+      "en": "ByParent",
+      "spriteX": 96,
+      "spriteY": 192
+    },
+    {
+      "name": "Combine&Clean",
+      "cn": "合并清理",
+      "en": "Combine&Clean",
+      "spriteX": 120,
+      "spriteY": 192
+    },
+    {
+      "name": "FaceFaceOffset",
+      "cn": "面面偏移",
+      "en": "FaceFaceOffset",
+      "spriteX": 144,
+      "spriteY": 192
+    },
+    {
+      "name": "HingePoints",
+      "cn": "铰链点",
+      "en": "HingePoints",
+      "spriteX": 168,
+      "spriteY": 192
+    },
+    {
+      "name": "MeshDirection",
+      "cn": "网格方向",
+      "en": "MeshDirection",
+      "spriteX": 192,
+      "spriteY": 192
+    },
+    {
+      "name": "MeshTurn",
+      "cn": "网格转向",
+      "en": "MeshTurn",
+      "spriteX": 216,
+      "spriteY": 192
+    },
+    {
+      "name": "PlanarityAnalysis",
+      "cn": "平面性分析",
+      "en": "PlanarityAnalysis",
+      "spriteX": 0,
+      "spriteY": 216
+    },
+    {
+      "name": "RefineStrips",
+      "cn": "细化条带",
+      "en": "RefineStrips",
+      "spriteX": 24,
+      "spriteY": 216
+    },
+    {
+      "name": "Stripper",
+      "cn": "条带提取",
+      "en": "Stripper",
+      "spriteX": 48,
+      "spriteY": 216
+    },
+    {
+      "name": "Unroller",
+      "cn": "展开",
+      "en": "Unroller",
+      "spriteX": 72,
+      "spriteY": 216
+    },
+    {
+      "name": "WarpWeft",
+      "cn": "经纬线",
+      "en": "WarpWeft",
+      "spriteX": 96,
+      "spriteY": 216
+    }
+  ],
+  "Utility": [
+    {
+      "name": "DotDisplay",
+      "cn": "点显示",
+      "en": "DotDisplay",
+      "spriteX": 120,
+      "spriteY": 216
+    },
+    {
+      "name": "interconnectPoints",
+      "cn": "点连线",
+      "en": "interconnectPoints",
+      "spriteX": 144,
+      "spriteY": 216
+    },
+    {
+      "name": "mobius Transformation",
+      "cn": "莫比乌斯变换",
+      "en": "mobius Transformation",
+      "spriteX": 168,
+      "spriteY": 216
+    },
+    {
+      "name": "removeDuplicateLines",
+      "cn": "删除重复线",
+      "en": "removeDuplicateLines",
+      "spriteX": 192,
+      "spriteY": 216
+    },
+    {
+      "name": "removeDuplicatePts",
+      "cn": "删除重复点",
+      "en": "removeDuplicatePts",
+      "spriteX": 216,
+      "spriteY": 216
+    },
+    {
+      "name": "SplitAtCorners",
+      "cn": "角点分割",
+      "en": "SplitAtCorners",
+      "spriteX": 0,
+      "spriteY": 240
+    }
+  ]
 }
