@@ -1,0 +1,34 @@
+{
+  "description_cn": "通用碰撞检测器，防止物体之间的穿透。支持多种几何类型。",
+  "description_en": "General collider, prevents interpenetration between objects. Supports multiple geometry types.",
+  "images": [
+    "collider_demo.gif",
+    "collider_types.png"
+  ],
+  "video": "collider_tutorial.mp4",
+  "tags": ["碰撞", "检测", "物理", "约束"],
+  "parameters": [
+    {
+      "name": "Restitution",
+      "cn": "弹性系数",
+      "en": "Restitution",
+      "default": 0.5,
+      "desc_cn": "碰撞弹性",
+      "desc_en": "Collision restitution"
+    },
+    {
+      "name": "Friction",
+      "cn": "摩擦系数",
+      "en": "Friction",
+      "default": 0.3,
+      "desc_cn": "摩擦力",
+      "desc_en": "Friction"
+    }
+  ],
+  "examples": [
+    "collider_basic.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.2",
+  "lastUpdated": "2024-01-20"
+}
