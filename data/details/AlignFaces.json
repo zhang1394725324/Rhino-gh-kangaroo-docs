@@ -1,0 +1,35 @@
+{
+    "description_cn": "将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。",
+    "description_en": "Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.",
+    "images": [
+        "alignfaces_demo.png",
+        "alignfaces_animation.gif"
+    ],
+    "tags": [
+        "对齐",
+        "面",
+        "约束",
+        "网格"
+    ],
+    "parameters": [
+        {
+            "name": "Strength",
+            "cn": "强度",
+            "en": "Strength",
+            "default": 1,
+            "desc_cn": "约束强度，值越大效果越明显",
+            "desc_en": "Constraint strength, higher value gives stronger effect"
+        },
+        {
+            "name": "Tolerance",
+            "cn": "容差",
+            "en": "Tolerance",
+            "default": 0.01,
+            "desc_cn": "对齐精度，值越小越精确",
+            "desc_en": "Alignment tolerance, smaller value gives higher precision"
+        }
+    ],
+    "author": "Kangaroo Team",
+    "version": "2.1",
+    "lastUpdated": "2024-01-15"
+}
