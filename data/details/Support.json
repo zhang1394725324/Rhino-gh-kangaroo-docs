@@ -1,0 +1,33 @@
+{
+  "description_cn": "支撑约束，将点或物体固定在指定位置，可承受压力和拉力。",
+  "description_en": "Support constraint, fixes points or objects at specified positions, can bear compression and tension.",
+  "images": [
+    "support_demo.png"
+  ],
+  "video": "",
+  "tags": ["支撑", "固定", "约束", "结构"],
+  "parameters": [
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1.0,
+      "desc_cn": "支撑强度",
+      "desc_en": "Support strength"
+    },
+    {
+      "name": "Direction",
+      "cn": "方向",
+      "en": "Direction",
+      "default": "All",
+      "desc_cn": "约束方向（X/Y/Z/All）",
+      "desc_en": "Constraint direction (X/Y/Z/All)"
+    }
+  ],
+  "examples": [
+    "support_beam.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "1.9",
+  "lastUpdated": "2024-01-07"
+}
