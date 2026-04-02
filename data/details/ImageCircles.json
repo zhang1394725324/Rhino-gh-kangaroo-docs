@@ -1,0 +1,34 @@
+{
+  "description_cn": "基于图像的圆形碰撞，根据图像亮度生成圆形障碍物。",
+  "description_en": "Image-based circle collision, generates circular obstacles based on image brightness.",
+  "images": [
+    "imagecircles_demo.png",
+    "imagecircles_animation.gif"
+  ],
+  "video": "",
+  "tags": ["图像", "圆形", "碰撞", "采样"],
+  "parameters": [
+    {
+      "name": "Threshold",
+      "cn": "阈值",
+      "en": "Threshold",
+      "default": 128,
+      "desc_cn": "图像亮度阈值",
+      "desc_en": "Image brightness threshold"
+    },
+    {
+      "name": "Radius",
+      "cn": "半径",
+      "en": "Radius",
+      "default": 5.0,
+      "desc_cn": "圆的半径",
+      "desc_en": "Circle radius"
+    }
+  ],
+  "examples": [
+    "imagecircles_art.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.0",
+  "lastUpdated": "2024-01-12"
+}
