@@ -1,0 +1,25 @@
+{
+  "description_cn": "等长约束，使多条线段长度保持相等。",
+  "description_en": "Equal length constraint, keeps multiple line segments equal in length.",
+  "images": [
+    "equallength_demo.png"
+  ],
+  "video": "",
+  "tags": ["等长", "线段", "均匀", "约束"],
+  "parameters": [
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1.0,
+      "desc_cn": "等长约束强度",
+      "desc_en": "Equal length constraint strength"
+    }
+  ],
+  "examples": [
+    "equallength_chain.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.0",
+  "lastUpdated": "2024-01-10"
+}
