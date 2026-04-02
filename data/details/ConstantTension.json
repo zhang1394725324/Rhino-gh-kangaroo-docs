@@ -1,0 +1,25 @@
+{
+  "description_cn": "恒张力约束，保持线段上的恒定拉力。",
+  "description_en": "Constant tension constraint, maintains constant tension along the line.",
+  "images": [
+    "constanttension_demo.png"
+  ],
+  "video": "",
+  "tags": ["张力", "恒定", "线段", "力"],
+  "parameters": [
+    {
+      "name": "Tension",
+      "cn": "张力值",
+      "en": "Tension Value",
+      "default": 1.0,
+      "desc_cn": "恒定的张力大小",
+      "desc_en": "Constant tension magnitude"
+    }
+  ],
+  "examples": [
+    "constanttension_cable.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "1.8",
+  "lastUpdated": "2024-01-05"
+}
