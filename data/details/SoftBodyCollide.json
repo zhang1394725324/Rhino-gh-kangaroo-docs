@@ -1,0 +1,25 @@
+{
+  "description_cn": "软体之间的碰撞检测，适用于布料、弹性体等可变形物体。",
+  "description_en": "Soft body collision detection, suitable for deformable objects like cloth and elastic bodies.",
+  "images": [
+    "softbodycollide_demo.gif"
+  ],
+  "video": "softbody_tutorial.mp4",
+  "tags": ["软体", "碰撞", "布料", "弹性"],
+  "parameters": [
+    {
+      "name": "Stiffness",
+      "cn": "刚度",
+      "en": "Stiffness",
+      "default": 0.5,
+      "desc_cn": "碰撞响应刚度",
+      "desc_en": "Collision response stiffness"
+    }
+  ],
+  "examples": [
+    "softbody_cloth.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2024-01-18"
+}
