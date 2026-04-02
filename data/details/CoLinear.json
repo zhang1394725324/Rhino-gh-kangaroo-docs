@@ -1,0 +1,25 @@
+{
+  "description_cn": "共线约束，使多个点保持在同一直线上。",
+  "description_en": "Collinear constraint, keeps multiple points on the same line.",
+  "images": [
+    "colinear_demo.png"
+  ],
+  "video": "",
+  "tags": ["共线", "直线", "点", "对齐"],
+  "parameters": [
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1.0,
+      "desc_cn": "共线约束强度",
+      "desc_en": "Collinear constraint strength"
+    }
+  ],
+  "examples": [
+    "colinear_alignment.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.0",
+  "lastUpdated": "2024-01-08"
+}
