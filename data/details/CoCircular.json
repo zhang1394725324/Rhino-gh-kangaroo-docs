@@ -1,0 +1,25 @@
+{
+  "description_cn": "共圆约束，使多个点保持在同一圆周上。",
+  "description_en": "Co-circular constraint, keeps multiple points on the same circle.",
+  "images": [
+    "cocircular_demo.png"
+  ],
+  "video": "",
+  "tags": ["共圆", "圆周", "点", "约束"],
+  "parameters": [
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1.0,
+      "desc_cn": "共圆约束强度",
+      "desc_en": "Co-circular constraint strength"
+    }
+  ],
+  "examples": [
+    "cocircular_pattern.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "1.8",
+  "lastUpdated": "2024-01-05"
+}
