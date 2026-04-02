@@ -1,0 +1,35 @@
+{
+  "description_cn": "梁结构约束，模拟线性弹性梁的弯曲和扭转行为。适用于框架结构分析。",
+  "description_en": "Beam structural constraint, simulates bending and torsion of linear elastic beams. Suitable for frame structure analysis.",
+  "images": [
+    "beam_demo.png",
+    "beam_animation.gif"
+  ],
+  "video": "beam_tutorial.mp4",
+  "tags": ["梁", "结构", "弹性", "框架"],
+  "parameters": [
+    {
+      "name": "Stiffness",
+      "cn": "刚度",
+      "en": "Stiffness",
+      "default": 0.5,
+      "desc_cn": "梁的弯曲刚度",
+      "desc_en": "Bending stiffness of the beam"
+    },
+    {
+      "name": "Damping",
+      "cn": "阻尼",
+      "en": "Damping",
+      "default": 0.1,
+      "desc_cn": "振动阻尼系数",
+      "desc_en": "Vibration damping coefficient"
+    }
+  ],
+  "examples": [
+    "beam_structure.gh",
+    "beam_bridge.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.0",
+  "lastUpdated": "2026-04-10"
+}
