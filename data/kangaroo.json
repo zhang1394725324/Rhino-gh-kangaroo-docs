@@ -1,7 +1,7 @@
 {
   "Goals-6dof": [
-    {"name":"RigidBody","cn":"刚体","en":"RigidBody","desc_cn":"六自由度刚体约束，模拟刚体物理行为，包含位置和旋转约束","desc_en":"Rigid body constraint with 6 degrees of freedom","spriteX":0,"spriteY":0,"img":"rigidbody.png"},
-    {"name":"RigidPlane","cn":"刚体平面","en":"RigidPlane","desc_cn":"刚体平面约束，限制物体在平面上运动","desc_en":"Rigid plane constraint","spriteX":24,"spriteY":0,"img":"rigidplane.png"},
+    {"name":"AlignFaces","cn":"对齐面","en":"AlignFaces","desc_cn":"六自由度刚体约束，模拟刚体物理行为，包含位置和旋转约束","desc_en":"Rigid body constraint with 6 degrees of freedom","spriteX":0,"spriteY":96,"img":"rigidbody.png"},
+    {"name":"Beam","cn":"梁","en":"Beam","desc_cn":"刚体平面约束，限制物体在平面上运动","desc_en":"Rigid plane constraint","spriteX":120,"spriteY":96,"img":"rigidplane.png"},
     {"name":"Hinge","cn":"铰链","en":"Hinge","desc_cn":"铰链旋转约束，模拟门轴效果，绕单轴旋转","desc_en":"Hinge rotation constraint","spriteX":48,"spriteY":0,"img":"hinge.png"},
     {"name":"Motor","cn":"马达","en":"Motor","desc_cn":"施加旋转力，驱动物体旋转，可控制速度和扭矩","desc_en":"Apply motor torque","spriteX":72,"spriteY":0,"img":"motor.png"},
     {"name":"UnaryForce","cn":"单力","en":"UnaryForce","desc_cn":"施加单向力，推动物体沿指定方向运动","desc_en":"Apply a single force","spriteX":96,"spriteY":0,"img":"unaryforce.png"},
