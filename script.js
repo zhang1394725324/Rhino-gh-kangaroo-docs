@@ -163,6 +163,7 @@ function renderRichDetail(item, details) {
             <div class="detail-section-title">ℹ️ ${lang === 'cn' ? '信息' : 'Info'}</div>
             <div class="meta">
                 <div><strong>${lang === 'cn' ? '组件名称' : 'Component'}:</strong> ${escapeHtml(item.name)}</div>
+                <div><strong>${lang === 'cn' ? '雪碧图位置' : 'Sprite Position'}:</strong> (${item.spriteX}, ${item.spriteY})</div>
                 ${details.author ? `<div><strong>${lang === 'cn' ? '作者' : 'Author'}:</strong> ${escapeHtml(details.author)}</div>` : ''}
                 ${details.version ? `<div><strong>${lang === 'cn' ? '版本' : 'Version'}:</strong> ${escapeHtml(details.version)}</div>` : ''}
             </div>
@@ -183,7 +184,6 @@ function renderRichDetail(item, details) {
         </div>
     `;
     
-    // 视频悬停播放效果
     document.querySelectorAll('.gallery-item video').forEach(video => {
         video.addEventListener('mouseenter', () => video.play());
         video.addEventListener('mouseleave', () => {
@@ -238,14 +238,15 @@ function assignSpriteCoordinates() {
                 const row = Math.floor(globalIndex / SPRITE_CONFIG.cols);
                 item.spriteX = col * SPRITE_CONFIG.iconSize;
                 item.spriteY = row * SPRITE_CONFIG.iconSize;
+                console.log(`分配坐标: ${item.name} -> (${item.spriteX}, ${item.spriteY})`);
             }
-            globalIndex++;
         }
+        globalIndex += items.length;
     }
-    console.log(`✅ 已为 ${globalIndex} 个组件分配雪碧图坐标`);
+    console.log(`✅ 已为组件分配雪碧图坐标`);
 }
 
-// ===== 渲染11个分类卡片（全部图标显示，4行布局）=====
+// ===== 渲染11个分类卡片 =====
 function renderCategories() {
     categoriesGrid.innerHTML = '';
     
@@ -262,10 +263,6 @@ function renderCategories() {
         else if (itemCount <= 16) columns = 4;
         else if (itemCount <= 25) columns = 5;
         else columns = 6;
-        
-        // 计算需要的行数（确保能容纳所有图标）
-        const rows = Math.ceil(itemCount / columns);
-        // 固定显示4行，超出部分通过网格自动处理（CSS grid会自动换行）
         
         // 创建卡片
         const card = document.createElement('div');
@@ -287,12 +284,14 @@ function renderCategories() {
             
             const sprite = document.createElement('div');
             sprite.className = 'card-icon-sprite';
-            sprite.style.backgroundPosition = `-${item.spriteX}px -${item.spriteY}px`;
+            // 确保使用正确的坐标
+            const x = item.spriteX || 0;
+            const y = item.spriteY || 0;
+            sprite.style.backgroundPosition = `-${x}px -${y}px`;
             
             const nameSpan = document.createElement('div');
             nameSpan.className = 'card-icon-name';
             let displayName = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
-            // 名称过长时截断
             if (displayName.length > 10) {
                 displayName = displayName.substring(0, 8) + '...';
             }
@@ -311,7 +310,7 @@ function renderCategories() {
         
         iconsArea.appendChild(iconsGrid);
         
-        // 下半部分：黑色标题标签
+        // 下半部分：黑色标题标签（确保显示）
         const titleArea = document.createElement('div');
         titleArea.className = 'category-title';
         const titleSpan = document.createElement('span');
@@ -351,7 +350,7 @@ expandDetailBtn.addEventListener('click', () => {
     }
 });
 
-// 模态框（大图预览）
+// 模态框
 function openModal(src) {
     let modal = document.getElementById('imageModal');
     if (!modal) {
@@ -380,5 +379,5 @@ function openModal(src) {
 
 window.openModal = openModal;
 
-// 启动应用
+// 启动
 loadData();
