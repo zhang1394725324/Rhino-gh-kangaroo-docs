@@ -30,11 +30,12 @@ const groupDisplayNames = {
     'Utility': '实用工具'
 };
 
-// 雪碧图配置
+// 雪碧图配置：240x264，每个图标24x24，共10列11行
 const SPRITE_CONFIG = {
     cols: 10,
     rows: 11,
-    iconSize: 24
+    iconSize: 24,
+    maxIndex: 109  // 10*11-1 = 109，最大索引
 };
 
 // 详情面板是否展开
@@ -226,24 +227,37 @@ function loadData() {
         });
 }
 
-// 自动分配雪碧图坐标
+// 自动分配雪碧图坐标 - 修正版
 function assignSpriteCoordinates() {
     let globalIndex = 0;
     for (const group of GROUP_ORDER) {
         const items = componentsData[group];
         if (!items) continue;
         for (const item of items) {
+            // 如果 JSON 中没有指定坐标，自动计算
             if (item.spriteX === undefined || item.spriteY === undefined) {
+                // 计算位置：每行10个图标，每个24px
                 const col = globalIndex % SPRITE_CONFIG.cols;
                 const row = Math.floor(globalIndex / SPRITE_CONFIG.cols);
-                item.spriteX = col * SPRITE_CONFIG.iconSize;
-                item.spriteY = row * SPRITE_CONFIG.iconSize;
-                console.log(`分配坐标: ${item.name} -> (${item.spriteX}, ${item.spriteY})`);
+                const x = col * SPRITE_CONFIG.iconSize;
+                const y = row * SPRITE_CONFIG.iconSize;
+                
+                // 确保坐标在雪碧图范围内（最大 x: 216, y: 240）
+                if (y <= 240) {
+                    item.spriteX = x;
+                    item.spriteY = y;
+                    console.log(`✅ 分配坐标: ${item.name} -> (${x}, ${y}) [索引: ${globalIndex}]`);
+                } else {
+                    console.warn(`⚠️ 坐标超出范围: ${item.name} -> (${x}, ${y}) 超出雪碧图高度 264px`);
+                    // 使用默认位置
+                    item.spriteX = 0;
+                    item.spriteY = 0;
+                }
             }
+            globalIndex++;
         }
-        globalIndex += items.length;
     }
-    console.log(`✅ 已为组件分配雪碧图坐标`);
+    console.log(`✅ 已为 ${globalIndex} 个组件分配雪碧图坐标`);
 }
 
 // ===== 渲染11个分类卡片 =====
@@ -284,9 +298,9 @@ function renderCategories() {
             
             const sprite = document.createElement('div');
             sprite.className = 'card-icon-sprite';
-            // 确保使用正确的坐标
-            const x = item.spriteX || 0;
-            const y = item.spriteY || 0;
+            // 确保使用正确的坐标，如果坐标无效则使用 (0,0)
+            const x = (item.spriteX !== undefined && item.spriteX >= 0) ? item.spriteX : 0;
+            const y = (item.spriteY !== undefined && item.spriteY >= 0) ? item.spriteY : 0;
             sprite.style.backgroundPosition = `-${x}px -${y}px`;
             
             const nameSpan = document.createElement('div');
@@ -310,7 +324,7 @@ function renderCategories() {
         
         iconsArea.appendChild(iconsGrid);
         
-        // 下半部分：黑色标题标签（确保显示）
+        // 下半部分：黑色标题标签
         const titleArea = document.createElement('div');
         titleArea.className = 'category-title';
         const titleSpan = document.createElement('span');
