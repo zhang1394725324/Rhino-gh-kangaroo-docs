@@ -1,0 +1,25 @@
+{
+  "description_cn": "刚性杆约束，保持两点之间的固定距离，杆不可伸缩。",
+  "description_en": "Rigid rod constraint, maintains fixed distance between two points, rod is non-extensible.",
+  "images": [
+    "rod_demo.png"
+  ],
+  "video": "",
+  "tags": ["杆", "刚性", "距离", "约束"],
+  "parameters": [
+    {
+      "name": "Length",
+      "cn": "长度",
+      "en": "Length",
+      "default": "Auto",
+      "desc_cn": "杆的固定长度（自动或手动指定）",
+      "desc_en": "Fixed length of the rod (auto or manual)"
+    }
+  ],
+  "examples": [
+    "rod_pendulum.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.0",
+  "lastUpdated": "2024-01-10"
+}
