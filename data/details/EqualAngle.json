@@ -1,0 +1,25 @@
+{
+  "description_cn": "等角约束，使多个角度保持相等。适用于对称结构和均匀分布。",
+  "description_en": "Equal angle constraint, keeps multiple angles equal. Suitable for symmetric structures and uniform distribution.",
+  "images": [
+    "equalangle_demo.png"
+  ],
+  "video": "",
+  "tags": ["等角", "对称", "均匀", "约束"],
+  "parameters": [
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1.0,
+      "desc_cn": "等角约束强度",
+      "desc_en": "Equal angle constraint strength"
+    }
+  ],
+  "examples": [
+    "equalangle_symmetry.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "1.9",
+  "lastUpdated": "2024-01-06"
+}
