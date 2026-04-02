@@ -1,0 +1,26 @@
+{
+  "description_cn": "G2曲率连续约束，确保曲线或曲面之间的曲率连续性。用于高质量曲面过渡。",
+  "description_en": "G2 curvature continuity constraint, ensures curvature continuity between curves or surfaces. Used for high-quality surface transitions.",
+  "images": [
+    "g2_demo.png",
+    "g2_animation.gif"
+  ],
+  "video": "g2_tutorial.mp4",
+  "tags": ["曲率", "连续", "G2", "曲面"],
+  "parameters": [
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1.0,
+      "desc_cn": "曲率连续约束强度",
+      "desc_en": "Curvature continuity constraint strength"
+    }
+  ],
+  "examples": [
+    "g2_blend.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2024-01-15"
+}
