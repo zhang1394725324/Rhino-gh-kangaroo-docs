@@ -10,7 +10,7 @@ const detailContent = document.getElementById('detailContent');
 const langBtn = document.getElementById('langBtn');
 const expandDetailBtn = document.getElementById('expandDetailBtn');
 
-// 分组配置（11个分组）
+// 分组配置
 const GROUP_ORDER = [
     'Goals-6dof', 'Goals-Angle', 'Goals-Co', 'Goals-Col', 'Goals-Lin',
     'Goals-Mesh', 'Goals-On', 'Goals-Pt', 'Main', 'Mesh', 'Utility'
@@ -30,17 +30,6 @@ const groupDisplayNames = {
     'Utility': '实用工具'
 };
 
-// 雪碧图配置：240x264，每个图标24x24，共10列11行
-const SPRITE_CONFIG = {
-    cols: 10,
-    rows: 11,
-    iconSize: 24,
-    maxIndex: 109  // 10*11-1 = 109，最大索引
-};
-
-// 详情面板是否展开
-let isDetailExpanded = false;
-
 // ===== 辅助函数 =====
 function escapeHtml(str) {
     if (!str) return '';
@@ -50,151 +39,39 @@ function escapeHtml(str) {
 }
 
 function showLoading(message) {
-    detailContent.innerHTML = `
-        <div class="loading-detail">
-            <div class="spinner"></div>
-            <p>${escapeHtml(message)}</p>
-        </div>
-    `;
+    detailContent.innerHTML = `<div class="loading-detail"><div class="spinner"></div><p>${escapeHtml(message)}</p></div>`;
 }
 
 // ===== 按需加载组件详情 =====
 async function loadComponentDetail(componentName, detailFile) {
-    if (detailCache.has(componentName)) {
-        return detailCache.get(componentName);
-    }
-    
+    if (detailCache.has(componentName)) return detailCache.get(componentName);
     try {
         let detailUrl = `data/details/${detailFile || componentName + '.json'}`;
         const response = await fetch(detailUrl);
-        
-        if (!response.ok) {
-            return {
-                description_cn: `暂无详细说明，敬请期待。`,
-                description_en: `No description available yet.`,
-                images: [],
-                tags: [],
-                parameters: []
-            };
-        }
-        
+        if (!response.ok) return { description_cn: `暂无详细说明。`, description_en: `No description.`, images: [], tags: [], parameters: [] };
         const detail = await response.json();
         detailCache.set(componentName, detail);
         return detail;
     } catch (err) {
-        console.warn(`加载详情失败 ${componentName}:`, err);
-        return {
-            description_cn: `加载详情失败。`,
-            description_en: `Failed to load details.`,
-            images: [],
-            tags: [],
-            parameters: []
-        };
+        return { description_cn: `加载详情失败。`, description_en: `Failed to load details.`, images: [], tags: [], parameters: [] };
     }
 }
 
-// ===== 渲染富文本详情 =====
+// ===== 渲染富文本详情（简化版）=====
 function renderRichDetail(item, details) {
     const titleText = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
-    const description = lang === 'cn' 
-        ? (details.description_cn || item.desc_cn || '暂无描述')
-        : (details.description_en || item.desc_en || 'No description');
-    
-    let galleryHtml = '';
-    const images = details.images || [];
-    if (images.length > 0) {
-        galleryHtml = `
-            <div class="detail-section">
-                <div class="detail-section-title">🖼️ ${lang === 'cn' ? '示意图' : 'Images'}</div>
-                <div class="image-gallery">
-                    ${images.map(img => `
-                        <div class="gallery-item" onclick="window.openModal && openModal('img/screenshots/${img}')">
-                            ${img.endsWith('.gif') || img.endsWith('.mp4') ? `
-                                <video src="img/screenshots/${img}" muted loop playsinline></video>
-                                <span class="gif-badge">GIF</span>
-                            ` : `
-                                <img src="img/screenshots/${img}" alt="${titleText}" loading="lazy">
-                            `}
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-        `;
-    }
-    
-    let paramsHtml = '';
-    const params = details.parameters || [];
-    if (params.length > 0) {
-        paramsHtml = `
-            <div class="detail-section">
-                <div class="detail-section-title">⚙️ ${lang === 'cn' ? '参数' : 'Parameters'}</div>
-                <table class="params-table">
-                    <thead>
-                        <tr><th>${lang === 'cn' ? '参数名' : 'Name'}</th><th>${lang === 'cn' ? '说明' : 'Description'}</th><th>${lang === 'cn' ? '默认值' : 'Default'}</th></tr>
-                    </thead>
-                    <tbody>
-                        ${params.map(p => `
-                            <tr>
-                                <td><code>${escapeHtml(p.name)}</code></td>
-                                <td>${lang === 'cn' ? escapeHtml(p.cn || p.desc_cn || '') : escapeHtml(p.en || p.desc_en || '')}</td>
-                                <td>${escapeHtml(p.default || '-')}</td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            </div>
-        `;
-    }
-    
-    let tagsHtml = '';
-    const tags = details.tags || [];
-    if (tags.length > 0) {
-        tagsHtml = `
-            <div class="detail-section">
-                <div class="detail-section-title">🏷️ ${lang === 'cn' ? '标签' : 'Tags'}</div>
-                <div class="tag-cloud">
-                    ${tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
-                </div>
-            </div>
-        `;
-    }
-    
-    let metaHtml = `
-        <div class="detail-section">
-            <div class="detail-section-title">ℹ️ ${lang === 'cn' ? '信息' : 'Info'}</div>
-            <div class="meta">
-                <div><strong>${lang === 'cn' ? '组件名称' : 'Component'}:</strong> ${escapeHtml(item.name)}</div>
-                <div><strong>${lang === 'cn' ? '雪碧图位置' : 'Sprite Position'}:</strong> (${item.spriteX}, ${item.spriteY})</div>
-                ${details.author ? `<div><strong>${lang === 'cn' ? '作者' : 'Author'}:</strong> ${escapeHtml(details.author)}</div>` : ''}
-                ${details.version ? `<div><strong>${lang === 'cn' ? '版本' : 'Version'}:</strong> ${escapeHtml(details.version)}</div>` : ''}
-            </div>
-        </div>
-    `;
-    
+    const description = lang === 'cn' ? (details.description_cn || '暂无描述') : (details.description_en || 'No description');
     detailContent.innerHTML = `
         <div class="component-detail">
             <h3>${escapeHtml(titleText)}</h3>
             <div class="detail-section">
                 <div class="detail-section-title">📝 ${lang === 'cn' ? '说明' : 'Description'}</div>
-                <div class="desc">${escapeHtml(description).replace(/\n/g, '<br>')}</div>
+                <div class="desc">${escapeHtml(description)}</div>
             </div>
-            ${galleryHtml}
-            ${paramsHtml}
-            ${tagsHtml}
-            ${metaHtml}
         </div>
     `;
-    
-    document.querySelectorAll('.gallery-item video').forEach(video => {
-        video.addEventListener('mouseenter', () => video.play());
-        video.addEventListener('mouseleave', () => {
-            video.pause();
-            video.currentTime = 0;
-        });
-    });
 }
 
-// ===== 显示组件详情 =====
 async function showComponentDetail(item) {
     showLoading('加载详情中...');
     const details = await loadComponentDetail(item.name, item.detailFile);
@@ -205,92 +82,33 @@ async function showComponentDetail(item) {
 // ===== 数据加载 =====
 function loadData() {
     fetch('data/kangaroo.json?' + Date.now())
-        .then(res => {
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            return res.json();
-        })
+        .then(res => res.json())
         .then(data => {
-            console.log('✅ 数据加载成功', data);
             componentsData = data;
-            assignSpriteCoordinates();
-            
-            groupsList = GROUP_ORDER.filter(group => 
-                componentsData[group] && componentsData[group].length > 0
-            );
-            
-            console.log('📦 分组列表:', groupsList);
+            groupsList = GROUP_ORDER.filter(group => componentsData[group] && componentsData[group].length > 0);
             renderCategories();
         })
         .catch(err => {
-            console.error('❌ 数据加载失败:', err);
             categoriesGrid.innerHTML = `<div style="padding:40px;text-align:center;color:#dc2626;">数据加载失败: ${err.message}</div>`;
         });
 }
 
-// 自动分配雪碧图坐标 - 修正版
-function assignSpriteCoordinates() {
-    let globalIndex = 0;
-    for (const group of GROUP_ORDER) {
-        const items = componentsData[group];
-        if (!items) continue;
-        for (const item of items) {
-            // 如果 JSON 中没有指定坐标，自动计算
-            if (item.spriteX === undefined || item.spriteY === undefined) {
-                // 计算位置：每行10个图标，每个24px
-                const col = globalIndex % SPRITE_CONFIG.cols;
-                const row = Math.floor(globalIndex / SPRITE_CONFIG.cols);
-                const x = col * SPRITE_CONFIG.iconSize;
-                const y = row * SPRITE_CONFIG.iconSize;
-                
-                // 确保坐标在雪碧图范围内（最大 x: 216, y: 240）
-                if (y <= 240) {
-                    item.spriteX = x;
-                    item.spriteY = y;
-                    console.log(`✅ 分配坐标: ${item.name} -> (${x}, ${y}) [索引: ${globalIndex}]`);
-                } else {
-                    console.warn(`⚠️ 坐标超出范围: ${item.name} -> (${x}, ${y}) 超出雪碧图高度 264px`);
-                    // 使用默认位置
-                    item.spriteX = 0;
-                    item.spriteY = 0;
-                }
-            }
-            globalIndex++;
-        }
-    }
-    console.log(`✅ 已为 ${globalIndex} 个组件分配雪碧图坐标`);
-}
-
-// ===== 渲染11个分类卡片 =====
+// ===== 渲染分类卡片（Flexbox 自动换行，无空白格子）=====
 function renderCategories() {
     categoriesGrid.innerHTML = '';
-    
     groupsList.forEach(groupKey => {
         const items = componentsData[groupKey];
         if (!items || items.length === 0) return;
         
-        const itemCount = items.length;
-        
-        // 计算列数：根据图标数量决定，最多6列
-        let columns = 2;
-        if (itemCount <= 4) columns = 2;
-        else if (itemCount <= 9) columns = 3;
-        else if (itemCount <= 16) columns = 4;
-        else if (itemCount <= 25) columns = 5;
-        else columns = 6;
-        
-        // 创建卡片
         const card = document.createElement('div');
         card.className = 'category-card';
         
-        // 上半部分：图标网格区域
         const iconsArea = document.createElement('div');
         iconsArea.className = 'card-icons-area';
-        
         const iconsGrid = document.createElement('div');
         iconsGrid.className = 'card-icons-grid';
-        iconsGrid.setAttribute('data-columns', columns);
         
-        // 显示所有图标
+        // 直接添加图标，Flexbox 自动换行，不会有空白格子
         items.forEach(item => {
             const iconItem = document.createElement('div');
             iconItem.className = 'card-icon-item';
@@ -298,100 +116,48 @@ function renderCategories() {
             
             const sprite = document.createElement('div');
             sprite.className = 'card-icon-sprite';
-            // 确保使用正确的坐标，如果坐标无效则使用 (0,0)
-            const x = (item.spriteX !== undefined && item.spriteX >= 0) ? item.spriteX : 0;
-            const y = (item.spriteY !== undefined && item.spriteY >= 0) ? item.spriteY : 0;
-            sprite.style.backgroundPosition = `-${x}px -${y}px`;
+            sprite.style.backgroundPosition = `-${item.spriteX}px -${item.spriteY}px`;
             
             const nameSpan = document.createElement('div');
             nameSpan.className = 'card-icon-name';
             let displayName = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
-            if (displayName.length > 10) {
-                displayName = displayName.substring(0, 8) + '...';
-            }
+            if (displayName.length > 10) displayName = displayName.substring(0, 8) + '...';
             nameSpan.textContent = displayName;
-            nameSpan.title = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
             
             iconItem.appendChild(sprite);
             iconItem.appendChild(nameSpan);
-            iconItem.addEventListener('click', (e) => {
-                e.stopPropagation();
-                showComponentDetail(item);
-            });
-            
+            iconItem.addEventListener('click', (e) => { e.stopPropagation(); showComponentDetail(item); });
             iconsGrid.appendChild(iconItem);
         });
         
         iconsArea.appendChild(iconsGrid);
         
-        // 下半部分：黑色标题标签
         const titleArea = document.createElement('div');
         titleArea.className = 'category-title';
         const titleSpan = document.createElement('span');
-        const displayName = groupDisplayNames[groupKey] || groupKey.replace('Goals-', '');
-        titleSpan.textContent = lang === 'cn' ? displayName : groupKey;
+        titleSpan.textContent = lang === 'cn' ? groupDisplayNames[groupKey] : groupKey;
         titleArea.appendChild(titleSpan);
         
         card.appendChild(iconsArea);
         card.appendChild(titleArea);
-        
         categoriesGrid.appendChild(card);
     });
-    
-    console.log(`✅ 已渲染 ${groupsList.length} 个分类卡片`);
 }
 
-// ===== 中英文切换 =====
+// ===== 事件绑定 =====
 langBtn.addEventListener('click', () => {
     lang = lang === 'cn' ? 'en' : 'cn';
     langBtn.textContent = lang === 'cn' ? 'EN' : '中';
     renderCategories();
-    if (window.currentDetailItem) {
-        showComponentDetail(window.currentDetailItem);
-    }
+    if (window.currentDetailItem) showComponentDetail(window.currentDetailItem);
 });
 
-// 展开/收起详情面板
 expandDetailBtn.addEventListener('click', () => {
     const panel = document.querySelector('.detail-panel');
-    isDetailExpanded = !isDetailExpanded;
-    if (isDetailExpanded) {
-        panel.style.flex = '2';
-        expandDetailBtn.textContent = '✕';
-    } else {
-        panel.style.flex = '1';
-        expandDetailBtn.textContent = '⛶';
-    }
+    const isExpanded = panel.style.flex === '2';
+    panel.style.flex = isExpanded ? '1' : '2';
+    expandDetailBtn.textContent = isExpanded ? '⛶' : '✕';
 });
-
-// 模态框
-function openModal(src) {
-    let modal = document.getElementById('imageModal');
-    if (!modal) {
-        modal = document.createElement('div');
-        modal.id = 'imageModal';
-        modal.className = 'modal';
-        modal.innerHTML = `
-            <div class="modal-content">
-                <img src="" alt="">
-            </div>
-            <div class="modal-close">&times;</div>
-        `;
-        document.body.appendChild(modal);
-        
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal || e.target.classList.contains('modal-close')) {
-                modal.classList.remove('active');
-            }
-        });
-    }
-    
-    const img = modal.querySelector('img');
-    img.src = src;
-    modal.classList.add('active');
-}
-
-window.openModal = openModal;
 
 // 启动
 loadData();
