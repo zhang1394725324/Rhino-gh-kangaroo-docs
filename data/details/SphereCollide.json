@@ -1,0 +1,33 @@
+{
+  "description_cn": "球体之间的碰撞检测，防止球体相互穿透。",
+  "description_en": "Sphere-sphere collision detection, prevents spheres from interpenetrating.",
+  "images": [
+    "spherecollide_demo.gif"
+  ],
+  "video": "",
+  "tags": ["球体", "碰撞", "物理", "模拟"],
+  "parameters": [
+    {
+      "name": "Restitution",
+      "cn": "弹性系数",
+      "en": "Restitution",
+      "default": 0.5,
+      "desc_cn": "碰撞弹性",
+      "desc_en": "Collision restitution"
+    },
+    {
+      "name": "Radius",
+      "cn": "半径",
+      "en": "Radius",
+      "default": 1.0,
+      "desc_cn": "球体半径",
+      "desc_en": "Sphere radius"
+    }
+  ],
+  "examples": [
+    "spherecollide_simulation.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.0",
+  "lastUpdated": "2024-01-15"
+}
