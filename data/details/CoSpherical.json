@@ -1,0 +1,25 @@
+{
+  "description_cn": "共球约束，使多个点保持在同一个球面上。",
+  "description_en": "Co-spherical constraint, keeps multiple points on the same sphere.",
+  "images": [
+    "cospherical_demo.png"
+  ],
+  "video": "",
+  "tags": ["共球", "球面", "点", "约束"],
+  "parameters": [
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1.0,
+      "desc_cn": "共球约束强度",
+      "desc_en": "Co-spherical constraint strength"
+    }
+  ],
+  "examples": [
+    "cospherical_dome.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "1.9",
+  "lastUpdated": "2024-01-07"
+}
