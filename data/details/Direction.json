@@ -1,0 +1,33 @@
+{
+  "description_cn": "方向约束，限制线段或向量的方向。",
+  "description_en": "Direction constraint, restricts direction of line or vector.",
+  "images": [
+    "direction_demo.png"
+  ],
+  "video": "",
+  "tags": ["方向", "向量", "约束", "对齐"],
+  "parameters": [
+    {
+      "name": "TargetDirection",
+      "cn": "目标方向",
+      "en": "Target Direction",
+      "default": "[1,0,0]",
+      "desc_cn": "期望的方向向量",
+      "desc_en": "Desired direction vector"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1.0,
+      "desc_cn": "方向约束强度",
+      "desc_en": "Direction constraint strength"
+    }
+  ],
+  "examples": [
+    "direction_alignment.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.0",
+  "lastUpdated": "2024-01-08"
+}
