@@ -1,0 +1,25 @@
+{
+  "description_cn": "曲线与点之间的碰撞检测，防止点穿透曲线。",
+  "description_en": "Curve-point collision detection, prevents points from penetrating curves.",
+  "images": [
+    "curvepointcollide_demo.png"
+  ],
+  "video": "",
+  "tags": ["曲线", "点", "碰撞", "检测"],
+  "parameters": [
+    {
+      "name": "Radius",
+      "cn": "半径",
+      "en": "Radius",
+      "default": 0.0,
+      "desc_cn": "点的碰撞半径",
+      "desc_en": "Collision radius of the point"
+    }
+  ],
+  "examples": [
+    "curvepointcollide_path.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "1.9",
+  "lastUpdated": "2024-01-08"
+}
