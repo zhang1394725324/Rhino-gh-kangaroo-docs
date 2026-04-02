@@ -128,7 +128,9 @@ function renderRichDetail(item, details) {
             <div class="detail-section">
                 <div class="detail-section-title">⚙️ ${lang === 'cn' ? '参数' : 'Parameters'}</div>
                 <table class="params-table">
-                    <thead><tr><th>${lang === 'cn' ? '参数名' : 'Name'}</th><th>${lang === 'cn' ? '说明' : 'Description'}</th><th>${lang === 'cn' ? '默认值' : 'Default'}</th></tr></thead>
+                    <thead>
+                        <tr><th>${lang === 'cn' ? '参数名' : 'Name'}</th><th>${lang === 'cn' ? '说明' : 'Description'}</th><th>${lang === 'cn' ? '默认值' : 'Default'}</th></tr>
+                    </thead>
                     <tbody>
                         ${params.map(p => `
                             <tr>
@@ -149,7 +151,9 @@ function renderRichDetail(item, details) {
         tagsHtml = `
             <div class="detail-section">
                 <div class="detail-section-title">🏷️ ${lang === 'cn' ? '标签' : 'Tags'}</div>
-                <div class="tag-cloud">${tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}</div>
+                <div class="tag-cloud">
+                    ${tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
+                </div>
             </div>
         `;
     }
@@ -179,6 +183,7 @@ function renderRichDetail(item, details) {
         </div>
     `;
     
+    // 视频悬停播放效果
     document.querySelectorAll('.gallery-item video').forEach(video => {
         video.addEventListener('mouseenter', () => video.play());
         video.addEventListener('mouseleave', () => {
@@ -204,6 +209,7 @@ function loadData() {
             return res.json();
         })
         .then(data => {
+            console.log('✅ 数据加载成功', data);
             componentsData = data;
             assignSpriteCoordinates();
             
@@ -211,14 +217,16 @@ function loadData() {
                 componentsData[group] && componentsData[group].length > 0
             );
             
+            console.log('📦 分组列表:', groupsList);
             renderCategories();
         })
         .catch(err => {
-            console.error('数据加载失败:', err);
+            console.error('❌ 数据加载失败:', err);
             categoriesGrid.innerHTML = `<div style="padding:40px;text-align:center;color:#dc2626;">数据加载失败: ${err.message}</div>`;
         });
 }
 
+// 自动分配雪碧图坐标
 function assignSpriteCoordinates() {
     let globalIndex = 0;
     for (const group of GROUP_ORDER) {
@@ -234,9 +242,10 @@ function assignSpriteCoordinates() {
             globalIndex++;
         }
     }
+    console.log(`✅ 已为 ${globalIndex} 个组件分配雪碧图坐标`);
 }
 
-// ===== 渲染11个分类卡片（全部图标显示，无"更多"）=====
+// ===== 渲染11个分类卡片（全部图标显示，4行布局）=====
 function renderCategories() {
     categoriesGrid.innerHTML = '';
     
@@ -244,8 +253,9 @@ function renderCategories() {
         const items = componentsData[groupKey];
         if (!items || items.length === 0) return;
         
-        // 计算列数：根据图标数量决定，最多6列
         const itemCount = items.length;
+        
+        // 计算列数：根据图标数量决定，最多6列
         let columns = 2;
         if (itemCount <= 4) columns = 2;
         else if (itemCount <= 9) columns = 3;
@@ -253,8 +263,9 @@ function renderCategories() {
         else if (itemCount <= 25) columns = 5;
         else columns = 6;
         
-        // 计算需要多少行（固定4行，超出部分滚动）
+        // 计算需要的行数（确保能容纳所有图标）
         const rows = Math.ceil(itemCount / columns);
+        // 固定显示4行，超出部分通过网格自动处理（CSS grid会自动换行）
         
         // 创建卡片
         const card = document.createElement('div');
@@ -268,7 +279,7 @@ function renderCategories() {
         iconsGrid.className = 'card-icons-grid';
         iconsGrid.setAttribute('data-columns', columns);
         
-        // 显示所有图标（不显示"更多"）
+        // 显示所有图标
         items.forEach(item => {
             const iconItem = document.createElement('div');
             iconItem.className = 'card-icon-item';
@@ -282,8 +293,8 @@ function renderCategories() {
             nameSpan.className = 'card-icon-name';
             let displayName = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
             // 名称过长时截断
-            if (displayName.length > 8) {
-                displayName = displayName.substring(0, 6) + '...';
+            if (displayName.length > 10) {
+                displayName = displayName.substring(0, 8) + '...';
             }
             nameSpan.textContent = displayName;
             nameSpan.title = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
@@ -313,6 +324,8 @@ function renderCategories() {
         
         categoriesGrid.appendChild(card);
     });
+    
+    console.log(`✅ 已渲染 ${groupsList.length} 个分类卡片`);
 }
 
 // ===== 中英文切换 =====
@@ -338,26 +351,34 @@ expandDetailBtn.addEventListener('click', () => {
     }
 });
 
-// 模态框
+// 模态框（大图预览）
 function openModal(src) {
     let modal = document.getElementById('imageModal');
     if (!modal) {
         modal = document.createElement('div');
         modal.id = 'imageModal';
         modal.className = 'modal';
-        modal.innerHTML = `<div class="modal-content"><img src="" alt=""></div><div class="modal-close">&times;</div>`;
+        modal.innerHTML = `
+            <div class="modal-content">
+                <img src="" alt="">
+            </div>
+            <div class="modal-close">&times;</div>
+        `;
         document.body.appendChild(modal);
+        
         modal.addEventListener('click', (e) => {
             if (e.target === modal || e.target.classList.contains('modal-close')) {
                 modal.classList.remove('active');
             }
         });
     }
-    modal.querySelector('img').src = src;
+    
+    const img = modal.querySelector('img');
+    img.src = src;
     modal.classList.add('active');
 }
 
 window.openModal = openModal;
 
-// 启动
+// 启动应用
 loadData();
