@@ -1,0 +1,25 @@
+{
+  "description_cn": "将一组点视为刚体，保持点集的整体形状不变。适用于刚体动画和装配。",
+  "description_en": "Treats a set of points as a rigid body, maintaining the overall shape of the point set. Suitable for rigid body animation and assembly.",
+  "images": [
+    "rigidpointset_demo.png"
+  ],
+  "video": "",
+  "tags": ["点集", "刚体", "约束", "动画"],
+  "parameters": [
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1.0,
+      "desc_cn": "刚体约束强度",
+      "desc_en": "Rigid body constraint strength"
+    }
+  ],
+  "examples": [
+    "rigidpointset_animation.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "1.8",
+  "lastUpdated": "2026-01-08"
+}
