@@ -1,0 +1,33 @@
+{
+  "description_cn": "长度吸附约束，将线段长度吸附到指定的离散值。",
+  "description_en": "Length snap constraint, snaps line length to specified discrete values.",
+  "images": [
+    "lengthsnap_demo.png"
+  ],
+  "video": "",
+  "tags": ["长度", "吸附", "步进", "离散"],
+  "parameters": [
+    {
+      "name": "SnapValues",
+      "cn": "吸附值",
+      "en": "Snap Values",
+      "default": "[5,10,15,20]",
+      "desc_cn": "长度吸附的目标值",
+      "desc_en": "Target values for length snapping"
+    },
+    {
+      "name": "Tolerance",
+      "cn": "容差",
+      "en": "Tolerance",
+      "default": 0.5,
+      "desc_cn": "吸附触发容差",
+      "desc_en": "Snap trigger tolerance"
+    }
+  ],
+  "examples": [
+    "lengthsnap_grid.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "1.8",
+  "lastUpdated": "2024-01-06"
+}
