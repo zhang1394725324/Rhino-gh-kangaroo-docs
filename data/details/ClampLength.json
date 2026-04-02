@@ -1,0 +1,25 @@
+{
+  "description_cn": "限制线段最大长度，防止线段过度拉伸。",
+  "description_en": "Clamps maximum line length, prevents excessive stretching.",
+  "images": [
+    "clamplength_demo.png"
+  ],
+  "video": "",
+  "tags": ["长度", "限制", "线段", "拉伸"],
+  "parameters": [
+    {
+      "name": "MaxLength",
+      "cn": "最大长度",
+      "en": "Max Length",
+      "default": 10.0,
+      "desc_cn": "允许的最大线段长度",
+      "desc_en": "Maximum allowed line length"
+    }
+  ],
+  "examples": [
+    "clamplength_spring.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.0",
+  "lastUpdated": "2024-01-10"
+}
