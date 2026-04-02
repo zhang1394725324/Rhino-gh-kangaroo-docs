@@ -91,7 +91,7 @@ body {
     align-items: flex-start;
 }
 
-/* 分类卡片 - 宽度自适应，高度固定 */
+/* 分类卡片 - 高度固定为容纳4行图标 */
 .category-card {
     background: #ffffff;
     border: 1.5px solid #cbd5e1;
@@ -101,10 +101,9 @@ body {
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     display: inline-flex;
     flex-direction: column;
-    height: 200px;
+    height: 210px;
     width: auto;
-    min-width: 140px;
-    max-width: 200px;
+    min-width: 130px;
 }
 
 .category-card:hover {
@@ -112,33 +111,46 @@ body {
     box-shadow: 0 4px 12px -8px rgba(0,0,0,0.15);
 }
 
-/* 卡片内图标网格区域 */
+/* 卡片内图标网格区域 - 不滚动，容纳4行 */
 .card-icons-area {
     flex: 1;
-    padding: 8px 6px;
-    overflow-y: auto;
+    padding: 10px 8px;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
 }
 
-/* 图标网格 - 紧凑布局 */
+/* 图标网格 - 自动计算行数 */
 .card-icons-grid {
     display: grid;
-    gap: 4px;
+    gap: 6px;
     align-items: center;
     justify-items: center;
+    height: 100%;
 }
 
 /* 根据图标数量自动设置列数 */
-.card-icons-grid[data-columns="2"] { grid-template-columns: repeat(2, 1fr); }
-.card-icons-grid[data-columns="3"] { grid-template-columns: repeat(3, 1fr); }
-.card-icons-grid[data-columns="4"] { grid-template-columns: repeat(4, 1fr); }
-.card-icons-grid[data-columns="5"] { grid-template-columns: repeat(5, 1fr); }
-.card-icons-grid[data-columns="6"] { grid-template-columns: repeat(6, 1fr); }
+.card-icons-grid[data-columns="2"] { 
+    grid-template-columns: repeat(2, minmax(50px, 70px)); 
+}
+.card-icons-grid[data-columns="3"] { 
+    grid-template-columns: repeat(3, minmax(50px, 65px)); 
+}
+.card-icons-grid[data-columns="4"] { 
+    grid-template-columns: repeat(4, minmax(50px, 60px)); 
+}
+.card-icons-grid[data-columns="5"] { 
+    grid-template-columns: repeat(5, minmax(45px, 55px)); 
+}
+.card-icons-grid[data-columns="6"] { 
+    grid-template-columns: repeat(6, minmax(45px, 50px)); 
+}
 
-/* 卡片内的小图标 - 紧凑 */
+/* 卡片内的小图标 - 24x24 图标 */
 .card-icon-item {
     text-align: center;
     cursor: pointer;
-    padding: 3px 2px;
+    padding: 4px 2px;
     border-radius: 6px;
     transition: all 0.15s ease;
     width: 100%;
@@ -149,40 +161,35 @@ body {
     transform: translateY(-1px);
 }
 
+/* 图标必须是 24x24 像素 */
 .card-icon-sprite {
-    width: 22px;
-    height: 22px;
-    margin: 0 auto 2px;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto 4px;
     background-image: url('img/sprites/kangaroo_icons.png');
     background-repeat: no-repeat;
     background-size: 240px 264px;
 }
 
 .card-icon-name {
-    font-size: 0.5rem;
+    font-size: 0.55rem;
     font-weight: 500;
     color: #475569;
     word-break: break-word;
-    line-height: 1.15;
-    max-width: 55px;
+    line-height: 1.2;
+    max-width: 60px;
     margin: 0 auto;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.card-icon-name:hover {
-    white-space: normal;
-    word-break: break-word;
-    background: #f8fafc;
-    position: relative;
-    z-index: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 /* 分类标题标签（矩形B - 黑色背景）*/
 .category-title {
     background: #1e293b;
-    padding: 5px 8px;
+    padding: 6px 8px;
     text-align: center;
     border-top: 1px solid #334155;
     flex-shrink: 0;
@@ -190,7 +197,7 @@ body {
 
 .category-title span {
     color: white;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.3px;
 }
@@ -481,23 +488,22 @@ body {
     }
     
     .category-card {
-        height: 180px;
+        height: 195px;
         min-width: 120px;
-        max-width: 170px;
     }
     
     .card-icon-sprite {
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
     }
     
     .card-icon-name {
-        font-size: 0.45rem;
-        max-width: 45px;
+        font-size: 0.5rem;
+        max-width: 50px;
     }
     
     .category-title span {
-        font-size: 0.6rem;
+        font-size: 0.65rem;
     }
 }
 
@@ -530,35 +536,51 @@ body {
     }
     
     .category-card {
-        height: 160px;
-        min-width: 100px;
-        max-width: 150px;
+        height: 180px;
+        min-width: 105px;
     }
     
     .card-icons-area {
-        padding: 6px 4px;
+        padding: 8px 6px;
     }
     
     .card-icons-grid {
-        gap: 3px;
+        gap: 4px;
+    }
+    
+    /* 手机端调整列宽 */
+    .card-icons-grid[data-columns="2"] { 
+        grid-template-columns: repeat(2, minmax(45px, 60px)); 
+    }
+    .card-icons-grid[data-columns="3"] { 
+        grid-template-columns: repeat(3, minmax(45px, 55px)); 
+    }
+    .card-icons-grid[data-columns="4"] { 
+        grid-template-columns: repeat(4, minmax(40px, 50px)); 
+    }
+    .card-icons-grid[data-columns="5"] { 
+        grid-template-columns: repeat(5, minmax(38px, 45px)); 
+    }
+    .card-icons-grid[data-columns="6"] { 
+        grid-template-columns: repeat(6, minmax(35px, 42px)); 
     }
     
     .card-icon-sprite {
-        width: 18px;
-        height: 18px;
+        width: 24px;
+        height: 24px;
     }
     
     .card-icon-name {
-        font-size: 0.4rem;
-        max-width: 40px;
+        font-size: 0.45rem;
+        max-width: 45px;
     }
     
     .category-title {
-        padding: 4px 6px;
+        padding: 5px 6px;
     }
     
     .category-title span {
-        font-size: 0.55rem;
+        font-size: 0.6rem;
     }
     
     .detail-header {
@@ -583,22 +605,21 @@ body {
 /* 超小手机 */
 @media (max-width: 550px) {
     .category-card {
-        height: 150px;
-        min-width: 90px;
-        max-width: 130px;
+        height: 165px;
+        min-width: 95px;
     }
     
     .card-icon-sprite {
-        width: 16px;
-        height: 16px;
+        width: 22px;
+        height: 22px;
     }
     
     .card-icon-name {
-        font-size: 0.35rem;
-        max-width: 35px;
+        font-size: 0.4rem;
+        max-width: 40px;
     }
     
     .category-title span {
-        font-size: 0.5rem;
+        font-size: 0.55rem;
     }
 }
