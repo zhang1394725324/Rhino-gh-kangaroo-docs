@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>参数化JSON生成器 | 一键生成规范JSON文件</title>
+    <title>专业JSON生成器 | 自定义文件名 · 一键复制 · 优化参数面板</title>
     <style>
         * {
             margin: 0;
@@ -18,13 +18,11 @@
             color: #0f172a;
         }
 
-        /* 主容器 */
         .app-container {
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 0 auto;
         }
 
-        /* 头部 */
         .hero {
             text-align: center;
             margin-bottom: 2rem;
@@ -36,11 +34,9 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: -0.3px;
         }
         .hero p {
             color: #475569;
-            margin-top: 0.5rem;
         }
 
         /* 双栏布局 */
@@ -50,15 +46,15 @@
             gap: 1.8rem;
         }
 
-        /* 左侧表单区 — 精简输入 */
+        /* 左侧表单区 */
         .form-panel {
             flex: 2;
-            min-width: 320px;
+            min-width: 360px;
             background: white;
             border-radius: 1.5rem;
             box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-            overflow: hidden;
             border: 1px solid #e2e8f0;
+            overflow: hidden;
         }
 
         .form-header {
@@ -90,10 +86,6 @@
             margin-bottom: 6px;
             color: #1e293b;
         }
-        .input-group label .required {
-            color: #ef4444;
-            margin-left: 4px;
-        }
         .input-group input, .input-group textarea {
             width: 100%;
             padding: 0.7rem 1rem;
@@ -109,22 +101,13 @@
             border-color: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
         }
-        .input-group textarea {
-            resize: vertical;
-            min-height: 70px;
-        }
-        .hint {
-            font-size: 0.7rem;
-            color: #64748b;
-            margin-top: 4px;
-        }
         .array-field {
             background: #f9f9ff;
             padding: 0.8rem;
             border-radius: 1rem;
             border: 1px solid #eef2ff;
         }
-        .tag-list, .image-list, .example-list {
+        .tag-list {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
@@ -162,46 +145,81 @@
             background: #e2e8f0;
         }
 
-        /* 参数表格区域 (动态参数) */
+        /* 参数列表 - 全新单行布局 + 清晰的标签说明 */
         .params-section {
             margin-top: 1.2rem;
             border-top: 2px solid #eef2ff;
             padding-top: 1rem;
         }
-        .param-row {
-            background: #f9fafb;
-            border-radius: 1rem;
-            padding: 0.8rem;
-            margin-bottom: 0.8rem;
-            border-left: 4px solid #3b82f6;
-        }
-        .param-fields {
+        .param-table-header {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            gap: 10px;
-            align-items: end;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr 1.2fr 50px;
+            gap: 8px;
+            background: #eef2ff;
+            padding: 8px 12px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 10px;
         }
-        .param-fields input, .param-fields textarea {
+        .param-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr 1.2fr 50px;
+            gap: 8px;
+            align-items: center;
+            background: #ffffff;
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: 0.1s;
+        }
+        .param-row input, .param-row textarea {
+            width: 100%;
+            padding: 6px 8px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
             font-size: 0.8rem;
-            padding: 0.5rem;
+            font-family: inherit;
+            background: white;
         }
-        .param-actions {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 6px;
+        .param-row textarea {
+            resize: vertical;
+            min-height: 52px;
         }
-        .btn-icon {
-            background: none;
+        .param-row input:focus, .param-row textarea:focus {
+            border-color: #3b82f6;
+            outline: none;
+        }
+        .delete-param-btn {
+            background: #fee2e2;
             border: none;
-            color: #ef4444;
+            border-radius: 30px;
+            padding: 6px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
+            color: #b91c1c;
+            font-weight: bold;
+            transition: 0.1s;
+        }
+        .delete-param-btn:hover {
+            background: #fecaca;
+        }
+        .add-param-btn {
+            margin-top: 12px;
+            width: 100%;
+            background: #f1f5f9;
+            border: 1px dashed #3b82f6;
+            padding: 8px;
+            border-radius: 40px;
+            font-weight: 500;
         }
 
-        /* 右侧操作区 */
+        /* 右侧面板 */
         .action-panel {
             flex: 1.2;
-            min-width: 280px;
+            min-width: 320px;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
@@ -219,10 +237,11 @@
             align-items: center;
             margin-bottom: 1rem;
             flex-wrap: wrap;
+            gap: 12px;
         }
         .btn-group {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
         button {
@@ -252,27 +271,75 @@
             border: 1px solid #cbd5e1;
             background: white;
         }
+        .filename-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            background: #f8fafc;
+            padding: 8px 12px;
+            border-radius: 2rem;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .filename-group label {
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .filename-group input {
+            flex: 1;
+            border: 1px solid #cbd5e1;
+            border-radius: 2rem;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
         pre {
             background: #0f172a;
             color: #e2e8f0;
             padding: 1rem;
             border-radius: 1rem;
             overflow-x: auto;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-family: 'JetBrains Mono', monospace;
-            max-height: 380px;
+            max-height: 400px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .copy-toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 500;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: opacity 0.2s;
+            pointer-events: none;
         }
         .status-badge {
             background: #e6f7e6;
             padding: 6px 12px;
             border-radius: 2rem;
             font-size: 0.75rem;
-            color: #2e7d32;
+            margin-top: 12px;
         }
-
-        @media (max-width: 780px) {
-            .param-fields {
+        .helper-text {
+            font-size: 0.65rem;
+            color: #4b5563;
+            margin-top: 4px;
+            display: block;
+        }
+        @media (max-width: 900px) {
+            .param-row, .param-table-header {
                 grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+            .param-table-header { display: none; }
+            .param-row {
+                margin-bottom: 16px;
+                padding: 12px;
             }
         }
     </style>
@@ -280,51 +347,51 @@
 <body>
 <div class="app-container">
     <div class="hero">
-        <h1>📄 规范JSON生成器 · 智能表单</h1>
-        <p>基于标准格式：description, images, tags, parameters, examples — 极简输入，一键生成JSON文件</p>
+        <h1>📄 专业JSON生成器 · 增强版</h1>
+        <p>自定义文件名 · 一键复制预览 · 智能参数列表 (单行紧凑+字段提示)</p>
     </div>
 
     <div class="generator-layout">
-        <!-- 左侧表单：核心字段简化输入 -->
+        <!-- 左侧表单区域 -->
         <div class="form-panel">
             <div class="form-header">
                 <h2>✍️ 填写详细信息 (自动构建JSON)</h2>
             </div>
             <div class="form-body">
-                <!-- 基础信息 -->
+                <!-- 基础描述 -->
                 <div class="input-group">
-                    <label>📌 中文描述 <span class="required">*</span></label>
-                    <input type="text" id="desc_cn" placeholder="例如：将两个面对齐，使它们共面且方向一致。" value="将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。">
+                    <label>📌 中文描述</label>
+                    <input type="text" id="desc_cn" value="将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。">
                 </div>
                 <div class="input-group">
                     <label>🌐 英文描述</label>
-                    <input type="text" id="desc_en" placeholder="English description" value="Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.">
+                    <input type="text" id="desc_en" value="Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.">
                 </div>
                 
                 <!-- 图片列表 -->
                 <div class="input-group">
                     <label>🖼️ 图片文件名列表 (images)</label>
-                    <div id="imagesContainer" class="array-field">
+                    <div class="array-field">
                         <div id="imageList" class="tag-list">
                             <div class="img-item">alignfaces_demo.png <button class="remove-btn" data-img="alignfaces_demo.png">✖</button></div>
                             <div class="img-item">alignfaces_animation.gif <button class="remove-btn" data-img="alignfaces_animation.gif">✖</button></div>
                         </div>
                         <div style="margin-top: 8px;">
-                            <input type="text" id="newImageInput" placeholder="新图片文件名，如 screenshot.png" style="width: 65%; margin-right: 6px;">
-                            <button id="addImageBtn" class="add-btn">+ 添加图片</button>
+                            <input type="text" id="newImageInput" placeholder="新图片文件名" style="width: 65%; margin-right: 6px;">
+                            <button id="addImageBtn" class="add-btn">+ 添加</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="input-group">
                     <label>🎬 视频链接 (video)</label>
-                    <input type="text" id="video" placeholder="可选，视频URL" value="">
+                    <input type="text" id="video" value="">
                 </div>
 
                 <!-- 标签列表 -->
                 <div class="input-group">
                     <label>🏷️ 标签 (tags)</label>
-                    <div id="tagsContainer" class="array-field">
+                    <div class="array-field">
                         <div id="tagList" class="tag-list">
                             <div class="tag-item">对齐 <button class="remove-btn" data-tag="对齐">✖</button></div>
                             <div class="tag-item">面 <button class="remove-btn" data-tag="面">✖</button></div>
@@ -332,29 +399,39 @@
                             <div class="tag-item">网格 <button class="remove-btn" data-tag="网格">✖</button></div>
                         </div>
                         <div style="margin-top: 8px;">
-                            <input type="text" id="newTagInput" placeholder="新标签，如 几何" style="width: 65%; margin-right: 6px;">
-                            <button id="addTagBtn" class="add-btn">+ 添加标签</button>
+                            <input type="text" id="newTagInput" placeholder="新标签" style="width: 65%; margin-right: 6px;">
+                            <button id="addTagBtn" class="add-btn">+ 添加</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- 参数列表 (动态表格核心) -->
+                <!-- 参数列表：清晰表头+单行每个参数 -->
                 <div class="params-section">
-                    <label style="font-weight:700;">⚙️ 参数列表 (parameters) — 可动态增减</label>
+                    <label style="font-weight:700; margin-bottom: 8px; display:block;">⚙️ 参数列表 (parameters) — 每个参数占据一行，带字段说明</label>
+                    <div class="param-table-header">
+                        <span>参数名(name)</span>
+                        <span>中文说明(cn)</span>
+                        <span>英文说明(en)</span>
+                        <span>默认值(default)</span>
+                        <span>描述中文(desc_cn)</span>
+                        <span>描述英文(desc_en)</span>
+                        <span>操作</span>
+                    </div>
                     <div id="parametersList"></div>
-                    <button id="addParameterBtn" class="add-btn" style="margin-top: 10px;">+ 添加新参数</button>
+                    <button id="addParameterBtn" class="add-btn add-param-btn">+ 添加新参数 (单行)</button>
+                    <span class="helper-text">💡 每个参数独立一行，鼠标悬停可编辑，支持多行描述文本。</span>
                 </div>
 
                 <!-- 示例文件列表 -->
-                <div class="input-group" style="margin-top: 1rem;">
+                <div class="input-group">
                     <label>📁 示例文件 (examples)</label>
-                    <div id="examplesContainer" class="array-field">
+                    <div class="array-field">
                         <div id="exampleList" class="tag-list">
                             <div class="ex-item">alignfaces_example.gh <button class="remove-btn" data-ex="alignfaces_example.gh">✖</button></div>
                         </div>
                         <div style="margin-top: 8px;">
-                            <input type="text" id="newExampleInput" placeholder="示例文件名，如 demo.gh" style="width: 65%; margin-right: 6px;">
-                            <button id="addExampleBtn" class="add-btn">+ 添加示例</button>
+                            <input type="text" id="newExampleInput" placeholder="示例文件名" style="width: 65%; margin-right: 6px;">
+                            <button id="addExampleBtn" class="add-btn">+ 添加</button>
                         </div>
                     </div>
                 </div>
@@ -374,190 +451,186 @@
             </div>
         </div>
 
-        <!-- 右侧预览与操作 -->
+        <!-- 右侧操作与预览 -->
         <div class="action-panel">
             <div class="preview-card">
                 <div class="preview-header">
-                    <h3>📋 实时JSON预览</h3>
+                    <h3>📋 JSON预览 & 操作</h3>
                     <div class="btn-group">
                         <button id="generatePreviewBtn" class="primary">🔄 刷新预览</button>
-                        <button id="downloadJsonBtn" class="success">💾 一键生成JSON文件</button>
+                        <button id="copyPreviewBtn" class="outline">📋 一键复制</button>
                     </div>
                 </div>
-                <pre id="jsonPreview">{\n  "等待加载...\n}</pre>
-                <div id="statusMsg" class="status-badge" style="margin-top: 12px; background:#eef2ff;">✅ 就绪，数据自动符合格式</div>
+                <!-- 自定义文件名区域 -->
+                <div class="filename-group">
+                    <label>💾 自定义文件名:</label>
+                    <input type="text" id="customFilename" placeholder="例如: my_component" value="component_config">
+                    <span>.json</span>
+                    <button id="downloadJsonBtn" class="success">⬇️ 生成并下载</button>
+                </div>
+                <pre id="jsonPreview">{\n  "等待数据加载...\n}</pre>
+                <div id="statusMsg" class="status-badge">✅ 就绪，实时符合预设格式</div>
             </div>
             <div class="preview-card">
-                <h4>🚀 使用帮助</h4>
-                <ul style="font-size: 0.8rem; margin-left: 1.2rem; color:#334155;">
-                    <li>左侧表单填入你的具体数值，支持动态添加参数、标签、图片等。</li>
-                    <li>每个参数包含: name, cn, en, default, desc_cn, desc_en 。</li>
-                    <li>点击「刷新预览」实时构建符合格式的JSON。</li>
-                    <li>点击「一键生成JSON文件」立即下载 .json 文件。</li>
-                    <li>完全前端处理，数据隐私安全。</li>
+                <h4>🚀 功能说明</h4>
+                <ul style="font-size: 0.8rem; margin-left: 1.2rem; color:#334155; line-height: 1.4;">
+                    <li>✅ <strong>自定义文件名</strong>：在右侧输入框中设置输出文件名（不含.json后缀）</li>
+                    <li>✅ <strong>一键复制</strong>：点击「一键复制」按钮，代码块内容复制到剪贴板，弹出提示</li>
+                    <li>✅ <strong>参数单行布局</strong>：每个参数占据一整行，表头清晰标明字段含义</li>
+                    <li>✅ <strong>参数说明标签</strong>：每个输入框均有占位符/提示，明确参数名、中文说明、默认值等</li>
+                    <li>✅ 动态增删参数/标签/图片/示例，实时更新预览JSON</li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
+<!-- 复制提示浮层 -->
+<div id="copyToast" class="copy-toast" style="opacity:0; visibility:hidden;">已复制到剪贴板 ✓</div>
+
 <script>
-    // ---------- DOM 元素绑定 ----------
-    // 基本字段
+    // ---------- DOM 元素 ----------
     const descCn = document.getElementById('desc_cn');
     const descEn = document.getElementById('desc_en');
     const video = document.getElementById('video');
     const author = document.getElementById('author');
     const version = document.getElementById('version');
     const lastUpdated = document.getElementById('lastUpdated');
+    const customFilenameInput = document.getElementById('customFilename');
+    const jsonPreview = document.getElementById('jsonPreview');
+    const statusSpan = document.getElementById('statusMsg');
 
-    // 列表容器
+    // 动态数组
     let imagesArray = ['alignfaces_demo.png', 'alignfaces_animation.gif'];
     let tagsArray = ['对齐', '面', '约束', '网格'];
     let examplesArray = ['alignfaces_example.gh'];
-    let parametersArray = [];   // 存储参数对象
+    let parametersArray = [];
 
-    // 辅助DOM
+    // DOM 容器
     const imageListDiv = document.getElementById('imageList');
     const tagListDiv = document.getElementById('tagList');
     const exampleListDiv = document.getElementById('exampleList');
     const parametersContainer = document.getElementById('parametersList');
-    const jsonPreview = document.getElementById('jsonPreview');
-    const statusSpan = document.getElementById('statusMsg');
 
-    // 初始化默认参数 (Strength, Tolerance)
+    // ---------- 初始化默认参数 ( Strength / Tolerance ) ----------
     function initDefaultParameters() {
         if (parametersArray.length === 0) {
             parametersArray = [
-                {
-                    name: "Strength",
-                    cn: "强度",
-                    en: "Strength",
-                    default: 1.0,
-                    desc_cn: "约束强度，值越大效果越明显",
-                    desc_en: "Constraint strength, higher value gives stronger effect"
-                },
-                {
-                    name: "Tolerance",
-                    cn: "容差",
-                    en: "Tolerance",
-                    default: 0.01,
-                    desc_cn: "对齐精度，值越小越精确",
-                    desc_en: "Alignment tolerance, smaller value gives higher precision"
-                }
+                { name: "Strength", cn: "强度", en: "Strength", default: 1.0, desc_cn: "约束强度，值越大效果越明显", desc_en: "Constraint strength, higher value gives stronger effect" },
+                { name: "Tolerance", cn: "容差", en: "Tolerance", default: 0.01, desc_cn: "对齐精度，值越小越精确", desc_en: "Alignment tolerance, smaller value gives higher precision" }
             ];
         }
-        renderParameters();
+        renderParametersTable();
     }
 
-    // 渲染参数列表UI
-    function renderParameters() {
+    // 渲染参数列表 (单行布局 + 表头说明)
+    function renderParametersTable() {
         if (!parametersContainer) return;
         parametersContainer.innerHTML = '';
         parametersArray.forEach((param, idx) => {
-            const paramDiv = document.createElement('div');
-            paramDiv.className = 'param-row';
-            paramDiv.innerHTML = `
-                <div class="param-fields">
-                    <input type="text" placeholder="name" value="${escapeHtml(param.name)}" data-field="name" data-idx="${idx}">
-                    <input type="text" placeholder="cn" value="${escapeHtml(param.cn)}" data-field="cn" data-idx="${idx}">
-                    <input type="text" placeholder="en" value="${escapeHtml(param.en)}" data-field="en" data-idx="${idx}">
-                    <input type="text" placeholder="default" value="${param.default}" data-field="default" data-idx="${idx}">
-                    <textarea placeholder="desc_cn" rows="1" data-field="desc_cn" data-idx="${idx}">${escapeHtml(param.desc_cn)}</textarea>
-                    <textarea placeholder="desc_en" rows="1" data-field="desc_en" data-idx="${idx}">${escapeHtml(param.desc_en)}</textarea>
-                </div>
-                <div class="param-actions">
-                    <button class="btn-icon remove-param" data-idx="${idx}">🗑️ 删除参数</button>
-                </div>
+            const row = document.createElement('div');
+            row.className = 'param-row';
+            row.setAttribute('data-param-idx', idx);
+            // 每个字段用 input/textarea 并附带placeholder提示
+            row.innerHTML = `
+                <input type="text" value="${escapeHtml(param.name)}" placeholder="参数名 (name)" data-field="name" data-idx="${idx}">
+                <input type="text" value="${escapeHtml(param.cn)}" placeholder="中文说明 (cn)" data-field="cn" data-idx="${idx}">
+                <input type="text" value="${escapeHtml(param.en)}" placeholder="英文说明 (en)" data-field="en" data-idx="${idx}">
+                <input type="text" value="${param.default}" placeholder="默认值 (default)" data-field="default" data-idx="${idx}">
+                <textarea rows="1" placeholder="描述中文 (desc_cn)" data-field="desc_cn" data-idx="${idx}">${escapeHtml(param.desc_cn)}</textarea>
+                <textarea rows="1" placeholder="描述英文 (desc_en)" data-field="desc_en" data-idx="${idx}">${escapeHtml(param.desc_en)}</textarea>
+                <button class="delete-param-btn" data-idx="${idx}">🗑️ 删除</button>
             `;
-            parametersContainer.appendChild(paramDiv);
+            parametersContainer.appendChild(row);
         });
 
-        // 绑定参数输入事件
-        document.querySelectorAll('.param-fields input, .param-fields textarea').forEach(el => {
-            el.removeEventListener('input', handleParamInput);
-            el.addEventListener('input', handleParamInput);
+        // 绑定输入事件及删除事件
+        document.querySelectorAll('#parametersList .param-row input, #parametersList .param-row textarea').forEach(el => {
+            el.removeEventListener('input', handleParamFieldChange);
+            el.addEventListener('input', handleParamFieldChange);
         });
-        document.querySelectorAll('.remove-param').forEach(btn => {
-            btn.removeEventListener('click', handleRemoveParam);
-            btn.addEventListener('click', handleRemoveParam);
+        document.querySelectorAll('#parametersList .delete-param-btn').forEach(btn => {
+            btn.removeEventListener('click', handleDeleteParameter);
+            btn.addEventListener('click', handleDeleteParameter);
         });
     }
 
-    function handleParamInput(e) {
+    function handleParamFieldChange(e) {
         const idx = e.target.getAttribute('data-idx');
         const field = e.target.getAttribute('data-field');
         if (idx !== null && parametersArray[idx]) {
-            let value = e.target.value;
-            if (field === 'default' && !isNaN(parseFloat(value)) && isFinite(value)) {
-                // 保留数字类型
-                if (value.trim() !== '') parametersArray[idx][field] = parseFloat(value);
-                else parametersArray[idx][field] = 0;
+            let val = e.target.value;
+            if (field === 'default') {
+                // 尝试转换为数字
+                let num = parseFloat(val);
+                parametersArray[idx][field] = isNaN(num) ? 0 : num;
+                if (isNaN(num)) e.target.value = 0;
+                else e.target.value = num;
             } else {
-                parametersArray[idx][field] = value;
+                parametersArray[idx][field] = val;
             }
-            updatePreview(); // 实时预览刷新
-        }
-    }
-
-    function handleRemoveParam(e) {
-        const idx = e.target.getAttribute('data-idx');
-        if (idx !== null) {
-            parametersArray.splice(parseInt(idx), 1);
-            renderParameters();
             updatePreview();
         }
     }
 
-    // 辅助 html 转义
+    function handleDeleteParameter(e) {
+        const idx = e.target.getAttribute('data-idx');
+        if (idx !== null) {
+            parametersArray.splice(parseInt(idx), 1);
+            renderParametersTable();
+            updatePreview();
+        }
+    }
+
+    // 辅助html转义
     function escapeHtml(str) { return String(str).replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
 
-    // 渲染标签列表、图片列表、示例列表
+    // 渲染图片、标签、示例列表
     function renderImageList() {
         imageListDiv.innerHTML = imagesArray.map(img => `<div class="img-item">${escapeHtml(img)} <button class="remove-btn" data-img="${escapeHtml(img)}">✖</button></div>`).join('');
-        attachRemoveImageEvents();
+        attachImageRemoveEvents();
     }
     function renderTagList() {
         tagListDiv.innerHTML = tagsArray.map(tag => `<div class="tag-item">${escapeHtml(tag)} <button class="remove-btn" data-tag="${escapeHtml(tag)}">✖</button></div>`).join('');
-        attachRemoveTagEvents();
+        attachTagRemoveEvents();
     }
     function renderExampleList() {
         exampleListDiv.innerHTML = examplesArray.map(ex => `<div class="ex-item">${escapeHtml(ex)} <button class="remove-btn" data-ex="${escapeHtml(ex)}">✖</button></div>`).join('');
-        attachRemoveExampleEvents();
+        attachExampleRemoveEvents();
     }
 
-    function attachRemoveImageEvents() {
+    function attachImageRemoveEvents() {
         document.querySelectorAll('#imageList .remove-btn').forEach(btn => {
-            btn.onclick = (e) => {
-                const imgVal = btn.getAttribute('data-img');
-                imagesArray = imagesArray.filter(i => i !== imgVal);
+            btn.onclick = () => {
+                const val = btn.getAttribute('data-img');
+                imagesArray = imagesArray.filter(i => i !== val);
                 renderImageList();
                 updatePreview();
             };
         });
     }
-    function attachRemoveTagEvents() {
+    function attachTagRemoveEvents() {
         document.querySelectorAll('#tagList .remove-btn').forEach(btn => {
             btn.onclick = () => {
-                const tagVal = btn.getAttribute('data-tag');
-                tagsArray = tagsArray.filter(t => t !== tagVal);
+                const val = btn.getAttribute('data-tag');
+                tagsArray = tagsArray.filter(t => t !== val);
                 renderTagList();
                 updatePreview();
             };
         });
     }
-    function attachRemoveExampleEvents() {
+    function attachExampleRemoveEvents() {
         document.querySelectorAll('#exampleList .remove-btn').forEach(btn => {
             btn.onclick = () => {
-                const exVal = btn.getAttribute('data-ex');
-                examplesArray = examplesArray.filter(e => e !== exVal);
+                const val = btn.getAttribute('data-ex');
+                examplesArray = examplesArray.filter(e => e !== val);
                 renderExampleList();
                 updatePreview();
             };
         });
     }
 
-    // 添加新图片/标签/示例
+    // 添加逻辑
     document.getElementById('addImageBtn')?.addEventListener('click', () => {
         const inp = document.getElementById('newImageInput');
         if (inp.value.trim()) { imagesArray.push(inp.value.trim()); inp.value = ''; renderImageList(); updatePreview(); }
@@ -572,51 +645,44 @@
     });
     document.getElementById('addParameterBtn')?.addEventListener('click', () => {
         parametersArray.push({
-            name: "newParam",
-            cn: "新参数",
+            name: "new_param",
+            cn: "新参数中文",
             en: "New Param",
-            default: 0.5,
-            desc_cn: "参数描述",
-            desc_en: "Parameter description"
+            default: 0.0,
+            desc_cn: "请输入参数描述",
+            desc_en: "Description here"
         });
-        renderParameters();
+        renderParametersTable();
         updatePreview();
     });
 
-    // 核心: 从表单构建完整JSON对象
+    // 构建JSON对象 (完全符合标准格式)
     function buildJsonObject() {
-        // 处理lastUpdated日期格式
         let lastUpdatedVal = lastUpdated.value;
         if (!lastUpdatedVal) lastUpdatedVal = new Date().toISOString().slice(0,10);
-        // 处理图片列表、标签等
-        const images = [...imagesArray];
-        const tags = [...tagsArray];
-        const examples = [...examplesArray];
-        // 参数深拷贝确保default数字类型
         const params = parametersArray.map(p => ({
             name: p.name || "",
             cn: p.cn || "",
             en: p.en || "",
-            default: typeof p.default === 'number' ? p.default : (isNaN(parseFloat(p.default)) ? 0 : parseFloat(p.default)),
+            default: (typeof p.default === 'number') ? p.default : (isNaN(parseFloat(p.default)) ? 0 : parseFloat(p.default)),
             desc_cn: p.desc_cn || "",
             desc_en: p.desc_en || ""
         }));
-
         return {
             description_cn: descCn.value,
             description_en: descEn.value,
-            images: images,
+            images: [...imagesArray],
             video: video.value || "",
-            tags: tags,
+            tags: [...tagsArray],
             parameters: params,
-            examples: examples,
+            examples: [...examplesArray],
             author: author.value,
             version: version.value,
             lastUpdated: lastUpdatedVal
         };
     }
 
-    // 更新预览 (刷新JSON显示)
+    // 更新预览区域
     function updatePreview() {
         try {
             const jsonObj = buildJsonObject();
@@ -625,48 +691,75 @@
             statusSpan.innerHTML = '✅ JSON 结构有效，符合预设格式。';
             statusSpan.style.background = '#e6f7e6';
         } catch (err) {
-            jsonPreview.textContent = `// 构建错误: ${err.message}`;
-            statusSpan.innerHTML = `❌ 构建错误: ${err.message}`;
+            jsonPreview.textContent = `// JSON构建错误: ${err.message}`;
+            statusSpan.innerHTML = `❌ 错误: ${err.message}`;
             statusSpan.style.background = '#ffe6e5';
         }
     }
 
-    // 一键下载 JSON 文件
+    // 一键复制功能 + Toast提示
+    function copyPreviewToClipboard() {
+        const code = jsonPreview.textContent;
+        if (!code || code.startsWith("//")) {
+            statusSpan.innerHTML = '⚠️ 无可复制内容或JSON无效，请刷新预览';
+            return;
+        }
+        navigator.clipboard.writeText(code).then(() => {
+            showToast('📋 已复制到剪贴板 ✓');
+            statusSpan.innerHTML = '✨ 复制成功！JSON代码已存入剪贴板';
+            setTimeout(() => { if (buildJsonObject()) statusSpan.innerHTML = '✅ JSON 结构有效'; }, 1500);
+        }).catch(() => {
+            showToast('❌ 复制失败，手动选择复制');
+        });
+    }
+
+    function showToast(msg) {
+        const toast = document.getElementById('copyToast');
+        toast.textContent = msg;
+        toast.style.visibility = 'visible';
+        toast.style.opacity = '1';
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => { toast.style.visibility = 'hidden'; }, 300);
+        }, 1800);
+    }
+
+    // 下载JSON (自定义文件名)
     function downloadJson() {
         const jsonObj = buildJsonObject();
         const jsonString = JSON.stringify(jsonObj, null, 2);
         const blob = new Blob([jsonString], { type: "application/json" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
-        const now = new Date();
-        const timestamp = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}_${now.getHours()}-${now.getMinutes()}`;
-        a.download = `component_${timestamp}.json`;
+        let baseName = customFilenameInput.value.trim();
+        if (baseName === "") baseName = "component_data";
+        const fileName = `${baseName}.json`;
+        a.download = fileName;
         a.href = url;
         a.click();
         URL.revokeObjectURL(url);
-        statusSpan.innerHTML = '📁 文件已生成并下载！';
+        statusSpan.innerHTML = `📁 文件 "${fileName}" 已下载！`;
         statusSpan.style.background = '#d9f0e1';
-        setTimeout(() => { updatePreview(); }, 800);
+        setTimeout(() => updatePreview(), 600);
     }
 
-    // 监听所有基础字段的变化实时更新预览
-    function bindInputEvents() {
-        const inputs = [descCn, descEn, video, author, version, lastUpdated];
+    // 监听所有基础输入
+    function bindMainInputs() {
+        const inputs = [descCn, descEn, video, author, version, lastUpdated, customFilenameInput];
         inputs.forEach(inp => inp?.addEventListener('input', () => updatePreview()));
     }
 
-    // 初始化UI及事件
     function init() {
         initDefaultParameters();
         renderImageList();
         renderTagList();
         renderExampleList();
-        bindInputEvents();
+        bindMainInputs();
         updatePreview();
         document.getElementById('generatePreviewBtn')?.addEventListener('click', () => updatePreview());
+        document.getElementById('copyPreviewBtn')?.addEventListener('click', () => copyPreviewToClipboard());
         document.getElementById('downloadJsonBtn')?.addEventListener('click', () => downloadJson());
     }
-
     init();
 </script>
 </body>
