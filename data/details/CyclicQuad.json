@@ -1,0 +1,48 @@
+{
+  "description_cn": "使四边形有个外接圆。尽量使四边形网格四点共圆。通常和“planarize”配合使用来获取圆形网格。使一个四个角点不共圆的四边形，变成一个四个角点共圆的四边形。",
+  "description_en": "Try to make the four corner points of a quadrilateral grid concyclic. This is often used in conjunction with \"planarize\" to obtain a circular grid. It transforms a quadrilateral whose four corner points are not concyclic into a quadrilateral whose four corner points are concyclic.",
+  "images": [
+    "CyclicQuad.png",
+    "CyclicQuad.gif"
+  ],
+  "video": "",
+  "tags": [
+    "约束",
+    "点",
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null,mesh",
+      "desc_cn": "输入的网格",
+      "desc_en": "Input mesh"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1,
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "C",
+      "cn": "生成的循环四边形",
+      "en": "Cyclic out ",
+      "default": "Null",
+      "desc_cn": "生成的循环四边形",
+      "desc_en": "Cyclic out "
+    }
+  ],
+  "examples": [
+    "CyclicQuad_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
