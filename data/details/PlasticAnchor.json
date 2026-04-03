@@ -1,0 +1,64 @@
+{
+  "description_cn": "和普通的锚类似，只不过这个运算器允许施加一定的弹性。普通的锚点一般是不会发生变动的，而这种锚点，只要施加足够的力，塑性锚的目标位置就会变动。参数L用于设置锚开始移动的距离限制。  它可以看做是一种静态摩擦力，使物体受到很轻的力就可以在桌面上滑动。在雕刻应用中可以用来阻止粒子漂移。  当一个平滑力作用于网格时，如果它单独存在，它就会不断地收缩和变平，即便平滑的力很小。在网格的每一个点都使用塑性锚，可以圆滑形态，但是当平滑力小于锚点的塑性极限时，它就会停止运动。(把网格点设置为塑料锚点，使物体具有塑料的可塑性，又具有一定复原能力（可以通过外力或手动拖拽使物体变形）。限定距离应该是对应塑料的复原性能，数值越大，物体受力变形后的复原能力就越强，手动直观感受就是越难拖拽出来。锚点：固定位置不发生移动的点。可以将指定的锚点固定要指定位置（目标点）上去。下图实例中是将矩形网格平面的四个角点设为锚点。)",
+  "description_en": "Similar to ordinary anchors, except this actuator allows for the application of a certain degree of elasticity. Ordinary anchor points generally remain stationary, while these plastic anchors, when subjected to sufficient force, will shift their target position. The parameter L sets the distance limit from which the anchor begins to move. It can be viewed as a form of static friction, allowing an object to slide on a table with very light force. In sculpting applications, this can be used to prevent particle drift. When a smoothing force is applied to a mesh, it will continuously contract and flatten if it exists alone, even if the smoothing force is small. Using plastic anchors at every point in the mesh allows for a smooth shape, but when the smoothing force is less than the plastic limit of the anchor point, it will stop moving. (Setting grid points as plastic anchor points gives the object the plasticity of plastic, while also allowing it to recover somewhat (it can be deformed by external force or manual dragging). The specified distance should correspond to the plastic's recovery performance; the higher the value, the stronger the object's recovery ability after deformation, and the more intuitively difficult it is to drag. Anchor point: A point that is fixed in position and does not move. You can fix a specified anchor point to a specified location (target point). In the example below, the four corner points of the rectangular grid plane are set as anchor points.)",
+  "images": [
+    "PlasticAnchor.png",
+    "PlasticAnchor.gif"
+  ],
+  "video": "",
+  "tags": [
+    "约束",
+    "点",
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "P",
+      "cn": "点",
+      "en": "point",
+      "default": "Null,点",
+      "desc_cn": "指向锚点",
+      "desc_en": "Point to anchor "
+    },
+    {
+      "name": "L",
+      "cn": "限制距离",
+      "en": "Limit",
+      "default": "1",
+      "desc_cn": "目标点开始滑动的距离",
+      "desc_en": "Distance at which target point starts to slide "
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1",
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    },
+    {
+      "name": "R",
+      "cn": "Reset",
+      "en": "Reset",
+      "default": "false，布尔值",
+      "desc_cn": "重置塑料位置",
+      "desc_en": "Reset plastic positions "
+    }
+  ],
+  "outputs": [
+    {
+      "name": "A",
+      "cn": "锚点",
+      "en": "Anchor point",
+      "default": "Null",
+      "desc_cn": "锚点",
+      "desc_en": "Anchor point"
+    }
+  ],
+  "examples": [
+    "PlasticAnchor_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
