@@ -148,70 +148,76 @@ function renderRichDetail(item, details) {
         `;
     }
     
-    // 输入参数（兼容 parameters 和 input_parameters）
+    // 输入参数（显示 cn, desc_cn, en, desc_en）
     let inputParamsHtml = '';
     const inputParams = details.parameters || details.input_parameters || [];
     if (inputParams.length > 0) {
         inputParamsHtml = `
             <div class="detail-section">
                 <div class="detail-section-title">⚙️ ${lang === 'cn' ? '输入参数' : 'Input Parameters'}</div>
-                <table class="params-table">
-                    <thead>
-                        <tr><th>${lang === 'cn' ? '参数名' : 'Name'}</th><th>${lang === 'cn' ? '说明' : 'Description'}</th><th>${lang === 'cn' ? '默认值' : 'Default'}</th></tr>
-                    </thead>
-                    <tbody>
-                        ${inputParams.map(p => {
-                            // 优先使用 desc_cn/desc_en，如果没有则使用 cn/en
-                            let desc = '';
-                            if (lang === 'cn') {
-                                desc = p.desc_cn || p.cn || '';
-                            } else {
-                                desc = p.desc_en || p.en || '';
-                            }
-                            return `
+                <div style="overflow-x: auto;">
+                    <table class="params-table" style="min-width: 600px;">
+                        <thead>
+                            <tr>
+                                <th>${lang === 'cn' ? '参数名' : 'Name'}</th>
+                                <th>${lang === 'cn' ? '中文名称' : 'Chinese Name'}</th>
+                                <th>${lang === 'cn' ? '中文说明' : 'Chinese Description'}</th>
+                                <th>${lang === 'cn' ? '英文名称' : 'English Name'}</th>
+                                <th>${lang === 'cn' ? '英文说明' : 'English Description'}</th>
+                                <th>${lang === 'cn' ? '默认值' : 'Default'}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${inputParams.map(p => `
                                 <tr>
                                     <td><code>${escapeHtml(p.name)}</code></td>
-                                    <td>${escapeHtml(desc)}</td>
+                                    <td>${escapeHtml(p.cn || '-')}</td>
+                                    <td>${escapeHtml(p.desc_cn || '-')}</td>
+                                    <td>${escapeHtml(p.en || '-')}</td>
+                                    <td>${escapeHtml(p.desc_en || '-')}</td>
                                     <td>${escapeHtml(String(p.default !== undefined ? p.default : '-'))}</td>
                                 </tr>
-                            `;
-                        }).join('')}
-                    </tbody>
-                </table>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         `;
     }
     
-    // 输出参数（支持 outputs 和 output_parameters）
+    // 输出参数（显示 cn, desc_cn, en, desc_en）
     let outputParamsHtml = '';
     const outputParams = details.outputs || details.output_parameters || [];
     if (outputParams.length > 0) {
         outputParamsHtml = `
             <div class="detail-section">
                 <div class="detail-section-title">📤 ${lang === 'cn' ? '输出参数' : 'Output Parameters'}</div>
-                <table class="params-table">
-                    <thead>
-                        <tr><th>${lang === 'cn' ? '参数名' : 'Name'}</th><th>${lang === 'cn' ? '说明' : 'Description'}</th><th>${lang === 'cn' ? '类型' : 'Type'}</th></tr>
-                    </thead>
-                    <tbody>
-                        ${outputParams.map(o => {
-                            // 优先使用 desc_cn/desc_en，如果没有则使用 cn/en
-                            let desc = '';
-                            if (lang === 'cn') {
-                                desc = o.desc_cn || o.cn || '';
-                            } else {
-                                desc = o.desc_en || o.en || '';
-                            }
-                            return `
+                <div style="overflow-x: auto;">
+                    <table class="params-table" style="min-width: 600px;">
+                        <thead>
+                            <tr>
+                                <th>${lang === 'cn' ? '参数名' : 'Name'}</th>
+                                <th>${lang === 'cn' ? '中文名称' : 'Chinese Name'}</th>
+                                <th>${lang === 'cn' ? '中文说明' : 'Chinese Description'}</th>
+                                <th>${lang === 'cn' ? '英文名称' : 'English Name'}</th>
+                                <th>${lang === 'cn' ? '英文说明' : 'English Description'}</th>
+                                <th>${lang === 'cn' ? '类型' : 'Type'}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${outputParams.map(o => `
                                 <tr>
                                     <td><code>${escapeHtml(o.name)}</code></td>
-                                    <td>${escapeHtml(desc)}</td>
+                                    <td>${escapeHtml(o.cn || '-')}</td>
+                                    <td>${escapeHtml(o.desc_cn || '-')}</td>
+                                    <td>${escapeHtml(o.en || '-')}</td>
+                                    <td>${escapeHtml(o.desc_en || '-')}</td>
                                     <td>${escapeHtml(o.type || o.default || '-')}</td>
                                 </tr>
-                            `;
-                        }).join('')}
-                    </tbody>
-                </table>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         `;
     }
