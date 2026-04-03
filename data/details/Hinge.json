@@ -1,0 +1,80 @@
+{
+  "description_cn": "对相邻的两个三角形进行弯折。用于模拟折纸，也可用以模拟平板和壳体。使两个相邻三角形形成固定角度的铰链，具有抗弯折能力。受力后能恢复到初始状态。",
+  "description_en": "It bends two adjacent triangles. Used to simulate origami, it can also be used to simulate flat surfaces and shells. It creates a hinge between two adjacent triangles at a fixed angle, providing resistance to bending. It returns to its initial state after being subjected to force.",
+  "images": [
+    "Hinge.png",
+    "Hinge.gif"
+  ],
+  "video": "",
+  "tags": [
+    "约束",
+    "点",
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "FoldStart",
+      "cn": "折叠轴起点",
+      "en": "Folding start point",
+      "default": "Null,点",
+      "desc_cn": "定义了铰链的旋转轴线。在物理仿真中，铰链会保持穿过FoldStart和FoldEnd的直线不变",
+      "desc_en": "The axis of rotation of the hinge is defined. In the physical simulation, the hinge will maintain its straight line passing through FoldStart and FoldEnd."
+    },
+    {
+      "name": "FoldEnd",
+      "cn": "折叠轴终点",
+      "en": "Folding End Point",
+      "default": "Null,点",
+      "desc_cn": "定义了铰链的旋转轴线。在物理仿真中，铰链会保持穿过FoldStart和FoldEnd的直线不变",
+      "desc_en": "The axis of rotation of the hinge is defined. In the physical simulation, the hinge will maintain its straight line passing through FoldStart and FoldEnd."
+    },
+    {
+      "name": "Tip1",
+      "cn": "提示1，铰链的方向或与旋转体相连的物体位置",
+      "en": "Tip1",
+      "default": "Null,点",
+      "desc_cn": "Tip1，Tip2这两个点用于定义铰链的方向或与旋转体相连的物体位置，帮助组件确定铰链是基于哪个平面进行旋转的。",
+      "desc_en": "Tip1 and Tip2 are used to define the direction of the hinge or the position of the object connected to the rotating body, helping the component determine which plane the hinge is based on for rotation."
+    },
+    {
+      "name": "Tip2",
+      "cn": "提示2，铰链的方向或与旋转体相连的物体位置",
+      "en": "Tip2",
+      "default": "Null,点",
+      "desc_cn": "Tip1，Tip2这两个点用于定义铰链的方向或与旋转体相连的物体位置，帮助组件确定铰链是基于哪个平面进行旋转的。",
+      "desc_en": "Tip1 and Tip2 are used to define the direction of the hinge or the position of the object connected to the rotating body, helping the component determine which plane the hinge is based on for rotation."
+    },
+    {
+      "name": "RestAngle",
+      "cn": "静止角度",
+      "en": "RestAngle",
+      "default": "Null，弧度",
+      "desc_cn": "静止角度 - 如果未提供，则使用当前角度。",
+      "desc_en": "Rest angle - if none supplied, current angle will be used "
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1,
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "H",
+      "cn": "生成的铰链",
+      "en": "Hinge out ",
+      "default": "Null",
+      "desc_cn": "输出生成的铰链",
+      "desc_en": "Hinge out "
+    }
+  ],
+  "examples": [
+    "Hinge_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
