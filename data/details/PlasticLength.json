@@ -1,33 +1,55 @@
 {
-  "description_cn": "塑性长度约束，允许线段长度发生塑性变形（永久伸长）。",
-  "description_en": "Plastic length constraint, allows plastic deformation (permanent elongation) of line length.",
+  "description_cn": "使直线具有塑料材质的特性,受力后发生变形并具有一定复原能力。与塑料锚点类似,只不过这个运算器的处理对象是直线。",
+  "description_en": "This gives the straight line the properties of plastic, allowing it to deform under stress and regain some resilience. Similar to plastic anchor points, except this processor handles straight lines.",
   "images": [
-    "plasticlength_demo.gif"
+    "PlasticLength.png",
+    "PlasticLength.gif"
   ],
   "video": "",
-  "tags": ["塑性", "长度", "变形", "永久"],
+  "tags": [
+    "约束",
+    "曲线"
+  ],
   "parameters": [
     {
-      "name": "YieldLength",
-      "cn": "屈服长度",
-      "en": "Yield Length",
-      "default": 10.0,
-      "desc_cn": "开始塑性变形的长度阈值",
-      "desc_en": "Length threshold for plastic deformation"
+      "name": "Line",
+      "cn": "直线",
+      "en": "Line",
+      "default": "Null，曲线",
+      "desc_cn": "直线列表",
+      "desc_en": "A list of lines of equal length is needed."
     },
     {
-      "name": "Plasticity",
-      "cn": "塑性系数",
-      "en": "Plasticity",
-      "default": 0.5,
-      "desc_cn": "塑性变形系数",
-      "desc_en": "Plastic deformation coefficient"
+      "name": "Limit",
+      "cn": "限制",
+      "en": "Limit",
+      "default": "1",
+      "desc_cn": "(Number)\n最大弹性变形距离",
+      "desc_en": "(Number) Maximum elastic deformation distance"
+    },
+    {
+      "name": "Strength",
+      "cn": "权重，强度",
+      "en": "Strength",
+      "default": "1",
+      "desc_cn": "约束的强度/权重，这条约束在求解器中的地位越高，两点间的距离就越会趋向于目标值。",
+      "desc_en": "The strength/weight of the constraint: the higher the status of the constraint in the solver, the closer the distance between the two points will be to the target value."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "S",
+      "cn": "弹簧",
+      "en": "Spring",
+      "default": "Null",
+      "desc_cn": "弹簧",
+      "desc_en": "Spring out"
     }
   ],
   "examples": [
-    "plasticlength_stretch.gh"
+    "PlasticLength_examples.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "2.0",
-  "lastUpdated": "2024-01-11"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
