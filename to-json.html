@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>专业JSON生成器 | 智能翻译 + 图片后缀推荐 | 完整功能版</title>
+    <title>专业JSON生成器 | 全功能稳定版 · 智能翻译+后缀推荐</title>
     <style>
         * {
             margin: 0;
@@ -127,6 +127,7 @@
             cursor: pointer;
             font-weight: bold;
             font-size: 1rem;
+            padding: 0 4px;
         }
         .remove-btn:hover { color: #ef4444; }
         .add-btn {
@@ -142,7 +143,6 @@
             background: #e2e8f0;
         }
 
-        /* 图片后缀推荐区域 */
         .suffix-panel {
             margin-top: 8px;
             display: flex;
@@ -161,7 +161,6 @@
         }
         .suffix-badge:hover {
             background: #cbd5e1;
-            transform: scale(0.96);
         }
         .suffix-input-group {
             display: flex;
@@ -190,15 +189,11 @@
             border-radius: 1.2rem;
             border: 1px solid #e2e8f0;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
         }
         .param-card-header {
             background: #f1f5f9;
             padding: 0.7rem 1rem;
             font-weight: 700;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             border-bottom: 2px solid #cbd5e1;
         }
         .param-card-header h3 {
@@ -243,12 +238,13 @@
             min-height: 52px;
         }
         .translate-icon {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             cursor: pointer;
-            background: #eef2ff;
-            border-radius: 12px;
+            background: #e0e7ff;
+            border-radius: 16px;
             padding: 2px 6px;
             margin-left: 4px;
+            white-space: nowrap;
         }
         .delete-param-btn {
             background: #fee2e2;
@@ -308,7 +304,7 @@
             font-family: inherit;
         }
         button.primary { background: #3b82f6; color: white; }
-        button.primary:hover { background: #2563eb; transform: translateY(-1px); }
+        button.primary:hover { background: #2563eb; }
         button.success { background: #10b981; color: white; }
         button.outline { border: 1px solid #cbd5e1; background: white; }
         .filename-group {
@@ -355,6 +351,11 @@
             font-size: 0.75rem;
             margin-top: 12px;
         }
+        .helper-text {
+            font-size: 0.7rem;
+            color: #4b5563;
+            margin-top: 4px;
+        }
         @media (max-width: 900px) {
             .param-row, .param-table-header { grid-template-columns: 1fr 1fr; gap: 6px; }
             .param-table-header { display: none; }
@@ -364,23 +365,22 @@
 <body>
 <div class="app-container">
     <div class="hero">
-        <h1>📄 智能JSON生成器 · AI翻译 + 后缀推荐</h1>
-        <p>中英文双向翻译 · 图片后缀快速添加 · 默认值不限类型 · 输入/输出参数独立</p>
+        <h1>📄 智能JSON生成器 · 全功能稳定版</h1>
+        <p>中英文双向翻译 | 图片后缀推荐 | 默认值任意类型 | 输入/输出参数独立</p>
     </div>
     <div class="generator-layout">
         <div class="form-panel">
             <div class="form-header"><h2>✍️ 智能表单</h2></div>
             <div class="form-body">
                 <div class="input-group">
-                    <label>📌 中文描述 <span style="font-size:0.7rem;">(自动英译)</span></label>
+                    <label>📌 中文描述 <span style="font-size:0.7rem;">(输入自动英译)</span></label>
                     <input type="text" id="desc_cn" value="将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。">
                 </div>
                 <div class="input-group">
-                    <label>🌐 英文描述 <span style="font-size:0.7rem;">(自动中译)</span></label>
+                    <label>🌐 英文描述 <span style="font-size:0.7rem;">(输入自动中译)</span></label>
                     <input type="text" id="desc_en" value="Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.">
                 </div>
                 
-                <!-- 图片列表 + 后缀推荐 -->
                 <div class="input-group">
                     <label>🖼️ 图片文件名列表 (images)</label>
                     <div class="array-field">
@@ -395,48 +395,38 @@
                             <span class="suffix-badge" data-suffix=".webp">.webp</span>
                         </div>
                         <div class="suffix-input-group">
-                            <input type="text" id="newImageInput" placeholder="输入文件名 (可带后缀或不带)" style="flex:2;">
+                            <input type="text" id="newImageInput" placeholder="输入文件名 (可带后缀)">
                             <button id="addImageBtn" class="add-btn">+ 添加图片</button>
                         </div>
-                        <div class="helper-text" style="font-size:0.7rem;">💡 点击后缀快速添加，支持自定义任意扩展名</div>
                     </div>
                 </div>
 
+                <div class="input-group"><label>🎬 视频链接</label><input type="text" id="video" value=""></div>
                 <div class="input-group">
-                    <label>🎬 视频链接 (video)</label>
-                    <input type="text" id="video" value="">
-                </div>
-
-                <div class="input-group">
-                    <label>🏷️ 标签 (tags)</label>
+                    <label>🏷️ 标签</label>
                     <div class="array-field">
                         <div id="tagList" class="tag-list"></div>
                         <div><input type="text" id="newTagInput" placeholder="新标签" style="width:65%"> <button id="addTagBtn" class="add-btn">+ 添加</button></div>
                     </div>
                 </div>
 
-                <!-- 双参数区 -->
                 <div class="params-dual">
                     <div class="param-card">
-                        <div class="param-card-header"><h3><span class="badge-input">📥 输入参数 (支持任意默认值文本/数字)</span></h3></div>
-                        <div class="param-table-header">
-                            <span>参数名</span><span>中文</span><span>英文</span><span>默认值(任意)</span><span>描述中文</span><span>描述英文</span><span>操作</span>
-                        </div>
+                        <div class="param-card-header"><h3><span class="badge-input">📥 输入参数 (任意默认值)</span></h3></div>
+                        <div class="param-table-header"><span>参数名</span><span>中文</span><span>英文</span><span>默认值</span><span>描述中文</span><span>描述英文</span><span>操作</span></div>
                         <div id="inputParamsList"></div>
                         <button id="addInputParamBtn" class="add-param-btn">+ 添加输入参数</button>
                     </div>
                     <div class="param-card">
-                        <div class="param-card-header"><h3><span class="badge-output">📤 输出参数 (支持任意默认值)</span></h3></div>
-                        <div class="param-table-header">
-                            <span>参数名</span><span>中文</span><span>英文</span><span>默认值(任意)</span><span>描述中文</span><span>描述英文</span><span>操作</span>
-                        </div>
+                        <div class="param-card-header"><h3><span class="badge-output">📤 输出参数 (任意默认值)</span></h3></div>
+                        <div class="param-table-header"><span>参数名</span><span>中文</span><span>英文</span><span>默认值</span><span>描述中文</span><span>描述英文</span><span>操作</span></div>
                         <div id="outputParamsList"></div>
                         <button id="addOutputParamBtn" class="add-param-btn">+ 添加输出参数</button>
                     </div>
                 </div>
 
                 <div class="input-group">
-                    <label>📁 示例文件 (examples)</label>
+                    <label>📁 示例文件</label>
                     <div class="array-field">
                         <div id="exampleList" class="tag-list"></div>
                         <div><input type="text" id="newExampleInput" placeholder="示例文件名" style="width:65%"> <button id="addExampleBtn" class="add-btn">+ 添加</button></div>
@@ -454,7 +444,7 @@
                 <div class="preview-header">
                     <h3>📋 JSON预览</h3>
                     <div class="btn-group">
-                        <button id="generatePreviewBtn" class="primary">🔄 刷新</button>
+                        <button id="generatePreviewBtn" class="primary">🔄 刷新预览</button>
                         <button id="copyPreviewBtn" class="outline">📋 一键复制</button>
                     </div>
                 </div>
@@ -464,9 +454,9 @@
                     <button id="downloadJsonBtn" class="success">⬇️ 下载</button>
                 </div>
                 <pre id="jsonPreview">加载中...</pre>
-                <div id="statusMsg" class="status-badge">✅ 支持智能翻译 · 默认值无限制</div>
+                <div id="statusMsg" class="status-badge">✅ 所有功能正常 | 支持智能翻译+后缀推荐</div>
             </div>
-            <div class="preview-card"><h4>✨ 新增智能特性</h4><ul style="font-size:0.8rem;margin-left:1.2rem;"><li>🌐 中英文双向翻译 (输入任一字段自动翻译另一侧)</li><li>🖼️ 图片后缀一键推荐 (.png .jpg .gif .mp4 等)</li><li>⚙️ 参数默认值不限数字/文本/任意字符</li><li>📋 保留自定义文件名/复制/输入输出分离</li></ul></div>
+            <div class="preview-card"><h4>✨ 功能说明</h4><ul style="font-size:0.8rem;margin-left:1.2rem;"><li>🌐 中英文双向自动翻译</li><li>🖼️ 图片后缀一键推荐 (.png/.jpg等)</li><li>⚙️ 参数默认值不限数字/文本</li><li>📋 自定义文件名+一键复制+下载</li><li>📥📤 输入/输出参数独立管理</li></ul></div>
         </div>
     </div>
 </div>
@@ -480,7 +470,7 @@
     let inputParameters = [];
     let outputParameters = [];
 
-    // DOM 元素
+    // ---------- DOM 元素 ----------
     const descCn = document.getElementById('desc_cn');
     const descEn = document.getElementById('desc_en');
     const video = document.getElementById('video');
@@ -496,140 +486,149 @@
     const inputParamsContainer = document.getElementById('inputParamsList');
     const outputParamsContainer = document.getElementById('outputParamsList');
 
-    // 简易翻译API (mock + 增强字典，优先)
-    const simpleTranslate = (text, fromTo) => {
-        if (!text.trim()) return '';
-        // 常用词库辅助
-        const dict = {
-            "将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。": "Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.",
-            "对齐": "Align", "面": "Face", "约束": "Constraint", "网格": "Mesh", "强度": "Strength", "容差": "Tolerance",
-            "约束强度，值越大效果越明显": "Constraint strength, higher value gives stronger effect",
-            "对齐精度，值越小越精确": "Alignment tolerance, smaller value gives higher precision",
-            "输出对齐后的面数据结构": "Output data of aligned faces", "最大偏离距离": "Maximum deviation distance",
-            "新输入": "New Input", "新输出": "New Output", "输入参数描述": "Input parameter description"
-        };
-        if (fromTo === 'zh2en') {
-            if (dict[text]) return dict[text];
-            // 简单模拟 (生产环境可接入真实api)
-            return text + " (en)";
-        } else {
-            for (let k in dict) if (dict[k] === text) return k;
-            return text + " (zh)";
-        }
+    // ---------- 翻译函数 (带词库) ----------
+    const transDict = {
+        "将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。": "Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.",
+        "对齐": "Align", "面": "Face", "约束": "Constraint", "网格": "Mesh", "强度": "Strength", "容差": "Tolerance",
+        "约束强度，值越大效果越明显": "Constraint strength, higher value gives stronger effect",
+        "对齐精度，值越小越精确": "Alignment tolerance, smaller value gives higher precision",
+        "输出对齐后的面数据结构": "Output data of aligned faces", "最大偏离距离": "Maximum deviation distance"
     };
+    function translateZhToEn(text) {
+        if (!text) return '';
+        if (transDict[text]) return transDict[text];
+        return text;
+    }
+    function translateEnToZh(text) {
+        if (!text) return '';
+        for (let [zh, en] of Object.entries(transDict)) {
+            if (en === text) return zh;
+        }
+        return text;
+    }
 
-    // 自动翻译监听
-    let translating = false;
+    // 翻译绑定 (不循环触发)
+    let isTranslating = false;
     function bindTranslation() {
         descCn.addEventListener('input', () => {
-            if (translating) return;
-            translating = true;
-            if (descCn.value.trim()) descEn.value = simpleTranslate(descCn.value, 'zh2en');
-            else descEn.value = '';
-            translating = false;
+            if (isTranslating) return;
+            isTranslating = true;
+            if (descCn.value.trim()) descEn.value = translateZhToEn(descCn.value);
+            isTranslating = false;
             updatePreview();
         });
         descEn.addEventListener('input', () => {
-            if (translating) return;
-            translating = true;
-            if (descEn.value.trim()) descCn.value = simpleTranslate(descEn.value, 'en2zh');
-            else descCn.value = '';
-            translating = false;
+            if (isTranslating) return;
+            isTranslating = true;
+            if (descEn.value.trim()) descCn.value = translateEnToZh(descEn.value);
+            isTranslating = false;
             updatePreview();
         });
     }
 
-    // 通用渲染
-    function renderImageList() {
+    // 辅助函数
+    function escapeHtml(str) { if (!str) return ''; return String(str).replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m])); }
+    function showToast(msg) {
+        const toast = document.getElementById('copyToast');
+        toast.textContent = msg;
+        toast.style.visibility = 'visible';
+        toast.style.opacity = '1';
+        setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.style.visibility = 'hidden', 300); }, 1800);
+    }
+
+    // 渲染所有列表
+    function renderAll() {
         imageListDiv.innerHTML = imagesArray.map(img => `<div class="img-item">${escapeHtml(img)} <button class="remove-btn" data-type="image" data-value="${escapeHtml(img)}">✖</button></div>`).join('');
-    }
-    function renderTagList() {
         tagListDiv.innerHTML = tagsArray.map(tag => `<div class="tag-item">${escapeHtml(tag)} <button class="remove-btn" data-type="tag" data-value="${escapeHtml(tag)}">✖</button></div>`).join('');
-    }
-    function renderExampleList() {
         exampleListDiv.innerHTML = examplesArray.map(ex => `<div class="ex-item">${escapeHtml(ex)} <button class="remove-btn" data-type="example" data-value="${escapeHtml(ex)}">✖</button></div>`).join('');
+        renderInputParams();
+        renderOutputParams();
     }
+
     function renderInputParams() {
         inputParamsContainer.innerHTML = '';
         inputParameters.forEach((param, idx) => {
             const row = document.createElement('div'); row.className = 'param-row';
             row.innerHTML = `
                 <input type="text" value="${escapeHtml(param.name)}" placeholder="参数名" data-input-idx="${idx}" data-field="name">
-                <div style="display:flex; gap:4px;"><input type="text" value="${escapeHtml(param.cn)}" placeholder="中文" data-input-idx="${idx}" data-field="cn" style="flex:1"><span class="translate-icon" data-trans="input_${idx}_cn2en">🌐译</span></div>
-                <div style="display:flex; gap:4px;"><input type="text" value="${escapeHtml(param.en)}" placeholder="英文" data-input-idx="${idx}" data-field="en" style="flex:1"><span class="translate-icon" data-trans="input_${idx}_en2zh">🌐译</span></div>
-                <input type="text" value="${param.default}" placeholder="默认值(任意)" data-input-idx="${idx}" data-field="default">
+                <div style="display:flex; gap:4px;"><input type="text" value="${escapeHtml(param.cn)}" placeholder="中文" data-input-idx="${idx}" data-field="cn" style="flex:1"><span class="translate-icon" data-trans-input-cn="${idx}">🌐译</span></div>
+                <div style="display:flex; gap:4px;"><input type="text" value="${escapeHtml(param.en)}" placeholder="英文" data-input-idx="${idx}" data-field="en" style="flex:1"><span class="translate-icon" data-trans-input-en="${idx}">🌐译</span></div>
+                <input type="text" value="${escapeHtml(String(param.default))}" placeholder="默认值(任意)" data-input-idx="${idx}" data-field="default">
                 <textarea rows="1" placeholder="描述中文" data-input-idx="${idx}" data-field="desc_cn">${escapeHtml(param.desc_cn)}</textarea>
                 <textarea rows="1" placeholder="描述英文" data-input-idx="${idx}" data-field="desc_en">${escapeHtml(param.desc_en)}</textarea>
                 <button class="delete-param-btn" data-delete-input="${idx}">🗑️</button>
             `;
             inputParamsContainer.appendChild(row);
         });
-        attachInputEvents();
+        // 绑定输入参数事件
+        inputParamsContainer.querySelectorAll('input, textarea').forEach(el => {
+            el.removeEventListener('input', handleInputParamChange);
+            el.addEventListener('input', handleInputParamChange);
+        });
+        inputParamsContainer.querySelectorAll('.translate-icon').forEach(icon => {
+            icon.onclick = (e) => {
+                const cnIdx = icon.getAttribute('data-trans-input-cn');
+                const enIdx = icon.getAttribute('data-trans-input-en');
+                if (cnIdx !== null && inputParameters[cnIdx]) {
+                    inputParameters[cnIdx].en = translateZhToEn(inputParameters[cnIdx].cn);
+                    renderInputParams();
+                } else if (enIdx !== null && inputParameters[enIdx]) {
+                    inputParameters[enIdx].cn = translateEnToZh(inputParameters[enIdx].en);
+                    renderInputParams();
+                }
+                updatePreview();
+            };
+        });
+        inputParamsContainer.querySelectorAll('.delete-param-btn').forEach(btn => {
+            btn.onclick = () => {
+                const idx = btn.getAttribute('data-delete-input');
+                if (idx !== null) { inputParameters.splice(parseInt(idx), 1); renderInputParams(); updatePreview(); }
+            };
+        });
     }
+
     function renderOutputParams() {
         outputParamsContainer.innerHTML = '';
         outputParameters.forEach((param, idx) => {
             const row = document.createElement('div'); row.className = 'param-row';
             row.innerHTML = `
                 <input type="text" value="${escapeHtml(param.name)}" placeholder="参数名" data-output-idx="${idx}" data-field="name">
-                <div style="display:flex; gap:4px;"><input type="text" value="${escapeHtml(param.cn)}" placeholder="中文" data-output-idx="${idx}" data-field="cn" style="flex:1"><span class="translate-icon" data-trans="output_${idx}_cn2en">🌐译</span></div>
-                <div style="display:flex; gap:4px;"><input type="text" value="${escapeHtml(param.en)}" placeholder="英文" data-output-idx="${idx}" data-field="en" style="flex:1"><span class="translate-icon" data-trans="output_${idx}_en2zh">🌐译</span></div>
-                <input type="text" value="${param.default}" placeholder="默认值(任意)" data-output-idx="${idx}" data-field="default">
+                <div style="display:flex; gap:4px;"><input type="text" value="${escapeHtml(param.cn)}" placeholder="中文" data-output-idx="${idx}" data-field="cn" style="flex:1"><span class="translate-icon" data-trans-output-cn="${idx}">🌐译</span></div>
+                <div style="display:flex; gap:4px;"><input type="text" value="${escapeHtml(param.en)}" placeholder="英文" data-output-idx="${idx}" data-field="en" style="flex:1"><span class="translate-icon" data-trans-output-en="${idx}">🌐译</span></div>
+                <input type="text" value="${escapeHtml(String(param.default))}" placeholder="默认值(任意)" data-output-idx="${idx}" data-field="default">
                 <textarea rows="1" placeholder="描述中文" data-output-idx="${idx}" data-field="desc_cn">${escapeHtml(param.desc_cn)}</textarea>
                 <textarea rows="1" placeholder="描述英文" data-output-idx="${idx}" data-field="desc_en">${escapeHtml(param.desc_en)}</textarea>
                 <button class="delete-param-btn" data-delete-output="${idx}">🗑️</button>
             `;
             outputParamsContainer.appendChild(row);
         });
-        attachOutputEvents();
-    }
-
-    function attachInputEvents() {
-        inputParamsContainer.querySelectorAll('input, textarea').forEach(el => {
-            el.removeEventListener('input', handleInputChange);
-            el.addEventListener('input', handleInputChange);
-        });
-        inputParamsContainer.querySelectorAll('.translate-icon').forEach(icon => {
-            icon.onclick = (e) => {
-                const transKey = icon.getAttribute('data-trans');
-                if (transKey.includes('cn2en')) {
-                    const idx = transKey.match(/\d+/)[0];
-                    const cnVal = inputParameters[idx]?.cn || '';
-                    if (cnVal && inputParameters[idx]) inputParameters[idx].en = simpleTranslate(cnVal, 'zh2en');
-                } else if (transKey.includes('en2zh')) {
-                    const idx = transKey.match(/\d+/)[0];
-                    const enVal = inputParameters[idx]?.en || '';
-                    if (enVal && inputParameters[idx]) inputParameters[idx].cn = simpleTranslate(enVal, 'en2zh');
-                }
-                renderInputParams();
-                updatePreview();
-            };
-        });
-        inputParamsContainer.querySelectorAll('.delete-param-btn').forEach(btn => {
-            btn.onclick = (e) => { const idx = btn.getAttribute('data-delete-input'); if(idx!==null){ inputParameters.splice(parseInt(idx),1); renderInputParams(); updatePreview(); } };
-        });
-    }
-    function attachOutputEvents() {
         outputParamsContainer.querySelectorAll('input, textarea').forEach(el => {
-            el.removeEventListener('input', handleOutputChange);
-            el.addEventListener('input', handleOutputChange);
+            el.removeEventListener('input', handleOutputParamChange);
+            el.addEventListener('input', handleOutputParamChange);
         });
         outputParamsContainer.querySelectorAll('.translate-icon').forEach(icon => {
-            icon.onclick = (e) => {
-                const transKey = icon.getAttribute('data-trans');
-                const idx = transKey.match(/\d+/)[0];
-                if (transKey.includes('cn2en') && outputParameters[idx]) outputParameters[idx].en = simpleTranslate(outputParameters[idx].cn, 'zh2en');
-                else if (transKey.includes('en2zh') && outputParameters[idx]) outputParameters[idx].cn = simpleTranslate(outputParameters[idx].en, 'en2zh');
-                renderOutputParams();
+            icon.onclick = () => {
+                const cnIdx = icon.getAttribute('data-trans-output-cn');
+                const enIdx = icon.getAttribute('data-trans-output-en');
+                if (cnIdx !== null && outputParameters[cnIdx]) {
+                    outputParameters[cnIdx].en = translateZhToEn(outputParameters[cnIdx].cn);
+                    renderOutputParams();
+                } else if (enIdx !== null && outputParameters[enIdx]) {
+                    outputParameters[enIdx].cn = translateEnToZh(outputParameters[enIdx].en);
+                    renderOutputParams();
+                }
                 updatePreview();
             };
         });
         outputParamsContainer.querySelectorAll('.delete-param-btn').forEach(btn => {
-            btn.onclick = (e) => { const idx = btn.getAttribute('data-delete-output'); if(idx!==null){ outputParameters.splice(parseInt(idx),1); renderOutputParams(); updatePreview(); } };
+            btn.onclick = () => {
+                const idx = btn.getAttribute('data-delete-output');
+                if (idx !== null) { outputParameters.splice(parseInt(idx), 1); renderOutputParams(); updatePreview(); }
+            };
         });
     }
 
-    function handleInputChange(e) {
+    function handleInputParamChange(e) {
         const idx = e.target.getAttribute('data-input-idx');
         const field = e.target.getAttribute('data-field');
         if (idx !== null && inputParameters[idx]) {
@@ -637,62 +636,145 @@
             updatePreview();
         }
     }
-    function handleOutputChange(e) {
+    function handleOutputParamChange(e) {
         const idx = e.target.getAttribute('data-output-idx');
         const field = e.target.getAttribute('data-field');
-        if (idx !== null && outputParameters[idx]) outputParameters[idx][field] = e.target.value;
+        if (idx !== null && outputParameters[idx]) {
+            outputParameters[idx][field] = e.target.value;
+            updatePreview();
+        }
+    }
+
+    // 构建JSON
+    function buildJsonObject() {
+        const lastUpdatedVal = lastUpdated.value || new Date().toISOString().slice(0,10);
+        return {
+            description_cn: descCn.value,
+            description_en: descEn.value,
+            images: [...imagesArray],
+            video: video.value || "",
+            tags: [...tagsArray],
+            input_parameters: inputParameters.map(p => ({ name: p.name || "", cn: p.cn || "", en: p.en || "", default: p.default, desc_cn: p.desc_cn || "", desc_en: p.desc_en || "" })),
+            output_parameters: outputParameters.map(p => ({ name: p.name || "", cn: p.cn || "", en: p.en || "", default: p.default, desc_cn: p.desc_cn || "", desc_en: p.desc_en || "" })),
+            examples: [...examplesArray],
+            author: author.value,
+            version: version.value,
+            lastUpdated: lastUpdatedVal
+        };
+    }
+
+    function updatePreview() {
+        try {
+            jsonPreview.textContent = JSON.stringify(buildJsonObject(), null, 2);
+            statusSpan.innerHTML = '✅ JSON有效 | 支持任意默认值';
+        } catch(e) { jsonPreview.textContent = `// 错误: ${e.message}`; }
+    }
+
+    function downloadJson() {
+        const jsonStr = JSON.stringify(buildJsonObject(), null, 2);
+        const blob = new Blob([jsonStr], { type: "application/json" });
+        const a = document.createElement('a');
+        const name = customFilenameInput.value.trim() || 'data';
+        a.download = `${name}.json`;
+        a.href = URL.createObjectURL(blob);
+        a.click();
+        URL.revokeObjectURL(a.href);
+        statusSpan.innerHTML = '📁 文件已下载';
+    }
+
+    function copyPreview() {
+        const code = jsonPreview.textContent;
+        if (code && !code.startsWith("//")) {
+            navigator.clipboard.writeText(code);
+            showToast('📋 已复制到剪贴板 ✓');
+            statusSpan.innerHTML = '✨ 复制成功';
+        } else { statusSpan.innerHTML = '⚠️ 无有效内容'; }
+    }
+
+    // 删除列表项 (事件委托)
+    function handleRemove(e) {
+        const btn = e.target.closest('.remove-btn');
+        if (!btn) return;
+        const type = btn.getAttribute('data-type');
+        const value = btn.getAttribute('data-value');
+        if (type === 'image') imagesArray = imagesArray.filter(i => i !== value);
+        else if (type === 'tag') tagsArray = tagsArray.filter(t => t !== value);
+        else if (type === 'example') examplesArray = examplesArray.filter(ex => ex !== value);
+        renderAll();
         updatePreview();
     }
 
-    function buildJsonObject() {
-        let lastUpdatedVal = lastUpdated.value || new Date().toISOString().slice(0,10);
-        const cleanInput = inputParameters.map(p => ({ name: p.name || "", cn: p.cn || "", en: p.en || "", default: p.default, desc_cn: p.desc_cn || "", desc_en: p.desc_en || "" }));
-        const cleanOutput = outputParameters.map(p => ({ name: p.name || "", cn: p.cn || "", en: p.en || "", default: p.default, desc_cn: p.desc_cn || "", desc_en: p.desc_en || "" }));
-        return { description_cn: descCn.value, description_en: descEn.value, images: [...imagesArray], video: video.value || "", tags: [...tagsArray], input_parameters: cleanInput, output_parameters: cleanOutput, examples: [...examplesArray], author: author.value, version: version.value, lastUpdated: lastUpdatedVal };
+    // 初始化默认参数
+    function initDefaultParams() {
+        if (inputParameters.length === 0) {
+            inputParameters = [
+                { name: "Strength", cn: "强度", en: "Strength", default: 1.0, desc_cn: "约束强度，值越大效果越明显", desc_en: "Constraint strength, higher value gives stronger effect" },
+                { name: "Tolerance", cn: "容差", en: "Tolerance", default: 0.01, desc_cn: "对齐精度，值越小越精确", desc_en: "Alignment tolerance, smaller value gives higher precision" }
+            ];
+        }
+        if (outputParameters.length === 0) {
+            outputParameters = [
+                { name: "AlignedFaces", cn: "对齐面集合", en: "Aligned Faces", default: "{}", desc_cn: "输出对齐后的面数据结构", desc_en: "Output data of aligned faces" },
+                { name: "Deviation", cn: "偏差值", en: "Deviation", default: 0.0, desc_cn: "最大偏离距离", desc_en: "Maximum deviation distance" }
+            ];
+        }
     }
 
-    function updatePreview() { try { jsonPreview.textContent = JSON.stringify(buildJsonObject(), null, 2); statusSpan.innerHTML = '✅ JSON有效 | 支持任意默认值'; } catch(e) { jsonPreview.textContent = `// 错误: ${e.message}`; } }
-    function downloadJson() { const json = JSON.stringify(buildJsonObject(), null, 2); const blob = new Blob([json], {type:"application/json"}); const a = document.createElement('a'); a.download = `${customFilenameInput.value.trim() || 'data'}.json`; a.href = URL.createObjectURL(blob); a.click(); URL.revokeObjectURL(a.href); statusSpan.innerHTML = '📁 文件已下载'; }
-    function copyPreview() { const code = jsonPreview.textContent; if(code && !code.startsWith("//")){ navigator.clipboard.writeText(code); showToast('📋 已复制'); statusSpan.innerHTML='✨ 复制成功'; } else { statusSpan.innerHTML='⚠️ 无有效内容'; } }
-    function showToast(msg) { const toast = document.getElementById('copyToast'); toast.textContent = msg; toast.style.visibility='visible'; toast.style.opacity='1'; setTimeout(()=>{ toast.style.opacity='0'; setTimeout(()=>toast.style.visibility='hidden',300); },1800); }
-
-    // 后缀推荐
-    function initSuffixButtons() {
+    // 绑定所有按钮
+    function bindButtons() {
+        document.getElementById('addImageBtn').onclick = () => {
+            const inp = document.getElementById('newImageInput');
+            if (inp.value.trim()) { imagesArray.push(inp.value.trim()); inp.value = ''; renderAll(); updatePreview(); }
+        };
+        document.getElementById('addTagBtn').onclick = () => {
+            const inp = document.getElementById('newTagInput');
+            if (inp.value.trim()) { tagsArray.push(inp.value.trim()); inp.value = ''; renderAll(); updatePreview(); }
+        };
+        document.getElementById('addExampleBtn').onclick = () => {
+            const inp = document.getElementById('newExampleInput');
+            if (inp.value.trim()) { examplesArray.push(inp.value.trim()); inp.value = ''; renderAll(); updatePreview(); }
+        };
+        document.getElementById('addInputParamBtn').onclick = () => {
+            inputParameters.push({ name: "new_input", cn: "新输入", en: "New Input", default: "", desc_cn: "", desc_en: "" });
+            renderInputParams();
+            updatePreview();
+        };
+        document.getElementById('addOutputParamBtn').onclick = () => {
+            outputParameters.push({ name: "new_output", cn: "新输出", en: "New Output", default: "", desc_cn: "", desc_en: "" });
+            renderOutputParams();
+            updatePreview();
+        };
+        document.getElementById('generatePreviewBtn').onclick = updatePreview;
+        document.getElementById('copyPreviewBtn').onclick = copyPreview;
+        document.getElementById('downloadJsonBtn').onclick = downloadJson;
+        
+        // 后缀推荐
         document.querySelectorAll('.suffix-badge').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.onclick = () => {
                 const suffix = btn.getAttribute('data-suffix');
                 const input = document.getElementById('newImageInput');
                 let val = input.value.trim();
                 if (val && !val.endsWith(suffix)) input.value = val + suffix;
                 else if (!val) input.value = 'image' + suffix;
-                else input.value = val;
-            });
+            };
+        });
+        
+        // 基础输入监听
+        [descCn, descEn, video, author, version, lastUpdated, customFilenameInput].forEach(i => {
+            if (i) i.oninput = updatePreview;
         });
     }
 
-    function initDefaultParams() {
-        if (inputParameters.length===0) inputParameters = [{ name:"Strength", cn:"强度", en:"Strength", default:1.0, desc_cn:"约束强度，值越大效果越明显", desc_en:"Constraint strength, higher value gives stronger effect"},{ name:"Tolerance", cn:"容差", en:"Tolerance", default:0.01, desc_cn:"对齐精度，值越小越精确", desc_en:"Alignment tolerance, smaller value gives higher precision"}];
-        if (outputParameters.length===0) outputParameters = [{ name:"AlignedFaces", cn:"对齐面集合", en:"Aligned Faces", default:"{}", desc_cn:"输出对齐后的面数据结构", desc_en:"Output data of aligned faces"},{ name:"Deviation", cn:"偏差值", en:"Deviation", default:0.0, desc_cn:"最大偏离距离", desc_en:"Maximum deviation distance"}];
-        renderInputParams(); renderOutputParams();
+    // 启动
+    function init() {
+        initDefaultParams();
+        bindTranslation();
+        bindButtons();
+        renderAll();
+        updatePreview();
+        document.body.addEventListener('click', handleRemove);
     }
-
-    function bindGlobal() {
-        document.getElementById('addImageBtn').onclick = () => { let inp=document.getElementById('newImageInput'); if(inp.value.trim()){ imagesArray.push(inp.value.trim()); inp.value=''; renderImageList(); updatePreview(); } };
-        document.getElementById('addTagBtn').onclick = () => { let inp=document.getElementById('newTagInput'); if(inp.value.trim()){ tagsArray.push(inp.value.trim()); inp.value=''; renderTagList(); updatePreview(); } };
-        document.getElementById('addExampleBtn').onclick = () => { let inp=document.getElementById('newExampleInput'); if(inp.value.trim()){ examplesArray.push(inp.value.trim()); inp.value=''; renderExampleList(); updatePreview(); } };
-        document.getElementById('addInputParamBtn').onclick = () => { inputParameters.push({ name:"new_param", cn:"新参数", en:"New Param", default:"", desc_cn:"描述", desc_en:"Description" }); renderInputParams(); updatePreview(); };
-        document.getElementById('addOutputParamBtn').onclick = () => { outputParameters.push({ name:"new_output", cn:"新输出", en:"New Output", default:"", desc_cn:"描述", desc_en:"Description" }); renderOutputParams(); updatePreview(); };
-        document.getElementById('generatePreviewBtn').onclick = updatePreview;
-        document.getElementById('copyPreviewBtn').onclick = copyPreview;
-        document.getElementById('downloadJsonBtn').onclick = downloadJson;
-        [author, version, lastUpdated, video, customFilenameInput].forEach(i=> i.oninput = updatePreview);
-        document.querySelectorAll('.remove-btn').forEach(btn => btn.onclick = (e) => { /* handled by event delegation */ });
-    }
-    function globalRemoveHandler(e) { if(e.target.classList.contains('remove-btn')){ const type=e.target.getAttribute('data-type'), val=e.target.getAttribute('data-value'); if(type==='image') imagesArray = imagesArray.filter(i=>i!==val); if(type==='tag') tagsArray = tagsArray.filter(t=>t!==val); if(type==='example') examplesArray = examplesArray.filter(ex=>ex!==val); renderImageList(); renderTagList(); renderExampleList(); updatePreview(); } }
-    document.body.addEventListener('click', globalRemoveHandler);
-
-    function start() { initDefaultParams(); renderImageList(); renderTagList(); renderExampleList(); bindTranslation(); bindGlobal(); initSuffixButtons(); updatePreview(); }
-    start();
+    init();
 </script>
 </body>
 </html>
