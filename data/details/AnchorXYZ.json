@@ -50,15 +50,7 @@
       "desc_en": "size of force"
     }
   ],
-  "output_parameters": [
-    {
-      "name": "A",
-      "cn": "数据",
-      "en": "Data",
-      "default": Null,
-      "desc_cn": "输出数据",
-      "desc_en": "Output data"
-    }
+
   ],
   "examples": [
     "AnchorXYZ_example.gh"
