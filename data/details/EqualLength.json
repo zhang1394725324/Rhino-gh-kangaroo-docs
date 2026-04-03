@@ -1,25 +1,47 @@
 {
-  "description_cn": "等长约束，使多条线段长度保持相等。",
-  "description_en": "Equal length constraint, keeps multiple line segments equal in length.",
+  "description_cn": "相等长度，（尽可能使一组线长度均相等。用此运算器配合CyclicQuad限定四边形网格的四边或对角线可以得到接近正方形的网格。多用于网格优化得到高质量网格。）",
+  "description_en": "Equal lengths (make a set of lines as equal in length as possible. Using this operator in conjunction with CyclicQuad to constrain the four sides or diagonals of a quadrilateral mesh can produce a near-square mesh. This is often used for mesh optimization to obtain high-quality meshes.)",
   "images": [
-    "equallength_demo.png"
+    "EqualLength.png",
+    "EqualLength.gif"
   ],
   "video": "",
-  "tags": ["等长", "线段", "均匀", "约束"],
+  "tags": [
+    "约束",
+    "曲线"
+  ],
   "parameters": [
     {
+      "name": "Line",
+      "cn": "直线",
+      "en": "Line",
+      "default": "Null，曲线",
+      "desc_cn": "需要等长的直线列表",
+      "desc_en": "A list of lines of equal length is needed."
+    },
+    {
       "name": "Strength",
-      "cn": "强度",
+      "cn": "权重，强度",
       "en": "Strength",
-      "default": 1.0,
-      "desc_cn": "等长约束强度",
-      "desc_en": "Equal length constraint strength"
+      "default": "1",
+      "desc_cn": "约束的强度/权重，这条约束在求解器中的地位越高，两点间的距离就越会趋向于目标值。",
+      "desc_en": "The strength/weight of the constraint: the higher the status of the constraint in the solver, the closer the distance between the two points will be to the target value."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "E",
+      "cn": "等长输出",
+      "en": "Egual",
+      "default": "Null",
+      "desc_cn": "等长输出",
+      "desc_en": "Egual out"
     }
   ],
   "examples": [
-    "equallength_chain.gh"
+    "EqualLength_examples.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "2.0",
-  "lastUpdated": "2024-01-10"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
