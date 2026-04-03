@@ -1,0 +1,48 @@
+{
+  "description_cn": "把一个四边形网格压平。四边形四个点未必共面，通常在工业上只能加工平面的板材（cnc加工），所以要想将划分的四边形面用于实际工业加工，需要将四边形面进行平板化处理。将一个空间四边形网格，展开在一个平面上。",
+  "description_en": "Flatten a quadrilateral grid. The four points of a quadrilateral are not necessarily coplanar. In industrial applications, this typically only allows for the processing of flat sheet metal (CNC machining). Therefore, to use the divided quadrilateral surfaces in actual industrial processing, they need to be flattened. Unfold a spatial quadrilateral grid onto a plane.",
+  "images": [
+    "Planarize.png",
+    "Planarize.gif"
+  ],
+  "video": "",
+  "tags": [
+    "面",
+    "约束",
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null,网格",
+      "desc_cn": "对齐精度，值越小越精确",
+      "desc_en": "Alignment tolerance, smaller value gives higher precision"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1,
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "P",
+      "cn": "摊平",
+      "en": "Planarize out ",
+      "default": "Null",
+      "desc_cn": "平面化处理",
+      "desc_en": "Planarize out "
+    }
+  ],
+  "examples": [
+    "Planarize_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
