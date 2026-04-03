@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>专业JSON生成器 | 智能后缀补全 + 准确双向翻译</title>
+    <title>专业JSON生成器 | 手动翻译 · 后缀自动补全 · 全功能稳定版</title>
     <style>
         * {
             margin: 0;
@@ -243,15 +243,6 @@
             resize: vertical;
             min-height: 52px;
         }
-        .translate-icon {
-            font-size: 0.65rem;
-            cursor: pointer;
-            background: #e0e7ff;
-            border-radius: 16px;
-            padding: 2px 6px;
-            margin-left: 4px;
-            white-space: nowrap;
-        }
         .delete-param-btn {
             background: #fee2e2;
             border: none;
@@ -371,19 +362,19 @@
 <body>
 <div class="app-container">
     <div class="hero">
-        <h1>📄 智能JSON生成器 · 后缀自动补全 + 准确双向翻译</h1>
-        <p>中英文准确翻译 | 图片后缀自动检测与补全 | 输入/输出参数独立</p>
+        <h1>📄 专业JSON生成器 · 手动输入版</h1>
+        <p>后缀自动补全 | 自定义文件名 | 一键复制 | 输入/输出参数独立管理</p>
     </div>
     <div class="generator-layout">
         <div class="form-panel">
-            <div class="form-header"><h2>✍️ 智能表单</h2></div>
+            <div class="form-header"><h2>✍️ 表单输入 (中英文请手动填写)</h2></div>
             <div class="form-body">
                 <div class="input-group">
-                    <label>📌 中文描述 <span style="font-size:0.7rem;">(输入后自动翻译为英文)</span></label>
+                    <label>📌 中文描述</label>
                     <input type="text" id="desc_cn" value="将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。">
                 </div>
                 <div class="input-group">
-                    <label>🌐 英文描述 <span style="font-size:0.7rem;">(输入后自动翻译为中文)</span></label>
+                    <label>🌐 英文描述</label>
                     <input type="text" id="desc_en" value="Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.">
                 </div>
                 
@@ -392,7 +383,7 @@
                     <div class="array-field">
                         <div id="imageList" class="tag-list"></div>
                         <div class="suffix-panel">
-                            <span style="font-size:0.7rem;">📎 快速后缀:</span>
+                            <span style="font-size:0.7rem;">📎 快速添加后缀:</span>
                             <span class="suffix-badge" data-suffix=".png">.png</span>
                             <span class="suffix-badge" data-suffix=".jpg">.jpg</span>
                             <span class="suffix-badge" data-suffix=".jpeg">.jpeg</span>
@@ -401,7 +392,7 @@
                             <span class="suffix-badge" data-suffix=".webp">.webp</span>
                         </div>
                         <div class="suffix-input-group">
-                            <input type="text" id="newImageInput" placeholder="输入文件名 (可不带后缀)">
+                            <input type="text" id="newImageInput" placeholder="输入文件名 (可不带后缀，自动补全.png)">
                             <button id="addImageBtn" class="add-btn">+ 添加图片</button>
                         </div>
                         <div id="suffixWarning" class="warning-tip">⚠️ 检测到无后缀文件，已自动添加 .png</div>
@@ -457,13 +448,13 @@
                 </div>
                 <div class="filename-group">
                     <label>💾 自定义文件名:</label>
-                    <input type="text" id="customFilename" value="smart_component"><span>.json</span>
+                    <input type="text" id="customFilename" value="component_config"><span>.json</span>
                     <button id="downloadJsonBtn" class="success">⬇️ 下载</button>
                 </div>
                 <pre id="jsonPreview">加载中...</pre>
-                <div id="statusMsg" class="status-badge">✅ 所有功能正常 | 智能后缀补全 + 准确翻译</div>
+                <div id="statusMsg" class="status-badge">✅ 就绪 | 后缀自动补全 | 手动输入中英文</div>
             </div>
-            <div class="preview-card"><h4>✨ 功能说明</h4><ul style="font-size:0.8rem;margin-left:1.2rem;"><li>🌐 中英文准确双向翻译 (中文→英文, 英文→中文)</li><li>🖼️ 图片后缀自动检测：无后缀时自动添加 .png 并提示</li><li>⚙️ 参数默认值不限数字/文本</li><li>📋 自定义文件名+一键复制+下载</li><li>📥📤 输入/输出参数独立管理</li></ul></div>
+            <div class="preview-card"><h4>✨ 功能说明</h4><ul style="font-size:0.8rem;margin-left:1.2rem;"><li>🖼️ 图片后缀自动检测：无后缀时自动添加 .png 并提示</li><li>📋 自定义文件名 + 一键复制 + 下载JSON</li><li>📥📤 输入/输出参数独立管理，任意默认值类型</li><li>✏️ 中英文描述请手动输入（无自动翻译干扰）</li><li>🏷️ 支持动态增删标签、图片、示例、参数</li></ul></div>
         </div>
     </div>
 </div>
@@ -494,75 +485,10 @@
     const outputParamsContainer = document.getElementById('outputParamsList');
     const suffixWarning = document.getElementById('suffixWarning');
 
-    // ---------- 翻译函数 (准确双向) ----------
-    // 中文 → 英文 词库
-    const zhToEnMap = {
-        "将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。": "Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.",
-        "对齐": "Align", "面": "Face", "约束": "Constraint", "网格": "Mesh", "强度": "Strength", "容差": "Tolerance",
-        "约束强度，值越大效果越明显": "Constraint strength, higher value gives stronger effect",
-        "对齐精度，值越小越精确": "Alignment tolerance, smaller value gives higher precision",
-        "输出对齐后的面数据结构": "Output data of aligned faces", "最大偏离距离": "Maximum deviation distance",
-        "新输入": "New Input", "新输出": "New Output", "输入参数描述": "Input parameter description"
-    };
-    // 英文 → 中文 词库
-    const enToZhMap = {
-        "Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.": "将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。",
-        "Align": "对齐", "Face": "面", "Constraint": "约束", "Mesh": "网格", "Strength": "强度", "Tolerance": "容差",
-        "Constraint strength, higher value gives stronger effect": "约束强度，值越大效果越明显",
-        "Alignment tolerance, smaller value gives higher precision": "对齐精度，值越小越精确",
-        "Output data of aligned faces": "输出对齐后的面数据结构",
-        "Maximum deviation distance": "最大偏离距离",
-        "New Input": "新输入", "New Output": "新输出"
-    };
-    
-    function translateZhToEn(text) {
-        if (!text) return '';
-        if (zhToEnMap[text]) return zhToEnMap[text];
-        // 如果词库没有，保持原文（不自动生成乱码）
-        return text;
-    }
-    
-    function translateEnToZh(text) {
-        if (!text) return '';
-        if (enToZhMap[text]) return enToZhMap[text];
-        return text;
-    }
-
-    // 翻译绑定 (准确双向，不互相干扰)
-    let isTranslating = false;
-    function bindTranslation() {
-        descCn.addEventListener('input', () => {
-            if (isTranslating) return;
-            isTranslating = true;
-            const zhText = descCn.value;
-            if (zhText) {
-                descEn.value = translateZhToEn(zhText);
-            } else {
-                descEn.value = '';
-            }
-            isTranslating = false;
-            updatePreview();
-        });
-        
-        descEn.addEventListener('input', () => {
-            if (isTranslating) return;
-            isTranslating = true;
-            const enText = descEn.value;
-            if (enText) {
-                descCn.value = translateEnToZh(enText);
-            } else {
-                descCn.value = '';
-            }
-            isTranslating = false;
-            updatePreview();
-        });
-    }
-
     // 检查并补全图片后缀
     function ensureImageSuffix(filename) {
-        // 检查是否有常见图片/视频后缀
         const hasSuffix = /\.(png|jpg|jpeg|gif|mp4|webp|bmp|svg|ico)$/i.test(filename);
-        if (!hasSuffix) {
+        if (!hasSuffix && filename.trim() !== '') {
             suffixWarning.style.display = 'block';
             setTimeout(() => { suffixWarning.style.display = 'none'; }, 2000);
             return filename + '.png';
@@ -572,14 +498,15 @@
     
     // 添加图片时自动补全后缀
     function addImageWithSuffix(filename) {
-        const fixedName = ensureImageSuffix(filename);
+        if (!filename.trim()) return;
+        const fixedName = ensureImageSuffix(filename.trim());
         imagesArray.push(fixedName);
         renderImageList();
         updatePreview();
     }
 
-    // 辅助函数
     function escapeHtml(str) { if (!str) return ''; return String(str).replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m])); }
+    
     function showToast(msg) {
         const toast = document.getElementById('copyToast');
         toast.textContent = msg;
@@ -605,8 +532,8 @@
             const row = document.createElement('div'); row.className = 'param-row';
             row.innerHTML = `
                 <input type="text" value="${escapeHtml(param.name)}" placeholder="参数名" data-input-idx="${idx}" data-field="name">
-                <div style="display:flex; gap:4px;"><input type="text" value="${escapeHtml(param.cn)}" placeholder="中文" data-input-idx="${idx}" data-field="cn" style="flex:1"><span class="translate-icon" data-trans-input-cn="${idx}">🌐译</span></div>
-                <div style="display:flex; gap:4px;"><input type="text" value="${escapeHtml(param.en)}" placeholder="英文" data-input-idx="${idx}" data-field="en" style="flex:1"><span class="translate-icon" data-trans-input-en="${idx}">🌐译</span></div>
+                <input type="text" value="${escapeHtml(param.cn)}" placeholder="中文" data-input-idx="${idx}" data-field="cn">
+                <input type="text" value="${escapeHtml(param.en)}" placeholder="英文" data-input-idx="${idx}" data-field="en">
                 <input type="text" value="${escapeHtml(String(param.default))}" placeholder="默认值(任意)" data-input-idx="${idx}" data-field="default">
                 <textarea rows="1" placeholder="描述中文" data-input-idx="${idx}" data-field="desc_cn">${escapeHtml(param.desc_cn)}</textarea>
                 <textarea rows="1" placeholder="描述英文" data-input-idx="${idx}" data-field="desc_en">${escapeHtml(param.desc_en)}</textarea>
@@ -618,21 +545,6 @@
         inputParamsContainer.querySelectorAll('input, textarea').forEach(el => {
             el.removeEventListener('input', handleInputParamChange);
             el.addEventListener('input', handleInputParamChange);
-        });
-        inputParamsContainer.querySelectorAll('.translate-icon').forEach(icon => {
-            icon.onclick = (e) => {
-                const cnIdx = icon.getAttribute('data-trans-input-cn');
-                const enIdx = icon.getAttribute('data-trans-input-en');
-                if (cnIdx !== null && inputParameters[cnIdx]) {
-                    inputParameters[cnIdx].en = translateZhToEn(inputParameters[cnIdx].cn);
-                    renderInputParams();
-                } else if (enIdx !== null && inputParameters[enIdx]) {
-                    inputParameters[enIdx].cn = translateEnToZh(inputParameters[enIdx].en);
-                    renderInputParams();
-                }
-                updatePreview();
-                e.stopPropagation();
-            };
         });
         inputParamsContainer.querySelectorAll('.delete-param-btn').forEach(btn => {
             btn.onclick = () => {
@@ -648,8 +560,8 @@
             const row = document.createElement('div'); row.className = 'param-row';
             row.innerHTML = `
                 <input type="text" value="${escapeHtml(param.name)}" placeholder="参数名" data-output-idx="${idx}" data-field="name">
-                <div style="display:flex; gap:4px;"><input type="text" value="${escapeHtml(param.cn)}" placeholder="中文" data-output-idx="${idx}" data-field="cn" style="flex:1"><span class="translate-icon" data-trans-output-cn="${idx}">🌐译</span></div>
-                <div style="display:flex; gap:4px;"><input type="text" value="${escapeHtml(param.en)}" placeholder="英文" data-output-idx="${idx}" data-field="en" style="flex:1"><span class="translate-icon" data-trans-output-en="${idx}">🌐译</span></div>
+                <input type="text" value="${escapeHtml(param.cn)}" placeholder="中文" data-output-idx="${idx}" data-field="cn">
+                <input type="text" value="${escapeHtml(param.en)}" placeholder="英文" data-output-idx="${idx}" data-field="en">
                 <input type="text" value="${escapeHtml(String(param.default))}" placeholder="默认值(任意)" data-output-idx="${idx}" data-field="default">
                 <textarea rows="1" placeholder="描述中文" data-output-idx="${idx}" data-field="desc_cn">${escapeHtml(param.desc_cn)}</textarea>
                 <textarea rows="1" placeholder="描述英文" data-output-idx="${idx}" data-field="desc_en">${escapeHtml(param.desc_en)}</textarea>
@@ -660,21 +572,6 @@
         outputParamsContainer.querySelectorAll('input, textarea').forEach(el => {
             el.removeEventListener('input', handleOutputParamChange);
             el.addEventListener('input', handleOutputParamChange);
-        });
-        outputParamsContainer.querySelectorAll('.translate-icon').forEach(icon => {
-            icon.onclick = (e) => {
-                const cnIdx = icon.getAttribute('data-trans-output-cn');
-                const enIdx = icon.getAttribute('data-trans-output-en');
-                if (cnIdx !== null && outputParameters[cnIdx]) {
-                    outputParameters[cnIdx].en = translateZhToEn(outputParameters[cnIdx].cn);
-                    renderOutputParams();
-                } else if (enIdx !== null && outputParameters[enIdx]) {
-                    outputParameters[enIdx].cn = translateEnToZh(outputParameters[enIdx].en);
-                    renderOutputParams();
-                }
-                updatePreview();
-                e.stopPropagation();
-            };
         });
         outputParamsContainer.querySelectorAll('.delete-param-btn').forEach(btn => {
             btn.onclick = () => {
@@ -821,7 +718,7 @@
         document.getElementById('copyPreviewBtn').onclick = copyPreview;
         document.getElementById('downloadJsonBtn').onclick = downloadJson;
         
-        // 后缀推荐
+        // 后缀推荐按钮 - 添加到输入框末尾
         document.querySelectorAll('.suffix-badge').forEach(btn => {
             btn.onclick = () => {
                 const suffix = btn.getAttribute('data-suffix');
@@ -833,7 +730,7 @@
         });
         
         // 基础输入监听
-        [video, author, version, lastUpdated, customFilenameInput].forEach(i => {
+        [descCn, descEn, video, author, version, lastUpdated, customFilenameInput].forEach(i => {
             if (i) i.oninput = updatePreview;
         });
     }
@@ -841,17 +738,10 @@
     // 启动
     function init() {
         initDefaultParams();
-        bindTranslation();
         bindButtons();
         renderAll();
         updatePreview();
         document.body.addEventListener('click', handleRemove);
-        // 初始检查现有图片后缀（可选提示）
-        imagesArray.forEach(img => {
-            if (!/\.(png|jpg|jpeg|gif|mp4|webp|bmp|svg|ico)$/i.test(img)) {
-                console.log('提示：图片缺少后缀', img);
-            }
-        });
     }
     init();
 </script>
