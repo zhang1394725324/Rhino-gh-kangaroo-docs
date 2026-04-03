@@ -1,0 +1,88 @@
+{
+  "description_cn": "和Hinge那个差不多，多了一个弹性/塑性形变的值来限制角度，当弯曲程度超过这个值时，会发生变形。使相邻两个三角形形成塑料铰链，在受力后会发生变形，但又具有一定复原能力。",
+  "description_en": "Similar to the Hinge, it adds an elastic/plastic deformation value to limit the angle. When the bending exceeds this value, deformation will occur. It forms a plastic hinge between two adjacent triangles, which will deform under force but also has a certain degree of resilience.",
+  "images": [
+    "PlasticHinge.png",
+    "PlasticHinge.gif"
+  ],
+  "video": "",
+  "tags": [
+    "约束",
+    "点",
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "FoldStart",
+      "cn": "折叠轴起点",
+      "en": "Folding start point",
+      "default": "Null,点",
+      "desc_cn": "定义了铰链的旋转轴线。在物理仿真中，铰链会保持穿过FoldStart和FoldEnd的直线不变",
+      "desc_en": "The axis of rotation of the hinge is defined. In the physical simulation, the hinge will maintain its straight line passing through FoldStart and FoldEnd."
+    },
+    {
+      "name": "FoldEnd",
+      "cn": "折叠轴终点",
+      "en": "Folding End Point",
+      "default": "Null,点",
+      "desc_cn": "定义了铰链的旋转轴线。在物理仿真中，铰链会保持穿过FoldStart和FoldEnd的直线不变",
+      "desc_en": "The axis of rotation of the hinge is defined. In the physical simulation, the hinge will maintain its straight line passing through FoldStart and FoldEnd."
+    },
+    {
+      "name": "Tip1",
+      "cn": "提示1，铰链的方向或与旋转体相连的物体位置",
+      "en": "Tip1",
+      "default": "Null,点",
+      "desc_cn": "Tip1，Tip2这两个点用于定义铰链的方向或与旋转体相连的物体位置，帮助组件确定铰链是基于哪个平面进行旋转的。",
+      "desc_en": "Tip1 and Tip2 are used to define the direction of the hinge or the position of the object connected to the rotating body, helping the component determine which plane the hinge is based on for rotation."
+    },
+    {
+      "name": "Tip2",
+      "cn": "提示2，铰链的方向或与旋转体相连的物体位置",
+      "en": "Tip2",
+      "default": "Null,点",
+      "desc_cn": "Tip1，Tip2这两个点用于定义铰链的方向或与旋转体相连的物体位置，帮助组件确定铰链是基于哪个平面进行旋转的。",
+      "desc_en": "Tip1 and Tip2 are used to define the direction of the hinge or the position of the object connected to the rotating body, helping the component determine which plane the hinge is based on for rotation."
+    },
+    {
+      "name": "RestAngle",
+      "cn": "静止角度",
+      "en": "RestAngle",
+      "default": "Null，弧度",
+      "desc_cn": "静止角度 - 如果未提供，则使用当前角度。",
+      "desc_en": "Rest angle - if none supplied, current angle will be used "
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1,
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    },
+    {
+      "name": "Limit",
+      "cn": "限制",
+      "en": "Limit",
+      "default": "0.1",
+      "desc_cn": "最大弹性形变角（弧度）",
+      "desc_en": "Maximum elastic deformation angle in radians "
+    }
+  ],
+  "outputs": [
+    {
+      "name": "H",
+      "cn": "生成的铰链",
+      "en": "Hinge out ",
+      "default": "Null",
+      "desc_cn": "输出生成的铰链",
+      "desc_en": "Hinge out "
+    }
+  ],
+  "examples": [
+    "PlasticHinge_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
