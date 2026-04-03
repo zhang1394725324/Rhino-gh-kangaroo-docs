@@ -1,0 +1,39 @@
+{
+  "description_cn": "设z=0的xy平面为地面，点不会跑到地面以下。",
+  "description_en": "Let the xy plane with z=0 be the ground, and the point will not go below the ground.",
+  "images": [
+    "Floor.png",
+    "Floor.gif"
+  ],
+  "video": "",
+  "tags": [
+    "约束",
+    "点"
+  ],
+  "parameters": [
+    {
+      "name": "Strength",
+      "cn": "权重，强度",
+      "en": "Strength",
+      "default": "1",
+      "desc_cn": "权重，强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "H",
+      "cn": "输出的地面或地板",
+      "en": "Floor out",
+      "default": "Null",
+      "desc_cn": "输出的地面或地板",
+      "desc_en": "Floor out"
+    }
+  ],
+  "examples": [
+    "Floor_examples.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
