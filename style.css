@@ -79,7 +79,7 @@ body {
     align-items: stretch;
 }
 
-/* 分类卡片 - 所有卡片高度相等 */
+/* 分类卡片 */
 .category-card {
     background: #ffffff;
     border: 1.5px solid #cbd5e1;
@@ -99,13 +99,13 @@ body {
     box-shadow: 0 4px 12px -8px rgba(0,0,0,0.15);
 }
 
-/* 图标区域 - 自动填充剩余空间 */
+/* 图标区域 */
 .card-icons-area {
     flex: 1;
     padding: 10px 8px;
 }
 
-/* 使用 Grid 布局，固定4行 */
+/* 图标网格 - 4行固定 */
 .card-icons-grid {
     display: grid;
     grid-template-rows: repeat(4, 1fr);
@@ -113,14 +113,14 @@ body {
     height: 100%;
 }
 
-/* 根据列数设置 grid-template-columns */
+/* 根据列数设置列宽 */
 .card-icons-grid[data-columns="2"] { grid-template-columns: repeat(2, minmax(50px, 65px)); }
 .card-icons-grid[data-columns="3"] { grid-template-columns: repeat(3, minmax(50px, 60px)); }
 .card-icons-grid[data-columns="4"] { grid-template-columns: repeat(4, minmax(48px, 55px)); }
 .card-icons-grid[data-columns="5"] { grid-template-columns: repeat(5, minmax(45px, 52px)); }
 .card-icons-grid[data-columns="6"] { grid-template-columns: repeat(6, minmax(42px, 48px)); }
 
-/* 每个图标项 */
+/* 图标项 */
 .card-icon-item {
     text-align: center;
     cursor: pointer;
@@ -181,7 +181,7 @@ body {
     text-align: center;
 }
 
-/* ===== 组件详情区域（不再单独滚动，随页面滚动）===== */
+/* ===== 组件详情区域 ===== */
 .detail-panel {
     background: #ffffff;
     border-top: 1px solid #e2e8f0;
@@ -236,7 +236,7 @@ body {
     font-size: 0.85rem;
 }
 
-/* 富文本详情样式 */
+/* ===== 富文本详情样式 ===== */
 .component-detail {
     animation: slideIn 0.2s ease;
 }
@@ -256,35 +256,94 @@ body {
 }
 
 .detail-section {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     border-bottom: 1px solid #eef2ff;
-    padding-bottom: 12px;
+    padding-bottom: 16px;
+    overflow-x: auto;
 }
 
 .detail-section:last-child {
     border-bottom: none;
+    margin-bottom: 0;
 }
 
 .detail-section-title {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: #1e4a76;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
 .component-detail .desc {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     line-height: 1.5;
     color: #334155;
     background: #f8fafc;
-    padding: 10px;
+    padding: 12px;
     border-radius: 8px;
     border-left: 3px solid #1e4a76;
 }
 
+/* ===== 参数表格样式（带竖线）===== */
+.params-table {
+    width: 100%;
+    font-size: 0.7rem;
+    border-collapse: collapse;
+    border: 1px solid #e2e8f0;
+    min-width: 600px;
+}
+
+.params-table th,
+.params-table td {
+    padding: 8px 8px;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+    vertical-align: top;
+}
+
+.params-table th {
+    background: #f1f5f9;
+    font-weight: 600;
+    color: #1e4a76;
+    border: 1px solid #cbd5e1;
+    white-space: nowrap;
+}
+
+.params-table td {
+    background: #ffffff;
+}
+
+.params-table tr:hover td {
+    background: #fafcff;
+}
+
+.params-table code {
+    background: #eef2ff;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    color: #1e4a76;
+}
+
+/* 滚动条样式 */
+.detail-section::-webkit-scrollbar {
+    height: 5px;
+}
+
+.detail-section::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+
+.detail-section::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+/* ===== 图片画廊 ===== */
 .image-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(80px, 90px));
@@ -314,25 +373,24 @@ body {
     display: block;
 }
 
-.params-table {
+.gallery-item .gif-badge {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    font-size: 0.5rem;
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+
+/* 视频容器 */
+.video-container video {
     width: 100%;
-    font-size: 0.7rem;
-    border-collapse: collapse;
+    border-radius: 8px;
 }
 
-.params-table th,
-.params-table td {
-    padding: 6px 5px;
-    text-align: left;
-    border-bottom: 1px solid #eef2ff;
-}
-
-.params-table th {
-    background: #f8fafc;
-    font-weight: 600;
-    color: #1e4a76;
-}
-
+/* 标签云 */
 .tag-cloud {
     display: flex;
     flex-wrap: wrap;
@@ -348,6 +406,7 @@ body {
     font-weight: 500;
 }
 
+/* 元信息 */
 .meta {
     font-size: 0.7rem;
     color: #64748b;
@@ -360,6 +419,7 @@ body {
     margin-bottom: 4px;
 }
 
+/* 加载状态 */
 .loading-detail {
     text-align: center;
     padding: 40px;
@@ -380,7 +440,7 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* 模态框 */
+/* ===== 模态框 ===== */
 .modal {
     display: none;
     position: fixed;
@@ -446,42 +506,74 @@ body {
     color: #1e4a76;
 }
 
-/* ===== 响应式 ===== */
+/* ===== 响应式设计 ===== */
 @media (max-width: 768px) {
     .categories-container {
         padding: 12px;
     }
+    
     .categories-grid {
         gap: 12px;
     }
+    
     .category-card {
         min-width: 120px;
     }
+    
     .card-icons-grid[data-columns="2"] { grid-template-columns: repeat(2, minmax(45px, 55px)); }
     .card-icons-grid[data-columns="3"] { grid-template-columns: repeat(3, minmax(45px, 52px)); }
     .card-icons-grid[data-columns="4"] { grid-template-columns: repeat(4, minmax(42px, 48px)); }
     .card-icons-grid[data-columns="5"] { grid-template-columns: repeat(5, minmax(40px, 45px)); }
     .card-icons-grid[data-columns="6"] { grid-template-columns: repeat(6, minmax(38px, 42px)); }
+    
     .card-icon-name {
         font-size: 0.5rem;
     }
+    
     .category-title {
         padding: 8px 6px;
         min-height: 40px;
     }
+    
     .category-title span {
         font-size: 0.65rem;
     }
+    
     .detail-header {
         padding: 10px 16px;
         top: 48px;
     }
+    
     .detail-content {
         padding: 16px;
     }
+    
+    .component-detail h3 {
+        font-size: 1rem;
+    }
+    
+    .component-detail .desc {
+        font-size: 0.75rem;
+        padding: 10px;
+    }
+    
+    .params-table {
+        font-size: 0.65rem;
+        min-width: 500px;
+    }
+    
+    .params-table th,
+    .params-table td {
+        padding: 6px 6px;
+    }
+    
     .footer {
         padding: 6px 12px;
         font-size: 0.55rem;
+    }
+    
+    .footer-links {
+        gap: 8px;
     }
 }
 
@@ -489,10 +581,31 @@ body {
     .category-card {
         min-width: 105px;
     }
+    
     .card-icon-name {
         font-size: 0.45rem;
     }
+    
     .category-title span {
         font-size: 0.6rem;
+    }
+    
+    .params-table {
+        min-width: 450px;
+        font-size: 0.6rem;
+    }
+    
+    .params-table th,
+    .params-table td {
+        padding: 5px 4px;
+    }
+    
+    .image-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 75px));
+    }
+    
+    .gallery-item img,
+    .gallery-item video {
+        height: 50px;
     }
 }
