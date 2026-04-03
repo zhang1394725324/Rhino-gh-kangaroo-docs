@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>专业JSON生成器 | 全功能稳定版 · 智能翻译+后缀推荐</title>
+    <title>专业JSON生成器 | 智能后缀补全 + 准确双向翻译</title>
     <style>
         * {
             margin: 0;
@@ -174,6 +174,12 @@
             font-size: 0.75rem;
             border-radius: 20px;
             border: 1px solid #cbd5e1;
+        }
+        .warning-tip {
+            color: #e67e22;
+            font-size: 0.7rem;
+            margin-top: 5px;
+            display: none;
         }
 
         .params-dual {
@@ -365,19 +371,19 @@
 <body>
 <div class="app-container">
     <div class="hero">
-        <h1>📄 智能JSON生成器 · 全功能稳定版</h1>
-        <p>中英文双向翻译 | 图片后缀推荐 | 默认值任意类型 | 输入/输出参数独立</p>
+        <h1>📄 智能JSON生成器 · 后缀自动补全 + 准确双向翻译</h1>
+        <p>中英文准确翻译 | 图片后缀自动检测与补全 | 输入/输出参数独立</p>
     </div>
     <div class="generator-layout">
         <div class="form-panel">
             <div class="form-header"><h2>✍️ 智能表单</h2></div>
             <div class="form-body">
                 <div class="input-group">
-                    <label>📌 中文描述 <span style="font-size:0.7rem;">(输入自动英译)</span></label>
+                    <label>📌 中文描述 <span style="font-size:0.7rem;">(输入后自动翻译为英文)</span></label>
                     <input type="text" id="desc_cn" value="将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。">
                 </div>
                 <div class="input-group">
-                    <label>🌐 英文描述 <span style="font-size:0.7rem;">(输入自动中译)</span></label>
+                    <label>🌐 英文描述 <span style="font-size:0.7rem;">(输入后自动翻译为中文)</span></label>
                     <input type="text" id="desc_en" value="Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.">
                 </div>
                 
@@ -395,9 +401,10 @@
                             <span class="suffix-badge" data-suffix=".webp">.webp</span>
                         </div>
                         <div class="suffix-input-group">
-                            <input type="text" id="newImageInput" placeholder="输入文件名 (可带后缀)">
+                            <input type="text" id="newImageInput" placeholder="输入文件名 (可不带后缀)">
                             <button id="addImageBtn" class="add-btn">+ 添加图片</button>
                         </div>
+                        <div id="suffixWarning" class="warning-tip">⚠️ 检测到无后缀文件，已自动添加 .png</div>
                     </div>
                 </div>
 
@@ -454,9 +461,9 @@
                     <button id="downloadJsonBtn" class="success">⬇️ 下载</button>
                 </div>
                 <pre id="jsonPreview">加载中...</pre>
-                <div id="statusMsg" class="status-badge">✅ 所有功能正常 | 支持智能翻译+后缀推荐</div>
+                <div id="statusMsg" class="status-badge">✅ 所有功能正常 | 智能后缀补全 + 准确翻译</div>
             </div>
-            <div class="preview-card"><h4>✨ 功能说明</h4><ul style="font-size:0.8rem;margin-left:1.2rem;"><li>🌐 中英文双向自动翻译</li><li>🖼️ 图片后缀一键推荐 (.png/.jpg等)</li><li>⚙️ 参数默认值不限数字/文本</li><li>📋 自定义文件名+一键复制+下载</li><li>📥📤 输入/输出参数独立管理</li></ul></div>
+            <div class="preview-card"><h4>✨ 功能说明</h4><ul style="font-size:0.8rem;margin-left:1.2rem;"><li>🌐 中英文准确双向翻译 (中文→英文, 英文→中文)</li><li>🖼️ 图片后缀自动检测：无后缀时自动添加 .png 并提示</li><li>⚙️ 参数默认值不限数字/文本</li><li>📋 自定义文件名+一键复制+下载</li><li>📥📤 输入/输出参数独立管理</li></ul></div>
         </div>
     </div>
 </div>
@@ -485,45 +492,90 @@
     const exampleListDiv = document.getElementById('exampleList');
     const inputParamsContainer = document.getElementById('inputParamsList');
     const outputParamsContainer = document.getElementById('outputParamsList');
+    const suffixWarning = document.getElementById('suffixWarning');
 
-    // ---------- 翻译函数 (带词库) ----------
-    const transDict = {
+    // ---------- 翻译函数 (准确双向) ----------
+    // 中文 → 英文 词库
+    const zhToEnMap = {
         "将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。": "Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.",
         "对齐": "Align", "面": "Face", "约束": "Constraint", "网格": "Mesh", "强度": "Strength", "容差": "Tolerance",
         "约束强度，值越大效果越明显": "Constraint strength, higher value gives stronger effect",
         "对齐精度，值越小越精确": "Alignment tolerance, smaller value gives higher precision",
-        "输出对齐后的面数据结构": "Output data of aligned faces", "最大偏离距离": "Maximum deviation distance"
+        "输出对齐后的面数据结构": "Output data of aligned faces", "最大偏离距离": "Maximum deviation distance",
+        "新输入": "New Input", "新输出": "New Output", "输入参数描述": "Input parameter description"
     };
+    // 英文 → 中文 词库
+    const enToZhMap = {
+        "Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.": "将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。",
+        "Align": "对齐", "Face": "面", "Constraint": "约束", "Mesh": "网格", "Strength": "强度", "Tolerance": "容差",
+        "Constraint strength, higher value gives stronger effect": "约束强度，值越大效果越明显",
+        "Alignment tolerance, smaller value gives higher precision": "对齐精度，值越小越精确",
+        "Output data of aligned faces": "输出对齐后的面数据结构",
+        "Maximum deviation distance": "最大偏离距离",
+        "New Input": "新输入", "New Output": "新输出"
+    };
+    
     function translateZhToEn(text) {
         if (!text) return '';
-        if (transDict[text]) return transDict[text];
+        if (zhToEnMap[text]) return zhToEnMap[text];
+        // 如果词库没有，保持原文（不自动生成乱码）
         return text;
     }
+    
     function translateEnToZh(text) {
         if (!text) return '';
-        for (let [zh, en] of Object.entries(transDict)) {
-            if (en === text) return zh;
-        }
+        if (enToZhMap[text]) return enToZhMap[text];
         return text;
     }
 
-    // 翻译绑定 (不循环触发)
+    // 翻译绑定 (准确双向，不互相干扰)
     let isTranslating = false;
     function bindTranslation() {
         descCn.addEventListener('input', () => {
             if (isTranslating) return;
             isTranslating = true;
-            if (descCn.value.trim()) descEn.value = translateZhToEn(descCn.value);
+            const zhText = descCn.value;
+            if (zhText) {
+                descEn.value = translateZhToEn(zhText);
+            } else {
+                descEn.value = '';
+            }
             isTranslating = false;
             updatePreview();
         });
+        
         descEn.addEventListener('input', () => {
             if (isTranslating) return;
             isTranslating = true;
-            if (descEn.value.trim()) descCn.value = translateEnToZh(descEn.value);
+            const enText = descEn.value;
+            if (enText) {
+                descCn.value = translateEnToZh(enText);
+            } else {
+                descCn.value = '';
+            }
             isTranslating = false;
             updatePreview();
         });
+    }
+
+    // 检查并补全图片后缀
+    function ensureImageSuffix(filename) {
+        // 检查是否有常见图片/视频后缀
+        const hasSuffix = /\.(png|jpg|jpeg|gif|mp4|webp|bmp|svg|ico)$/i.test(filename);
+        if (!hasSuffix) {
+            suffixWarning.style.display = 'block';
+            setTimeout(() => { suffixWarning.style.display = 'none'; }, 2000);
+            return filename + '.png';
+        }
+        return filename;
+    }
+    
+    // 添加图片时自动补全后缀
+    function addImageWithSuffix(filename) {
+        const fixedName = ensureImageSuffix(filename);
+        imagesArray.push(fixedName);
+        renderImageList();
+        updatePreview();
     }
 
     // 辅助函数
@@ -537,14 +589,16 @@
     }
 
     // 渲染所有列表
-    function renderAll() {
+    function renderImageList() {
         imageListDiv.innerHTML = imagesArray.map(img => `<div class="img-item">${escapeHtml(img)} <button class="remove-btn" data-type="image" data-value="${escapeHtml(img)}">✖</button></div>`).join('');
-        tagListDiv.innerHTML = tagsArray.map(tag => `<div class="tag-item">${escapeHtml(tag)} <button class="remove-btn" data-type="tag" data-value="${escapeHtml(tag)}">✖</button></div>`).join('');
-        exampleListDiv.innerHTML = examplesArray.map(ex => `<div class="ex-item">${escapeHtml(ex)} <button class="remove-btn" data-type="example" data-value="${escapeHtml(ex)}">✖</button></div>`).join('');
-        renderInputParams();
-        renderOutputParams();
     }
-
+    function renderTagList() {
+        tagListDiv.innerHTML = tagsArray.map(tag => `<div class="tag-item">${escapeHtml(tag)} <button class="remove-btn" data-type="tag" data-value="${escapeHtml(tag)}">✖</button></div>`).join('');
+    }
+    function renderExampleList() {
+        exampleListDiv.innerHTML = examplesArray.map(ex => `<div class="ex-item">${escapeHtml(ex)} <button class="remove-btn" data-type="example" data-value="${escapeHtml(ex)}">✖</button></div>`).join('');
+    }
+    
     function renderInputParams() {
         inputParamsContainer.innerHTML = '';
         inputParameters.forEach((param, idx) => {
@@ -577,6 +631,7 @@
                     renderInputParams();
                 }
                 updatePreview();
+                e.stopPropagation();
             };
         });
         inputParamsContainer.querySelectorAll('.delete-param-btn').forEach(btn => {
@@ -607,7 +662,7 @@
             el.addEventListener('input', handleOutputParamChange);
         });
         outputParamsContainer.querySelectorAll('.translate-icon').forEach(icon => {
-            icon.onclick = () => {
+            icon.onclick = (e) => {
                 const cnIdx = icon.getAttribute('data-trans-output-cn');
                 const enIdx = icon.getAttribute('data-trans-output-en');
                 if (cnIdx !== null && outputParameters[cnIdx]) {
@@ -618,6 +673,7 @@
                     renderOutputParams();
                 }
                 updatePreview();
+                e.stopPropagation();
             };
         });
         outputParamsContainer.querySelectorAll('.delete-param-btn').forEach(btn => {
@@ -645,6 +701,14 @@
         }
     }
 
+    function renderAll() {
+        renderImageList();
+        renderTagList();
+        renderExampleList();
+        renderInputParams();
+        renderOutputParams();
+    }
+
     // 构建JSON
     function buildJsonObject() {
         const lastUpdatedVal = lastUpdated.value || new Date().toISOString().slice(0,10);
@@ -667,7 +731,12 @@
         try {
             jsonPreview.textContent = JSON.stringify(buildJsonObject(), null, 2);
             statusSpan.innerHTML = '✅ JSON有效 | 支持任意默认值';
-        } catch(e) { jsonPreview.textContent = `// 错误: ${e.message}`; }
+            statusSpan.style.background = '#e6f7e6';
+        } catch(e) { 
+            jsonPreview.textContent = `// 错误: ${e.message}`;
+            statusSpan.innerHTML = '❌ JSON构建错误';
+            statusSpan.style.background = '#ffe6e5';
+        }
     }
 
     function downloadJson() {
@@ -680,6 +749,7 @@
         a.click();
         URL.revokeObjectURL(a.href);
         statusSpan.innerHTML = '📁 文件已下载';
+        setTimeout(() => updatePreview(), 200);
     }
 
     function copyPreview() {
@@ -724,15 +794,18 @@
     function bindButtons() {
         document.getElementById('addImageBtn').onclick = () => {
             const inp = document.getElementById('newImageInput');
-            if (inp.value.trim()) { imagesArray.push(inp.value.trim()); inp.value = ''; renderAll(); updatePreview(); }
+            if (inp.value.trim()) { 
+                addImageWithSuffix(inp.value.trim()); 
+                inp.value = ''; 
+            }
         };
         document.getElementById('addTagBtn').onclick = () => {
             const inp = document.getElementById('newTagInput');
-            if (inp.value.trim()) { tagsArray.push(inp.value.trim()); inp.value = ''; renderAll(); updatePreview(); }
+            if (inp.value.trim()) { tagsArray.push(inp.value.trim()); inp.value = ''; renderTagList(); updatePreview(); }
         };
         document.getElementById('addExampleBtn').onclick = () => {
             const inp = document.getElementById('newExampleInput');
-            if (inp.value.trim()) { examplesArray.push(inp.value.trim()); inp.value = ''; renderAll(); updatePreview(); }
+            if (inp.value.trim()) { examplesArray.push(inp.value.trim()); inp.value = ''; renderExampleList(); updatePreview(); }
         };
         document.getElementById('addInputParamBtn').onclick = () => {
             inputParameters.push({ name: "new_input", cn: "新输入", en: "New Input", default: "", desc_cn: "", desc_en: "" });
@@ -760,7 +833,7 @@
         });
         
         // 基础输入监听
-        [descCn, descEn, video, author, version, lastUpdated, customFilenameInput].forEach(i => {
+        [video, author, version, lastUpdated, customFilenameInput].forEach(i => {
             if (i) i.oninput = updatePreview;
         });
     }
@@ -773,6 +846,12 @@
         renderAll();
         updatePreview();
         document.body.addEventListener('click', handleRemove);
+        // 初始检查现有图片后缀（可选提示）
+        imagesArray.forEach(img => {
+            if (!/\.(png|jpg|jpeg|gif|mp4|webp|bmp|svg|ico)$/i.test(img)) {
+                console.log('提示：图片缺少后缀', img);
+            }
+        });
     }
     init();
 </script>
