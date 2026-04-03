@@ -1,33 +1,56 @@
 {
-  "description_cn": "方向约束，限制线段或向量的方向。",
-  "description_en": "Direction constraint, restricts direction of line or vector.",
+  "description_cn": "旋转一条线是它和设定好的向量方向保持一致。如果没有指定向量，将采用最接近世界坐标系的坐标向量。可以用它来使线段正交。",
+  "description_en": "Rotating a line aligns it with the direction of a predefined vector. If no vector is specified, the coordinate vector closest to the world coordinate system will be used. This can be used to make line segments orthogonal.",
   "images": [
-    "direction_demo.png"
+    "Direction.png",
+    "Direction.gif"
   ],
   "video": "",
-  "tags": ["方向", "向量", "约束", "对齐"],
+  "tags": [
+    "约束",
+    "线",
+    "角度"
+  ],
   "parameters": [
     {
-      "name": "TargetDirection",
+      "name": "Line",
+      "cn": "直线",
+      "en": "Line",
+      "default": "Null，直线",
+      "desc_cn": "第一组直线列表",
+      "desc_en": "First line segment"
+    },
+    {
+      "name": "Direction",
       "cn": "目标方向",
-      "en": "Target Direction",
-      "default": "[1,0,0]",
-      "desc_cn": "期望的方向向量",
-      "desc_en": "Desired direction vector"
+      "en": "Direction",
+      "default": "Null，向量",
+      "desc_cn": "方向 - 如果未提供方向，则使用最接近的正交轴。",
+      "desc_en": "Direction - if none supplied, closest ortho axis will be used"
     },
     {
       "name": "Strength",
-      "cn": "强度",
+      "cn": "权重，强度",
       "en": "Strength",
-      "default": 1.0,
-      "desc_cn": "方向约束强度",
-      "desc_en": "Direction constraint strength"
+      "default": "1",
+      "desc_cn": "权重，强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "D",
+      "cn": "输出的方向",
+      "en": "Direction out",
+      "default": "Null",
+      "desc_cn": "输出的方向",
+      "desc_en": "Direction out"
     }
   ],
   "examples": [
-    "direction_alignment.gh"
+    "Direction_examples.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "2.0",
-  "lastUpdated": "2024-01-08"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
