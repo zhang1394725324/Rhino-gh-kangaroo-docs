@@ -1,25 +1,47 @@
 {
-  "description_cn": "共球约束，使多个点保持在同一个球面上。",
-  "description_en": "Co-spherical constraint, keeps multiple points on the same sphere.",
+  "description_cn": "使一组点共球。将多点拉回至一个拟合球上。共球约束，使多个点保持在同一个球面上。",
+  "description_en": "Make a set of points congruent to a sphere. Pull multiple points back onto a fitted sphere.",
   "images": [
-    "cospherical_demo.png"
+    "CoSpherical.png",
+    "CoSpherical.gif"
   ],
   "video": "",
-  "tags": ["共球", "球面", "点", "约束"],
+  "tags": [
+    "约束",
+    "点"
+  ],
   "parameters": [
+    {
+      "name": "Points",
+      "cn": "共球点",
+      "en": "Points",
+      "default": "Null,点",
+      "desc_cn": "一组点",
+      "desc_en": "Points to make coSpherical"
+    },
     {
       "name": "Strength",
       "cn": "强度",
       "en": "Strength",
-      "default": 1.0,
-      "desc_cn": "共球约束强度",
-      "desc_en": "Co-spherical constraint strength"
+      "default": 1,
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "C",
+      "cn": "生成的共球数据",
+      "en": "CoSpherical out ",
+      "default": "Null",
+      "desc_cn": "输出的共球数据",
+      "desc_en": "CoSpherical out "
     }
   ],
   "examples": [
-    "cospherical_dome.gh"
+    "CoSpherical_example.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "1.9",
-  "lastUpdated": "2024-01-07"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
