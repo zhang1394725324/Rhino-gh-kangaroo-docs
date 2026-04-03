@@ -1,0 +1,56 @@
+{
+  "description_cn": "调整三角形网格的边长，使三角形网格的内街圆相切。调整一对相邻三角形的顶点，使其内圆互相相切。对于生成扭转自由梁布局和其他结构很有用。图中生成了Circle Packing。对于Circle Packing感兴趣的人可以阅读K. Stephenson 的Introduction to Circle Packing。",
+  "description_en": "Adjust the side lengths of the triangular meshes so that their inner circles are tangent. Adjust the vertices of a pair of adjacent triangles so that their inner circles are tangent to each other. This is useful for generating torsional free beam layouts and other structures. The figure shows the generation of Circle Packing. Those interested in Circle Packing can read K. Stephenson's Introduction to Circle Packing.",
+  "images": [
+    "TangentIncircles.png",
+    "TangentIncircles.gif"
+  ],
+  "video": "",
+  "tags": [
+    "约束",
+    "点",
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null,mesh",
+      "desc_cn": "输入的网格",
+      "desc_en": "Input mesh"
+    },
+    {
+      "name": "B",
+      "cn": "边界",
+      "en": "Boundary",
+      "default": "Null，曲线",
+      "desc_cn": "可选边界曲线",
+      "desc_en": "Optional boundary curves"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1,
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "TI",
+      "cn": "切线圆",
+      "en": "TangentIncircles",
+      "default": "Null",
+      "desc_cn": "圆内切线",
+      "desc_en": "TI out"
+    }
+  ],
+  "examples": [
+    "TangentIncircles_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
