@@ -1,33 +1,55 @@
 {
-  "description_cn": "线段长度约束，保持两点之间的指定距离。",
-  "description_en": "Line length constraint, maintains specified distance between two points.",
+  "description_cn": "使直线具有弹性，直线的长度按照设定的长度值变化。尽可能地保持线段两点之间的距离。如果没有在Length端输入长度，它会默认起始长度作为目标长度（长度不变）该目标可以视为一个线性弹性的1维有限元，它可以在定量的指定真实的载荷作用下发生形变。可以把Strength设置成弹簧系数（N/m），计算EA/L，E是杨氏模量（Pa），A是横截面积（m^2），L是长度（m）",
+  "description_en": "This makes the straight line elastic, with its length varying according to a set value. It aims to maintain the distance between two points on the line segment as much as possible. If no length is entered at the Length field, it defaults to the starting length as the target length (the length remains constant). This target can be considered a linearly elastic 1D finite element, capable of deforming under a quantitatively specified real load. The Strength parameter can be set to the spring constant (N/m), and EA/L can be calculated, where E is Young's modulus (Pa), A is the cross-sectional area (m²), and L is the length (m).",
   "images": [
-    "lengthline_demo.png"
+    "Length(Line).png",
+    "Length(Line).gif"
   ],
   "video": "",
-  "tags": ["长度", "距离", "线段", "约束"],
+  "tags": [
+    "约束",
+    "曲线"
+  ],
   "parameters": [
     {
-      "name": "TargetLength",
-      "cn": "目标长度",
-      "en": "Target Length",
-      "default": "Auto",
-      "desc_cn": "期望的线段长度",
-      "desc_en": "Desired line length"
+      "name": "Line",
+      "cn": "曲线",
+      "en": "Line",
+      "default": "Null，曲线",
+      "desc_cn": "曲线",
+      "desc_en": "Line"
+    },
+    {
+      "name": "Length",
+      "cn": "长度",
+      "en": "Length",
+      "default": "Null，数字",
+      "desc_cn": "长度 - 如果未提供，则使用起始长度。",
+      "desc_en": "Length - If not provided, the starting length will be used."
     },
     {
       "name": "Strength",
-      "cn": "强度",
+      "cn": "权重，强度",
       "en": "Strength",
-      "default": 1.0,
-      "desc_cn": "长度约束强度",
-      "desc_en": "Length constraint strength"
+      "default": "10",
+      "desc_cn": "约束的强度/权重，这条约束在求解器中的地位越高，两点间的距离就越会趋向于目标值。",
+      "desc_en": "The strength/weight of the constraint: the higher the status of the constraint in the solver, the closer the distance between the two points will be to the target value."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "Spring",
+      "cn": "弹簧力",
+      "en": "Spring",
+      "default": "Null",
+      "desc_cn": "输出弹簧力",
+      "desc_en": "Output spring force"
     }
   ],
   "examples": [
-    "lengthline_basic.gh"
+    "Length(Line)_examples.gh"
   ],
   "author": "Kangaroo Team",
   "version": "2.1",
-  "lastUpdated": "2024-01-12"
+  "lastUpdated": "2026-04-15"
 }
