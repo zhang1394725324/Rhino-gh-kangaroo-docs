@@ -30,8 +30,10 @@ const groupDisplayNames = {
     'Utility': '实用工具'
 };
 
+// 详情面板是否展开
 let isDetailExpanded = false;
 
+// ===== 辅助函数 =====
 function escapeHtml(str) {
     if (!str) return '';
     const div = document.createElement('div');
@@ -43,28 +45,75 @@ function showLoading(message) {
     detailContent.innerHTML = `<div class="loading-detail"><div class="spinner"></div><p>${escapeHtml(message)}</p></div>`;
 }
 
-// ===== 加载组件详情 =====
+// ===== 按需加载组件详情 =====
 async function loadComponentDetail(componentName, detailFile) {
-    if (detailCache.has(componentName)) return detailCache.get(componentName);
-    try {
-        let detailUrl = `data/details/${detailFile || componentName + '.json'}`;
-        const response = await fetch(detailUrl);
-        if (!response.ok) {
-            return { description_cn: '暂无详细说明。', description_en: 'No description.', images: [], tags: [], parameters: [] };
-        }
-        const detail = await response.json();
-        detailCache.set(componentName, detail);
-        return detail;
-    } catch (err) {
-        return { description_cn: '加载详情失败。', description_en: 'Failed to load.', images: [], tags: [], parameters: [] };
+    // 检查缓存
+    if (detailCache.has(componentName)) {
+        console.log(`从缓存加载: ${componentName}`);
+        return detailCache.get(componentName);
     }
+    
+    // 生成安全的文件名（处理特殊字符）
+    function sanitizeFileName(name) {
+        return name
+            .replace(/[\/\\:*?"<>|&]/g, '_')
+            .replace(/\s+/g, '_')
+            .replace(/\(/g, '_')
+            .replace(/\)/g, '_')
+            .replace(/&/g, 'and');
+    }
+    
+    // 尝试多个可能的文件名
+    const possibleNames = [
+        detailFile,
+        `${componentName}.json`,
+        `${sanitizeFileName(componentName)}.json`,
+        `${componentName.toLowerCase().replace(/\s+/g, '_')}.json`,
+    ].filter(Boolean);
+    
+    for (const name of possibleNames) {
+        try {
+            const detailUrl = `data/details/${name}`;
+            console.log(`尝试加载: ${detailUrl}`);
+            
+            const response = await fetch(detailUrl);
+            if (response.ok) {
+                const detail = await response.json();
+                detailCache.set(componentName, detail);
+                console.log(`✅ 加载成功: ${componentName} -> ${name}`);
+                return detail;
+            }
+        } catch (err) {
+            console.log(`❌ 失败: ${name}`);
+        }
+    }
+    
+    // 所有尝试都失败，返回默认模板
+    console.error(`❌ 找不到详情文件: ${componentName}`);
+    const defaultDetail = {
+        description_cn: `❌ 找不到详情文件\n\n组件名称：${componentName}\n\n请创建对应的 JSON 文件。`,
+        description_en: `❌ Detail file not found\n\nComponent: ${componentName}\n\nPlease create the corresponding JSON file.`,
+        images: [],
+        tags: ['文件缺失'],
+        parameters: [],
+        outputs: [],
+        examples: [],
+        author: '-',
+        version: '-',
+        lastUpdated: new Date().toISOString().split('T')[0]
+    };
+    detailCache.set(componentName, defaultDetail);
+    return defaultDetail;
 }
 
 // ===== 渲染富文本详情 =====
 function renderRichDetail(item, details) {
     const titleText = lang === 'cn' ? (item.cn || item.name) : (item.en || item.name);
-    const description = lang === 'cn' ? (details.description_cn || '暂无描述') : (details.description_en || 'No description');
+    const description = lang === 'cn' 
+        ? (details.description_cn || item.desc_cn || '暂无描述')
+        : (details.description_en || item.desc_en || 'No description');
     
+    // 图片画廊
     let galleryHtml = '';
     const images = details.images || [];
     if (images.length > 0) {
@@ -85,41 +134,108 @@ function renderRichDetail(item, details) {
         `;
     }
     
-    let paramsHtml = '';
-    const params = details.parameters || [];
-    if (params.length > 0) {
-        paramsHtml = `
+    // 视频教程
+    let videoHtml = '';
+    const video = details.video;
+    if (video) {
+        videoHtml = `
             <div class="detail-section">
-                <div class="detail-section-title">⚙️ ${lang === 'cn' ? '参数' : 'Parameters'}</div>
+                <div class="detail-section-title">🎬 ${lang === 'cn' ? '视频教程' : 'Video Tutorial'}</div>
+                <div class="video-container">
+                    <video src="img/videos/${video}" controls style="width:100%; border-radius:8px;"></video>
+                </div>
+            </div>
+        `;
+    }
+    
+    // 输入参数（兼容 parameters 和 input_parameters）
+    let inputParamsHtml = '';
+    const inputParams = details.parameters || details.input_parameters || [];
+    if (inputParams.length > 0) {
+        inputParamsHtml = `
+            <div class="detail-section">
+                <div class="detail-section-title">⚙️ ${lang === 'cn' ? '输入参数' : 'Input Parameters'}</div>
                 <table class="params-table">
-                    <thead><tr><th>${lang === 'cn' ? '参数名' : 'Name'}</th><th>${lang === 'cn' ? '说明' : 'Description'}</th><th>${lang === 'cn' ? '默认值' : 'Default'}</th></tr></thead>
+                    <thead>
+                        <tr><th>${lang === 'cn' ? '参数名' : 'Name'}</th><th>${lang === 'cn' ? '说明' : 'Description'}</th><th>${lang === 'cn' ? '默认值' : 'Default'}</th></tr>
+                    </thead>
                     <tbody>
-                        ${params.map(p => `<tr><td><code>${escapeHtml(p.name)}</code></td><td>${lang === 'cn' ? escapeHtml(p.cn || '') : escapeHtml(p.en || '')}</td><td>${escapeHtml(p.default || '-')}</td></tr>`).join('')}
+                        ${inputParams.map(p => `
+                            <tr>
+                                <td><code>${escapeHtml(p.name)}</code></td>
+                                <td>${lang === 'cn' ? escapeHtml(p.cn || p.desc_cn || '') : escapeHtml(p.en || p.desc_en || '')}</td>
+                                <td>${escapeHtml(String(p.default !== undefined ? p.default : '-'))}</td>
+                            </tr>
+                        `).join('')}
                     </tbody>
                 </table>
             </div>
         `;
     }
     
+    // 输出参数（支持 outputs 和 output_parameters）
+    let outputParamsHtml = '';
+    const outputParams = details.outputs || details.output_parameters || [];
+    if (outputParams.length > 0) {
+        outputParamsHtml = `
+            <div class="detail-section">
+                <div class="detail-section-title">📤 ${lang === 'cn' ? '输出参数' : 'Output Parameters'}</div>
+                <table class="params-table">
+                    <thead>
+                        <tr><th>${lang === 'cn' ? '参数名' : 'Name'}</th><th>${lang === 'cn' ? '说明' : 'Description'}</th><th>${lang === 'cn' ? '类型' : 'Type'}</th></tr>
+                    </thead>
+                    <tbody>
+                        ${outputParams.map(o => `
+                            <tr>
+                                <td><code>${escapeHtml(o.name)}</code></td>
+                                <td>${lang === 'cn' ? escapeHtml(o.cn || o.desc_cn || '') : escapeHtml(o.en || o.desc_en || '')}</td>
+                                <td>${escapeHtml(o.type || o.default || '-')}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
+    }
+    
+    // 标签
     let tagsHtml = '';
     const tags = details.tags || [];
     if (tags.length > 0) {
         tagsHtml = `
             <div class="detail-section">
                 <div class="detail-section-title">🏷️ ${lang === 'cn' ? '标签' : 'Tags'}</div>
-                <div class="tag-cloud">${tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}</div>
+                <div class="tag-cloud">
+                    ${tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
+                </div>
             </div>
         `;
     }
     
+    // 示例文件
+    let examplesHtml = '';
+    const examples = details.examples || [];
+    if (examples.length > 0) {
+        examplesHtml = `
+            <div class="detail-section">
+                <div class="detail-section-title">📁 ${lang === 'cn' ? '示例文件' : 'Examples'}</div>
+                <div class="tag-cloud">
+                    ${examples.map(ex => `<span class="tag" style="background:#e2e8f0; cursor:pointer;">📄 ${escapeHtml(ex)}</span>`).join('')}
+                </div>
+            </div>
+        `;
+    }
+    
+    // 元信息
     let metaHtml = `
         <div class="detail-section">
             <div class="detail-section-title">ℹ️ ${lang === 'cn' ? '信息' : 'Info'}</div>
             <div class="meta">
                 <div><strong>${lang === 'cn' ? '组件名称' : 'Component'}:</strong> ${escapeHtml(item.name)}</div>
-                <div><strong>雪碧图位置:</strong> (${item.spriteX}, ${item.spriteY})</div>
+                <div><strong>${lang === 'cn' ? '雪碧图位置' : 'Sprite Position'}:</strong> (${item.spriteX}, ${item.spriteY})</div>
                 ${details.author ? `<div><strong>${lang === 'cn' ? '作者' : 'Author'}:</strong> ${escapeHtml(details.author)}</div>` : ''}
                 ${details.version ? `<div><strong>${lang === 'cn' ? '版本' : 'Version'}:</strong> ${escapeHtml(details.version)}</div>` : ''}
+                ${details.lastUpdated ? `<div><strong>${lang === 'cn' ? '最后更新' : 'Last Updated'}:</strong> ${escapeHtml(details.lastUpdated)}</div>` : ''}
             </div>
         </div>
     `;
@@ -129,22 +245,29 @@ function renderRichDetail(item, details) {
             <h3>${escapeHtml(titleText)}</h3>
             <div class="detail-section">
                 <div class="detail-section-title">📝 ${lang === 'cn' ? '说明' : 'Description'}</div>
-                <div class="desc">${escapeHtml(description)}</div>
+                <div class="desc">${escapeHtml(description).replace(/\n/g, '<br>')}</div>
             </div>
             ${galleryHtml}
-            ${paramsHtml}
+            ${videoHtml}
+            ${inputParamsHtml}
+            ${outputParamsHtml}
             ${tagsHtml}
+            ${examplesHtml}
             ${metaHtml}
         </div>
     `;
     
-    // 视频悬停播放
+    // 视频悬停播放（仅对 gallery 中的视频）
     document.querySelectorAll('.gallery-item video').forEach(video => {
         video.addEventListener('mouseenter', () => video.play());
-        video.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+        video.addEventListener('mouseleave', () => {
+            video.pause();
+            video.currentTime = 0;
+        });
     });
 }
 
+// ===== 显示组件详情 =====
 async function showComponentDetail(item) {
     showLoading('加载详情中...');
     const details = await loadComponentDetail(item.name, item.detailFile);
@@ -155,18 +278,28 @@ async function showComponentDetail(item) {
 // ===== 数据加载 =====
 function loadData() {
     fetch('data/kangaroo.json?' + Date.now())
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return res.json();
+        })
         .then(data => {
+            console.log('✅ 数据加载成功', data);
             componentsData = data;
-            groupsList = GROUP_ORDER.filter(group => componentsData[group] && componentsData[group].length > 0);
+            
+            groupsList = GROUP_ORDER.filter(group => 
+                componentsData[group] && componentsData[group].length > 0
+            );
+            
+            console.log('📦 分组列表:', groupsList);
             renderCategories();
         })
         .catch(err => {
+            console.error('❌ 数据加载失败:', err);
             categoriesGrid.innerHTML = `<div style="padding:40px;text-align:center;color:#dc2626;">数据加载失败: ${err.message}</div>`;
         });
 }
 
-// ===== 渲染分类卡片（4行网格，直接使用JSON坐标）=====
+// ===== 渲染分类卡片 =====
 function renderCategories() {
     categoriesGrid.innerHTML = '';
     
@@ -176,7 +309,7 @@ function renderCategories() {
         
         const itemCount = items.length;
         
-        // 计算列数（决定每行显示几个图标）
+        // 计算列数
         let columns = 2;
         if (itemCount <= 8) columns = 2;
         else if (itemCount <= 12) columns = 3;
@@ -195,10 +328,8 @@ function renderCategories() {
         iconsGrid.className = 'card-icons-grid';
         iconsGrid.setAttribute('data-columns', columns);
         
-        // 按顺序填充图标（4行，按列填充）
-        // 计算需要的总格子数（4行 × columns列）
+        // 填充图标（4行 × columns列）
         const totalSlots = 4 * columns;
-        
         for (let i = 0; i < totalSlots; i++) {
             if (i < items.length) {
                 const item = items[i];
@@ -208,7 +339,6 @@ function renderCategories() {
                 
                 const sprite = document.createElement('div');
                 sprite.className = 'card-icon-sprite';
-                // 直接使用 JSON 中的坐标
                 sprite.style.backgroundPosition = `-${item.spriteX}px -${item.spriteY}px`;
                 
                 const nameSpan = document.createElement('div');
@@ -226,9 +356,9 @@ function renderCategories() {
                     e.stopPropagation();
                     showComponentDetail(item);
                 });
+                
                 iconsGrid.appendChild(iconItem);
             } else {
-                // 空白占位符（保持布局）
                 const emptyItem = document.createElement('div');
                 emptyItem.style.visibility = 'hidden';
                 iconsGrid.appendChild(emptyItem);
@@ -261,11 +391,17 @@ langBtn.addEventListener('click', () => {
     }
 });
 
+// 展开/收起详情面板
 expandDetailBtn.addEventListener('click', () => {
     const panel = document.querySelector('.detail-panel');
     isDetailExpanded = !isDetailExpanded;
-    panel.style.flex = isDetailExpanded ? '2' : '1';
-    expandDetailBtn.textContent = isDetailExpanded ? '✕' : '⛶';
+    if (isDetailExpanded) {
+        panel.style.flex = '2';
+        expandDetailBtn.textContent = '✕';
+    } else {
+        panel.style.flex = '1';
+        expandDetailBtn.textContent = '⛶';
+    }
 });
 
 // 模态框
@@ -275,15 +411,23 @@ function openModal(src) {
         modal = document.createElement('div');
         modal.id = 'imageModal';
         modal.className = 'modal';
-        modal.innerHTML = `<div class="modal-content"><img src="" alt=""></div><div class="modal-close">&times;</div>`;
+        modal.innerHTML = `
+            <div class="modal-content">
+                <img src="" alt="">
+            </div>
+            <div class="modal-close">&times;</div>
+        `;
         document.body.appendChild(modal);
+        
         modal.addEventListener('click', (e) => {
             if (e.target === modal || e.target.classList.contains('modal-close')) {
                 modal.classList.remove('active');
             }
         });
     }
-    modal.querySelector('img').src = src;
+    
+    const img = modal.querySelector('img');
+    img.src = src;
     modal.classList.add('active');
 }
 
