@@ -1,26 +1,47 @@
 {
-  "description_cn": "共面约束，使多个点保持在同一个平面上。",
-  "description_en": "Coplanar constraint, keeps multiple points on the same plane.",
+  "description_cn": "共面约束，使多个点保持在同一个平面上。将多点拉回至一个拟合的平面上。可以作用于多个点，如果只有4个点建议使用算起来更快的Planarize。由于可以作用于多个点固可以使六边形单元平板化。  相较于四边形嵌板和三角形嵌板，由于六边形嵌板的每个节点都只连接三个顶点，所以六边形板块在密铺曲面时，具有板块数量最少，结构稳定性能高和节点处理便捷的特点。",
+  "description_en": "Coplanar constraints keep multiple points on the same plane. This pulls multiple points back to a fitted plane. It can be applied to multiple points; if there are only four points, the faster Planarize function is recommended. Because it can be applied to multiple points, hexagonal elements can be flattened. Compared to quadrilateral and triangular panels, hexagonal panels have the advantages of requiring the fewest panels, high structural stability, and convenient node handling when tiling surfaces, since each node of a hexagonal panel connects only three vertices.",
   "images": [
-    "coplanar_demo.png",
-    "coplanar_animation.gif"
+    "CoPlanar.png",
+    "CoPlanar.gif"
   ],
   "video": "",
-  "tags": ["共面", "平面", "点", "约束"],
+  "tags": [
+    "约束",
+    "点"
+  ],
   "parameters": [
+    {
+      "name": "Points",
+      "cn": "共面点",
+      "en": "Points",
+      "default": "Null,点",
+      "desc_cn": "一组点",
+      "desc_en": "Points to make coplanar "
+    },
     {
       "name": "Strength",
       "cn": "强度",
       "en": "Strength",
-      "default": 1.0,
-      "desc_cn": "共面约束强度",
-      "desc_en": "Coplanar constraint strength"
+      "default": 1,
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "C",
+      "cn": "生成的共面数据",
+      "en": "Coplanar out ",
+      "default": "Null",
+      "desc_cn": "输出的共面数据",
+      "desc_en": "Coplanar out "
     }
   ],
   "examples": [
-    "coplanar_surface.gh"
+    "CoPlanar_example.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "2.0",
-  "lastUpdated": "2024-01-10"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
