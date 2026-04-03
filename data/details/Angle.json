@@ -1,34 +1,63 @@
 {
-  "description_cn": "角度约束，控制两条线段之间的夹角。可用于保持特定角度关系。",
-  "description_en": "Angle constraint, controls the angle between two line segments. Can be used to maintain specific angular relationships.",
+  "description_cn": "使两个线段间的角度接近于一个值。如果没有设定值，则变为使当前两个线段之间的角度不变。两个线段可以是分开的，也可以是接在一起的。可用于模拟圆形截面弹性杆的弯曲（而不会受扭力）。可以根据实际情况设定材料属性，强度可以输入E*I，E是杨氏模量（Pa），I是二阶矩（m^2）,",
+  "description_en": "This function brings the angle between two line segments close to a certain value. If no value is set, it keeps the angle between the two line segments unchanged. The two line segments can be separate or connected. It can be used to simulate the bending of a circular cross-section elastic rod (without torsion). Material properties can be set according to actual conditions; the strength can be entered as E*I, where E is Young's modulus (Pa) and I is the second moment (m^2).",
   "images": [
-    "angle_demo.png",
-    "angle_animation.gif"
+    "Angle.png",
+    "Angle.gif"
   ],
   "video": "",
-  "tags": ["角度", "约束", "线段", "几何"],
+  "tags": [
+    "约束",
+    "线"
+  ],
   "parameters": [
     {
-      "name": "TargetAngle",
-      "cn": "目标角度",
-      "en": "Target Angle",
-      "default": 90.0,
-      "desc_cn": "期望的角度值（度）",
-      "desc_en": "Desired angle value (degrees)"
+      "name": "LineA",
+      "cn": "直线A",
+      "en": "LineA",
+      "default": "Null，直线",
+      "desc_cn": "第一组直线列表",
+      "desc_en": "First line segment"
+    },
+    {
+      "name": "LineB",
+      "cn": "直线B",
+      "en": "LineB",
+      "default": "Null，直线",
+      "desc_cn": "第二组直线列表",
+      "desc_en": "Second line segment"
+    },
+    {
+      "name": "RestAngle",
+      "cn": "重新设定角度",
+      "en": "RestAngle",
+      "default": "null，数字，弧度",
+      "desc_cn": "以弧度重新调整 - 如果没有提供 , 将 使用当前角度。",
+      "desc_en": "Readjust the angle in radians - if no angle value is provided, the current angle is used."
     },
     {
       "name": "Strength",
-      "cn": "强度",
+      "cn": "权重，强度",
       "en": "Strength",
-      "default": 1.0,
-      "desc_cn": "角度约束强度",
-      "desc_en": "Angle constraint strength"
+      "default": "1",
+      "desc_cn": "权重，强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "A",
+      "cn": "角度",
+      "en": "Angle",
+      "default": "Null",
+      "desc_cn": "输出的角度",
+      "desc_en": "Angle out"
     }
   ],
   "examples": [
-    "angle_constraint.gh"
+    "Angle_examples.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "2.0",
-  "lastUpdated": "2024-01-10"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
