@@ -1,25 +1,63 @@
 {
-  "description_cn": "限制线段最大长度，防止线段过度拉伸。",
-  "description_en": "Clamps maximum line length, prevents excessive stretching.",
+  "description_cn": "使直线具有弹性，在一定范围内保持两点之间的距离，但距离超出这个范围时将不受任何力。长度保持在给定范围内。",
+  "description_en": "This makes the straight line elastic, maintaining the distance between two points within a certain range, but it will not be subject to any force when the distance exceeds this range.Keep length within given bounds.",
   "images": [
-    "clamplength_demo.png"
+    "ClampLength.png",
+    "ClampLength.gif"
   ],
   "video": "",
-  "tags": ["长度", "限制", "线段", "拉伸"],
+  "tags": [
+    "约束",
+    "曲线"
+  ],
   "parameters": [
     {
-      "name": "MaxLength",
-      "cn": "最大长度",
-      "en": "Max Length",
-      "default": 10.0,
-      "desc_cn": "允许的最大线段长度",
-      "desc_en": "Maximum allowed line length"
+      "name": "Line",
+      "cn": "曲线",
+      "en": "Line",
+      "default": "Null，曲线",
+      "desc_cn": "曲线",
+      "desc_en": "Line"
+    },
+    {
+      "name": "LowerLimit",
+      "cn": "下限",
+      "en": "LowerLimit",
+      "default": "0",
+      "desc_cn": "长度 将保持在此长度以上",
+      "desc_en": "The length will remain above this length."
+    },
+    {
+      "name": "UpperLimit",
+      "cn": "上限",
+      "en": "UpperLimit",
+      "default": "10",
+      "desc_cn": "长度 将保持在此长度以下",
+      "desc_en": "The length will remain below this length."
+    },
+    {
+      "name": "Strength",
+      "cn": "权重，强度",
+      "en": "Strength",
+      "default": "1",
+      "desc_cn": "约束的强度/权重，这条约束在求解器中的地位越高，两点间的距离就越会趋向于目标值。",
+      "desc_en": "The strength/weight of the constraint: the higher the status of the constraint in the solver, the closer the distance between the two points will be to the target value."
+    }
+  ],
+  "outputs": [
+    {
+      "name": "C",
+      "cn": "钳制",
+      "en": "Clamp",
+      "default": "Null",
+      "desc_cn": "钳制",
+      "desc_en": "Clamp"
     }
   ],
   "examples": [
-    "clamplength_spring.gh"
+    "ClampLength_examples.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "2.0",
-  "lastUpdated": "2024-01-10"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
