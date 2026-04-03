@@ -1,61 +1,45 @@
 {
-  "description_cn": "可以有选择的固定点（如当只有x,y设为true，这个点就不会在xy方向上移动，只能再z方向移动）。",
-  "description_en": "A fixed point can be selected (e.g., if only x and y are set to true, the point will not move in the xy direction, but only in the z direction).",
-  "images": [
-    "AnchorXYZ.png"
-  ],
+  "description_cn": "AnchorXYZ 组件的详细说明。\n\n分别控制点在 X、Y、Z 三个方向上的锚定。可以单独锁定某个轴向的运动。",
+  "description_en": "Detailed description for AnchorXYZ component.\n\nControls anchoring of points in X, Y, Z directions separately. Can lock movement on specific axes.",
+  "images": ["anchorxyz_demo.png", "anchorxyz_animation.gif"],
   "video": "",
-  "tags": [
-    "锚点"
-  ],
-  "input_parameters": [
+  "tags": ["锚点", "XYZ", "约束", "位置"],
+  "parameters": [
     {
-      "name": "Point",
-      "cn": "点",
-      "en": "Point",
-      "default": Null,
-      "desc_cn": "点",
-      "desc_en": "Point"
+      "name": "LockX",
+      "cn": "锁定X轴",
+      "en": "Lock X",
+      "default": true,
+      "desc_cn": "是否锁定X轴方向",
+      "desc_en": "Whether to lock X-axis direction"
     },
     {
-      "name": "X",
-      "cn": "X坐标",
-      "en": "X coordinate",
-      "default": False,
-      "desc_cn": "布尔值",
-      "desc_en": "bool"
+      "name": "LockY",
+      "cn": "锁定Y轴",
+      "en": "Lock Y",
+      "default": true,
+      "desc_cn": "是否锁定Y轴方向",
+      "desc_en": "Whether to lock Y-axis direction"
     },
     {
-      "name": "Y",
-      "cn": "Y坐标",
-      "en": "Y coordinate",
-      "default": False,
-      "desc_cn": "布尔值",
-      "desc_en": "bool"
-    },
-    {
-      "name": "Z",
-      "cn": "Z坐标",
-      "en": "Z coordinate",
-      "default": False,
-      "desc_cn": "布尔值",
-      "desc_en": "bool"
+      "name": "LockZ",
+      "cn": "锁定Z轴",
+      "en": "Lock Z",
+      "default": true,
+      "desc_cn": "是否锁定Z轴方向",
+      "desc_en": "Whether to lock Z-axis direction"
     },
     {
       "name": "Strength",
-      "cn": "力",
+      "cn": "强度",
       "en": "Strength",
-      "default": 1000,
-      "desc_cn": "力的大小",
-      "desc_en": "size of force"
+      "default": 1.0,
+      "desc_cn": "锚定强度",
+      "desc_en": "Anchoring strength"
     }
   ],
-
-  ],
-  "examples": [
-    "AnchorXYZ_example.gh"
-  ],
+  "examples": ["anchorxyz_example.gh"],
   "author": "Kangaroo Team",
-  "version": "2.1",
-  "lastUpdated": "2026-04-15"
+  "version": "2.0",
+  "lastUpdated": "2024-01-15"
 }
