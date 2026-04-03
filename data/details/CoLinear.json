@@ -1,25 +1,47 @@
 {
-  "description_cn": "共线约束，使多个点保持在同一直线上。",
-  "description_en": "Collinear constraint, keeps multiple points on the same line.",
+  "description_cn": "使一组点共线。共线约束，使多个点保持在同一直线上。将多点拉回至一条拟合的直线上。",
+  "description_en": "Make a set of points collinear. Collinearity constraints keep multiple points on the same straight line. Pull multiple points back to a fitted straight line.",
   "images": [
-    "colinear_demo.png"
+    "CoLinear.png",
+    "CoLinear.gif"
   ],
   "video": "",
-  "tags": ["共线", "直线", "点", "对齐"],
+  "tags": [
+    "约束",
+    "点"
+  ],
   "parameters": [
+    {
+      "name": "Points",
+      "cn": "共线点",
+      "en": "Points",
+      "default": "Null,点",
+      "desc_cn": "一组点",
+      "desc_en": "Points to make coLinear "
+    },
     {
       "name": "Strength",
       "cn": "强度",
       "en": "Strength",
-      "default": 1.0,
-      "desc_cn": "共线约束强度",
-      "desc_en": "Collinear constraint strength"
+      "default": 1,
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "C",
+      "cn": "生成的共线数据",
+      "en": "CoLinear out ",
+      "default": "Null",
+      "desc_cn": "输出的共线数据",
+      "desc_en": "CoLinear out "
     }
   ],
   "examples": [
-    "colinear_alignment.gh"
+    "CoLinear_example.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "2.0",
-  "lastUpdated": "2024-01-08"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
