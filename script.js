@@ -160,13 +160,22 @@ function renderRichDetail(item, details) {
                         <tr><th>${lang === 'cn' ? '参数名' : 'Name'}</th><th>${lang === 'cn' ? '说明' : 'Description'}</th><th>${lang === 'cn' ? '默认值' : 'Default'}</th></tr>
                     </thead>
                     <tbody>
-                        ${inputParams.map(p => `
-                            <tr>
-                                <td><code>${escapeHtml(p.name)}</code></td>
-                                <td>${lang === 'cn' ? escapeHtml(p.cn || p.desc_cn || '') : escapeHtml(p.en || p.desc_en || '')}</td>
-                                <td>${escapeHtml(String(p.default !== undefined ? p.default : '-'))}</td>
-                            </tr>
-                        `).join('')}
+                        ${inputParams.map(p => {
+                            // 优先使用 desc_cn/desc_en，如果没有则使用 cn/en
+                            let desc = '';
+                            if (lang === 'cn') {
+                                desc = p.desc_cn || p.cn || '';
+                            } else {
+                                desc = p.desc_en || p.en || '';
+                            }
+                            return `
+                                <tr>
+                                    <td><code>${escapeHtml(p.name)}</code></td>
+                                    <td>${escapeHtml(desc)}</td>
+                                    <td>${escapeHtml(String(p.default !== undefined ? p.default : '-'))}</td>
+                                </tr>
+                            `;
+                        }).join('')}
                     </tbody>
                 </table>
             </div>
@@ -185,13 +194,22 @@ function renderRichDetail(item, details) {
                         <tr><th>${lang === 'cn' ? '参数名' : 'Name'}</th><th>${lang === 'cn' ? '说明' : 'Description'}</th><th>${lang === 'cn' ? '类型' : 'Type'}</th></tr>
                     </thead>
                     <tbody>
-                        ${outputParams.map(o => `
-                            <tr>
-                                <td><code>${escapeHtml(o.name)}</code></td>
-                                <td>${lang === 'cn' ? escapeHtml(o.cn || o.desc_cn || '') : escapeHtml(o.en || o.desc_en || '')}</td>
-                                <td>${escapeHtml(o.type || o.default || '-')}</td>
-                            </tr>
-                        `).join('')}
+                        ${outputParams.map(o => {
+                            // 优先使用 desc_cn/desc_en，如果没有则使用 cn/en
+                            let desc = '';
+                            if (lang === 'cn') {
+                                desc = o.desc_cn || o.cn || '';
+                            } else {
+                                desc = o.desc_en || o.en || '';
+                            }
+                            return `
+                                <tr>
+                                    <td><code>${escapeHtml(o.name)}</code></td>
+                                    <td>${escapeHtml(desc)}</td>
+                                    <td>${escapeHtml(o.type || o.default || '-')}</td>
+                                </tr>
+                            `;
+                        }).join('')}
                     </tbody>
                 </table>
             </div>
