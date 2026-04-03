@@ -1,33 +1,55 @@
 {
-  "description_cn": "长度吸附约束，将线段长度吸附到指定的离散值。",
-  "description_en": "Length snap constraint, snaps line length to specified discrete values.",
+  "description_cn": "把一条线的长度设定为给定值最接近的整数倍数。使直线的长度变成指定数字的整数倍。",
+  "description_en": "Sets the length of a line to the nearest integer multiple of a given value. Makes the length of a line an integer multiple of a specified number.",
   "images": [
-    "lengthsnap_demo.png"
+    "LengthSnap.png",
+    "LengthSnap.gif"
   ],
   "video": "",
-  "tags": ["长度", "吸附", "步进", "离散"],
+  "tags": [
+    "约束",
+    "线"
+  ],
   "parameters": [
     {
-      "name": "SnapValues",
-      "cn": "吸附值",
-      "en": "Snap Values",
-      "default": "[5,10,15,20]",
-      "desc_cn": "长度吸附的目标值",
-      "desc_en": "Target values for length snapping"
+      "name": "Line",
+      "cn": "直线",
+      "en": "Line",
+      "default": "Null，直线",
+      "desc_cn": "直线",
+      "desc_en": "Line"
     },
     {
-      "name": "Tolerance",
-      "cn": "容差",
-      "en": "Tolerance",
-      "default": 0.5,
-      "desc_cn": "吸附触发容差",
-      "desc_en": "Snap trigger tolerance"
+      "name": "Factor",
+      "cn": "系数，倍数",
+      "en": "Factor",
+      "default": "1",
+      "desc_cn": "长度将成为此值的整数倍。",
+      "desc_en": "Length will become an integer multiple of this"
+    },
+    {
+      "name": "Strength",
+      "cn": "权重，强度",
+      "en": "Strength",
+      "default": "1",
+      "desc_cn": "权重，强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "S",
+      "cn": "长度捕捉",
+      "en": "Snap out",
+      "default": "Null",
+      "desc_cn": "输出的长度捕捉",
+      "desc_en": "Snap out"
     }
   ],
   "examples": [
-    "lengthsnap_grid.gh"
+    "LengthSnap_examples.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "1.8",
-  "lastUpdated": "2024-01-06"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
