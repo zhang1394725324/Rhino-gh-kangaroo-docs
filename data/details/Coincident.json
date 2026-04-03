@@ -1,0 +1,46 @@
+📋 实时JSON预览
+🔄 刷新预览
+💾 一键生成JSON文件
+{
+  "description_cn": "将两个点合并成一个点。",
+  "description_en": "Merge two points into one point.",
+  "images": [
+    "Coincident.png"
+  ],
+  "video": "暂无",
+  "tags": [
+    "点"
+  ],
+  "parameters": [
+    {
+      "name": "Point0",
+      "cn": "点0",
+      "en": "Point0",
+      "default": 0,
+      "desc_cn": "第0个点",
+      "desc_en": "Point 0"
+    },
+    {
+      "name": "Point1",
+      "cn": "点1",
+      "en": "Point1",
+      "default": 0,
+      "desc_cn": "第1个点",
+      "desc_en": "Point1"
+    },
+    {
+      "name": "Strength",
+      "cn": "力",
+      "en": "Strength",
+      "default": 100,
+      "desc_cn": "参数描述",
+      "desc_en": "Parameter description"
+    }
+  ],
+  "examples": [
+    "alignfaces_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
