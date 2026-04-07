@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>专业JSON生成器 | 拖拽排序 · 严格命名规范</title>
+    <title>专业JSON生成器 | 富文本描述 + 拖拽排序 | 严格命名规范</title>
+    <!-- 引入 Quill 富文本编辑器 CSS -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -83,21 +85,33 @@
             margin-bottom: 6px;
             color: #1e293b;
         }
-        .input-group input, .input-group textarea {
-            width: 100%;
-            padding: 0.7rem 1rem;
+        
+        /* 富文本编辑器样式 */
+        .rich-editor {
             border-radius: 0.9rem;
+            overflow: hidden;
             border: 1.5px solid #e2e8f0;
-            font-size: 0.9rem;
             transition: 0.2s;
-            font-family: inherit;
-            background: #fefefe;
         }
-        .input-group input:focus, .input-group textarea:focus {
-            outline: none;
+        .rich-editor:focus-within {
             border-color: #3b82f6;
             box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
         }
+        .ql-container {
+            min-height: 120px;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+        .ql-editor {
+            min-height: 100px;
+        }
+        .ql-toolbar {
+            border-top-left-radius: 0.7rem;
+            border-top-right-radius: 0.7rem;
+            border-bottom: none;
+            background: #fafbfc;
+        }
+        
         .array-field {
             background: #f9f9ff;
             padding: 0.8rem;
@@ -395,20 +409,22 @@
 <body>
 <div class="app-container">
     <div class="hero">
-        <h1>📄 JSON生成器 · 拖拽排序 · 严格命名规范</h1>
-        <p>参数 "parameters" | 输出 "outputs" | 拖拽调整顺序 | 后缀自动补全</p>
+        <h1>📄 JSON生成器 · 富文本描述 + 拖拽排序</h1>
+        <p>参数 "parameters" | 输出 "outputs" | 富文本支持颜色/格式 | 拖拽调整顺序</p>
     </div>
     <div class="generator-layout">
         <div class="form-panel">
             <div class="form-header"><h2>✍️ 表单输入</h2></div>
             <div class="form-body">
+                <!-- 中文描述 - 富文本编辑器 -->
                 <div class="input-group">
-                    <label>📌 中文描述</label>
-                    <input type="text" id="desc_cn" value="将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。">
+                    <label>📌 中文描述 (支持富文本)</label>
+                    <div id="descCnEditor" class="rich-editor"></div>
                 </div>
+                <!-- 英文描述 - 富文本编辑器 -->
                 <div class="input-group">
-                    <label>🌐 英文描述</label>
-                    <input type="text" id="desc_en" value="Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.">
+                    <label>🌐 英文描述 (支持富文本)</label>
+                    <div id="descEnEditor" class="rich-editor"></div>
                 </div>
                 
                 <div class="input-group">
@@ -495,25 +511,24 @@
                     <button id="downloadJsonBtn" class="success">⬇️ 下载</button>
                 </div>
                 <pre id="jsonPreview">加载中...</pre>
-                <div id="statusMsg" class="status-badge">✅ 就绪 | 拖拽手柄可调整参数/输出顺序</div>
+                <div id="statusMsg" class="status-badge">✅ 就绪 | 富文本描述 | 拖拽可调整参数/输出顺序</div>
             </div>
-            <div class="preview-card"><h4>✨ 功能说明</h4><ul style="font-size:0.8rem;margin-left:1.2rem;"><li>🎯 <strong>拖拽排序</strong>：点击左侧 ⋮⋮ 手柄拖动调整参数/输出顺序</li><li>📋 JSON字段严格按规范: <strong>parameters</strong> 和 <strong>outputs</strong></li><li>🖼️ 图片后缀自动检测：无后缀时自动添加 .png 并提示</li><li>📋 自定义文件名 + 一键复制 + 下载JSON</li><li>🏷️ 支持动态增删标签、图片、示例、参数、输出</li></ul></div>
+            <div class="preview-card"><h4>✨ 功能说明</h4><ul style="font-size:0.8rem;margin-left:1.2rem;"><li>🎨 <strong>富文本描述</strong>：支持颜色、加粗、斜体、列表、字号等格式</li><li>🎯 <strong>拖拽排序</strong>：点击左侧 ⋮⋮ 手柄拖动调整参数/输出顺序</li><li>📋 JSON字段严格按规范: <strong>parameters</strong> 和 <strong>outputs</strong></li><li>🖼️ 图片后缀自动检测：无后缀时自动添加 .png 并提示</li><li>📋 自定义文件名 + 一键复制 + 下载JSON</li><li>🏷️ 支持动态增删标签、图片、示例、参数、输出</li></ul></div>
         </div>
     </div>
 </div>
 <div id="copyToast" class="copy-toast" style="opacity:0; visibility:hidden;">已复制到剪贴板 ✓</div>
 
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script>
     // ---------- 数据 (严格按照规范命名) ----------
     let imagesArray = ['alignfaces_demo.png', 'alignfaces_animation.gif'];
     let tagsArray = ['对齐', '面', '约束', '网格'];
     let examplesArray = ['alignfaces_example.gh'];
-    let parametersArray = [];   // 对应 JSON 中的 "parameters"
-    let outputsArray = [];      // 对应 JSON 中的 "outputs"
+    let parametersArray = [];
+    let outputsArray = [];
 
     // ---------- DOM 元素 ----------
-    const descCn = document.getElementById('desc_cn');
-    const descEn = document.getElementById('desc_en');
     const video = document.getElementById('video');
     const author = document.getElementById('author');
     const version = document.getElementById('version');
@@ -527,6 +542,41 @@
     const parametersContainer = document.getElementById('parametersList');
     const outputsContainer = document.getElementById('outputsList');
     const suffixWarning = document.getElementById('suffixWarning');
+
+    // ---------- 初始化 Quill 富文本编辑器 ----------
+    // 工具栏配置：包含颜色、字号、格式等
+    const toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike'],
+        ['blockquote', 'code-block'],
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+        [{ 'color': [] }, { 'background': [] }],
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'align': [] }],
+        ['clean']
+    ];
+    
+    const descCnEditor = new Quill('#descCnEditor', {
+        theme: 'snow',
+        placeholder: '输入中文描述...',
+        modules: { toolbar: toolbarOptions }
+    });
+    const descEnEditor = new Quill('#descEnEditor', {
+        theme: 'snow',
+        placeholder: 'Enter English description...',
+        modules: { toolbar: toolbarOptions }
+    });
+    
+    // 设置初始内容
+    descCnEditor.root.innerHTML = '将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。';
+    descEnEditor.root.innerHTML = 'Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.';
+    
+    // 获取富文本 HTML 内容
+    function getDescCn() { return descCnEditor.root.innerHTML; }
+    function getDescEn() { return descEnEditor.root.innerHTML; }
+    
+    // 监听富文本变化
+    descCnEditor.on('text-change', () => updatePreview());
+    descEnEditor.on('text-change', () => updatePreview());
 
     // 检查并补全图片后缀
     function ensureImageSuffix(filename) {
@@ -557,7 +607,6 @@
         setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.style.visibility = 'hidden', 300); }, 1800);
     }
 
-    // 渲染所有列表
     function renderImageList() {
         imageListDiv.innerHTML = imagesArray.map(img => `<div class="img-item">${escapeHtml(img)} <button class="remove-btn" data-type="image" data-value="${escapeHtml(img)}">✖</button></div>`).join('');
     }
@@ -568,7 +617,6 @@
         exampleListDiv.innerHTML = examplesArray.map(ex => `<div class="ex-item">${escapeHtml(ex)} <button class="remove-btn" data-type="example" data-value="${escapeHtml(ex)}">✖</button></div>`).join('');
     }
     
-    // 创建带拖拽手柄的行
     function createParamRow(item, idx, type) {
         const row = document.createElement('div');
         row.className = 'param-row';
@@ -587,7 +635,6 @@
         return row;
     }
     
-    // 设置拖拽排序 (使用 HTML5 Drag and Drop)
     function setupDragAndDrop(container, array, renderFunc) {
         let dragSourceIndex = null;
         
@@ -629,7 +676,6 @@
                 
                 const targetIndex = Array.from(container.children).indexOf(targetRow);
                 if (dragSourceIndex !== null && dragSourceIndex !== targetIndex) {
-                    // 重排数组
                     const [movedItem] = array.splice(dragSourceIndex, 1);
                     array.splice(targetIndex, 0, movedItem);
                     renderFunc();
@@ -639,7 +685,6 @@
         });
     }
     
-    // 渲染 parameters 列表（带拖拽）
     function renderParameters() {
         parametersContainer.innerHTML = '';
         parametersArray.forEach((param, idx) => {
@@ -647,7 +692,6 @@
             parametersContainer.appendChild(row);
         });
         
-        // 绑定输入事件和删除事件
         parametersContainer.querySelectorAll('.param-row').forEach(row => {
             const inputs = row.querySelectorAll('input, textarea');
             inputs.forEach(input => {
@@ -668,7 +712,6 @@
         setupDragAndDrop(parametersContainer, parametersArray, renderParameters);
     }
     
-    // 渲染 outputs 列表（带拖拽）
     function renderOutputs() {
         outputsContainer.innerHTML = '';
         outputsArray.forEach((output, idx) => {
@@ -730,12 +773,12 @@
         renderOutputs();
     }
 
-    // 构建JSON - 严格按照规范命名
+    // 构建JSON - 包含富文本 HTML 内容
     function buildJsonObject() {
         const lastUpdatedVal = lastUpdated.value || new Date().toISOString().slice(0,10);
         return {
-            description_cn: descCn.value,
-            description_en: descEn.value,
+            description_cn: getDescCn(),
+            description_en: getDescEn(),
             images: [...imagesArray],
             video: video.value || "",
             tags: [...tagsArray],
@@ -765,7 +808,7 @@
     function updatePreview() {
         try {
             jsonPreview.textContent = JSON.stringify(buildJsonObject(), null, 2);
-            statusSpan.innerHTML = '✅ JSON有效 | 字段: parameters / outputs | 支持拖拽排序';
+            statusSpan.innerHTML = '✅ JSON有效 | 富文本描述已保存为HTML格式';
             statusSpan.style.background = '#e6f7e6';
         } catch(e) { 
             jsonPreview.textContent = `// 错误: ${e.message}`;
@@ -796,7 +839,6 @@
         } else { statusSpan.innerHTML = '⚠️ 无有效内容'; }
     }
 
-    // 删除列表项 (事件委托)
     function handleRemove(e) {
         const btn = e.target.closest('.remove-btn');
         if (!btn) return;
@@ -809,7 +851,6 @@
         updatePreview();
     }
 
-    // 初始化默认数据
     function initDefaultData() {
         if (parametersArray.length === 0) {
             parametersArray = [
@@ -825,7 +866,6 @@
         }
     }
 
-    // 绑定所有按钮
     function bindButtons() {
         document.getElementById('addImageBtn').onclick = () => {
             const inp = document.getElementById('newImageInput');
@@ -856,7 +896,6 @@
         document.getElementById('copyPreviewBtn').onclick = copyPreview;
         document.getElementById('downloadJsonBtn').onclick = downloadJson;
         
-        // 后缀推荐按钮
         document.querySelectorAll('.suffix-badge').forEach(btn => {
             btn.onclick = () => {
                 const suffix = btn.getAttribute('data-suffix');
@@ -867,13 +906,11 @@
             };
         });
         
-        // 基础输入监听
-        [descCn, descEn, video, author, version, lastUpdated, customFilenameInput].forEach(i => {
+        [video, author, version, lastUpdated, customFilenameInput].forEach(i => {
             if (i) i.oninput = updatePreview;
         });
     }
 
-    // 启动
     function init() {
         initDefaultData();
         bindButtons();
