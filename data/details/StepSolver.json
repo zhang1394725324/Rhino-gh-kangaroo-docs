@@ -1,0 +1,95 @@
+{
+  "description_cn": "可以用来导出动画的求解器。布尔开关为True时，手动拖动子迭代输入端的数字滑块，可以查看物体变化的状态。",
+  "description_en": "This is a solver that can be used to export animations. When the Boolean switch is True, you can manually drag the digital slider at the sub-iteration input to view the changing state of the object.",
+  "images": [
+    "StepSolver.png",
+    "StepSolver.gif"
+  ],
+  "video": "",
+  "tags": [
+    "求解器",
+    "常用"
+  ],
+  "parameters": [
+    {
+      "name": "GoalObjects ",
+      "cn": "目标对象",
+      "en": "GoalObjects ",
+      "default": "Null",
+      "desc_cn": "目标对象",
+      "desc_en": "GoalObjects"
+    },
+    {
+      "name": "Tolerance",
+      "cn": "公差",
+      "en": "Tolerance",
+      "default": "0.0001",
+      "desc_cn": "距离小于此值的点将被合并成一个粒子。",
+      "desc_en": "Points closer than this distance will be combined into a single particle"
+    },
+    {
+      "name": "Momentum",
+      "cn": "动量",
+      "en": "Momentum",
+      "default": "False，布尔值",
+      "desc_cn": "如果为False，则模拟会尝试尽快收敛。如果为True，则动力学更符合物理规律。",
+      "desc_en": "If false, the simulation tries to converge as quickly as possible. If true, the dynamics are more physically based"
+    },
+    {
+      "name": "Damping",
+      "cn": "衰减",
+      "en": "Damping",
+      "default": "0.99，数字",
+      "desc_cn": "介于 0 和 1 之间的值，表示迭代之间速度的保留程度。仅当“动量”开启时使用。",
+      "desc_en": "Value between 0 and 1, for how much velocity is preserved between iterations. Only used if Momentum is on"
+    },
+    {
+      "name": "SubIterations",
+      "cn": "子迭代",
+      "en": "SubIterations",
+      "default": "10，整数",
+      "desc_cn": "每帧迭代次数",
+      "desc_en": "Number of iterations per frame"
+    },
+    {
+      "name": "Animate",
+      "cn": "动画化",
+      "en": "Animate",
+      "default": "Null，布尔值",
+      "desc_cn": "如果为False，则仿真重置。如果为True，则每次收到此输入时，解将前进一帧。",
+      "desc_en": "If false, simulation resets. If true the solution will advance by one frame each time this input is received"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "I",
+      "cn": "迭代次数",
+      "en": "Iterations",
+      "default": "0，整数",
+      "desc_cn": "迭代次数",
+      "desc_en": "Iterations"
+    },
+    {
+      "name": "V",
+      "cn": "点",
+      "en": "Point",
+      "default": "Null，点",
+      "desc_cn": "点",
+      "desc_en": "point"
+    },
+    {
+      "name": "O",
+      "cn": "输出",
+      "en": "Output",
+      "default": "Null",
+      "desc_cn": "目标函数输出",
+      "desc_en": "GoalFunction Outputs"
+    }
+  ],
+  "examples": [
+    "StepSolver_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
