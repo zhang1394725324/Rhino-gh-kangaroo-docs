@@ -23,7 +23,7 @@
       "name": "HardGoals",
       "cn": "硬目标",
       "en": "HardGoals",
-      "default": "False，布尔值",
+      "default": "Null",
       "desc_cn": "这些目标将优先于软性目标。",
       "desc_en": "These goals will override the soft goals"
     },
@@ -31,7 +31,7 @@
       "name": "HardIterations",
       "cn": "硬迭代",
       "en": "HardIterations",
-      "default": "0.99，数字",
+      "default": "10，整数",
       "desc_cn": "每次软步骤后执行的硬迭代次数",
       "desc_en": "The number of hard iterations performed after each soft step"
     },
@@ -39,7 +39,7 @@
       "name": "SoftMultiplier",
       "cn": "软倍增器",
       "en": "SoftMultiplier",
-      "default": "10，整数",
+      "default": "1，数字",
       "desc_cn": "柔和运动的倍率。如果想要最高精度，可以在最后将其降低到零。",
       "desc_en": "Multiplier for the soft movement. This can be decreased to zero at the end if you want maximum accuracy"
     },
@@ -47,7 +47,7 @@
       "name": "Reset",
       "cn": "复位",
       "en": "Reset",
-      "default": "Null，布尔值",
+      "default": "False，布尔值",
       "desc_cn": "如果为False，则仿真重置。如果为True，则每次收到此输入时，解将前进一帧。",
       "desc_en": "If false, simulation resets. If true the solution will advance by one frame each time this input is received"
     },
@@ -55,7 +55,7 @@
       "name": "Threshold",
       "cn": "临界值",
       "en": "Threshold",
-      "default": "",
+      "default": "0，数字",
       "desc_cn": "硬重置（完全重建粒子列表和索引）",
       "desc_en": "Hard Reset (completely rebuild the particle list and indexing)"
     },
@@ -71,7 +71,7 @@
       "name": "On",
       "cn": "开启",
       "en": "On",
-      "default": "",
+      "default": "True，布尔值",
       "desc_cn": "如果为True，Kangaroo 将继续迭代，直到达到给定的阈值。",
       "desc_en": "If true, Kangaroo will continue to iterate until reaching the given threshold value"
     }
