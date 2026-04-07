@@ -1,0 +1,38 @@
+{
+  "description_cn": "<p>使非解算器计算的元素（曲线、面等）在计算过程中同步显示变化状态。</p><p>袋鼠的动力学模拟计算都是基于点（粒子）和直线，直线本质上也是取点进行计算。</p><p>所以就要把面用这个运算器输入解算器，解算器会自动根据算法改变面的显示状态。比如常用的将网格面接入解算器。</p><p><span style=\"color: rgb(51, 51, 51);\">显示运算器，想显示的数据接入输入端，输出端接入Solver的GoalObjects，可以用于在O端输出想要显示的Lines、Polylines、Arcs和Meshes。</span></p>",
+  "description_en": "<p>This allows elements (curves, surfaces, etc.) that are not calculated by the solver to display their changing status synchronously during the calculation process.\r\r</p><p>The dynamics simulation calculations of kangaroos are based on points (particles) and straight lines, and straight lines are essentially calculated by taking points.\r\rTherefore, the faces need to be input into the solver using this calculator, and the solver will automatically change the display state of the faces according to the algorithm. </p><p>For example, it is common to input mesh faces into the solver.\r\rThe display arithmetic unit takes the data to be displayed as input and the output as output to the Solver's GoalObjects. </p><p>It can be used to output the desired Lines, Polylines, Arcs, and Meshes at the O end.</p>",
+  "images": [
+    "Show.png",
+    "Show.gif"
+  ],
+  "video": "",
+  "tags": [
+    "显示"
+  ],
+  "parameters": [
+    {
+      "name": "G",
+      "cn": "几何体",
+      "en": "Geometry",
+      "default": "Null",
+      "desc_cn": "几何体",
+      "desc_en": "Geometry"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "G",
+      "cn": "几何体",
+      "en": "Geometry",
+      "default": "Null",
+      "desc_cn": "连接到目标函数输入",
+      "desc_en": "\nConnect to GoalFunctions input\n"
+    }
+  ],
+  "examples": [
+    "Show_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
