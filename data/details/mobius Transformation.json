@@ -1,6 +1,6 @@
 {
-  "description_cn": "<p>多点之间连成直线。</p>",
-  "description_en": "<p>Multiple points can be connected by a straight line.</p>",
+  "description_cn": "<p>使用4d旋转的任何几何图形的3d莫比乌斯变换。</p><p>莫比乌斯指环（一种拓扑学结构）。可以想象一下，整个空间围绕设定的圆进行旋转，转化量则是控制停在旋转的某一刻。</p>",
+  "description_en": "<p>3D Möbius transformation of any geometry using 4D rotation.\r\r</p><p>A Möbius ring (a type of topological structure). Imagine the entire space revolving around a predetermined circle, with the transformation controlling the point at which the rotation stops.</p>",
   "images": [
     "mobius Transformation.png",
     "mobius Transformation.gif"
