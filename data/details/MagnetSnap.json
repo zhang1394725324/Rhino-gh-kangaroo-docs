@@ -1,0 +1,54 @@
+{
+  "description_cn": "<p>使点具有磁力，与指定距离范围内的点互相吸引。</p><p>根据接近度将点对齐。</p>",
+  "description_en": "<p>Make a point magnetic, so that it attracts points within a specified distance range.</p><p>Align the points based on their proximity.</p>",
+  "images": [
+    "MagnetSnap.png",
+    "MagnetSnap.gif"
+  ],
+  "video": "",
+  "tags": [
+    "锚点"
+  ],
+  "parameters": [
+    {
+      "name": "Points",
+      "cn": "点",
+      "en": "Points",
+      "default": "Null，点",
+      "desc_cn": "点之间要套用的点列表",
+      "desc_en": "List of points to apply snap between"
+    },
+    {
+      "name": "R",
+      "cn": "范围",
+      "en": "Range",
+      "default": "0.5，数字",
+      "desc_cn": "捕捉激活的距离",
+      "desc_en": "The distance at which the snap activates"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "10，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "S",
+      "cn": "对齐的数据",
+      "en": "S",
+      "default": "Null",
+      "desc_cn": "对齐的数据",
+      "desc_en": "Aligned data"
+    }
+  ],
+  "examples": [
+    "MagnetSnap_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
