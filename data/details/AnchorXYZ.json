@@ -1,5 +1,5 @@
 {
-  "description_cn": "<p>可以有选择的固定点（如当只有x,y设为true，这个点就不会在xy方向上移动，只能再z方向移动）。</p><p>将指定点设为锚点，并控制锚点是否禁止沿XYZ轴方向移动，True 为禁止移动，False为允许移动。</p>",
+  "description_cn": "<p>可以有选择的固定点（如当只有x,y设为true，这个点就不会在xy方向上移动，只能再z方向移动）。</p><p>将指定点设为锚点，并控制锚点是否禁止沿XYZ轴方向移动，True 为禁止移动，False为允许移动。</p><p>仅沿选定的世界坐标轴固定一点。如果需要重置初始位置，请断开点输入，然后再重新连接。</p>",
   "description_en": "A fixed point can be selected (e.g., if only x and y are set to true, the point will not move in the xy direction, but only in the z direction).",
   "images": [
     "AnchorXYZ.png"
