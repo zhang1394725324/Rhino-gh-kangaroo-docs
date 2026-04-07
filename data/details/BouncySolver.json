@@ -87,7 +87,7 @@
       "cn": "输出",
       "en": "Output",
       "default": "Null",
-      "desc_cn": "目标函数输出",
+      "desc_cn": "目标函数输出，每一个goal都会输出一种数据，输出后产生树形数据结构",
       "desc_en": "GoalFunction Outputs"
     }
   ],
