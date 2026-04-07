@@ -1,33 +1,102 @@
 {
-  "description_cn": "支撑约束，将点或物体固定在指定位置，可承受压力和拉力。",
-  "description_en": "Support constraint, fixes points or objects at specified positions, can bear compression and tension.",
+  "description_cn": "<p>设置梁端或者刚体的支撑条件。</p><p>使几何体的平面（比如刚体的平面，及曲线碰撞中的帧平面），对齐目标平面，并对几何体平面的移动和旋转进行限制。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Set support conditions for a beam end or rigid body。</span></p>",
   "images": [
-    "support_demo.png"
+    "Support.png",
+    "Support.gif"
   ],
   "video": "",
-  "tags": ["支撑", "固定", "约束", "结构"],
+  "tags": [
+    "刚体"
+  ],
   "parameters": [
+    {
+      "name": "Frame",
+      "cn": "平面",
+      "en": "Frame",
+      "default": "Null，平面",
+      "desc_cn": "要限制的平面",
+      "desc_en": "The plane to restrain"
+    },
+    {
+      "name": "Target",
+      "cn": "目标平面",
+      "en": "Target",
+      "default": "Null，平面",
+      "desc_cn": "目标平面，如果没有提供，将使用初始平面。",
+      "desc_en": "Target plane. If none supplied, the initial Frame will be used"
+    },
+    {
+      "name": "X",
+      "cn": "X",
+      "en": "X",
+      "default": "True，布尔值",
+      "desc_cn": "X轴平移",
+      "desc_en": "Translation in X"
+    },
+    {
+      "name": "Y",
+      "cn": "Y",
+      "en": "Y",
+      "default": "True，布尔值",
+      "desc_cn": "Y轴平移",
+      "desc_en": "Translation in Y"
+    },
+    {
+      "name": "Z",
+      "cn": "Z",
+      "en": "Z",
+      "default": "True，布尔值",
+      "desc_cn": "Z轴平移",
+      "desc_en": "Translation in Z"
+    },
+    {
+      "name": "XX",
+      "cn": "X轴旋转",
+      "en": "XX",
+      "default": "True，布尔值",
+      "desc_cn": "绕X轴旋转",
+      "desc_en": "Rotation about X"
+    },
+    {
+      "name": "YY",
+      "cn": "Y轴旋转",
+      "en": "YY",
+      "default": "True，布尔值",
+      "desc_cn": "绕Y轴旋转",
+      "desc_en": "Rotation about Y"
+    },
+    {
+      "name": "ZZ",
+      "cn": "Z轴旋转",
+      "en": "ZZ",
+      "default": "True，布尔值",
+      "desc_cn": "绕Z轴旋转",
+      "desc_en": "Rotation about Z"
+    },
     {
       "name": "Strength",
       "cn": "强度",
       "en": "Strength",
-      "default": 1.0,
-      "desc_cn": "支撑强度",
-      "desc_en": "Support strength"
-    },
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
     {
-      "name": "Direction",
-      "cn": "方向",
-      "en": "Direction",
-      "default": "All",
-      "desc_cn": "约束方向（X/Y/Z/All）",
-      "desc_en": "Constraint direction (X/Y/Z/All)"
+      "name": "S",
+      "cn": "支撑",
+      "en": "Support",
+      "default": "Null",
+      "desc_cn": "",
+      "desc_en": "Support"
     }
   ],
   "examples": [
-    "support_beam.gh"
+    "Support_example.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "1.9",
-  "lastUpdated": "2024-01-07"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
