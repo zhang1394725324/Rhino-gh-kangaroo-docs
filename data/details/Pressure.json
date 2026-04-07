@@ -1,5 +1,5 @@
 {
-  "description_cn": "<p>对每个三角形网格施加垂直方向的力，简单理解就是充气球效应。（四边形网格会自动按两个三角形网格计算）气压强度大于0且小于1时，网格体积变小；气压强度大于1时，网格体积增大。输入值为负数时，自动取绝对值。</p><p>与前面的体积运算器作用类似，只不过这个是通过调节气压强度调节压力的大小。</p>",
+  "description_cn": "<p>垂直于每个三角形并与其面积成比例的力。</p><p>对每个三角形网格施加垂直方向的力，简单理解就是充气球效应。（四边形网格会自动按两个三角形网格计算）气压强度大于0且小于1时，网格体积变小；气压强度大于1时，网格体积增大。输入值为负数时，自动取绝对值。</p><p>与前面的体积运算器作用类似，只不过这个是通过调节气压强度调节压力的大小。</p>",
   "description_en": "<p>A vertical force is applied to each triangular grid, which can be simply understood as the effect of inflating a balloon. (Quadrilateral grids will be automatically calculated as two triangular grids.) When the air pressure is greater than 0 and less than 1, the grid volume decreases; when the air pressure is greater than 1, the grid volume increases. When the input value is negative, the absolute value is automatically taken.</p><p>Similar to the volume calculator mentioned earlier, except that this one adjusts the pressure by regulating the air pressure intensity.</p>",
   "images": [
     "Pressure.png",
