@@ -1,32 +1,76 @@
 {
-  "description_cn": "将两个面对齐，使它们共面且方向一致。常用于网格优化和曲面拼接。",
-  "description_en": "Align two faces to be coplanar with the same orientation. Commonly used for mesh optimization and surface stitching.",
+  "description_cn": "<p>对齐一对刚体的面。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Align faces of a pair of rigid bodies。</span></p>",
   "images": [
-    "alignfaces_demo.png",
-    "alignfaces_animation.gif"
+    "AlignFaces.png",
+    "AlignFaces.gif"
   ],
   "video": "",
-  "tags": ["对齐", "面", "约束", "网格"],
+  "tags": [
+    "对齐"
+  ],
   "parameters": [
+    {
+      "name": "PlaneA",
+      "cn": "平面A",
+      "en": "PlaneA",
+      "default": "Null，平面",
+      "desc_cn": "第一个刚体的平面",
+      "desc_en": "The frame of one rigid body"
+    },
+    {
+      "name": "PlaneB",
+      "cn": "平面B",
+      "en": "PlaneB",
+      "default": "Null，平面",
+      "desc_cn": "其他刚体平面",
+      "desc_en": "The frame of the other rigid body"
+    },
+    {
+      "name": "FaceA",
+      "cn": "物体A上要对齐的平面",
+      "en": "FaceA",
+      "default": "Null，平面",
+      "desc_cn": "物体A上要对齐的平面",
+      "desc_en": "The plane on body A to align"
+    },
+    {
+      "name": "FaceB",
+      "cn": "物体B上要对齐的平面",
+      "en": "FaceB",
+      "default": "Null，平面",
+      "desc_cn": "物体B上要对齐的平面",
+      "desc_en": "The plane on body B to align"
+    },
+    {
+      "name": "Flip",
+      "cn": "翻转",
+      "en": "Flip",
+      "default": "False，布尔值",
+      "desc_cn": "反转平面的相对方向",
+      "desc_en": "Reverse the relative direction of the planes"
+    },
     {
       "name": "Strength",
       "cn": "强度",
       "en": "Strength",
-      "default": 1.0,
-      "desc_cn": "约束强度，值越大效果越明显",
-      "desc_en": "Constraint strength, higher value gives stronger effect"
-    },
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
     {
-      "name": "Tolerance",
-      "cn": "容差",
-      "en": "Tolerance",
-      "default": 0.01,
-      "desc_cn": "对齐精度，值越小越精确",
-      "desc_en": "Alignment tolerance, smaller value gives higher precision"
+      "name": "A",
+      "cn": "对齐后的面",
+      "en": "AlignFaces",
+      "default": "Null",
+      "desc_cn": "对齐后的面",
+      "desc_en": "AlignFaces"
     }
   ],
   "examples": [
-    "alignfaces_example.gh"
+    "AlignFaces_example.gh"
   ],
   "author": "Kangaroo Team",
   "version": "2.1",
