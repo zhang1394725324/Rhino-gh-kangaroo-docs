@@ -1,0 +1,63 @@
+{
+  "description_cn": "使两个点根据变形参数的前后结果进行变化。即经过计算后，点1是点0根据变形参数变化后的结果。因此它可以保存各种类型的对称，周期性边界条件等。  Grasshopper转换对象(如反射、旋转、平移、缩放等)有一个转换(X)输出，可以作为输入使用。（变形参数主要来自变形工具组，如旋转、移动、缩放、镜像等）",
+  "description_en": "This allows two points to change based on the results of the deformation parameters. That is, after calculation, point 1 is the result of point 0 after changing the deformation parameters. Therefore, it can preserve various types of symmetry, periodic boundary conditions, etc. Grasshopper transforms objects (such as reflection, rotation, translation, scaling, etc.) with a transform (X) output that can be used as input.(The deformation parameters mainly come from the deformation tools group, such as rotation, translation, scaling, mirroring, etc.)",
+  "images": [
+    "Transform.png",
+    "Transform.gif"
+  ],
+  "video": "",
+  "tags": [
+    "约束",
+    "约束"
+  ],
+  "parameters": [
+    {
+      "name": "P0",
+      "cn": "点0",
+      "en": "Point0",
+      "default": "Null,点",
+      "desc_cn": "第一个点",
+      "desc_en": "First Point"
+    },
+    {
+      "name": "P1",
+      "cn": "点1",
+      "en": "Point1",
+      "default": "Null,点",
+      "desc_cn": "第二个点",
+      "desc_en": "Second Point"
+    },
+    {
+      "name": "T",
+      "cn": "变形参数",
+      "en": "Transform",
+      "default": "Null",
+      "desc_cn": "点0到点1的变形参数",
+      "desc_en": "Transformation from P0 to P1"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1,
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "T",
+      "cn": "变形数据",
+      "en": "Transform",
+      "default": "Null",
+      "desc_cn": "输出后的变形数据",
+      "desc_en": "Output Transform"
+    }
+  ],
+  "examples": [
+    "Transform_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
