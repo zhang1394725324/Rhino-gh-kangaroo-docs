@@ -1,0 +1,46 @@
+{
+  "description_cn": "<p>对每个三角形网格施加垂直方向的力，简单理解就是充气球效应。（四边形网格会自动按两个三角形网格计算）气压强度大于0且小于1时，网格体积变小；气压强度大于1时，网格体积增大。输入值为负数时，自动取绝对值。</p><p>与前面的体积运算器作用类似，只不过这个是通过调节气压强度调节压力的大小。</p>",
+  "description_en": "<p>A vertical force is applied to each triangular grid, which can be simply understood as the effect of inflating a balloon. (Quadrilateral grids will be automatically calculated as two triangular grids.) When the air pressure is greater than 0 and less than 1, the grid volume decreases; when the air pressure is greater than 1, the grid volume increases. When the input value is negative, the absolute value is automatically taken.</p><p>Similar to the volume calculator mentioned earlier, except that this one adjusts the pressure by regulating the air pressure intensity.</p>",
+  "images": [
+    "Pressure.png",
+    "Pressure.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "网格",
+      "desc_en": "mesh"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "P",
+      "cn": "压力",
+      "en": "Pressure",
+      "default": "Null",
+      "desc_cn": "压力",
+      "desc_en": "Pressure out"
+    }
+  ],
+  "examples": [
+    "Pressure_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
