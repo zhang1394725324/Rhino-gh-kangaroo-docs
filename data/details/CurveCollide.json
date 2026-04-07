@@ -1,25 +1,79 @@
 {
-  "description_cn": "曲线与曲线之间的碰撞检测，防止曲线相互穿透。",
-  "description_en": "Curve-curve collision detection, prevents curves from intersecting.",
+  "description_cn": "在指定平面内使两个闭合多边形之间发生碰撞。使在同一平面上的闭合曲线之间进行碰撞。帧平面：即每条曲线所在的独有的平面坐标系，可以任意指定每条曲线的帧平面的原点位置，没有指定的情况下曲线的帧平面默认以曲线的质心为原点。（质心，质量中心的简称，指物质系统上被认为质量集中于此的一个假想点。）",
+  "description_en": "Causes a collision between two closed polygons within a specified plane. Causes a collision between closed curves on the same plane. Frame plane: This is the unique planar coordinate system of each curve. The origin of the frame plane for each curve can be arbitrarily specified. If not specified, the frame plane defaults to the centroid of the curve as its origin. (Centroid, short for center of mass, refers to an imaginary point in a material system where the mass is considered to be concentrated.)",
   "images": [
-    "curvecollide_demo.png"
+    "CurveCollide.png",
+    "CurveCollide.gif"
   ],
   "video": "",
-  "tags": ["曲线", "碰撞", "检测", "约束"],
+  "tags": [
+    "点",
+    "刚体"
+  ],
   "parameters": [
     {
-      "name": "Tolerance",
-      "cn": "容差",
-      "en": "Tolerance",
-      "default": 0.01,
-      "desc_cn": "碰撞检测容差",
-      "desc_en": "Collision detection tolerance"
+      "name": "C",
+      "cn": "闭合曲线",
+      "en": "Part",
+      "default": "Null,点",
+      "desc_cn": "要碰撞的闭合曲线",
+      "desc_en": "Closed Curves to collide"
+    },
+    {
+      "name": "F",
+      "cn": "帧平面",
+      "en": "Plane",
+      "default": "Null,工作平面",
+      "desc_cn": "每条曲线的帧平面，（如果未提供，将使用曲线的质心处的WorldXY对齐平面）",
+      "desc_en": "The frame of each curve (if none provided, a WorldXY aligned plane at the curve centroid will be used)"
+    },
+    {
+      "name": "P",
+      "cn": "被动曲线",
+      "en": "Points",
+      "default": "Null，点",
+      "desc_cn": "被动曲线（它们会发生碰撞，但自身不会移动）",
+      "desc_en": "Passive curves (they take part in collisions but are not themselves moved)"
+    },
+    {
+      "name": "B",
+      "cn": "检查碰撞的平面",
+      "en": "New Param",
+      "default": "Null,工作平面",
+      "desc_cn": "检查碰撞的平面",
+      "desc_en": "Plane in which to check for collisions"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1",
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "G",
+      "cn": "目标对象",
+      "en": "Rigid Body",
+      "default": "Null",
+      "desc_cn": "将此连接到 Kangaroo Solver 组件的 GoalObjects 输入。",
+      "desc_en": "Connect this to the GoalObjects input of a Kangaroo Solver component"
+    },
+    {
+      "name": "F",
+      "cn": "生成的帧平面",
+      "en": "Plane",
+      "default": "Null",
+      "desc_cn": "每条曲线的平面",
+      "desc_en": "The planes of each of the curves"
     }
   ],
   "examples": [
-    "curvecollide_avoid.gh"
+    "CurveCollide_example.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "1.8",
-  "lastUpdated": "2024-01-05"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
