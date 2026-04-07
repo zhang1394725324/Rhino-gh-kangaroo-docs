@@ -1,25 +1,72 @@
 {
-  "description_cn": "实体与点之间的碰撞检测，防止点穿透实体表面。",
-  "description_en": "Solid-point collision detection, prevents points from penetrating solid surfaces.",
+  "description_cn": "使点与实体发生碰撞。实体可以是mesh或者brep。内部设为False，使点与实体发生碰撞后保持在实体外部，反之则在实体内部。单向设为True时，网格不会发生碰撞，且不受碰撞影响。",
+  "description_en": "Causes a point to collide with an entity. The entity can be a mesh or a bridge. Setting \"Interior\" to \"False\" keeps the point outside the entity after a collision, otherwise it stays inside. Setting \"One-Way\" to \"True\" prevents collisions and ensures the mesh remains unaffected by collisions.",
   "images": [
-    "solidpointcollide_demo.png"
+    "SolidPointCollide.png",
+    "SolidPointCollide.gif"
   ],
   "video": "",
-  "tags": ["实体", "点", "碰撞", "表面"],
+  "tags": [
+    "点",
+    "碰撞",
+    "刚体"
+  ],
   "parameters": [
     {
-      "name": "Restitution",
-      "cn": "弹性系数",
-      "en": "Restitution",
-      "default": 0.5,
-      "desc_cn": "碰撞弹性",
-      "desc_en": "Collision restitution"
+      "name": "Points",
+      "cn": "点",
+      "en": "Points",
+      "default": "Null，点",
+      "desc_cn": "影响的点",
+      "desc_en": "Points to affect"
+    },
+    {
+      "name": "Solid",
+      "cn": "实体",
+      "en": "Radii",
+      "default": "Null，网格",
+      "desc_cn": "封闭的固体（Brep 或网格）",
+      "desc_en": "A closed solid (Brep or mesh)"
+    },
+    {
+      "name": "In",
+      "cn": "内部",
+      "en": "New Param",
+      "default": "False，布尔值",
+      "desc_cn": "如果为False，则点将位于立体图形之外；如果为True，则点将位于立体图形之内。",
+      "desc_en": "If false, points will be kept outside the solid. If true they will be kept inside"
+    },
+    {
+      "name": "Uni",
+      "cn": "单向",
+      "en": "New Param",
+      "default": "True，布尔值",
+      "desc_cn": "如果为True，则网格仅用作输入，本身不受碰撞影响。",
+      "desc_en": "If true the mesh is used only as input, and is not itself affected by the collisions"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1",
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "S",
+      "cn": "实体点碰撞",
+      "en": "sphere",
+      "default": "Null",
+      "desc_cn": "实体点碰撞",
+      "desc_en": "Entity point collision"
     }
   ],
   "examples": [
-    "solidpointcollide_surface.gh"
+    "SolidPointCollide_example.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "1.9",
-  "lastUpdated": "2024-01-10"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
