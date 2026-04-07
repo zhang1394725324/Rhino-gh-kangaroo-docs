@@ -1,0 +1,54 @@
+{
+  "description_cn": "<p>使网格的每一条边的长度按照长度系数发生变化。长度系数默认为1。</p><p>设置网格的边长。</p>",
+  "description_en": "<p>This makes the length of each edge of the mesh vary according to a length factor. The default length factor is 1.\r\r</p><p>Set the side length of the grid.</p>",
+  "images": [
+    "EdgeLengths.png",
+    "EdgeLengths.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "Mesh",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "网格设置边长",
+      "desc_en": "Mesh to set edge lengths for"
+    },
+    {
+      "name": "LengthFactor",
+      "cn": "长度系数",
+      "en": "LengthFactor",
+      "default": "1，数字",
+      "desc_cn": "目标边缘长度为当前长度的倍数",
+      "desc_en": "Target edge length as a multiple of current length"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "EL",
+      "cn": "生成的边长",
+      "en": "S",
+      "default": "Null",
+      "desc_cn": "生成的边长",
+      "desc_en": "The generated side length"
+    }
+  ],
+  "examples": [
+    "EdgeLengths_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
