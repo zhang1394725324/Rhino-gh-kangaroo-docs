@@ -1,0 +1,111 @@
+{
+  "description_cn": "将软目标和硬约束两种不同的力学模拟对象分别输入解算器。软目标是指施加作用力（弹力、荷载、风力等）的对象。硬目标是指锚点、刚体这类不受作用力影响发生变化的对象。",
+  "description_en": "Input two different types of mechanical simulation objects—soft targets and hard constraints—into the solver. Soft targets are objects to which forces (elastic forces, loads, wind forces, etc.) are applied. Hard targets are objects such as anchor points and rigid bodies that do not change under the influence of applied forces.",
+  "images": [
+    "Soft & Hard Solver.png",
+    "Soft & Hard Solver.gif"
+  ],
+  "video": "",
+  "tags": [
+    "求解器",
+    "常用"
+  ],
+  "parameters": [
+    {
+      "name": "SoftGoals",
+      "cn": "软目标",
+      "en": "SoftGoals",
+      "default": "Null",
+      "desc_cn": "只有当这些目标不与硬性目标相冲突时，这些目标才能实现。",
+      "desc_en": "These goals will be met only if they do not conflict with the hard goals"
+    },
+    {
+      "name": "HardGoals",
+      "cn": "硬目标",
+      "en": "HardGoals",
+      "default": "False，布尔值",
+      "desc_cn": "这些目标将优先于软性目标。",
+      "desc_en": "These goals will override the soft goals"
+    },
+    {
+      "name": "HardIterations",
+      "cn": "硬迭代",
+      "en": "HardIterations",
+      "default": "0.99，数字",
+      "desc_cn": "每次软步骤后执行的硬迭代次数",
+      "desc_en": "The number of hard iterations performed after each soft step"
+    },
+    {
+      "name": "SoftMultiplier",
+      "cn": "软倍增器",
+      "en": "SoftMultiplier",
+      "default": "10，整数",
+      "desc_cn": "柔和运动的倍率。如果想要最高精度，可以在最后将其降低到零。",
+      "desc_en": "Multiplier for the soft movement. This can be decreased to zero at the end if you want maximum accuracy"
+    },
+    {
+      "name": "Reset",
+      "cn": "复位",
+      "en": "Reset",
+      "default": "Null，布尔值",
+      "desc_cn": "如果为False，则仿真重置。如果为True，则每次收到此输入时，解将前进一帧。",
+      "desc_en": "If false, simulation resets. If true the solution will advance by one frame each time this input is received"
+    },
+    {
+      "name": "Threshold",
+      "cn": "临界值",
+      "en": "Threshold",
+      "default": "",
+      "desc_cn": "硬重置（完全重建粒子列表和索引）",
+      "desc_en": "Hard Reset (completely rebuild the particle list and indexing)"
+    },
+    {
+      "name": "Tolerance",
+      "cn": "公差",
+      "en": "Tolerance",
+      "default": "0.0001",
+      "desc_cn": "距离小于此值的点将被合并成一个粒子。",
+      "desc_en": "Points closer than this distance will be combined into a single particle"
+    },
+    {
+      "name": "On",
+      "cn": "开启",
+      "en": "On",
+      "default": "",
+      "desc_cn": "如果为True，Kangaroo 将继续迭代，直到达到给定的阈值。",
+      "desc_en": "If true, Kangaroo will continue to iterate until reaching the given threshold value"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "I",
+      "cn": "迭代次数",
+      "en": "Iterations",
+      "default": "0，整数",
+      "desc_cn": "迭代次数",
+      "desc_en": "Iterations"
+    },
+    {
+      "name": "V",
+      "cn": "点",
+      "en": "Point",
+      "default": "Null，点",
+      "desc_cn": "点",
+      "desc_en": "point"
+    },
+    {
+      "name": "O",
+      "cn": "输出",
+      "en": "Output",
+      "default": "Null",
+      "desc_cn": "目标函数输出，每一个goal都会输出一种数据，输出后产生树形数据结构。",
+      "desc_en": "GoalFunction Outputs"
+    }
+  ],
+  "examples": [
+    "Soft & Hard Solver_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
