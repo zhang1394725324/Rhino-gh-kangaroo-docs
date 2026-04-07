@@ -1,25 +1,78 @@
 {
-  "description_cn": "保持两个或多个圆/圆弧同心。常用于机械装配和圆形对齐。",
-  "description_en": "Keep two or more circles/arcs concentric. Commonly used in mechanical assembly and circular alignment.",
+  "description_cn": "<p>将刚体根据指定的轴吸附到一起。</p>",
+  "description_en": "<p>The rigid bodies are attracted together along the specified axis.</p>",
   "images": [
-    "concentric_demo.png"
+    "Concentric.png",
+    "Concentric.gif"
   ],
   "video": "",
-  "tags": ["同心", "圆", "对齐", "装配"],
+  "tags": [
+    "对齐"
+  ],
   "parameters": [
+    {
+      "name": "PlaneA",
+      "cn": "平面A",
+      "en": "PlaneA",
+      "default": "Null，平面",
+      "desc_cn": "第一个刚体的平面",
+      "desc_en": "The frame of one rigid body"
+    },
+    {
+      "name": "PlaneB",
+      "cn": "平面B",
+      "en": "PlaneB",
+      "default": "Null，平面",
+      "desc_cn": "其他刚体平面",
+      "desc_en": "The frame of the other rigid body"
+    },
+    {
+      "name": "AxisA",
+      "cn": "轴A",
+      "en": "AxisA",
+      "default": "Null，直线",
+      "desc_cn": "第一个刚体的轴",
+      "desc_en": "The axis of the first body"
+    },
+    {
+      "name": "AxisB",
+      "cn": "轴B",
+      "en": "AxisB",
+      "default": "Null，直线",
+      "desc_cn": "第二个刚体的轴",
+      "desc_en": "The axis of the other body"
+    },
+    {
+      "name": "Flip",
+      "cn": "翻转",
+      "en": "Flip",
+      "default": "False，布尔值",
+      "desc_cn": "反转轴的相对方向",
+      "desc_en": "Reverse the relative direction of the axes"
+    },
     {
       "name": "Strength",
       "cn": "强度",
       "en": "Strength",
-      "default": 1.0,
-      "desc_cn": "同心约束强度",
-      "desc_en": "Concentric constraint strength"
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "C",
+      "cn": "对齐轴",
+      "en": "Concentric",
+      "default": "Null",
+      "desc_cn": "生成的对齐轴",
+      "desc_en": "Concentric"
     }
   ],
   "examples": [
-    "concentric_gears.gh"
+    "Concentric_example.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "1.9",
-  "lastUpdated": "2026-01-05"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
