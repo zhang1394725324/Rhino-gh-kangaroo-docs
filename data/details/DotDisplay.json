@@ -1,0 +1,30 @@
+{
+  "description_cn": "<p>将点显示成圆点。</p>",
+  "description_en": "<p>Display the dots as circles.</p>",
+  "images": [
+    "DotDisplay.png",
+    "DotDisplay.gif"
+  ],
+  "video": "",
+  "tags": [
+    "显示",
+    "点"
+  ],
+  "parameters": [
+    {
+      "name": "P",
+      "cn": "点",
+      "en": "Point",
+      "default": "Null，点",
+      "desc_cn": "要显示的点",
+      "desc_en": "Point"
+    }
+  ],
+  "outputs": [],
+  "examples": [
+    "DotDisplay_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
