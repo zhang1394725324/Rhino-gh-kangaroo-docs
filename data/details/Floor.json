@@ -1,37 +1,36 @@
 {
-  "description_cn": "设z=0的xy平面为地面，点不会跑到地面以下。",
-  "description_en": "Let the xy plane with z=0 be the ground, and the point will not go below the ground.",
+  "description_cn": "<p>默认在XY平面上增加地板作为碰撞面。</p>",
+  "description_en": "<p>By default, a floor is added on the XY plane as a collision surface.</p>",
   "images": [
     "Floor.png",
     "Floor.gif"
   ],
   "video": "",
   "tags": [
-    "约束",
-    "点"
+    "地面"
   ],
   "parameters": [
     {
       "name": "Strength",
-      "cn": "权重，强度",
+      "cn": "强度",
       "en": "Strength",
-      "default": "1",
-      "desc_cn": "权重，强度",
+      "default": "1，数字",
+      "desc_cn": "强度",
       "desc_en": "Strength"
     }
   ],
   "outputs": [
     {
       "name": "H",
-      "cn": "输出的地面或地板",
-      "en": "Floor out",
+      "cn": "强度数据",
+      "en": "Floor",
       "default": "Null",
-      "desc_cn": "输出的地面或地板",
+      "desc_cn": "强度",
       "desc_en": "Floor out"
     }
   ],
   "examples": [
-    "Floor_examples.gh"
+    "Floor_example.gh"
   ],
   "author": "Kangaroo Team",
   "version": "2.1",
