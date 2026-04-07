@@ -1,0 +1,56 @@
+{
+  "description_cn": "将闭合的多段线向内或向外拉，来让它的面积变成指定面积大小。使多边形的面积按照设定的面积大小变化。（实际上会产生交叉，即正面积-负面积=指定面积。）",
+  "description_en": "Pulling a closed polyline inwards or outwards changes its area to a specified size. This makes the area of ​​a polygon change according to a set size. (In practice, this will create intersections, i.e., positive area - negative area = specified area.)",
+  "images": [
+    "PolygonArea.png",
+    "PolygonArea.gif"
+  ],
+  "video": "",
+  "tags": [
+    "面",
+    "约束",
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "PolyLine",
+      "cn": "多段线",
+      "en": "PolyLine",
+      "default": "Null,线段",
+      "desc_cn": "闭合的多段线",
+      "desc_en": "Closed polylines"
+    },
+    {
+      "name": "Area",
+      "cn": "面积",
+      "en": "Area",
+      "default": "Null，数字",
+      "desc_cn": "网格的面积",
+      "desc_en": "Area"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1,
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "Area",
+      "cn": "面积",
+      "en": "Area",
+      "default": "Null",
+      "desc_cn": "输出后的面积",
+      "desc_en": "Output area"
+    }
+  ],
+  "examples": [
+    "PolygonArea_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
