@@ -1,0 +1,54 @@
+{
+  "description_cn": "设置网格的总体积，控制一个网格的体积。可以用于模拟充气和皱缩。使网格物体在计算过程中按照设定的体积大小发生变化。简单理解就是类似气球的充气和放气。",
+  "description_en": "Controls the volume of a mesh. Can be used to simulate inflation and deflation. Makes mesh objects change size according to a set volume during calculation. Simply put, it's similar to inflating and deflating a balloon.",
+  "images": [
+    "Volume.png",
+    "Volume.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "网格",
+      "desc_en": "Mesh"
+    },
+    {
+      "name": "V",
+      "cn": "体积",
+      "en": "Volume",
+      "default": "Null，数字",
+      "desc_cn": "目标体积——如果未提供，则使用起始体积。",
+      "desc_en": "Target Volume - if none supplied, starting volume will be used"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1",
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "V",
+      "cn": "体积",
+      "en": "Volume",
+      "default": "Null",
+      "desc_cn": "体积",
+      "desc_en": "Volume out"
+    }
+  ],
+  "examples": [
+    "Volume_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
