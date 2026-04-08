@@ -1,25 +1,46 @@
 {
-  "description_cn": "一维动态权重约束，根据距离动态调整约束强度。",
-  "description_en": "1D dynamic weight constraint, adjusts constraint strength dynamically based on distance.",
+  "description_cn": "<p>负Z方向上的载荷，根据线的长度更新其大小。</p><p>根据直线的长短对直线端点施加向上的力。</p><p><span style=\"color: rgb(230, 0, 0);\">权重</span>可以调节整体作用力大小的增大或减小。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">A load in the negative Z direction, which updates its magnitude according to the length of the line</span></p><p>An upward force is applied to the endpoints of the line based on its length.\r\r</p><p>Weights can adjust the magnitude of the overall force by increasing or decreasing it.</p>",
   "images": [
-    "dynamicweight1d_demo.png"
+    "DynamicWeight1d.png",
+    "DynamicWeight1d.gif"
   ],
   "video": "",
-  "tags": ["权重", "动态", "一维", "距离"],
+  "tags": [
+    "线"
+  ],
   "parameters": [
     {
-      "name": "Falloff",
-      "cn": "衰减率",
-      "en": "Falloff",
-      "default": 1.0,
-      "desc_cn": "权重衰减率",
-      "desc_en": "Weight falloff rate"
+      "name": "Line",
+      "cn": "直线",
+      "en": "Line",
+      "default": "Null，曲线",
+      "desc_cn": "直线",
+      "desc_en": "Mesh to apply wind to"
+    },
+    {
+      "name": "W",
+      "cn": "权重",
+      "en": "Weight",
+      "default": "1，数字",
+      "desc_cn": "单位长度权重",
+      "desc_en": "Weight per unit length"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "DW",
+      "cn": "生成的权重值",
+      "en": "DynamicWeight",
+      "default": "Null",
+      "desc_cn": "生成的权重值",
+      "desc_en": "DynamicWeight out"
     }
   ],
   "examples": [
-    "dynamicweight1d_adaptive.gh"
+    "DynamicWeight1d_example.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "1.9",
-  "lastUpdated": "2024-01-07"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
