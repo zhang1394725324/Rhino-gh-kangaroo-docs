@@ -1,0 +1,44 @@
+{
+  "description_cn": "<p>如Sechelmann,Rorig&amp;Bobenko在论文“准等温线网格布局”中所述，制作四网格S-等温线。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Make a quad mesh S-Isothermic, as described in the paper 'Quasiisothermic Mesh Layout' by Sechelmann, Rörig &amp; Bobenko。</span></p>",
+  "images": [
+    "Isothermic.png",
+    "Isothermic.gif"
+  ],
+  "video": "",
+  "tags": [],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "要生成等温线的四边网格",
+      "desc_en": "A quad mesh to make isothermic"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1,
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "G",
+      "cn": "等温线",
+      "en": "G",
+      "default": "Null",
+      "desc_cn": "生成的等温线",
+      "desc_en": "Isothermic goals"
+    }
+  ],
+  "examples": [
+    "Isothermic_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
