@@ -1,0 +1,62 @@
+{
+  "description_cn": "<p>返回通过边连接给定顶点的顶点的位置。</p><p><strong>根据网格指定顶点的序号，查找指定顶点的邻近点，并输出网格在指定顶点处的法线方向。</strong></p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Returns the positions of the vertices connected the given vertex by an edge。</span></p>",
+  "images": [
+    "VertexNeighbours.png",
+    "VertexNeighbours.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "网格",
+      "desc_en": "Mesh"
+    },
+    {
+      "name": "V",
+      "cn": "顶点数量",
+      "en": "Vertex number",
+      "default": "Null，整数",
+      "desc_cn": "要获取邻域的中心顶点的整数",
+      "desc_en": "The integer of the central vertex to get neighbours for"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "C",
+      "cn": "顶点",
+      "en": "Vertex",
+      "default": "Null，点",
+      "desc_cn": "中心顶点的位置",
+      "desc_en": "The position of the central vertex"
+    },
+    {
+      "name": "N",
+      "cn": "邻近点",
+      "en": "Neighbours",
+      "default": "Null，点",
+      "desc_cn": "邻近顶点的位置",
+      "desc_en": "Positions of neighbouring vertices"
+    },
+    {
+      "name": "V",
+      "cn": "法线方向",
+      "en": "Normal",
+      "default": "Null，向量",
+      "desc_cn": "中心顶点处的网格法线",
+      "desc_en": "The mesh normal at the central vertex"
+    }
+  ],
+  "examples": [
+    "VertexNeighbours_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
