@@ -1,0 +1,54 @@
+{
+  "description_cn": "<p>使圆锥形网格偏移，以使相应的面保持恒定的距离。</p><p>偏移网格，并将网格边线挤出生成网格。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Offset a conical mesh so that corresponding faces are constant distance apart。</span></p>",
+  "images": [
+    "FaceFaceOffset.png",
+    "FaceFaceOffset.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "网格",
+      "desc_en": "Mesh"
+    },
+    {
+      "name": "D",
+      "cn": "距离",
+      "en": "Distance",
+      "default": "1，数字",
+      "desc_cn": "偏移的距离",
+      "desc_en": "Offset distance"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "O",
+      "cn": "偏移的网格",
+      "en": "Offset",
+      "default": "Null，网格",
+      "desc_cn": "偏移的网格",
+      "desc_en": "The offset mesh"
+    },
+    {
+      "name": "B",
+      "cn": "横梁",
+      "en": "Beams",
+      "default": "Null，网格",
+      "desc_cn": "2个网格之间的梁",
+      "desc_en": "Beams between the 2 meshes"
+    }
+  ],
+  "examples": [
+    "FaceFaceOffset_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
