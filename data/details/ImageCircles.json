@@ -1,34 +1,78 @@
 {
-  "description_cn": "基于图像的圆形碰撞，根据图像亮度生成圆形障碍物。",
-  "description_en": "Image-based circle collision, generates circular obstacles based on image brightness.",
+  "description_cn": "<p>圆形包装，尺寸来自图像颜色。</p><p>对图像进行布点采样，根据采样点的灰度值生成大小不同的圆（灰度值映射到指定的半径范围），圆之间进行碰撞模拟。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Circle packing with sizes from image colours。</span></p><p>The image is sampled at points, and circles of different sizes are generated based on the gray values ​​of the sampled points (the gray values ​​are mapped to a specified radius range). Collision simulation is performed between the circles.</p>",
   "images": [
-    "imagecircles_demo.png",
-    "imagecircles_animation.gif"
+    "ImageCircles.png",
+    "ImageCircles.gif"
   ],
   "video": "",
-  "tags": ["图像", "圆形", "碰撞", "采样"],
+  "tags": [
+    "线"
+  ],
   "parameters": [
     {
-      "name": "Threshold",
-      "cn": "阈值",
-      "en": "Threshold",
-      "default": 128,
-      "desc_cn": "图像亮度阈值",
-      "desc_en": "Image brightness threshold"
+      "name": "Pts",
+      "cn": "圆心",
+      "en": "Points",
+      "default": "Null，点",
+      "desc_cn": "初始圆心位置",
+      "desc_en": "Initial circle centre locations"
     },
     {
-      "name": "Radius",
-      "cn": "半径",
-      "en": "Radius",
-      "default": 5.0,
-      "desc_cn": "圆的半径",
-      "desc_en": "Circle radius"
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "彩色网格-较暗的区域会出现较小的圆圈",
+      "desc_en": "Coloured mesh - darker areas will get smaller circles"
+    },
+    {
+      "name": "Min",
+      "cn": "最小半径",
+      "en": "Min",
+      "default": "0.2，数字",
+      "desc_cn": "最小圆半径",
+      "desc_en": "Smallest circle radius"
+    },
+    {
+      "name": "Max",
+      "cn": "最大半径",
+      "en": "Max",
+      "default": "1，数字",
+      "desc_cn": "最大圆半径",
+      "desc_en": "Largest circle radius"
+    },
+    {
+      "name": "Crvs",
+      "cn": "曲线",
+      "en": "Curves",
+      "default": "Null，曲线",
+      "desc_cn": "可选碰撞曲线",
+      "desc_en": "Optional collision curves"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "I",
+      "cn": "图像圆",
+      "en": "ImageCircles",
+      "default": "Null",
+      "desc_cn": "生成的图像圆",
+      "desc_en": "ImageCircles Goal"
     }
   ],
   "examples": [
-    "imagecircles_art.gh"
+    "ImageCircles_example.gh"
   ],
   "author": "Kangaroo Team",
-  "version": "2.0",
-  "lastUpdated": "2024-01-12"
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
 }
