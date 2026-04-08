@@ -1,0 +1,38 @@
+{
+  "description_cn": "<p>旋转每个面的顶点顺序。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Rotate the vertex order of each face</span></p>",
+  "images": [
+    "MeshTurn.png",
+    "MeshTurn.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "旋转面的网格",
+      "desc_en": "Mesh to turn faces"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "M",
+      "cn": "排序的网格",
+      "en": "SortedMesh",
+      "default": "Null，网格",
+      "desc_cn": "旋转面的网格",
+      "desc_en": "Mesh with faces turned"
+    }
+  ],
+  "examples": [
+    "MeshTurn_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
