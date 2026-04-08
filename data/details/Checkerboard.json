@@ -1,0 +1,38 @@
+{
+  "description_cn": "<p>尝试将网格划分为2个不相邻面的列表。</p><p>将网格的网格面序号按照不相邻的规则拆分成两部分，分别标记为0和1。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Attempt to assign a boolean to each face of a mesh such that no adjacent faces share the same value</span></p>",
+  "images": [
+    "Checkerboard.png",
+    "Checkerboard.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "Mesh",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "棋盘化网格",
+      "desc_en": "Mesh to checkerboard"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "A",
+      "cn": "数量",
+      "en": "A",
+      "default": "Null，网格",
+      "desc_cn": "棋盘布置的面数量",
+      "desc_en": "Face assignments"
+    }
+  ],
+  "examples": [
+    "Checkerboard_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
