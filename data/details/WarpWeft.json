@@ -1,0 +1,62 @@
+{
+  "description_cn": "<p>根据经线和纬线方向将网格的边缘分成2个列表。</p><p>根据横竖（经线和纬线）两个方向将网格的边缘线分成两组输出。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Separate the edges of a mesh into 2 lists according to Warp and Weft direction</span></p>",
+  "images": [
+    "WarpWeft.png",
+    "WarpWeft.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Meshes",
+      "default": "Null，网格",
+      "desc_cn": "输入的网格",
+      "desc_en": "Input Mesh"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "A",
+      "cn": "经线",
+      "en": "Warp",
+      "default": "Null，直线",
+      "desc_cn": "经线",
+      "desc_en": "Lines in first direction"
+    },
+    {
+      "name": "B",
+      "cn": "纬线",
+      "en": "Weft",
+      "default": "Null，直线",
+      "desc_cn": "纬线",
+      "desc_en": "Lines in first direction"
+    },
+    {
+      "name": "NA",
+      "cn": "裸露A",
+      "en": "NakedA",
+      "default": "Null，布尔值",
+      "desc_cn": "A中的每一条线是否位于网格边界上的布尔值列表",
+      "desc_en": "List of booleans for whether each line in A lies on the mesh boundary"
+    },
+    {
+      "name": "NB",
+      "cn": "裸露B",
+      "en": "NakedB",
+      "default": "Null，布尔值",
+      "desc_cn": "B中的每条线是否位于网格边界上的布尔值列表",
+      "desc_en": "List of booleans for whether each line in B lies on the mesh boundary"
+    }
+  ],
+  "examples": [
+    "WarpWeft_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
