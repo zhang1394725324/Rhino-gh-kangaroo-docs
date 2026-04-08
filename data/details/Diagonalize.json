@@ -1,0 +1,36 @@
+{
+  "description_cn": "<p>用新面替换每条边。</p><p>根据网格夹角的对角线，重新生成网格。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Replace each edge with a new face。</span></p><p>Regenerate the mesh based on the diagonal of the mesh angle.</p>",
+  "images": [
+    "Diagonalize.png",
+    "Diagonalize.gif"
+  ],
+  "video": "",
+  "tags": [],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "要对角化的网格",
+      "desc_en": "Mesh to diagonalize"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "M",
+      "cn": "对角化的网格",
+      "en": "DiagonalMesh",
+      "default": "Null，网格",
+      "desc_cn": "对角化的网格",
+      "desc_en": "Diagonal mesh"
+    }
+  ],
+  "examples": [
+    "Diagonalize_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
