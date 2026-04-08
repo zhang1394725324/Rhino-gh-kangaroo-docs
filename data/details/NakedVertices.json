@@ -1,0 +1,62 @@
+{
+  "description_cn": "<p>根据顶点是否被面包围，将网格的顶点排序成两个列表。</p><p><strong>根据点在网格的内部和边缘的关系，将点分成两组输出。</strong></p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Sorts the vertices of a mesh into 2 lists according to whether or not they are surrounded by faces。</span></p><p>Based on the relationship between the points inside and at the edges of the mesh, the points are divided into two groups for output.</p>",
+  "images": [
+    "NakedVertices.png",
+    "NakedVertices.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "网格",
+      "desc_en": "Mesh"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "ClothedI",
+      "cn": "面包围顶点的索引",
+      "en": "ClothedIndex",
+      "default": "Null，整数",
+      "desc_cn": "面包围顶点的索引",
+      "desc_en": "Indexes of vertices surrounded by faces"
+    },
+    {
+      "name": "NakedI",
+      "cn": "没有被面包围顶点的索引",
+      "en": "NakedIndex ",
+      "default": "Null，整数",
+      "desc_cn": "没有被面包围顶点的索引",
+      "desc_en": "Indexes of vertices not surrounded by faces"
+    },
+    {
+      "name": "ClothedPts",
+      "cn": "被面包围顶点的点（位置）",
+      "en": "ClothedPts",
+      "default": "Null，点",
+      "desc_cn": "被面包围顶点的点（位置）",
+      "desc_en": "Point locations of vertices surrounded by faces"
+    },
+    {
+      "name": "NakedPts",
+      "cn": "顶点的点（位置）不被面包围",
+      "en": "NakedPts",
+      "default": "Null，点",
+      "desc_cn": "顶点的点（位置）不被面包围",
+      "desc_en": "Point locations of vertices not surrounded by faces"
+    }
+  ],
+  "examples": [
+    "NakedVertices_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
