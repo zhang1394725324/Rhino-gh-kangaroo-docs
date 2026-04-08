@@ -1,0 +1,46 @@
+{
+  "description_cn": "<p>提取比某些角度更锐利的角。</p><p>获取网格的角点。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Extract corners sharper than some angle。</span></p>",
+  "images": [
+    "MeshCorners.png",
+    "MeshCorners.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "网格",
+      "desc_en": "Mesh"
+    },
+    {
+      "name": "A",
+      "cn": "角度",
+      "en": "Angle",
+      "default": "2.356194，数字",
+      "desc_cn": "内角，低于该角则视为顶点",
+      "desc_en": "Interior angle below which a vertex is considered a corner"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "C",
+      "cn": "角点",
+      "en": "Corners",
+      "default": "Null，点",
+      "desc_cn": "角点",
+      "desc_en": "Corners"
+    }
+  ],
+  "examples": [
+    "MeshCorners_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
