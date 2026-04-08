@@ -1,0 +1,44 @@
+{
+  "description_cn": "<p>对网格施加风力。</p><p><span style=\"color: rgb(136, 136, 136);\">要注意风力大小，与网格长度系数及强度之间参数的平衡，风力过大会直接将网格吹解体，强度过大则会吹不动。</span></p>",
+  "description_en": "<p>Apply wind force to the grid.</p><p><span style=\"color: rgb(136, 136, 136);\">It is important to pay attention to the balance between wind force and parameters such as grid length coefficient and intensity. If the wind force is too strong, it will directly blow the grid apart, and if the intensity is too strong, it will not be able to be blown away.</span></p>",
+  "images": [
+    "Wind.png",
+    "Wind.gif"
+  ],
+  "video": "",
+  "tags": [],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "要应用风的网格",
+      "desc_en": "Mesh to apply wind to"
+    },
+    {
+      "name": "W",
+      "cn": "风向",
+      "en": "WindVector",
+      "default": "{1,0,0},向量",
+      "desc_cn": "风的方向和强度",
+      "desc_en": "Direction and strength of wind"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "W",
+      "cn": "风荷载",
+      "en": "Wind",
+      "default": "Null",
+      "desc_cn": "风荷载",
+      "desc_en": "out"
+    }
+  ],
+  "examples": [
+    "Wind_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
