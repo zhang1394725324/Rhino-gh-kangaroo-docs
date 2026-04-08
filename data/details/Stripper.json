@@ -1,0 +1,38 @@
+{
+  "description_cn": "<p>将网格分成条带。</p><p>将网格拆分成多个单列的网格。</p>",
+  "description_en": "<p>Divide the grid into strips.\r\r</p><p>The grid is split into multiple single-column grids.</p>",
+  "images": [
+    "Stripper.png",
+    "Stripper.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "网格",
+      "desc_en": "Input Mesh"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "S",
+      "cn": "条带",
+      "en": "Strips",
+      "default": "Null，网格",
+      "desc_cn": "条带列表",
+      "desc_en": "List of Mesh Strips"
+    }
+  ],
+  "examples": [
+    "Stripper_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
