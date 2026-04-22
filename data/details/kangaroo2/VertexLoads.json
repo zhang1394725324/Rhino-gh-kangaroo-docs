@@ -1,0 +1,46 @@
+{
+  "description_cn": "<p>将相等的垂直载荷应用于网格的所有顶点。</p><p>对网格的所有顶点施加正负作用力。强度为负数时，为沿Z轴向下的力；正数时则为向上的力。</p>",
+  "description_en": "<p>Apply equal vertical loads to all vertices of the mesh.</p><p>Apply positive and negative forces to all vertices of the mesh. A negative force is a downward force along the Z-axis, while a positive force is an upward force.</p>",
+  "images": [
+    "VertexLoads.png",
+    "VertexLoads.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "Mesh",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "要负载的网格",
+      "desc_en": "Mesh to apply loads to"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "L",
+      "cn": "负载",
+      "en": "L",
+      "default": "Null",
+      "desc_cn": "负载",
+      "desc_en": "out"
+    }
+  ],
+  "examples": [
+    "VertexLoads_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

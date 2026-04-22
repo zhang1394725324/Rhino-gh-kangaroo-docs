@@ -1,0 +1,62 @@
+{
+  "description_cn": "<p>测量两个三角形之间围绕其公共边的当前角度。</p><p>测量两个三角形之间的夹角，实际测试得出的是两个三角形所在平面的最小夹角。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Measure the current angle between two triangles about their common edge。</span></p><p>Measuring the included angle between two triangles, the actual test yields the smallest included angle between the planes containing the two triangles.</p>",
+  "images": [
+    "FoldAngle.png",
+    "FoldAngle.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "P1",
+      "cn": "P1",
+      "en": "P1",
+      "default": "Null，点",
+      "desc_cn": "两个三角形共享的公共边的起点",
+      "desc_en": "Start of the common edge shared by both triangles"
+    },
+    {
+      "name": "P2",
+      "cn": "P2",
+      "en": "P2",
+      "default": "Null，点",
+      "desc_cn": "两个三角形共享的公共边的末端",
+      "desc_en": "End of the common edge shared by both triangles"
+    },
+    {
+      "name": "P3",
+      "cn": "P3",
+      "en": "P3",
+      "default": "Null，点",
+      "desc_cn": "第一个三角形的尖端",
+      "desc_en": "Tip of first triangle"
+    },
+    {
+      "name": "P4",
+      "cn": "P4",
+      "en": "P4",
+      "default": "Null，点",
+      "desc_cn": "第二个三角形的尖端",
+      "desc_en": "Tip of second triangle"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "A",
+      "cn": "折角",
+      "en": "Angle",
+      "default": "Null，数字",
+      "desc_cn": "三角形之间的角度",
+      "desc_en": "Angle between the triangles"
+    }
+  ],
+  "examples": [
+    "FoldAngle_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

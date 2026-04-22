@@ -1,0 +1,56 @@
+{
+  "description_cn": "将一组点拉向曲线（在曲线上产生曲线外一点的最近点）。将选定点限制在指定的曲线上。强度越高，点的吸附就越贴合曲线。",
+  "description_en": "Pull a set of points toward the curve (creating the closest point to a point outside the curve on the curve). Restrict selected points to a specified curve. The higher the intensity, the more closely the points adhere to the curve.",
+  "images": [
+    "OnCurve.png",
+    "OnCurve.gif"
+  ],
+  "video": "",
+  "tags": [
+    "约束",
+    "点",
+    "线"
+  ],
+  "parameters": [
+    {
+      "name": "Points",
+      "cn": "点",
+      "en": "Points",
+      "default": "Null,点",
+      "desc_cn": "一组点",
+      "desc_en": "Points to make coLinear "
+    },
+    {
+      "name": "Curve",
+      "cn": "曲线",
+      "en": "Curve",
+      "default": "Null,曲线",
+      "desc_cn": "曲线",
+      "desc_en": "Curve"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1,
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "P",
+      "cn": "生成的数据",
+      "en": "The generated data",
+      "default": "Null",
+      "desc_cn": "输出的数据",
+      "desc_en": "Output data"
+    }
+  ],
+  "examples": [
+    "OnCurve_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

@@ -1,0 +1,54 @@
+{
+  "description_cn": "<p>拐角分割。</p><p>根据设定的角度将多段线分割。非闭合的多段线，会自动闭合后进行计算拆分。</p>",
+  "description_en": "<p>Corner division.\r\r</p><p>The polyline is divided according to the set angle. Non-closed polylines will be automatically closed before calculation and splitting.</p>",
+  "images": [
+    "SplitAtCorners.png",
+    "SplitAtCorners.gif"
+  ],
+  "video": "",
+  "tags": [
+    "线"
+  ],
+  "parameters": [
+    {
+      "name": "P",
+      "cn": "要分割的折线",
+      "en": "Poly",
+      "default": "Null，曲线",
+      "desc_cn": "要分割的折线",
+      "desc_en": "The polyline to split"
+    },
+    {
+      "name": "A",
+      "cn": "弧度角",
+      "en": "Angle",
+      "default": "1，数字",
+      "desc_cn": "以弧度为单位的分割角度",
+      "desc_en": "Angle in radians to split at"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "C",
+      "cn": "角点",
+      "en": "Corners",
+      "default": "Null，点",
+      "desc_cn": "角度超过阈值的点",
+      "desc_en": "Points at which the angle exceeded the threshold"
+    },
+    {
+      "name": "S",
+      "cn": "部分折线",
+      "en": "Parts",
+      "default": "Null，曲线",
+      "desc_cn": "一系列独立的折线",
+      "desc_en": "A list of separate polylines"
+    }
+  ],
+  "examples": [
+    "SplitAtCorners_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

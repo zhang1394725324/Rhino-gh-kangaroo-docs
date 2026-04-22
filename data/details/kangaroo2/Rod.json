@@ -1,0 +1,70 @@
+{
+  "description_cn": "<p>耐弯曲拉伸杆</p><p><strong>使多段线的长度变成指定倍数（长度系数），相邻线段的夹角变成指定倍数（角度系数）的耐弯折的杆。</strong></p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Bending and stretching resistant rod</span></p>",
+  "images": [
+    "Rod.png",
+    "Rod.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "Polyline",
+      "cn": "多段线",
+      "en": "Polyline",
+      "default": "Null，曲线",
+      "desc_cn": "多段线变成杆",
+      "desc_en": "Polyline to turn into rod"
+    },
+    {
+      "name": "LengthFactor",
+      "cn": "长度系数",
+      "en": "LengthFactor",
+      "default": "1，数字",
+      "desc_cn": "目标边缘长度为当前长度的倍数",
+      "desc_en": "Target edge length as a multiple of current length"
+    },
+    {
+      "name": "AngleFactor",
+      "cn": "角度系数",
+      "en": "AngleFactor",
+      "default": "1，数字",
+      "desc_cn": "目标角度为当前角度的倍数",
+      "desc_en": "Target angle as a multiple of current angle"
+    },
+    {
+      "name": "AxialStrength",
+      "cn": "轴向强度",
+      "en": "AxialStrength",
+      "default": "10，数字",
+      "desc_cn": "轴向强度",
+      "desc_en": "Axial Strength"
+    },
+    {
+      "name": "BendStrength ",
+      "cn": "弯曲强度",
+      "en": "BendStrength ",
+      "default": "1，数字",
+      "desc_cn": "弯曲强度",
+      "desc_en": "Bending Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "R",
+      "cn": "生成的竿",
+      "en": "R",
+      "default": "Null",
+      "desc_cn": "",
+      "desc_en": ""
+    }
+  ],
+  "examples": [
+    "Rod_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

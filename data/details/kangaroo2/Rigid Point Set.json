@@ -1,0 +1,63 @@
+{
+  "description_cn": "<p><span style=\"color: rgb(230, 0, 0);\">刚体</span>是指在运动中和受力作用后，形状和大小不变，而且内部各点的相对位置不变的物体。</p><p><span style=\"color: rgb(230, 0, 0);\">平面</span>默认状态下就是XY平面。</p><p><span style=\"color: rgb(230, 0, 0);\">强度</span>默认值为10.</p>",
+  "description_en": "<p>A rigid body is an object whose shape and size remain unchanged during motion and after being subjected to forces, and whose relative positions of all points within it remain unchanged.</p><p>The default plane is the XY plane.</p><p>The default strength value is 10.</p>",
+  "images": [
+    "Rigid Point Set.png",
+    "Rigid Point Set.gif"
+  ],
+  "video": "",
+  "tags": [
+    "点",
+    "刚体"
+  ],
+  "parameters": [
+    {
+      "name": "Points",
+      "cn": "点",
+      "en": "Points",
+      "default": "Null，点",
+      "desc_cn": "要设置的刚体点列表",
+      "desc_en": "Rigid point set"
+    },
+    {
+      "name": "Plane",
+      "cn": "平面",
+      "en": "Plane",
+      "default": "Null，平面",
+      "desc_cn": "刚体的初始平面。如果未提供，则将使用位于质心处的 XY 对齐平面。",
+      "desc_en": "The initial frame of the body. If none supplied, an XY aligned plane at the centroid will be used"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "RB",
+      "cn": "刚体",
+      "en": "RigidBody",
+      "default": "Null",
+      "desc_cn": "刚体",
+      "desc_en": "RigidBody"
+    },
+    {
+      "name": "P",
+      "cn": "平面",
+      "en": "Planes",
+      "default": "",
+      "desc_cn": "刚体平面",
+      "desc_en": "The planes of the rigid bodies"
+    }
+  ],
+  "examples": [
+    "Rigid Point Set_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

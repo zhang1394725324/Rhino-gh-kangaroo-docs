@@ -1,0 +1,71 @@
+{
+  "description_cn": "对实体（网格或多重曲面）上的点添加刚体属性后，使实体在受力后不发生变形。（前面的刚体设置处理的点是以直线为分组依据，这个是以单个实体进行分组），实际上这个东西的是一个方便选取的东西，当输入的点动了，物体也会跟着动，就是始终保持物体与点的相对位置不变，plane输入物体的位置特性（因为是个物体，所以必须用plane表达），一般让点和plane端输入相同的点。",
+  "description_en": "Adding rigid body properties to points on a solid (mesh or multisurface) prevents the solid from deforming under stress. (Previous rigid body settings grouped points based on lines, while this grouping is done on a per-solid basis.) This is essentially a convenient selection tool; when the input points move, the object moves accordingly, maintaining the relative position of the object and points. The `plane` parameter inputs the object's positional characteristics (since it's an object, it must be represented by a `plane`). Generally, the points and the `plane` parameter should be the same.",
+  "images": [
+    "Rigid Body.png",
+    "Rigid Body.gif"
+  ],
+  "video": "",
+  "tags": [
+    "点",
+    "刚体"
+  ],
+  "parameters": [
+    {
+      "name": "Part",
+      "cn": "分组",
+      "en": "Part",
+      "default": "Null,点",
+      "desc_cn": "按网格或多重曲面分组",
+      "desc_en": "Part as a Mesh or Brep"
+    },
+    {
+      "name": "Plane",
+      "cn": "平面",
+      "en": "Plane",
+      "default": "Null,工作平面",
+      "desc_cn": "刚体的初始平面，如果未提供，将使用质心所在的XY对齐平面",
+      "desc_en": "The initial frame of the body. If none supplied, an XY aligned plane at the centroid will be used"
+    },
+    {
+      "name": "Points",
+      "cn": "点",
+      "en": "Points",
+      "default": "Null，点",
+      "desc_cn": "附加到刚体的可选点",
+      "desc_en": "Optional points to attach to the rigid body"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "10",
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "RB",
+      "cn": "刚体",
+      "en": "Rigid Body",
+      "default": "Null",
+      "desc_cn": "输出后的刚体",
+      "desc_en": "Rigid Body"
+    },
+    {
+      "name": "P",
+      "cn": "平面",
+      "en": "Plane",
+      "default": "Null",
+      "desc_cn": "刚体的平面",
+      "desc_en": "The planes of the rigid bodies"
+    }
+  ],
+  "examples": [
+    "Rigid Body_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

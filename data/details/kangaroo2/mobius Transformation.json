@@ -1,0 +1,71 @@
+{
+  "description_cn": "<p>使用4d旋转的任何几何图形的3d莫比乌斯变换。</p><p>莫比乌斯指环（一种拓扑学结构）。可以想象一下，整个空间围绕设定的圆进行旋转，转化量则是控制停在旋转的某一刻。</p>",
+  "description_en": "<p>3D Möbius transformation of any geometry using 4D rotation.\r\r</p><p>A Möbius ring (a type of topological structure). Imagine the entire space revolving around a predetermined circle, with the transformation controlling the point at which the rotation stops.</p>",
+  "images": [
+    "mobius Transformation.png",
+    "mobius Transformation.gif"
+  ],
+  "video": "",
+  "tags": [
+    "点",
+    "线"
+  ],
+  "parameters": [
+    {
+      "name": "G",
+      "cn": "几何体",
+      "en": "Geometry",
+      "default": "Null，几何体",
+      "desc_cn": "要变换的几何体",
+      "desc_en": "Input Geometry to transform"
+    },
+    {
+      "name": "C",
+      "cn": "圆",
+      "en": "Circle",
+      "default": "R:1.00mm,圆",
+      "desc_cn": "定义变换的圆。圆上的点将保持在圆上，所有其他点将被拉过并绕着圆旋转。",
+      "desc_en": "Circle defining the transformation. Points on this circle will stay on it, and all other points are pulled through and around it"
+    },
+    {
+      "name": "T",
+      "cn": "转化量",
+      "en": "Number",
+      "default": "0.785398，数字",
+      "desc_cn": "变换量。2π 使其恢复到原始状态。",
+      "desc_en": "Amount of transformation. 2π brings it back to the original"
+    },
+    {
+      "name": "Q",
+      "cn": "Q",
+      "en": "Q",
+      "default": "0，数字",
+      "desc_cn": "此参数控制绕圆轴的旋转。设置为 1 表示等倾角旋转。",
+      "desc_en": "\nThis parameter controls the rotation around the axis of the circle. Set to 1 for Isoclinic rotations\n"
+    },
+    {
+      "name": "F",
+      "cn": "修复球",
+      "en": "Fixsphere",
+      "default": "False，布尔值",
+      "desc_cn": "如果为真，此操作将变换并缩放几何体，使输入圆所定义的球面上的点始终位于该球面上。",
+      "desc_en": "If true, this transforms and scales the geometry so that points on the sphere defined by the input circle stay on that sphere"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "G",
+      "cn": "几何体",
+      "en": "Geometry",
+      "default": "Null，几何体",
+      "desc_cn": "变换后的几何体",
+      "desc_en": "Transformed Geometry"
+    }
+  ],
+  "examples": [
+    "mobius Transformation_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

@@ -1,0 +1,46 @@
+{
+  "description_cn": "<p>调整一个四边形网格以使顶点成为圆锥形-这样该网格具有一个 面-面 偏移（有关详细信息，请参见论文“圆形和圆锥形的网格的焦点几何形状”）。与Plagiarize一起使用。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Adjust a quad mesh to make vertices conical - so the mesh has a face-face offset (See the paper 'The focal geometry of circular and conical meshes' for details). Use together with Planarize。</span></p>",
+  "images": [
+    "Conicalize.png",
+    "Conicalize.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "网格",
+      "desc_en": "mesh"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "P",
+      "cn": "圆锥形",
+      "en": "Pressure",
+      "default": "Null",
+      "desc_cn": "生成的圆锥形",
+      "desc_en": "Planarize out"
+    }
+  ],
+  "examples": [
+    "Conicalize_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

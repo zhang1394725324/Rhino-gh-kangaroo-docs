@@ -1,0 +1,68 @@
+{
+  "description_cn": "<p>在给定的迭代次数后引起爆炸。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Causes an explosion after a given number of iterations</span></p>",
+  "images": [
+    "Bomb.png",
+    "Bomb.gif"
+  ],
+  "video": "",
+  "tags": [],
+  "parameters": [
+    {
+      "name": "Location",
+      "cn": "位置",
+      "en": "Location",
+      "default": "Null，点",
+      "desc_cn": "该点将成为爆炸的中心。",
+      "desc_en": "The point which will be the center of the explosion"
+    },
+    {
+      "name": "Points",
+      "cn": "影响点",
+      "en": "Points",
+      "default": "Null，点",
+      "desc_cn": "受爆炸影响的点",
+      "desc_en": "The points which will be affected by the explosion"
+    },
+    {
+      "name": "Detonation",
+      "cn": "爆震时间",
+      "en": "Detonation",
+      "default": "100，整数",
+      "desc_cn": "爆炸发生的求解器迭代",
+      "desc_en": "The solver iteration at which the explosion will occur"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "5，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    },
+    {
+      "name": "Reset ",
+      "cn": "复位",
+      "en": "Reset ",
+      "default": "布尔值",
+      "desc_cn": "将其连接到于求解器组件重置输入连接的相同按钮。",
+      "desc_en": "Connect this to the same button you have connected to the Solver component reset input"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "B",
+      "cn": "炸弹",
+      "en": "Bomb",
+      "default": "Null",
+      "desc_cn": "炸弹",
+      "desc_en": "Bomb Goal"
+    }
+  ],
+  "examples": [
+    "Bomb_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

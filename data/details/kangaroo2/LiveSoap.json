@@ -1,0 +1,70 @@
+{
+  "description_cn": "<p>为了生成最小和CMC（分别为零和恒定的平均曲率）的网格，它们在松弛期间会调整其连接性以保持三角形的质量。</p><p>使网格模拟生成肥皂泡膜。实体网格可以对生成的肥皂泡膜的体积进行控制。</p>",
+  "description_en": "<p>To generate minimum and CMC (zero and constant mean curvature, respectively) meshes, their connectivity is adjusted during relaxation to maintain the quality of the triangles.</p><p>The mesh simulation generates a soap bubble film. The solid mesh allows for control over the volume of the generated soap bubble film.</p>",
+  "images": [
+    "LiveSoap.png",
+    "LiveSoap.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "要负载的网格",
+      "desc_en": "The mesh to minimize"
+    },
+    {
+      "name": "U",
+      "cn": "使用体积",
+      "en": "UseVolume ",
+      "default": "False，布尔值",
+      "desc_cn": "如果为True，则找到具有给定体积的 CMC 网格。如果为False，则找到最小曲面。",
+      "desc_en": "If true this will find a CMC mesh with a given volume. If false it finds a minimal surface"
+    },
+    {
+      "name": "V",
+      "cn": "体积变化",
+      "en": "VolumeChange",
+      "default": "0，数字",
+      "desc_cn": "相对于初始网格的体积差异。如果 UseVolume 为 false，则忽略此差异。",
+      "desc_en": "Volume difference relative to starting mesh. Ignored if UseVolume is false"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    },
+    {
+      "name": "R",
+      "cn": "复位",
+      "en": "Reset",
+      "default": "False，布尔值",
+      "desc_cn": "重置网格",
+      "desc_en": "Reset the meshing"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "LS",
+      "cn": "肥皂泡",
+      "en": "LS",
+      "default": "Null",
+      "desc_cn": "肥皂泡",
+      "desc_en": "LiveSoap out"
+    }
+  ],
+  "examples": [
+    "LiveSoap_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

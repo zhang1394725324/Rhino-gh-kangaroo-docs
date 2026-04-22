@@ -1,0 +1,46 @@
+{
+  "description_cn": "<p>调整其刚度以保持恒定力的元素。</p><p>使连接的直线拉力达到平衡状态。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">An element which adapts its stiffness to maintain a constant force。</span></p><p>This brings the linear tension in the connection to a balanced state.</p>",
+  "images": [
+    "ConstantTension.png",
+    "ConstantTension.gif"
+  ],
+  "video": "",
+  "tags": [
+    "线"
+  ],
+  "parameters": [
+    {
+      "name": "Line",
+      "cn": "直线",
+      "en": "Line",
+      "default": "Null，曲线",
+      "desc_cn": "直线",
+      "desc_en": "Line"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度——拉伸强度为正，压缩强度为负。",
+      "desc_en": "Strength - positive for tension, negative for compression"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "CT",
+      "cn": "",
+      "en": "ConstantTension",
+      "default": "Null",
+      "desc_cn": "",
+      "desc_en": "ConstantTension out"
+    }
+  ],
+  "examples": [
+    "ConstantTension_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

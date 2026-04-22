@@ -1,0 +1,46 @@
+{
+  "description_cn": "<p>保持2条曲线之间的曲率连续性。</p><p><strong>根据第一条曲线的末端三个控制点，及第二条曲线起始端的两个控制点（要注意序号顺序是先1后0），使两条曲线在这两端的曲率具有连续性。</strong></p><p><span style=\"color: rgb(230, 0, 0);\">当然也可以任意指定不同位置的控制点，那么两条曲线就会按照指定控制点的曲线曲率对齐。</span></p>",
+  "description_en": "<p>Maintain the curvature continuity between the two curves.\r\rBased on the three control points at the end of the first curve and the two control points at the beginning of the second curve (note that the sequence number is 1 first and then 0), the curvature of the two curves is made continuous at these two ends.\r\rOf course, you can also specify control points at different locations, and then the two curves will be aligned according to the curve curvature of the specified control points.</p>",
+  "images": [
+    "G2.png",
+    "G2.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "Points ",
+      "cn": "点",
+      "en": "Points ",
+      "default": "Null，点",
+      "desc_cn": "5个点——第一条曲线末端的三个控制点和第二条曲线起点的三个控制点，中间那个控制点由两条曲线共用。",
+      "desc_en": "5 points - the three control points at the end of the 1st curve, and the 3 at the start of the 2nd curve, with the middle one shared by both"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": ""
+    }
+  ],
+  "outputs": [
+    {
+      "name": "G2",
+      "cn": "G2目标",
+      "en": "G2",
+      "default": "Null",
+      "desc_cn": "",
+      "desc_en": "G2 Goal"
+    }
+  ],
+  "examples": [
+    "G2_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

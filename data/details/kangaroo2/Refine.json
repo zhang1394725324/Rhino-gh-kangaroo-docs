@@ -1,0 +1,46 @@
+{
+  "description_cn": "<p>将每个四边形分成4个四边形，将每个三角形分成4个三角形。</p><p>重新细分三角形或四边形网格。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Divide each quad into 4 quads, and each triangle into 4 triangles。</span></p>",
+  "images": [
+    "Refine.png",
+    "Refine.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Meshes",
+      "default": "Null，网格",
+      "desc_cn": "要细化的网格",
+      "desc_en": "Mesh to refine"
+    },
+    {
+      "name": "L",
+      "cn": "级别",
+      "en": "Level",
+      "default": "1，整数",
+      "desc_cn": "细分级别",
+      "desc_en": "Level of subdivision"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "细分的网格",
+      "desc_en": "Refined Mesh"
+    }
+  ],
+  "examples": [
+    "Refine_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

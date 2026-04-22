@@ -1,0 +1,55 @@
+{
+  "description_cn": "接入解算器后，可以用鼠标手动拖拽点来控制物体变形和移动。这是一个特殊的Goal运算器，当连接到GoalObjects中，按住键盘的alt，在Rhino视窗中鼠标左键按住单击拖拽可以移动点。  注意：即便在顶视图拖拽时，点不止会在xy平面上移动，其他方向也会有小幅度偏移，要想固定在xy上移动，请把所有点接入OnPlane运算器。  Weighting/Stiffness/Strength（权重/刚度/强度）三个参数可以任意设置，整个系统会保持稳定（可以用于模拟真实材料的刚度）假设在最强和最弱的约束之间差距非常大（比如一个设置成10的12次方，另一个设置成10的-12次方），那么点朝着较弱的目标变动的速度将会变慢，可能需要很长的时间才能有收敛的结果。  如果希望某一个目标的优先级更强，但仍需要一些低优先级的条件影响，可以先将权重设置成一样，然后按比例增加优先级更强的，直到得到预期结果。",
+  "description_en": "After connecting to the solver, you can manually drag points with the mouse to control the deformation and movement of objects. This is a special Goal solver. When connected to GoalObjects, hold down the Alt key and left-click and drag in the Rhino window to move the points. Note: Even when dragging in the top view, points will not only move in the xy plane but also have slight offsets in other directions. To fix the movement in the xy plane, connect all points to the OnPlane solver. The three parameters Weighting/Stiffness/Strength can be set arbitrarily, and the entire system will remain stable (which can be used to simulate the stiffness of real materials). If the difference between the strongest and weakest constraints is very large (for example, one set to 10^12 and the other to 10^-12), the point will move slower towards the weaker target, and it may take a long time to converge. If you want a certain target to have a higher priority but still need some lower priority conditions to influence it, you can first set the weights to be the same, and then increase the weights of the higher priority targets proportionally until you get the desired result.",
+  "images": [
+    "Grab.png",
+    "Grab.gif"
+  ],
+  "video": "",
+  "tags": [
+    "常用",
+    "鼠标"
+  ],
+  "parameters": [
+    {
+      "name": "On",
+      "cn": "开启",
+      "en": "On",
+      "default": "True，布尔值",
+      "desc_cn": "启用后，使用鼠标左键在 Rhino 视口中拖动顶点。",
+      "desc_en": "When on, drag vertices in the Rhino viewport with LMB"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    },
+    {
+      "name": "Range",
+      "cn": "范围",
+      "en": "Range",
+      "default": "3，数字",
+      "desc_cn": "夺取点的最大距离",
+      "desc_en": "Maximum distance from which to grab points"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "G",
+      "cn": "抓取的数据",
+      "en": "Grab",
+      "default": "Null",
+      "desc_cn": "连接到目标输入",
+      "desc_en": "Connect to Goals input"
+    }
+  ],
+  "examples": [
+    "Grab_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

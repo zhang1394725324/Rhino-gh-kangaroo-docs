@@ -1,0 +1,46 @@
+{
+  "description_cn": "<p>细化网格，按父面分离输出。</p><p>分割原始网格，并细分子网格。</p>",
+  "description_en": "<p>Refine the mesh and output it separately according to the parent face.\r\r</p><p>Divide the original mesh and further subdivide it into sub-mesh.</p>",
+  "images": [
+    "ByParent.png",
+    "ByParent.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "细分的网格",
+      "desc_en": "Mesh to refine"
+    },
+    {
+      "name": "L",
+      "cn": "级别",
+      "en": "Level ",
+      "default": "1，整数",
+      "desc_cn": "细分级别",
+      "desc_en": "Level of subdivision"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "细分后的网格列表",
+      "desc_en": "Refined Meshes list"
+    }
+  ],
+  "examples": [
+    "ByParent_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

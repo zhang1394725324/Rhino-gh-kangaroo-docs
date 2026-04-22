@@ -1,0 +1,38 @@
+{
+  "description_cn": "<p>默认在XY平面上增加地板作为碰撞面。</p>",
+  "description_en": "<p>By default, a floor is added on the XY plane as a collision surface.</p>",
+  "images": [
+    "Floor.png",
+    "Floor.gif"
+  ],
+  "video": "",
+  "tags": [
+    "地面"
+  ],
+  "parameters": [
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "H",
+      "cn": "强度数据",
+      "en": "Floor",
+      "default": "Null",
+      "desc_cn": "强度",
+      "desc_en": "Floor out"
+    }
+  ],
+  "examples": [
+    "Floor_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

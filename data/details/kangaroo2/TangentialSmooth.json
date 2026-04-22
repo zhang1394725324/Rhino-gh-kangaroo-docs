@@ -1,0 +1,46 @@
+{
+  "description_cn": "平滑生成的肥皂膜网格。仅在局部切平面上平滑网格。与 SoapFilm 配合使用。可以用于平滑一个网格的顶点位置，但只是表面方向上的平滑，不会影响表面的正常向量。所以它能保持顶点更加均匀，但不会影响整体形状。",
+  "description_en": "Smooths the generated soap film mesh. Smooths the mesh only on local tangent planes. Used in conjunction with SoapFilm. Can be used to smooth the vertex positions of a mesh, but only in the surface direction, without affecting the normal vectors of the surface. Therefore, it maintains more uniform vertices without affecting the overall shape.",
+  "images": [
+    "TangentialSmooth.png",
+    "TangentialSmooth.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "网格",
+      "desc_en": "mesh"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1",
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "P",
+      "cn": "平滑的网格",
+      "en": "Smooths",
+      "default": "Null",
+      "desc_cn": "平滑的网格",
+      "desc_en": "Smooths out"
+    }
+  ],
+  "examples": [
+    "TangentialSmooth_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

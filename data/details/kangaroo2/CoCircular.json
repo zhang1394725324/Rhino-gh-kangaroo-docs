@@ -1,0 +1,46 @@
+{
+  "description_cn": "<p>将多点拉回至一个拟合圆上。</p><p><span style=\"background-color: rgb(248, 250, 252); color: rgb(51, 65, 85);\">共圆约束，使多个点保持在同一圆周上。</span></p>",
+  "description_en": "<p>Pull multiple points back onto a fitted circle.\r\r</p><p>Concyclic constraint ensures that multiple points remain on the same circle.</p>",
+  "images": [
+    "CoCircular.png",
+    "CoCircular.gif"
+  ],
+  "video": "",
+  "tags": [
+    "点"
+  ],
+  "parameters": [
+    {
+      "name": "Points",
+      "cn": "使共面的点",
+      "en": "Points",
+      "default": "Null，点",
+      "desc_cn": "使点共面",
+      "desc_en": "Points to make coplanar"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "",
+      "desc_en": ""
+    }
+  ],
+  "outputs": [
+    {
+      "name": "C",
+      "cn": "共圆",
+      "en": "CoCircular",
+      "default": "Null",
+      "desc_cn": "生成的共圆",
+      "desc_en": "CoCircular out"
+    }
+  ],
+  "examples": [
+    "CoCircular_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

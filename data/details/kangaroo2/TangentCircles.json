@@ -1,0 +1,52 @@
+{
+  "description_cn": "<p>生成面内切圆，以顶点为中心的圆堆积或对偶。</p><p>根据网格顶点生成以顶点为圆心的相切圆（内圆）、及三角形内切圆（圆填充）及内切圆圆心的连线（对偶）。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Generate face incircles, circle packing centred on vertices, or incircular dual。</span></p><p>Generate tangent circles (inner circles) centered at the vertices of the mesh, inscribed circles (circle fill) of triangles, and lines connecting the centers of the inscribed circles (dual circles) based on the mesh vertices.</p>",
+  "images": [
+    "TangentCircles.png",
+    "TangentCircles.gif"
+  ],
+  "video": "",
+  "tags": [],
+  "parameters": [
+    {
+      "name": "Mesh",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "网格",
+      "desc_en": "Mesh"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "I",
+      "cn": "内圆",
+      "en": "Incircles",
+      "default": "Null，圆",
+      "desc_cn": "内圆",
+      "desc_en": "Incircles"
+    },
+    {
+      "name": "C",
+      "cn": "圆填充",
+      "en": "Circle Packing ",
+      "default": "Null，圆",
+      "desc_cn": "圆填充",
+      "desc_en": "C"
+    },
+    {
+      "name": "D",
+      "cn": "对偶",
+      "en": "Dual",
+      "default": "Null，曲线",
+      "desc_cn": "基于内圆中心的对偶",
+      "desc_en": "Dual based on incircle centers"
+    }
+  ],
+  "examples": [
+    "TangentCircles_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

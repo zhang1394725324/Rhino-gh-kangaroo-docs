@@ -1,0 +1,70 @@
+{
+  "description_cn": "<p>一对实体之间的碰撞。</p><p>实体（网格）之间发生碰撞。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Collision between a pair of rigid bodies。</span></p><p>Collisions occur between entities (mesh).</p>",
+  "images": [
+    "Rigid Body Collide.png",
+    "Rigid Body Collide.gif"
+  ],
+  "video": "",
+  "tags": [
+    "线"
+  ],
+  "parameters": [
+    {
+      "name": "MeshA",
+      "cn": "网格A",
+      "en": "MeshA",
+      "default": "Null，网格",
+      "desc_cn": "网格A",
+      "desc_en": "MeshA"
+    },
+    {
+      "name": "MeshB",
+      "cn": "网格B",
+      "en": "MeshB",
+      "default": "Null，网格",
+      "desc_cn": "网格B",
+      "desc_en": "MeshB"
+    },
+    {
+      "name": "PlaneA",
+      "cn": "平面A",
+      "en": "PlaneA",
+      "default": "Null，平面",
+      "desc_cn": "网格A的初始平面",
+      "desc_en": "The initial frame of meshA"
+    },
+    {
+      "name": "PlaneB",
+      "cn": "平面B",
+      "en": "PlaneB",
+      "default": "Null，平面",
+      "desc_cn": "网格B的初始平面",
+      "desc_en": "The initial frame of meshB"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "SC",
+      "cn": "实体碰撞",
+      "en": "SolidCollide",
+      "default": "Null",
+      "desc_cn": "实体碰撞",
+      "desc_en": "SolidCollide"
+    }
+  ],
+  "examples": [
+    "Rigid Body Collide_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

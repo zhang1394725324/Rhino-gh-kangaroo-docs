@@ -1,0 +1,79 @@
+{
+  "description_cn": "计算得出指定迭代次数后的结果。前面的动量求解和求解器在开启的状态下会无限次迭代计算，直到手动停止。这个运算器则是根据设定的迭代次数输出结果。简单来说，就是计算输出运动或变形过程中某一个时间点的结果。",
+  "description_en": "It calculates the result after a specified number of iterations. The previous momentum solver and solver will iterate indefinitely when enabled, until manually stopped. This calculator outputs the result based on the set number of iterations. Simply put, it calculates and outputs the result at a specific point in time during the motion or deformation process.",
+  "images": [
+    "ZombieSolver.png",
+    "ZombieSolver.gif"
+  ],
+  "video": "",
+  "tags": [
+    "求解器",
+    "常用"
+  ],
+  "parameters": [
+    {
+      "name": "GoalObjects ",
+      "cn": "目标对象",
+      "en": "GoalObjects ",
+      "default": "Null",
+      "desc_cn": "目标对象",
+      "desc_en": "GoalObjects"
+    },
+    {
+      "name": "Threshold",
+      "cn": "临界值",
+      "en": "Threshold",
+      "default": "0，数字",
+      "desc_cn": "当平均移动量小于此值时停止（默认值为 1e-15）",
+      "desc_en": "Stop when average movement is less than this (default is 1e-15)"
+    },
+    {
+      "name": "Tolerance",
+      "cn": "公差",
+      "en": "Tolerance",
+      "default": "0.0001",
+      "desc_cn": "距离小于此值的点将被合并成一个粒子。",
+      "desc_en": "Points closer than this distance will be combined into a single particle"
+    },
+    {
+      "name": "MaxIterations",
+      "cn": "最大迭代",
+      "en": "MaxIterations",
+      "default": "50000，整数",
+      "desc_cn": "如果尚未达到能量阈值，则在执行这些迭代次数后停止。",
+      "desc_en": "If the energy threshold has not been reached, it will stop after this many iterations"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "I",
+      "cn": "迭代次数",
+      "en": "Iterations",
+      "default": "0，整数",
+      "desc_cn": "迭代次数",
+      "desc_en": "Iterations"
+    },
+    {
+      "name": "V",
+      "cn": "点",
+      "en": "Point",
+      "default": "Null，点",
+      "desc_cn": "点",
+      "desc_en": "point"
+    },
+    {
+      "name": "O",
+      "cn": "输出",
+      "en": "Output",
+      "default": "Null",
+      "desc_cn": "目标函数输出",
+      "desc_en": "GoalFunction Outputs"
+    }
+  ],
+  "examples": [
+    "ZombieSolver_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

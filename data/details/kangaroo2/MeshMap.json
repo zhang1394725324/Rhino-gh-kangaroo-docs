@@ -1,0 +1,62 @@
+{
+  "description_cn": "<p>将点从一个网格映射到另一个网格。</p><p><strong>将源网格上的点映射到目标网格上。</strong></p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Map points from one mesh to another。</span></p>",
+  "images": [
+    "MeshMap.png",
+    "MeshMap.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M1",
+      "cn": "源网格",
+      "en": "SourceMesh",
+      "default": "Null，网格",
+      "desc_cn": "源网格",
+      "desc_en": "Mesh to map from"
+    },
+    {
+      "name": "M2",
+      "cn": "目标网格",
+      "en": "TargetMesh",
+      "default": "Null，网格",
+      "desc_cn": "目标网格",
+      "desc_en": "Mesh to map to"
+    },
+    {
+      "name": "P",
+      "cn": "点",
+      "en": "Point",
+      "default": "Null，点",
+      "desc_cn": "映射点",
+      "desc_en": "Point to map"
+    },
+    {
+      "name": "D",
+      "cn": "距离",
+      "en": "Distance",
+      "default": "1，数字",
+      "desc_cn": "最大搜寻距离",
+      "desc_en": "maximum search distance"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "P",
+      "cn": "点",
+      "en": "Point",
+      "default": "Null，点",
+      "desc_cn": "映射后的点",
+      "desc_en": "Mapped point"
+    }
+  ],
+  "examples": [
+    "MeshMap_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

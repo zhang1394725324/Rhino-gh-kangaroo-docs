@@ -1,0 +1,55 @@
+{
+  "description_cn": "对点施加指定方向的力，一个力向量。向量的长度是施加力的大小（牛顿N）",
+  "description_en": "A force vector is a force applied to a point in a specified direction. The length of the vector is the magnitude of the applied force (Newtons, N).",
+  "images": [
+    "Load.png",
+    "Load.gif"
+  ],
+  "video": "",
+  "tags": [
+    "约束",
+    "点"
+  ],
+  "parameters": [
+    {
+      "name": "Point",
+      "cn": "点",
+      "en": "Point",
+      "default": "Null，曲线",
+      "desc_cn": "点（作为索引或点）",
+      "desc_en": "Point (as either index or Point)"
+    },
+    {
+      "name": "FV",
+      "cn": "力向量",
+      "en": "Force vector",
+      "default": "（0,0,1）",
+      "desc_cn": "力向量",
+      "desc_en": "Force vector"
+    },
+    {
+      "name": "W",
+      "cn": "权重",
+      "en": "Weighting",
+      "default": "1",
+      "desc_cn": "标量权重因子（大多数情况下，您可以将其保留为默认值 1.0）",
+      "desc_en": "Scalar weighting factor (for most purposes you can leave this as the default 1.0)"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "U",
+      "cn": "权重",
+      "en": "Unary",
+      "default": "Null",
+      "desc_cn": "numper)\n标 量 加 权 因 子 〔 对 于 大 多 数 用 途 , 您 可 以\n将 其 保 留 为 默 认 值 1.0)",
+      "desc_en": "numper) Scalar weighting factor (For most uses, you can leave it as the default value 1.0)"
+    }
+  ],
+  "examples": [
+    "Load_examples.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

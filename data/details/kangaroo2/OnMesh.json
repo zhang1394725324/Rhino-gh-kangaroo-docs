@@ -1,0 +1,56 @@
+{
+  "description_cn": "将一组点拉向网格。将选定点限制在网格表面.",
+  "description_en": "Drag a set of points toward the mesh. Restrict the selected points to the mesh surface.",
+  "images": [
+    "OnMesh.png",
+    "OnMesh.gif"
+  ],
+  "video": "",
+  "tags": [
+    "约束",
+    "点",
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "Points",
+      "cn": "点",
+      "en": "Points",
+      "default": "Null,点",
+      "desc_cn": "一组点",
+      "desc_en": "Points to make coLinear "
+    },
+    {
+      "name": "Mesh",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null,网格",
+      "desc_cn": "网格",
+      "desc_en": "Mesh"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": 1,
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "P",
+      "cn": "生成的数据",
+      "en": "The generated data",
+      "default": "Null",
+      "desc_cn": "输出的数据",
+      "desc_en": "Output data"
+    }
+  ],
+  "examples": [
+    "OnMesh_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

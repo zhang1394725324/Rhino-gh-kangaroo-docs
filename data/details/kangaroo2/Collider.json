@@ -1,0 +1,72 @@
+{
+  "description_cn": "使点或直线在指定的半径范围发生碰撞。使有厚度的线（棍）之间和不同半径的球体之间发生碰撞（通过设置半径来加快碰撞速度）",
+  "description_en": "Causes points or lines to collide within a specified radius. Causes collisions between lines (sticks) of varying thickness and between spheres of different radii (collision speed can be increased by setting the radius).",
+  "images": [
+    "Collider.png",
+    "Collider.gif"
+  ],
+  "video": "",
+  "tags": [
+    "点",
+    "碰撞",
+    "刚体"
+  ],
+  "parameters": [
+    {
+      "name": "Objects",
+      "cn": "对象",
+      "en": "Objects",
+      "default": "Null",
+      "desc_cn": "线或点",
+      "desc_en": "Lines or points"
+    },
+    {
+      "name": "Radii",
+      "cn": "半径",
+      "en": "Radii",
+      "default": "1",
+      "desc_cn": "对象中每个项目的半径。或者将一个值用于所有。",
+      "desc_en": "A radius for each item in Objects. Alternatively, a single value to use for all"
+    },
+    {
+      "name": "IgnoreA",
+      "cn": "排除A",
+      "en": "IgnoreA",
+      "default": "Null",
+      "desc_cn": "要排除碰撞的配对的第一个索引",
+      "desc_en": "First index of a pair to exclude from collisions"
+    },
+    {
+      "name": "IgnoreB",
+      "cn": "排除B",
+      "en": "IgnoreB",
+      "default": "Null",
+      "desc_cn": "要排除碰撞的配对的第二个索引",
+      "desc_en": "Second index of a pair to exclude from collisions"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1",
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "C",
+      "cn": "碰撞数据",
+      "en": "Collider",
+      "default": "Null",
+      "desc_cn": "碰撞数据",
+      "desc_en": "Collider out"
+    }
+  ],
+  "examples": [
+    "Collider_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

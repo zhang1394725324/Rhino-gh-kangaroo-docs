@@ -1,0 +1,62 @@
+{
+  "description_cn": "<p>平面与实体之间的碰撞。</p><p>实体（网格）与指定平面之间发生碰撞。下图实例中，使多米诺骨牌与地面（XY平面）发生碰撞。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Collision between a plane and a solid。</span></p><p>A collision occurs between an entity (mesh) and a specified plane. In the example below, the dominoes collide with the ground (XY plane).</p>",
+  "images": [
+    "Solid Plane Collide.png",
+    "Solid Plane Collide.gif"
+  ],
+  "video": "",
+  "tags": [
+    "线"
+  ],
+  "parameters": [
+    {
+      "name": "Solid",
+      "cn": "实体",
+      "en": "Solid",
+      "default": "Null，网格",
+      "desc_cn": "实体",
+      "desc_en": "Solid"
+    },
+    {
+      "name": "SolidPlane",
+      "cn": "实体平面",
+      "en": "SolidPlane",
+      "default": "Null，平面",
+      "desc_cn": "实体初始平面",
+      "desc_en": "The initial frame of the solid"
+    },
+    {
+      "name": "CollisionPlane",
+      "cn": "碰撞平面",
+      "en": "CollisionPlane",
+      "default": "World XY，平面",
+      "desc_cn": "要碰撞的平面",
+      "desc_en": "The plane to collide with"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "SP",
+      "cn": "实体平面碰撞",
+      "en": "SolidPlaneCollide",
+      "default": "Null",
+      "desc_cn": "实体平面碰撞",
+      "desc_en": "SolidPlaneCollide"
+    }
+  ],
+  "examples": [
+    "Solid Plane Collide_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

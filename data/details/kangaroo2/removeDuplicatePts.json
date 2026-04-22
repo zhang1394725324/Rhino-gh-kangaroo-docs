@@ -1,0 +1,46 @@
+{
+  "description_cn": "<p>删除公差内的重复点。</p>",
+  "description_en": "<p>Remove duplicate points within the tolerance.</p>",
+  "images": [
+    "removeDuplicatePts.png",
+    "removeDuplicatePts.gif"
+  ],
+  "video": "",
+  "tags": [
+    "点"
+  ],
+  "parameters": [
+    {
+      "name": "P",
+      "cn": "点",
+      "en": "Point",
+      "default": "Null，点",
+      "desc_cn": "要清理的点列表",
+      "desc_en": "list of points to clean"
+    },
+    {
+      "name": "T",
+      "cn": "公差",
+      "en": "Tolerance",
+      "default": "0.01，数字",
+      "desc_cn": "如果沿 x、y 和 z 轴方向的任何点之间的距离小于此值，则这些点将被合并。",
+      "desc_en": "If any points are less than this distance apart along all axes x,y and z, they will be combined"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "Q",
+      "cn": "唯一点",
+      "en": "Point",
+      "default": "Null，点",
+      "desc_cn": "不重复的点列表",
+      "desc_en": "\nConnect to GoalFunctions input\n"
+    }
+  ],
+  "examples": [
+    "removeDuplicatePts_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

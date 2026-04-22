@@ -1,0 +1,45 @@
+{
+  "description_cn": "<p>删除重复线</p>",
+  "description_en": "<p>Remove duplicate lines</p>",
+  "images": [
+    "removeDuplicateLines.png"
+  ],
+  "video": "",
+  "tags": [
+    "线"
+  ],
+  "parameters": [
+    {
+      "name": "L",
+      "cn": "直线",
+      "en": "Lines",
+      "default": "Null，直线",
+      "desc_cn": "要清理的直线列表",
+      "desc_en": "list of lines to clean"
+    },
+    {
+      "name": "t",
+      "cn": "公差",
+      "en": "Tolerance",
+      "default": 0.01,
+      "desc_cn": "起点/终点距离小于此值的线段将被合并。",
+      "desc_en": "lines with start/endpoints closer than this distance will be combined"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "Q",
+      "cn": "唯一的线",
+      "en": "Unique Lines",
+      "default": "Null，直线",
+      "desc_cn": "不重复的线的列表",
+      "desc_en": "list of unique lines"
+    }
+  ],
+  "examples": [
+    "removeDuplicateLines_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

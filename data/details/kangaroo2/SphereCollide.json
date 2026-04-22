@@ -1,0 +1,56 @@
+{
+  "description_cn": "使以点为球心的球体之间发生碰撞。可以用于circle picking处理曲面转化均匀网格。",
+  "description_en": "This causes collisions between spheres centered at a point. It can be used for circle picking to convert curved surfaces into uniform meshes.",
+  "images": [
+    "SphereCollide.png",
+    "SphereCollide.gif"
+  ],
+  "video": "",
+  "tags": [
+    "点",
+    "碰撞",
+    "刚体"
+  ],
+  "parameters": [
+    {
+      "name": "Points",
+      "cn": "点",
+      "en": "Points",
+      "default": "Null，点",
+      "desc_cn": "球体中心碰撞点列表",
+      "desc_en": "List of points at the centres of the spheres to collide"
+    },
+    {
+      "name": "R",
+      "cn": "半径",
+      "en": "Radii",
+      "default": "Null，数字",
+      "desc_cn": "球体的半径",
+      "desc_en": "The radius of the spheres"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1",
+      "desc_cn": "约束强度，值越大效果越明显",
+      "desc_en": "Constraint strength, higher value gives stronger effect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "S",
+      "cn": "球体",
+      "en": "sphere",
+      "default": "Null",
+      "desc_cn": "球体",
+      "desc_en": "sphere"
+    }
+  ],
+  "examples": [
+    "SphereCollide_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

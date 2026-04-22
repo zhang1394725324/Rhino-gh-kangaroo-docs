@@ -1,0 +1,46 @@
+{
+  "description_cn": "<p>展开一条四边形。</p><p>将网格展开在一个平面上。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Unroll a strip of quads。</span></p><p>Unfold the grid onto a plane。</p>",
+  "images": [
+    "Unroller.png",
+    "Unroller.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Strip ",
+      "default": "Null，网格",
+      "desc_cn": "要展开的网格（必须是四边形的非循环条）",
+      "desc_en": "Mesh to unroll (must be a non looping strip of quads)"
+    },
+    {
+      "name": "T",
+      "cn": "展开方式",
+      "en": "Unroll",
+      "default": "1，数字",
+      "desc_cn": "展开多少（0保持原样，1完全展开）",
+      "desc_en": "How much to unroll (0 keeps original, 1 is completely unrolled"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "U",
+      "cn": "展开的网格",
+      "en": "Unrolled ",
+      "default": "Null，网格",
+      "desc_cn": "展开的网格",
+      "desc_en": "Unrolled Mesh"
+    }
+  ],
+  "examples": [
+    "Unroller_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

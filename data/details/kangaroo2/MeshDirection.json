@@ -1,0 +1,38 @@
+{
+  "description_cn": "<p>排序网格的面方向。</p><p>网格面方向整理排序。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Sort the face directions of a mesh。</span></p><p>The mesh surfaces are sorted and arranged according to their orientation.</p>",
+  "images": [
+    "MeshDirection.png",
+    "MeshDirection.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Meshes",
+      "default": "Null，网格",
+      "desc_cn": "要排序的网格",
+      "desc_en": "Mesh to sort"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "M",
+      "cn": "排序后的网格",
+      "en": "SortedMesh ",
+      "default": "Null，网格",
+      "desc_cn": "排序后的网格",
+      "desc_en": "Mesh with face directions sorted"
+    }
+  ],
+  "examples": [
+    "MeshDirection_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

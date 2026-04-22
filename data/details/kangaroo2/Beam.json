@@ -1,0 +1,102 @@
+{
+  "description_cn": "<p>抗弯梁；</p><p>使指定的平面之间的几何体具有一定的抗弯性能。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Beam resisting bending and torsion。</span></p>",
+  "images": [
+    "Beam.png",
+    "Beam.gif"
+  ],
+  "video": "",
+  "tags": [
+    "刚体"
+  ],
+  "parameters": [
+    {
+      "name": "StartFrame",
+      "cn": "起始平面",
+      "en": "StartFrame",
+      "default": "Null，平面",
+      "desc_cn": "梁一端的平面，其Z轴与梁方向对齐。",
+      "desc_en": "The plane at one end of the beam, its Z axis aligned with the beam direction"
+    },
+    {
+      "name": "EndFrame",
+      "cn": "末端平面",
+      "en": "EndFrame",
+      "default": "Null，平面",
+      "desc_cn": "应该平行于起始平面",
+      "desc_en": "Should be parallel to StartFrame"
+    },
+    {
+      "name": "StartNode",
+      "cn": "起始节点",
+      "en": "StartNode",
+      "default": "Null，平面",
+      "desc_cn": "定义梁起点附着到的节点的平面。如果没有提供，则默认为XY对齐。",
+      "desc_en": "The plane defining the node the start of the beam attaches to. If none supplied this defaults to XY aligned"
+    },
+    {
+      "name": "EndNode",
+      "cn": "末端节点",
+      "en": "EndNode",
+      "default": "Null，平面",
+      "desc_cn": "定义梁末端附着到的节点的平面。如果没有提供，则默认为XY对齐。",
+      "desc_en": "The plane defining the node the end of the beam attaches to. If none supplied this defaults to XY aligned"
+    },
+    {
+      "name": "E",
+      "cn": "杨氏模量",
+      "en": "E",
+      "default": "1，数字",
+      "desc_cn": "杨氏模量：描述固体材料抵抗形变能力的物理量。",
+      "desc_en": "Young's Modulus"
+    },
+    {
+      "name": "A",
+      "cn": "截面积",
+      "en": "A",
+      "default": "1，数字",
+      "desc_cn": "截面积",
+      "desc_en": "Cross-section area"
+    },
+    {
+      "name": "Ix",
+      "cn": "X的二阶矩",
+      "en": "Ix",
+      "default": "1，数字",
+      "desc_cn": "面积X的二阶矩",
+      "desc_en": "2nd moment of area about X"
+    },
+    {
+      "name": "Iy",
+      "cn": "Y的二阶矩",
+      "en": "Iy",
+      "default": "1，数字",
+      "desc_cn": "面积Y的二阶矩",
+      "desc_en": "2nd moment of area about Y"
+    },
+    {
+      "name": "GJ",
+      "cn": "GJ",
+      "en": "GJ",
+      "default": "1，数字",
+      "desc_cn": "剪切模量*扭转常数",
+      "desc_en": "Shear modulus * torsional constant"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "B",
+      "cn": "生成的梁",
+      "en": "Beam",
+      "default": "Null",
+      "desc_cn": "生成的梁",
+      "desc_en": "Beam"
+    }
+  ],
+  "examples": [
+    "Beam_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

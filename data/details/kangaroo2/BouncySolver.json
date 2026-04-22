@@ -1,0 +1,100 @@
+{
+  "description_cn": "可以通过调节衰减和迭代参数控制运动计算的快慢，常用于模拟物体自由落体、风力等变化比较快的计算。公差：（默认值0.01）即在指定距离范围内有重合点的话，会将这几个点合并成一个点来计算。比如矩形网格生成张拉膜的计算中，锚点其实包含在网格顶点中，但是解算器只计算输出锚点的结果。衰减(0-1之，默认0.99)、迭代（默认为10）：简单理解，直观效果就是数值越大，计算生成的速度越快，物体运动和变化的速度也越快，但是精细度会降低，类似视频帧数降低就会出现跳帧。树形数据结构复杂时，可以用下图的连接方法，通过树形数据的合并和反拍平（计算器计算过程会自动拍平所有数据），使数据计算前后的路径结构一致，便于数据筛选。【注意要养成良好习惯：不需要再计算时，将解算器切换为关闭状态，否则如果没有设定临界值，解算器会一直计算。】",
+  "description_en": "The speed of motion calculation can be controlled by adjusting the attenuation and iteration parameters, and it is often used to simulate calculations involving rapid changes such as free fall and wind. Tolerance (default 0.01): If there are overlapping points within a specified distance range, these points will be merged into one for calculation. For example, in the calculation of generating a tensile membrane from a rectangular mesh, the anchor point is actually included in the mesh vertices, but the solver only calculates and outputs the result for the anchor point. Attenuation (0-1, default 0.99), Iteration (default 10): Simply put, the larger the value, the faster the calculation and the faster the object moves and changes, but the precision will decrease, similar to how a decrease in video frame rate results in frame skipping. When the tree-like data structure is complex, the connection method shown in the image below can be used. By merging and flattening the tree-like data (the calculator automatically flattens all data during the calculation process), the path structure before and after data calculation is consistent, facilitating data filtering.",
+  "images": [
+    "BouncySolver.png",
+    "BouncySolver.gif"
+  ],
+  "video": "",
+  "tags": [],
+  "parameters": [
+    {
+      "name": "GoalObjects ",
+      "cn": "目标对象",
+      "en": "GoalObjects ",
+      "default": "Null",
+      "desc_cn": "目标对象",
+      "desc_en": "GoalObjects"
+    },
+    {
+      "name": "Reset",
+      "cn": "复位",
+      "en": "Reset",
+      "default": "False，布尔值",
+      "desc_cn": "硬重置（完全重建粒子列表和索引）",
+      "desc_en": "Hard Reset (completely rebuild the particle list and indexing)"
+    },
+    {
+      "name": "Threshold",
+      "cn": "临界值",
+      "en": "Threshold",
+      "default": "0，数字",
+      "desc_cn": "当平均移动量小于此值时停止（默认值为 1e-15）",
+      "desc_en": "Stop when average movement is less than this (default is 1e-15)"
+    },
+    {
+      "name": "Tolerance",
+      "cn": "公差",
+      "en": "Tolerance",
+      "default": "0.0001",
+      "desc_cn": "距离小于此值的点将被合并成一个粒子。",
+      "desc_en": "Points closer than this distance will be combined into a single particle"
+    },
+    {
+      "name": "Damping",
+      "cn": "衰减",
+      "en": "Damping",
+      "default": "0.99",
+      "desc_cn": "介于 0 和 1 之间的值，表示迭代之间速度的保留程度。",
+      "desc_en": "Value between 0 and 1, for how much velocity is preserved between iterations"
+    },
+    {
+      "name": "Iterations",
+      "cn": "迭代",
+      "en": "Iterations",
+      "default": "10，整数",
+      "desc_cn": "将对每个结果输出执行这么多次内部迭代",
+      "desc_en": "This many internal iterations will be performed for each results output"
+    },
+    {
+      "name": "On",
+      "cn": "开启",
+      "en": "On",
+      "default": "True，布尔值",
+      "desc_cn": "如果为真，Kangaroo 将继续迭代，直到达到给定的阈值。",
+      "desc_en": "\nIf true, Kangaroo will continue to iterate until reaching the given threshold value\n"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "I",
+      "cn": "迭代次数",
+      "en": "Iterations",
+      "default": "0，整数",
+      "desc_cn": "迭代次数",
+      "desc_en": "Iterations"
+    },
+    {
+      "name": "V",
+      "cn": "点",
+      "en": "Point",
+      "default": "Null，点",
+      "desc_cn": "点",
+      "desc_en": "point"
+    },
+    {
+      "name": "O",
+      "cn": "输出",
+      "en": "Output",
+      "default": "Null",
+      "desc_cn": "目标函数输出，每一个goal都会输出一种数据，输出后产生树形数据结构",
+      "desc_en": "GoalFunction Outputs"
+    }
+  ],
+  "examples": [
+    "BouncySolver_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

@@ -1,0 +1,62 @@
+{
+  "description_cn": "<p>为在铰链力中使用的每个内部边缘获取4点。</p><p><strong>获取每个网格面的四个顶点，用来计算铰链力。</strong></p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Get the 4 points for each internal edge to use in a Hinge Force</span></p>",
+  "images": [
+    "HingePoints.png",
+    "HingePoints.gif"
+  ],
+  "video": "",
+  "tags": [
+    "网格"
+  ],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "要得到点的网格",
+      "desc_en": "Mesh"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "1",
+      "cn": "点1",
+      "en": "Point 1",
+      "default": "Null，点",
+      "desc_cn": "点1",
+      "desc_en": "Point 1"
+    },
+    {
+      "name": "2",
+      "cn": "点2",
+      "en": "Point 2",
+      "default": "Null，点",
+      "desc_cn": "点2",
+      "desc_en": "Point 2"
+    },
+    {
+      "name": "3",
+      "cn": "点3",
+      "en": "Point 3",
+      "default": "Null，点",
+      "desc_cn": "点3",
+      "desc_en": "Point 3"
+    },
+    {
+      "name": "4",
+      "cn": "点4",
+      "en": "Point 4",
+      "default": "Null，点",
+      "desc_cn": "点4",
+      "desc_en": "Point 4"
+    }
+  ],
+  "examples": [
+    "HingePoints_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

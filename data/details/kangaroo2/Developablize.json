@@ -1,0 +1,44 @@
+{
+  "description_cn": "<p>将三角形网格转换为带有褶皱的可展面片。基于 Stein、Grinspun 和 Crane 的论文《三角形网格的可展性》。</p><p>将网格转换成可以折叠的多个三角形网格。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Turn a triangular mesh into developable patches with creases. Based on the paper 'Developability of Triangle Meshes' by Stein, Grinspun &amp; Crane</span></p>",
+  "images": [
+    "Developablize.png",
+    "Developablize.gif"
+  ],
+  "video": "",
+  "tags": [],
+  "parameters": [
+    {
+      "name": "M",
+      "cn": "网格",
+      "en": "Mesh",
+      "default": "Null，网格",
+      "desc_cn": "网格",
+      "desc_en": "Mesh"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "D",
+      "cn": "生成的数据",
+      "en": "D",
+      "default": "Null",
+      "desc_cn": "生成的数据",
+      "desc_en": "生成的数据"
+    }
+  ],
+  "examples": [
+    "Developablize_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

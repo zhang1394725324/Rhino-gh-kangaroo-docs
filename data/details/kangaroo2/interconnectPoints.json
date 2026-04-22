@@ -1,0 +1,39 @@
+{
+  "description_cn": "<p>多点之间连成直线。</p>",
+  "description_en": "<p>Multiple points can be connected by a straight line.</p>",
+  "images": [
+    "interconnectPoints.png",
+    "interconnectPoints.gif"
+  ],
+  "video": "",
+  "tags": [
+    "点",
+    "线"
+  ],
+  "parameters": [
+    {
+      "name": "P",
+      "cn": "点",
+      "en": "Point",
+      "default": "Null，点",
+      "desc_cn": "互连点列表",
+      "desc_en": "list of points to interconnect"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "I",
+      "cn": "连线",
+      "en": "New Output",
+      "default": "Null，曲线",
+      "desc_cn": "互连线",
+      "desc_en": "interconnection lines"
+    }
+  ],
+  "examples": [
+    "interconnectPoints_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
