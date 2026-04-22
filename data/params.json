@@ -1,0 +1,78 @@
+{
+  "Params": [
+    {
+      "name": "NumberSlider",
+      "cn": "数字滑块",
+      "en": "Number Slider",
+      "parameters": [],
+      "outputs": [{ "name": "Value" }],
+      "spriteX": 0,
+      "spriteY": 0
+    },
+    {
+      "name": "IntegerSlider",
+      "cn": "整数滑块",
+      "en": "Integer Slider",
+      "parameters": [],
+      "outputs": [{ "name": "Value" }],
+      "spriteX": 48,
+      "spriteY": 0
+    },
+    {
+      "name": "BooleanToggle",
+      "cn": "布尔开关",
+      "en": "Boolean Toggle",
+      "parameters": [],
+      "outputs": [{ "name": "Bool" }],
+      "spriteX": 96,
+      "spriteY": 0
+    },
+    {
+      "name": "Panel",
+      "cn": "面板",
+      "en": "Panel",
+      "parameters": [{ "name": "Input" }],
+      "outputs": [{ "name": "Output" }],
+      "spriteX": 144,
+      "spriteY": 0
+    }
+  ],
+  "Math": [
+    {
+      "name": "Addition",
+      "cn": "加法",
+      "en": "Addition",
+      "parameters": [{ "name": "A" }, { "name": "B" }],
+      "outputs": [{ "name": "Result" }],
+      "spriteX": 0,
+      "spriteY": 48
+    },
+    {
+      "name": "Subtraction",
+      "cn": "减法",
+      "en": "Subtraction",
+      "parameters": [{ "name": "A" }, { "name": "B" }],
+      "outputs": [{ "name": "Result" }],
+      "spriteX": 48,
+      "spriteY": 48
+    },
+    {
+      "name": "Multiplication",
+      "cn": "乘法",
+      "en": "Multiplication",
+      "parameters": [{ "name": "A" }, { "name": "B" }],
+      "outputs": [{ "name": "Result" }],
+      "spriteX": 96,
+      "spriteY": 48
+    },
+    {
+      "name": "Division",
+      "cn": "除法",
+      "en": "Division",
+      "parameters": [{ "name": "A" }, { "name": "B" }],
+      "outputs": [{ "name": "Result" }],
+      "spriteX": 144,
+      "spriteY": 48
+    }
+  ]
+}
