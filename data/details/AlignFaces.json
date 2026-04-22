@@ -1,0 +1,78 @@
+{
+  "description_cn": "<p>对齐一对刚体的面。</p>",
+  "description_en": "<p><span style=\"color: rgb(0, 0, 0);\">Align faces of a pair of rigid bodies。</span></p>",
+  "images": [
+    "AlignFaces.png",
+    "AlignFaces.gif"
+  ],
+  "video": "",
+  "tags": [
+    "对齐"
+  ],
+  "parameters": [
+    {
+      "name": "PlaneA",
+      "cn": "平面A",
+      "en": "PlaneA",
+      "default": "Null，平面",
+      "desc_cn": "第一个刚体的平面",
+      "desc_en": "The frame of one rigid body"
+    },
+    {
+      "name": "PlaneB",
+      "cn": "平面B",
+      "en": "PlaneB",
+      "default": "Null，平面",
+      "desc_cn": "其他刚体平面",
+      "desc_en": "The frame of the other rigid body"
+    },
+    {
+      "name": "FaceA",
+      "cn": "物体A上要对齐的平面",
+      "en": "FaceA",
+      "default": "Null，平面",
+      "desc_cn": "物体A上要对齐的平面",
+      "desc_en": "The plane on body A to align"
+    },
+    {
+      "name": "FaceB",
+      "cn": "物体B上要对齐的平面",
+      "en": "FaceB",
+      "default": "Null，平面",
+      "desc_cn": "物体B上要对齐的平面",
+      "desc_en": "The plane on body B to align"
+    },
+    {
+      "name": "Flip",
+      "cn": "翻转",
+      "en": "Flip",
+      "default": "False，布尔值",
+      "desc_cn": "反转平面的相对方向",
+      "desc_en": "Reverse the relative direction of the planes"
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "1，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "A",
+      "cn": "对齐后的面",
+      "en": "AlignFaces",
+      "default": "Null",
+      "desc_cn": "对齐后的面",
+      "desc_en": "AlignFaces"
+    }
+  ],
+  "examples": [
+    "AlignFaces_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}

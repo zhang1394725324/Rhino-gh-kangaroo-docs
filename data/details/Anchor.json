@@ -1,0 +1,54 @@
+{
+  "description_cn": "<p>固定位置不发生移动的点。可以将指定的锚点固定要指定位置（<span style=\"color: rgb(230, 0, 0);\">目标点</span>）上去。下图实例中是将矩形网格平面的四个角点设为锚点。<span style=\"color: rgb(230, 0, 0);\"><span class=\"ql-cursor\">﻿</span></span></p>",
+  "description_en": "<p>An anchor point is a point that remains fixed in its position and does not move. You can fix a specified anchor point to a specified location (<span style=\"color: rgb(230, 0, 0);\">target point</span>). In the example below, the four corner points of a rectangular grid plane are set as anchor points.</p>",
+  "images": [
+    "Anchor.png",
+    "Anchor.gif"
+  ],
+  "video": "",
+  "tags": [
+    "锚点"
+  ],
+  "parameters": [
+    {
+      "name": "P",
+      "cn": "要固定的点",
+      "en": "Points",
+      "default": "Null，点",
+      "desc_cn": "指向锚点",
+      "desc_en": "Point to anchor"
+    },
+    {
+      "name": "T",
+      "cn": "目标点",
+      "en": "Detonation",
+      "default": "Null，点",
+      "desc_cn": "将锚点拉到的位置。如果为空，将使用初始位置。",
+      "desc_en": "Location to pull the anchor to. If left empty, the initial location will be used."
+    },
+    {
+      "name": "Strength",
+      "cn": "强度",
+      "en": "Strength",
+      "default": "10000，数字",
+      "desc_cn": "强度",
+      "desc_en": "Strength"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "A",
+      "cn": "输出的锚点",
+      "en": "Bomb",
+      "default": "Null",
+      "desc_cn": "输出的锚点",
+      "desc_en": "Anchor out"
+    }
+  ],
+  "examples": [
+    "Anchor_example.gh"
+  ],
+  "author": "Kangaroo Team",
+  "version": "2.1",
+  "lastUpdated": "2026-04-15"
+}
