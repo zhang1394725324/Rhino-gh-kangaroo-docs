@@ -1,5 +1,5 @@
 {
-  "Primitive": [
+  "Geometry": [
     { "name": "Point", "cn": "点", "en": "Point", "parameters": [], "outputs": [{ "name": "Point" }], "spriteX": 0, "spriteY": 0 },
     { "name": "Circle", "cn": "圆", "en": "Circle", "parameters": [], "outputs": [{ "name": "Circle" }], "spriteX": 24, "spriteY": 0 },
     { "name": "Rectangle", "cn": "矩形", "en": "Rectangle", "parameters": [], "outputs": [{ "name": "Rectangle" }], "spriteX": 48, "spriteY": 0 },
@@ -35,6 +35,8 @@
     { "name": "Extrusion", "cn": "挤出体", "en": "Extrusion", "parameters": [], "outputs": [{ "name": "Extrusion" }], "spriteX": 48, "spriteY": 72 },
     { "name": "Leader", "cn": "引线", "en": "Leader", "parameters": [], "outputs": [], "spriteX": 72, "spriteY": 72 },
     { "name": "Geometry Pipeline", "cn": "几何管线", "en": "Geometry Pipeline", "parameters": [], "outputs": [{ "name": "Output" }], "spriteX": 96, "spriteY": 72 },
+  ],
+  "Primitive": [
     { "name": "Boolean", "cn": "布尔值", "en": "Boolean", "parameters": [], "outputs": [{ "name": "Bool" }], "spriteX": 120, "spriteY": 72 },
     { "name": "Colour", "cn": "颜色", "en": "Colour", "parameters": [], "outputs": [{ "name": "Colour" }], "spriteX": 144, "spriteY": 72 },
     { "name": "Earth Anchor Point", "cn": "地球锚点", "en": "Earth Anchor Point", "parameters": [], "outputs": [{ "name": "Point" }], "spriteX": 168, "spriteY": 72 },
@@ -81,7 +83,7 @@
     { "name": "Colour Wheel", "cn": "色轮", "en": "Colour Wheel", "parameters": [], "outputs": [{ "name": "Colour" }], "spriteX": 144, "spriteY": 168 },
     { "name": "Import Image", "cn": "导入图像", "en": "Import Image", "parameters": [], "outputs": [{ "name": "Image" }], "spriteX": 168, "spriteY": 168 }
   ],
-  "Model": [
+  "Rhino": [
     { "name": "Model Layer", "cn": "模型图层", "en": "Model Layer", "parameters": [], "outputs": [{ "name": "Layer" }], "spriteX": 192, "spriteY": 168 },
     { "name": "Model Hatch Pattern", "cn": "模型填充图案", "en": "Model Hatch Pattern", "parameters": [], "outputs": [{ "name": "Pattern" }], "spriteX": 216, "spriteY": 168 },
     { "name": "Model Environment", "cn": "模型环境", "en": "Model Environment", "parameters": [], "outputs": [{ "name": "Environment" }], "spriteX": 0, "spriteY": 192 },
@@ -95,8 +97,9 @@
     { "name": "Page Layout", "cn": "页面布局", "en": "Page Layout", "parameters": [], "outputs": [], "spriteX": 192, "spriteY": 192 },
     { "name": "Model Block Definition", "cn": "模型块定义", "en": "Model Block Definition", "parameters": [], "outputs": [{ "name": "Block" }], "spriteX": 216, "spriteY": 192 },
     { "name": "Model Print Width", "cn": "模型打印宽度", "en": "Model Print Width", "parameters": [], "outputs": [{ "name": "PrintWidth" }], "spriteX": 0, "spriteY": 216 }
+    
   ],
-  "Special": [
+    "Util": [
     { "name": "Cherry Picker", "cn": "樱桃采摘器", "en": "Cherry Picker", "parameters": [], "outputs": [{ "name": "Items" }], "spriteX": 24, "spriteY": 216 },
     { "name": "Data Dam", "cn": "数据水坝", "en": "Data Dam", "parameters": [], "outputs": [{ "name": "Output" }], "spriteX": 48, "spriteY": 216 },
     { "name": "Cluster Input", "cn": "集群输入", "en": "Cluster Input", "parameters": [], "outputs": [{ "name": "Output" }], "spriteX": 72, "spriteY": 216 },
