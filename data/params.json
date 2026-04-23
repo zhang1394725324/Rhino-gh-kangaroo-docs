@@ -34,7 +34,7 @@
     { "name": "Plane", "cn": "平面", "en": "Plane", "parameters": [], "outputs": [{ "name": "Plane" }], "spriteX": 24, "spriteY": 72 },
     { "name": "Extrusion", "cn": "挤出体", "en": "Extrusion", "parameters": [], "outputs": [{ "name": "Extrusion" }], "spriteX": 48, "spriteY": 72 },
     { "name": "Leader", "cn": "引线", "en": "Leader", "parameters": [], "outputs": [], "spriteX": 72, "spriteY": 72 },
-    { "name": "Geometry Pipeline", "cn": "几何管线", "en": "Geometry Pipeline", "parameters": [], "outputs": [{ "name": "Output" }], "spriteX": 96, "spriteY": 72 },
+    { "name": "Geometry Pipeline", "cn": "几何管线", "en": "Geometry Pipeline", "parameters": [], "outputs": [{ "name": "Output" }], "spriteX": 96, "spriteY": 72 }
   ],
   "Primitive": [
     { "name": "Boolean", "cn": "布尔值", "en": "Boolean", "parameters": [], "outputs": [{ "name": "Bool" }], "spriteX": 120, "spriteY": 72 },
