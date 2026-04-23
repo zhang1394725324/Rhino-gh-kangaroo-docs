@@ -1,0 +1,33 @@
+{
+  "description_cn": "<p>标准圆曲线。如果将曲线接入圆曲线组件，必须曲线是标准圆曲线，否则会报错。</p>",
+  "description_en": "<p>标准圆曲线。如果将曲线接入圆曲线组件，必须曲线是标准圆曲线，否则会报错。</p>",
+  "images": [],
+  "video": "",
+  "tags": [
+    "Circle"
+  ],
+  "parameters": [
+    {
+      "name": "",
+      "cn": "",
+      "en": "",
+      "default": "Null",
+      "desc_cn": "",
+      "desc_en": ""
+    }
+  ],
+  "outputs": [
+    {
+      "name": "",
+      "cn": "",
+      "en": "",
+      "default": "Null",
+      "desc_cn": "",
+      "desc_en": ""
+    }
+  ],
+  "examples": [],
+  "author": "Grasshopper Team",
+  "version": "1",
+  "lastUpdated": "2026-04-15"
+}
